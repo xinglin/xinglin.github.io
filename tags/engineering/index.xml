@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Engineering on Xing Lin</title>
-    <link>http://www.cs.utah.edu/~xinglin/tags/engineering/</link>
+    <link>xinglin.github.io/tags/engineering/</link>
     <description>Recent content in Engineering on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 13 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/engineering/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="xinglin.github.io/tags/engineering/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Open-Channel SSD</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</link>
+      <link>xinglin.github.io/blog/open-channel-ssd/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</guid>
+      <guid>xinglin.github.io/blog/open-channel-ssd/</guid>
       <description>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
  Read code path (from the media) in pblk
@@ -25,28 +25,28 @@
     
     <item>
       <title>DAX in ext2 filesystem</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/dax-in-ext2-filesystem/</link>
+      <link>xinglin.github.io/blog/dax-in-ext2-filesystem/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/dax-in-ext2-filesystem/</guid>
+      <guid>xinglin.github.io/blog/dax-in-ext2-filesystem/</guid>
       <description>msync syscall /mm/msync.c / * MS_SYNC syncs the entire file - including mappings. */ SYSCALL_DEFINE3(msync, unsigned long, start, size_t, len, int, flags) vfs_fsync_range(file, fstart, fend, 1); file-&amp;gt;f_op-&amp;gt;fsync(file, start, end, datasync); == ext2_fsync(); generic_file_fsync(file, start, end, datasync); __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync) file_write_and_wait_range(file, start, end); __filemap_fdatawrite_range(mapping, lstart, lend, WB_SYNC_ALL); do_writepages(mapping, &amp;amp;wbc); mapping-&amp;gt;a_ops-&amp;gt;writepages(mapping, wbc); ext2_dax_writepages() dax_writeback_mapping_range(mapping, mapping-&amp;gt;host-&amp;gt;i_sb-&amp;gt;s_bdev, wbc); dax_writeback_one(&amp;amp;xas, dax_dev, mapping, entry); dax_flush(dax_dev, page_address(pfn_to_page(pfn)), size); arch_wb_cache_pmem(addr, size); clean_cache_range(addr, size); for (p = (void *)((unsigned long)addr &amp;amp; ~clflush_mask); p &amp;lt; vend; p += x86_clflush_size) clwb(p); static const struct address_space_operations ext2_dax_aops = { .</description>
     </item>
     
     <item>
       <title>Read syscall implementation in Linux Kernel</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/read-syscall-implementation-in-linux-kernel/</link>
+      <link>xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/</link>
       <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/read-syscall-implementation-in-linux-kernel/</guid>
+      <guid>xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/</guid>
       <description>Interactions among vfs, page cache, and ext2 on serving a read request stack trace for ext2_readpages() in ext2 [ 84.037457] Call Trace: [ 84.037458] dump_stack+0x46/0x5b [ 84.037460] ext2_readpages+0x3e/0x90 [ 84.037464] read_pages+0x71/0x1a0 [ 84.037470] ? __do_page_cache_readahead+0x1c9/0x1e0 [ 84.037472] __do_page_cache_readahead+0x1c9/0x1e0 [ 84.037474] ondemand_readahead+0x171/0x2b0 [ 84.037478] ? pagecache_get_page+0x30/0x2c0 [ 84.037481] ? __kernel_text_address+0xe/0x30 [ 84.037483] generic_file_read_iter+0x875/0xda0 [ 84.037412] ext2_file_read_iter+0x4c/0xe0 [ 84.037488] new_sync_read+0x12e/0x1d0 [ 84.037490] vfs_read+0x91/0x130 [ 84.037492] ksys_read+0x52/0xc0 [ 84.037494] do_syscall_64+0x4f/0x100 [ 84.037496] entry_SYSCALL_64_after_hwframe+0x44/0xa9 [ 84.</description>
     </item>
     
     <item>
       <title>Systems and services built on top of postgreSQL</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/systems-and-services-built-on-top-of-postgresql/</link>
+      <link>xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/</link>
       <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/systems-and-services-built-on-top-of-postgresql/</guid>
+      <guid>xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/</guid>
       <description>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
    Systems/services Type     AWS Redshift data warehousing   TimeScale time series database     AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</description>
     </item>

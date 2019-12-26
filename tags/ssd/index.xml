@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ssd on Xing Lin</title>
-    <link>http://www.cs.utah.edu/~xinglin/tags/ssd/</link>
+    <link>xinglin.github.io/tags/ssd/</link>
     <description>Recent content in Ssd on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 13 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/ssd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="xinglin.github.io/tags/ssd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Open-Channel SSD</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</link>
+      <link>xinglin.github.io/blog/open-channel-ssd/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</guid>
+      <guid>xinglin.github.io/blog/open-channel-ssd/</guid>
       <description>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
  Read code path (from the media) in pblk
@@ -25,10 +25,10 @@
     
     <item>
       <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
+      <link>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
+      <guid>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
       <description>This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
 The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.</description>
     </item>

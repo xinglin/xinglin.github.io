@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Xing Lin</title>
-    <link>http://www.cs.utah.edu/~xinglin/blog/</link>
+    <link>xinglin.github.io/blog/</link>
     <description>Recent content in Blog on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.cs.utah.edu/~xinglin/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Flush data to stable storage in C</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/flush-data-to-stable-storage-in-c/</link>
+      <link>xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/flush-data-to-stable-storage-in-c/</guid>
+      <guid>xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</guid>
       <description>When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
 Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&amp;rsquo;t survive on a power lose.</description>
     </item>
     
     <item>
       <title>Notes for Myself</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/notes-for-myself/</link>
+      <link>xinglin.github.io/blog/notes-for-myself/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/notes-for-myself/</guid>
+      <guid>xinglin.github.io/blog/notes-for-myself/</guid>
       <description> When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
   </description>
     </item>
     
     <item>
       <title>Dynamic Kernel Debugging</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/dynamic-kernel-debugging/</link>
+      <link>xinglin.github.io/blog/dynamic-kernel-debugging/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/dynamic-kernel-debugging/</guid>
+      <guid>xinglin.github.io/blog/dynamic-kernel-debugging/</guid>
       <description>Compile kernel with CONFIG_DYNAMIC_DEBUG=y
  Mount debugfs, if not mounted yet
 sudo mount -t debugfs none /sys/kernel/debug  Turn on debug for a specific module
@@ -46,10 +46,10 @@ echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control
     
     <item>
       <title>Open-Channel SSD</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</link>
+      <link>xinglin.github.io/blog/open-channel-ssd/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</guid>
+      <guid>xinglin.github.io/blog/open-channel-ssd/</guid>
       <description>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
  Read code path (from the media) in pblk
@@ -58,10 +58,10 @@ echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control
     
     <item>
       <title>Create The Author Version for Your Paper (ACM)</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/create-the-author-version-for-your-paper-acm/</link>
+      <link>xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</link>
       <pubDate>Sun, 28 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/create-the-author-version-for-your-paper-acm/</guid>
+      <guid>xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</guid>
       <description>So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
 In acmart.cls, change the execution option for authorversion from false to true.  -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true} 
 You may also want to add page numbers into your paper.</description>
@@ -69,10 +69,10 @@ You may also want to add page numbers into your paper.</description>
     
     <item>
       <title>Programming - Principles and Practice Using C&#43;&#43;</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/programming---principles-and-practice-using-c--/</link>
+      <link>xinglin.github.io/blog/programming---principles-and-practice-using-c--/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/programming---principles-and-practice-using-c--/</guid>
+      <guid>xinglin.github.io/blog/programming---principles-and-practice-using-c--/</guid>
       <description>This is an introductory book about programming, written by Bjarne Stroustrup, the C++ creator.
 Quotes  Programming is (among other things) a practical skill that you need to practice to master.
  Learning involves repetition.
@@ -81,95 +81,95 @@ Quotes  Programming is (among other things) a practical skill that you need to p
     
     <item>
       <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
+      <link>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
+      <guid>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
       <description>This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
 The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.</description>
     </item>
     
     <item>
       <title>DAX in ext2 filesystem</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/dax-in-ext2-filesystem/</link>
+      <link>xinglin.github.io/blog/dax-in-ext2-filesystem/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/dax-in-ext2-filesystem/</guid>
+      <guid>xinglin.github.io/blog/dax-in-ext2-filesystem/</guid>
       <description>msync syscall /mm/msync.c / * MS_SYNC syncs the entire file - including mappings. */ SYSCALL_DEFINE3(msync, unsigned long, start, size_t, len, int, flags) vfs_fsync_range(file, fstart, fend, 1); file-&amp;gt;f_op-&amp;gt;fsync(file, start, end, datasync); == ext2_fsync(); generic_file_fsync(file, start, end, datasync); __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync) file_write_and_wait_range(file, start, end); __filemap_fdatawrite_range(mapping, lstart, lend, WB_SYNC_ALL); do_writepages(mapping, &amp;amp;wbc); mapping-&amp;gt;a_ops-&amp;gt;writepages(mapping, wbc); ext2_dax_writepages() dax_writeback_mapping_range(mapping, mapping-&amp;gt;host-&amp;gt;i_sb-&amp;gt;s_bdev, wbc); dax_writeback_one(&amp;amp;xas, dax_dev, mapping, entry); dax_flush(dax_dev, page_address(pfn_to_page(pfn)), size); arch_wb_cache_pmem(addr, size); clean_cache_range(addr, size); for (p = (void *)((unsigned long)addr &amp;amp; ~clflush_mask); p &amp;lt; vend; p += x86_clflush_size) clwb(p); static const struct address_space_operations ext2_dax_aops = { .</description>
     </item>
     
     <item>
       <title>Wisdom from Michael Stonebraker</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/wisdom-from-michael-stonebraker/</link>
+      <link>xinglin.github.io/blog/wisdom-from-michael-stonebraker/</link>
       <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/wisdom-from-michael-stonebraker/</guid>
+      <guid>xinglin.github.io/blog/wisdom-from-michael-stonebraker/</guid>
       <description>Where do ideas come from? Ideas come from two sources: talking to real users with real problems and then trying to solve them. This ensures somebody cares about the ideas and the rubber meets the road and not the sky. The second source is to bounce possibly good (or bad) ideas off colleages that will challenge them. In summary, the best chance for generating a good idea is to spend time in the real world and find an enviroment where you will be intellectually challenged.</description>
     </item>
     
     <item>
       <title>Read syscall implementation in Linux Kernel</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/read-syscall-implementation-in-linux-kernel/</link>
+      <link>xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/</link>
       <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/read-syscall-implementation-in-linux-kernel/</guid>
+      <guid>xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/</guid>
       <description>Interactions among vfs, page cache, and ext2 on serving a read request stack trace for ext2_readpages() in ext2 [ 84.037457] Call Trace: [ 84.037458] dump_stack+0x46/0x5b [ 84.037460] ext2_readpages+0x3e/0x90 [ 84.037464] read_pages+0x71/0x1a0 [ 84.037470] ? __do_page_cache_readahead+0x1c9/0x1e0 [ 84.037472] __do_page_cache_readahead+0x1c9/0x1e0 [ 84.037474] ondemand_readahead+0x171/0x2b0 [ 84.037478] ? pagecache_get_page+0x30/0x2c0 [ 84.037481] ? __kernel_text_address+0xe/0x30 [ 84.037483] generic_file_read_iter+0x875/0xda0 [ 84.037412] ext2_file_read_iter+0x4c/0xe0 [ 84.037488] new_sync_read+0x12e/0x1d0 [ 84.037490] vfs_read+0x91/0x130 [ 84.037492] ksys_read+0x52/0xc0 [ 84.037494] do_syscall_64+0x4f/0x100 [ 84.037496] entry_SYSCALL_64_after_hwframe+0x44/0xa9 [ 84.</description>
     </item>
     
     <item>
       <title>AWS re:Invent 2018 tidbits</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/aws-reinvent-2018-tidbits/</link>
+      <link>xinglin.github.io/blog/aws-reinvent-2018-tidbits/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/aws-reinvent-2018-tidbits/</guid>
+      <guid>xinglin.github.io/blog/aws-reinvent-2018-tidbits/</guid>
       <description>Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)
   Supports Postgre 9.6&amp;frasl;10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data.</description>
     </item>
     
     <item>
       <title>AWS re:Invent 2018</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/aws-reinvent-2018/</link>
+      <link>xinglin.github.io/blog/aws-reinvent-2018/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/aws-reinvent-2018/</guid>
+      <guid>xinglin.github.io/blog/aws-reinvent-2018/</guid>
       <description>I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks.</description>
     </item>
     
     <item>
       <title>Systems and services built on top of postgreSQL</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/systems-and-services-built-on-top-of-postgresql/</link>
+      <link>xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/</link>
       <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/systems-and-services-built-on-top-of-postgresql/</guid>
+      <guid>xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/</guid>
       <description>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
    Systems/services Type     AWS Redshift data warehousing   TimeScale time series database     AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</description>
     </item>
     
     <item>
       <title>Lines of Code for Various Software</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/lines-of-code-for-various-software/</link>
+      <link>xinglin.github.io/blog/lines-of-code-for-various-software/</link>
       <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/lines-of-code-for-various-software/</guid>
+      <guid>xinglin.github.io/blog/lines-of-code-for-various-software/</guid>
       <description>Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.</description>
     </item>
     
     <item>
       <title>SPDK on Intel Optane and Samsung ZSSD</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/spdk-on-intel-optane-and-samsung-zssd/</link>
+      <link>xinglin.github.io/blog/spdk-on-intel-optane-and-samsung-zssd/</link>
       <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/spdk-on-intel-optane-and-samsung-zssd/</guid>
+      <guid>xinglin.github.io/blog/spdk-on-intel-optane-and-samsung-zssd/</guid>
       <description>Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
 Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.</description>
     </item>
     
     <item>
       <title>Install hotCRP at a Ubuntu 14 Machine</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/install-hotcrp-at-a-ubuntu-14-machine/</link>
+      <link>xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
+      <guid>xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
       <description>Update packages
 sudo apt-get update  Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
  Install the software-properties-common package to get the add-apt-repository command.
@@ -181,29 +181,29 @@ sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail  Get ho
     
     <item>
       <title>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/</link>
+      <link>xinglin.github.io/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/</link>
       <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/</guid>
+      <guid>xinglin.github.io/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/</guid>
       <description>I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions. To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.</description>
     </item>
     
     <item>
       <title>SPDK on Samsung 960 EVO NVMe SSD</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/spdk-on-samsung-960-evo-nvme-ssd/</link>
+      <link>xinglin.github.io/blog/spdk-on-samsung-960-evo-nvme-ssd/</link>
       <pubDate>Fri, 01 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/spdk-on-samsung-960-evo-nvme-ssd/</guid>
+      <guid>xinglin.github.io/blog/spdk-on-samsung-960-evo-nvme-ssd/</guid>
       <description>Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD. I was thinking that using SPDK might lead to better performance, than through traditional block device interface. However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.
    Metric SPDK /dev/nvme0n1     IOPS 12.8 K 11.</description>
     </item>
     
     <item>
       <title>Great Books and Papers</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/great-books-and-papers/</link>
+      <link>xinglin.github.io/blog/great-books-and-papers/</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/great-books-and-papers/</guid>
+      <guid>xinglin.github.io/blog/great-books-and-papers/</guid>
       <description>Books  HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison
  THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University
  China&amp;rsquo;s Economy, Arthur R. Kroeber
@@ -214,38 +214,38 @@ This paper provides a great introduction on LSM-tree, how RocksDB is used as the
     
     <item>
       <title>NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</link>
+      <link>xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</guid>
+      <guid>xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</guid>
       <description>This paper introduces a new B+ tree variation that is optimized for NVM by reducing consistency cost from memory fence and cacheline flush operations.
  Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.</description>
     </item>
     
     <item>
       <title>Reflection After Dissertation Defense</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/reflection-after-dissertation-defense/</link>
+      <link>xinglin.github.io/blog/reflection-after-dissertation-defense/</link>
       <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/reflection-after-dissertation-defense/</guid>
+      <guid>xinglin.github.io/blog/reflection-after-dissertation-defense/</guid>
       <description>After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers.</description>
     </item>
     
     <item>
       <title>Sketch Data Structures</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/sketch-data-structures/</link>
+      <link>xinglin.github.io/blog/sketch-data-structures/</link>
       <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/sketch-data-structures/</guid>
+      <guid>xinglin.github.io/blog/sketch-data-structures/</guid>
       <description>Tonight, I went to attend a local meetup event. The talk was given by a faculty from my own department, Jeff Phillips, an assistant professor working in the area of big data analysis. The topic of his talk is about sketch data structure - data structures which uses a much smaller amount of memory to summarize the represented data.This is a cool technique and I am very interested to learn more.</description>
     </item>
     
     <item>
       <title>KVM Notes</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/kvm-notes/</link>
+      <link>xinglin.github.io/blog/kvm-notes/</link>
       <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/kvm-notes/</guid>
+      <guid>xinglin.github.io/blog/kvm-notes/</guid>
       <description>List storage pools
 virsh pool-list --details
  List all volumes for a pool
@@ -259,28 +259,28 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
     
     <item>
       <title>Proposal Defense</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/proposal-defense/</link>
+      <link>xinglin.github.io/blog/proposal-defense/</link>
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/proposal-defense/</guid>
+      <guid>xinglin.github.io/blog/proposal-defense/</guid>
       <description>I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.</description>
     </item>
     
     <item>
       <title>Clone a Single KVM/qemu Virtual Machine</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/clone-a-single-kvm/qemu-virtual-machine/</link>
+      <link>xinglin.github.io/blog/clone-a-single-kvm/qemu-virtual-machine/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/clone-a-single-kvm/qemu-virtual-machine/</guid>
+      <guid>xinglin.github.io/blog/clone-a-single-kvm/qemu-virtual-machine/</guid>
       <description>I am working on virtual machine cloning for security testing for the TCloud project. We are looking for an efficient and transparent virtual machine cloning technique that has minimal impact on the virtual machine to be cloned. After some investigation, we found that KVM supports live snapshot for both memory and disk state while Xen4.4 currently does not support this feature yet but could be patched to do live snapshot for memory state easily.</description>
     </item>
     
     <item>
       <title>Trade-off Between Accuracy and Runtime Overhead</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/trade-off-between-accuracy-and-runtime-overhead/</link>
+      <link>xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/trade-off-between-accuracy-and-runtime-overhead/</guid>
+      <guid>xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/</guid>
       <description>During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &amp;lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime.</description>
     </item>
     

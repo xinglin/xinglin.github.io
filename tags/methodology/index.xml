@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Methodology on Xing Lin</title>
-    <link>http://www.cs.utah.edu/~xinglin/tags/methodology/</link>
+    <link>xinglin.github.io/tags/methodology/</link>
     <description>Recent content in Methodology on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/methodology/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="xinglin.github.io/tags/methodology/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Trade-off Between Accuracy and Runtime Overhead</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/trade-off-between-accuracy-and-runtime-overhead/</link>
+      <link>xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/trade-off-between-accuracy-and-runtime-overhead/</guid>
+      <guid>xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/</guid>
       <description>During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &amp;lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime.</description>
     </item>
     

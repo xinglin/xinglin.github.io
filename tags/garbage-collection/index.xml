@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Garbage Collection on Xing Lin</title>
-    <link>http://www.cs.utah.edu/~xinglin/tags/garbage-collection/</link>
+    <link>xinglin.github.io/tags/garbage-collection/</link>
     <description>Recent content in Garbage Collection on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Fri, 08 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/garbage-collection/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="xinglin.github.io/tags/garbage-collection/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
-      <link>http://www.cs.utah.edu/~xinglin/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
+      <link>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
+      <guid>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
       <description>This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
 The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.</description>
     </item>
