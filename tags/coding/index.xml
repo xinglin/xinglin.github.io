@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>coding on Xing Lin</title>
+    <link>http://www.cs.utah.edu/~xinglin/tags/coding/</link>
+    <description>Recent content in coding on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 20 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lines of Code for Various Software</title>
+      <link>http://www.cs.utah.edu/~xinglin/blog/lines-of-code-for-various-software/</link>
+      <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/blog/lines-of-code-for-various-software/</guid>
+      <description>Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.</description>
+    </item>
+    
+  </channel>
+</rss>

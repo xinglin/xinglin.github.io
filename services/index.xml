@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Services on Xing Lin</title>
+    <link>http://www.cs.utah.edu/~xinglin/services/</link>
+    <description>Recent content in Services on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="http://www.cs.utah.edu/~xinglin/services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Services</title>
+      <link>http://www.cs.utah.edu/~xinglin/services/services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/services/services/</guid>
+      <description> Co-chair  IEEE Special Technical Community on Operating Systems, 2016 - 2018   Program Committees  USENIX ATC 2019 USENIX ATC 2018 MSST 2017 MSST 2016   Journals  ACM Transactions on Storage IEEE Transactions on Computers IEEE Transactions on Knowledge and Data Engineering IEEE Internet Computing IEEE Computer    </description>
+    </item>
+    
+  </channel>
+</rss>

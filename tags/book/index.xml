@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>book on Xing Lin</title>
+    <link>http://www.cs.utah.edu/~xinglin/tags/book/</link>
+    <description>Recent content in book on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Programming - Principles and Practice Using C&#43;&#43;</title>
+      <link>http://www.cs.utah.edu/~xinglin/blog/programming-principles-and-practice-using-c-/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/blog/programming-principles-and-practice-using-c-/</guid>
+      <description>This is an introductory book about programming, written by Bjarne Stroustrup, the C++ creator.
+Quotes  Programming is (among other things) a practical skill that you need to practice to master. Learning involves repetition. You must run before you can walk! Babies really do run by themselves before they learn the finer skills of slow, controlled walking. Similarly, you will dash ahead, occasionally stumbling, to get a feel of programming before slowing down to gain the necessary finer control and understanding.</description>
+    </item>
+    
+    <item>
+      <title>Wisdom from Michael Stonebraker</title>
+      <link>http://www.cs.utah.edu/~xinglin/blog/wisdom-from-michael-stonebraker/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/blog/wisdom-from-michael-stonebraker/</guid>
+      <description>Where do ideas come from? Ideas come from two sources: talking to real users with real problems and then trying to solve them. This ensures somebody cares about the ideas and the rubber meets the road and not the sky. The second source is to bounce possibly good (or bad) ideas off colleages that will challenge them. In summary, the best chance for generating a good idea is to spend time in the real world and find an enviroment where you will be intellectually challenged.</description>
+    </item>
+    
+  </channel>
+</rss>

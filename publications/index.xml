@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Xing Lin</title>
+    <link>http://www.cs.utah.edu/~xinglin/publications/</link>
+    <description>Recent content in Publications on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 19 Aug 2015 20:29:37 -0700</lastBuildDate>
+    
+	<atom:link href="http://www.cs.utah.edu/~xinglin/publications/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Publications</title>
+      <link>http://www.cs.utah.edu/~xinglin/publications/publications/</link>
+      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/publications/publications/</guid>
+      <description>PhD Dissertation Using Similarity in Content and Access Patterns to Improve Space Efficiency and Performance in Storage Systems [slides]
+Conference Papers Storage  SS-CDC: A Two-stage Parallel Content-Defined Chunking for Deduplicating Backup Storage [slides :: bibtex]
+Fan Ni, Xing Lin, Song Jiang
+SYSTOR 19: The 12th ACM International Systems and Storage Conference
+  Fail-Slow at Scale: Evidence of Hardware Performance Faults in Large Production Systems [bibtex]
+Haryadi S. Gunawi and Riza O.</description>
+    </item>
+    
+  </channel>
+</rss>
