@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kernel on Xing Lin</title>
-    <link>xinglin.github.io/tags/kernel/</link>
+    <link>https://xinglin.github.io/tags/kernel/</link>
     <description>Recent content in Kernel on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 13 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="xinglin.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xinglin.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dynamic Kernel Debugging</title>
-      <link>xinglin.github.io/blog/dynamic-kernel-debugging/</link>
+      <link>https://xinglin.github.io/blog/dynamic-kernel-debugging/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/dynamic-kernel-debugging/</guid>
+      <guid>https://xinglin.github.io/blog/dynamic-kernel-debugging/</guid>
       <description>Compile kernel with CONFIG_DYNAMIC_DEBUG=y
  Mount debugfs, if not mounted yet
 sudo mount -t debugfs none /sys/kernel/debug  Turn on debug for a specific module

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hotcrp on Xing Lin</title>
-    <link>xinglin.github.io/tags/hotcrp/</link>
+    <link>https://xinglin.github.io/tags/hotcrp/</link>
     <description>Recent content in Hotcrp on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="xinglin.github.io/tags/hotcrp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xinglin.github.io/tags/hotcrp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Install hotCRP at a Ubuntu 14 Machine</title>
-      <link>xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</link>
+      <link>https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
+      <guid>https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
       <description>Update packages
 sudo apt-get update  Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
  Install the software-properties-common package to get the add-apt-repository command.

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Paper on Xing Lin</title>
-    <link>xinglin.github.io/tags/paper/</link>
+    <link>https://xinglin.github.io/tags/paper/</link>
     <description>Recent content in Paper on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 28 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="xinglin.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xinglin.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Create The Author Version for Your Paper (ACM)</title>
-      <link>xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</link>
+      <link>https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</link>
       <pubDate>Sun, 28 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</guid>
+      <guid>https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</guid>
       <description>So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
 In acmart.cls, change the execution option for authorversion from false to true.  -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true} 
 You may also want to add page numbers into your paper.</description>
@@ -24,39 +24,39 @@ You may also want to add page numbers into your paper.</description>
     
     <item>
       <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
-      <link>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
+      <link>https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
+      <guid>https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</guid>
       <description>This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
 The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.</description>
     </item>
     
     <item>
       <title>NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</title>
-      <link>xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</link>
+      <link>https://xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</guid>
+      <guid>https://xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/</guid>
       <description>This paper introduces a new B+ tree variation that is optimized for NVM by reducing consistency cost from memory fence and cacheline flush operations.
  Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.</description>
     </item>
     
     <item>
       <title>Sketch Data Structures</title>
-      <link>xinglin.github.io/blog/sketch-data-structures/</link>
+      <link>https://xinglin.github.io/blog/sketch-data-structures/</link>
       <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/sketch-data-structures/</guid>
+      <guid>https://xinglin.github.io/blog/sketch-data-structures/</guid>
       <description>Tonight, I went to attend a local meetup event. The talk was given by a faculty from my own department, Jeff Phillips, an assistant professor working in the area of big data analysis. The topic of his talk is about sketch data structure - data structures which uses a much smaller amount of memory to summarize the represented data.This is a cool technique and I am very interested to learn more.</description>
     </item>
     
     <item>
       <title>Proposal Defense</title>
-      <link>xinglin.github.io/blog/proposal-defense/</link>
+      <link>https://xinglin.github.io/blog/proposal-defense/</link>
       <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/proposal-defense/</guid>
+      <guid>https://xinglin.github.io/blog/proposal-defense/</guid>
       <description>I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.</description>
     </item>
     

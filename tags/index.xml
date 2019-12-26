@@ -2,210 +2,210 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Xing Lin</title>
-    <link>xinglin.github.io/tags/</link>
+    <link>https://xinglin.github.io/tags/</link>
     <description>Recent content in Tags on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="xinglin.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xinglin.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Book</title>
-      <link>xinglin.github.io/tags/book/</link>
+      <link>https://xinglin.github.io/tags/book/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/book/</guid>
+      <guid>https://xinglin.github.io/tags/book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Books</title>
-      <link>xinglin.github.io/tags/books/</link>
+      <link>https://xinglin.github.io/tags/books/</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/books/</guid>
+      <guid>https://xinglin.github.io/tags/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Coding</title>
-      <link>xinglin.github.io/tags/coding/</link>
+      <link>https://xinglin.github.io/tags/coding/</link>
       <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/coding/</guid>
+      <guid>https://xinglin.github.io/tags/coding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Conference</title>
-      <link>xinglin.github.io/tags/conference/</link>
+      <link>https://xinglin.github.io/tags/conference/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/conference/</guid>
+      <guid>https://xinglin.github.io/tags/conference/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dax</title>
-      <link>xinglin.github.io/tags/dax/</link>
+      <link>https://xinglin.github.io/tags/dax/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/dax/</guid>
+      <guid>https://xinglin.github.io/tags/dax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Engineering</title>
-      <link>xinglin.github.io/tags/engineering/</link>
+      <link>https://xinglin.github.io/tags/engineering/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/engineering/</guid>
+      <guid>https://xinglin.github.io/tags/engineering/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ext2</title>
-      <link>xinglin.github.io/tags/ext2/</link>
+      <link>https://xinglin.github.io/tags/ext2/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/ext2/</guid>
+      <guid>https://xinglin.github.io/tags/ext2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Garbage Collection</title>
-      <link>xinglin.github.io/tags/garbage-collection/</link>
+      <link>https://xinglin.github.io/tags/garbage-collection/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/garbage-collection/</guid>
+      <guid>https://xinglin.github.io/tags/garbage-collection/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hotcrp</title>
-      <link>xinglin.github.io/tags/hotcrp/</link>
+      <link>https://xinglin.github.io/tags/hotcrp/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/hotcrp/</guid>
+      <guid>https://xinglin.github.io/tags/hotcrp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kernel</title>
-      <link>xinglin.github.io/tags/kernel/</link>
+      <link>https://xinglin.github.io/tags/kernel/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/kernel/</guid>
+      <guid>https://xinglin.github.io/tags/kernel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kvm</title>
-      <link>xinglin.github.io/tags/kvm/</link>
+      <link>https://xinglin.github.io/tags/kvm/</link>
       <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/kvm/</guid>
+      <guid>https://xinglin.github.io/tags/kvm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>xinglin.github.io/tags/linux/</link>
+      <link>https://xinglin.github.io/tags/linux/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/linux/</guid>
+      <guid>https://xinglin.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Live Clone</title>
-      <link>xinglin.github.io/tags/live-clone/</link>
+      <link>https://xinglin.github.io/tags/live-clone/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/live-clone/</guid>
+      <guid>https://xinglin.github.io/tags/live-clone/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Methodology</title>
-      <link>xinglin.github.io/tags/methodology/</link>
+      <link>https://xinglin.github.io/tags/methodology/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/methodology/</guid>
+      <guid>https://xinglin.github.io/tags/methodology/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Note</title>
-      <link>xinglin.github.io/tags/note/</link>
+      <link>https://xinglin.github.io/tags/note/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/note/</guid>
+      <guid>https://xinglin.github.io/tags/note/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Open Channel</title>
-      <link>xinglin.github.io/tags/open-channel/</link>
+      <link>https://xinglin.github.io/tags/open-channel/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/open-channel/</guid>
+      <guid>https://xinglin.github.io/tags/open-channel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Paper</title>
-      <link>xinglin.github.io/tags/paper/</link>
+      <link>https://xinglin.github.io/tags/paper/</link>
       <pubDate>Sun, 28 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/paper/</guid>
+      <guid>https://xinglin.github.io/tags/paper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Papers</title>
-      <link>xinglin.github.io/tags/papers/</link>
+      <link>https://xinglin.github.io/tags/papers/</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/papers/</guid>
+      <guid>https://xinglin.github.io/tags/papers/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Phd</title>
-      <link>xinglin.github.io/tags/phd/</link>
+      <link>https://xinglin.github.io/tags/phd/</link>
       <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/phd/</guid>
+      <guid>https://xinglin.github.io/tags/phd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Source Code</title>
-      <link>xinglin.github.io/tags/source-code/</link>
+      <link>https://xinglin.github.io/tags/source-code/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/source-code/</guid>
+      <guid>https://xinglin.github.io/tags/source-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spdk</title>
-      <link>xinglin.github.io/tags/spdk/</link>
+      <link>https://xinglin.github.io/tags/spdk/</link>
       <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/spdk/</guid>
+      <guid>https://xinglin.github.io/tags/spdk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ssd</title>
-      <link>xinglin.github.io/tags/ssd/</link>
+      <link>https://xinglin.github.io/tags/ssd/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/tags/ssd/</guid>
+      <guid>https://xinglin.github.io/tags/ssd/</guid>
       <description></description>
     </item>
     

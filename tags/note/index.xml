@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Note on Xing Lin</title>
-    <link>xinglin.github.io/tags/note/</link>
+    <link>https://xinglin.github.io/tags/note/</link>
     <description>Recent content in Note on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="xinglin.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xinglin.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Flush data to stable storage in C</title>
-      <link>xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</link>
+      <link>https://xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</guid>
+      <guid>https://xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</guid>
       <description>When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
 Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&amp;rsquo;t survive on a power lose.</description>
     </item>
     
     <item>
       <title>Notes for Myself</title>
-      <link>xinglin.github.io/blog/notes-for-myself/</link>
+      <link>https://xinglin.github.io/blog/notes-for-myself/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/notes-for-myself/</guid>
+      <guid>https://xinglin.github.io/blog/notes-for-myself/</guid>
       <description> When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
   </description>
     </item>
     
     <item>
       <title>Dynamic Kernel Debugging</title>
-      <link>xinglin.github.io/blog/dynamic-kernel-debugging/</link>
+      <link>https://xinglin.github.io/blog/dynamic-kernel-debugging/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/dynamic-kernel-debugging/</guid>
+      <guid>https://xinglin.github.io/blog/dynamic-kernel-debugging/</guid>
       <description>Compile kernel with CONFIG_DYNAMIC_DEBUG=y
  Mount debugfs, if not mounted yet
 sudo mount -t debugfs none /sys/kernel/debug  Turn on debug for a specific module
@@ -46,10 +46,10 @@ echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control
     
     <item>
       <title>Install hotCRP at a Ubuntu 14 Machine</title>
-      <link>xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</link>
+      <link>https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
+      <guid>https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
       <description>Update packages
 sudo apt-get update  Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
  Install the software-properties-common package to get the add-apt-repository command.
