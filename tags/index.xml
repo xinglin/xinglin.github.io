@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Xing Lin</title>
@@ -6,22 +6,58 @@
     <description>Recent content in Tags on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.cs.utah.edu/~xinglin/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>note</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/note/</link>
-      <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
+      <title>Book</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/book/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/tags/note/</guid>
+      <guid>http://www.cs.utah.edu/~xinglin/tags/book/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>engineering</title>
+      <title>Books</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/books/</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coding</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/coding/</link>
+      <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conference</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/conference/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/conference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dax</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/dax/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/dax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Engineering</title>
       <link>http://www.cs.utah.edu/~xinglin/tags/engineering/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
@@ -30,47 +66,11 @@
     </item>
     
     <item>
-      <title>kernel</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/kernel/</link>
-      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      <title>Ext2</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/ext2/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/tags/kernel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>open channel</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/open-channel/</link>
-      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/open-channel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SSD</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/ssd/</link>
-      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/ssd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>paper</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/paper/</link>
-      <pubDate>Sun, 28 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/paper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/book/</link>
-      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/book/</guid>
+      <guid>http://www.cs.utah.edu/~xinglin/tags/ext2/</guid>
       <description></description>
     </item>
     
@@ -84,70 +84,7 @@
     </item>
     
     <item>
-      <title>dax</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/dax/</link>
-      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/dax/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ext2</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/ext2/</link>
-      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/ext2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/linux/</link>
-      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>source code</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/source-code/</link>
-      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/source-code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>conference</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/conference/</link>
-      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/conference/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>coding</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/coding/</link>
-      <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/coding/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SPDK</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/spdk/</link>
-      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/spdk/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hotCRP</title>
+      <title>Hotcrp</title>
       <link>http://www.cs.utah.edu/~xinglin/tags/hotcrp/</link>
       <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
       
@@ -156,34 +93,16 @@
     </item>
     
     <item>
-      <title>books</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/books/</link>
-      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      <title>Kernel</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/kernel/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://www.cs.utah.edu/~xinglin/tags/books/</guid>
+      <guid>http://www.cs.utah.edu/~xinglin/tags/kernel/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>papers</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/papers/</link>
-      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/papers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PhD</title>
-      <link>http://www.cs.utah.edu/~xinglin/tags/phd/</link>
-      <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.cs.utah.edu/~xinglin/tags/phd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>KVM</title>
+      <title>Kvm</title>
       <link>http://www.cs.utah.edu/~xinglin/tags/kvm/</link>
       <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
       
@@ -192,7 +111,16 @@
     </item>
     
     <item>
-      <title>live clone</title>
+      <title>Linux</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/linux/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Live Clone</title>
       <link>http://www.cs.utah.edu/~xinglin/tags/live-clone/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
@@ -201,11 +129,83 @@
     </item>
     
     <item>
-      <title>methodology</title>
+      <title>Methodology</title>
       <link>http://www.cs.utah.edu/~xinglin/tags/methodology/</link>
       <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.cs.utah.edu/~xinglin/tags/methodology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Note</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/note/</link>
+      <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Channel</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/open-channel/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/open-channel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/paper/</link>
+      <pubDate>Sun, 28 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Papers</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/papers/</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/papers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Phd</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/phd/</link>
+      <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/phd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Source Code</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/source-code/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/source-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spdk</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/spdk/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/spdk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ssd</title>
+      <link>http://www.cs.utah.edu/~xinglin/tags/ssd/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.cs.utah.edu/~xinglin/tags/ssd/</guid>
       <description></description>
     </item>
     

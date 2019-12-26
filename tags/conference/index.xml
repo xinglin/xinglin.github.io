@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>conference on Xing Lin</title>
+    <title>Conference on Xing Lin</title>
     <link>http://www.cs.utah.edu/~xinglin/tags/conference/</link>
-    <description>Recent content in conference on Xing Lin</description>
+    <description>Recent content in Conference on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Fri, 07 Dec 2018 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,8 @@
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>http://www.cs.utah.edu/~xinglin/blog/aws-reinvent-2018-tidbits/</guid>
-      <description>Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)   Supports Postgre 9.6/10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data. Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements.</description>
+      <description>Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)
+  Supports Postgre 9.6&amp;frasl;10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data.</description>
     </item>
     
     <item>

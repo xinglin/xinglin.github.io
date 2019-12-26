@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>source code on Xing Lin</title>
+    <title>Source Code on Xing Lin</title>
     <link>http://www.cs.utah.edu/~xinglin/tags/source-code/</link>
-    <description>Recent content in source code on Xing Lin</description>
+    <description>Recent content in Source Code on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 24 Jan 2019 00:00:00 +0000</lastBuildDate>

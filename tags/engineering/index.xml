@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>engineering on Xing Lin</title>
+    <title>Engineering on Xing Lin</title>
     <link>http://www.cs.utah.edu/~xinglin/tags/engineering/</link>
-    <description>Recent content in engineering on Xing Lin</description>
+    <description>Recent content in Engineering on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 13 Aug 2019 00:00:00 +0000</lastBuildDate>
@@ -18,9 +18,9 @@
       
       <guid>http://www.cs.utah.edu/~xinglin/blog/open-channel-ssd/</guid>
       <description>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
-  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
-  Read code path (from the media) in pblk
-  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&amp;gt;ops-&amp;gt;submit_io(dev, rqd);  Write code path in pblk  pblk_write_to_cache() { for (i = 0; i &amp;lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.</description>
+ Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
+ Read code path (from the media) in pblk
+  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&amp;gt;ops-&amp;gt;submit_io(dev, rqd);   Write code path in pblk  pblk_write_to_cache() { for (i = 0; i &amp;lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.</description>
     </item>
     
     <item>
@@ -48,7 +48,7 @@
       
       <guid>http://www.cs.utah.edu/~xinglin/blog/systems-and-services-built-on-top-of-postgresql/</guid>
       <description>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
-   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database      AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</description>
+   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database     AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</description>
     </item>
     
   </channel>

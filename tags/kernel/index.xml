@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kernel on Xing Lin</title>
+    <title>Kernel on Xing Lin</title>
     <link>http://www.cs.utah.edu/~xinglin/tags/kernel/</link>
-    <description>Recent content in kernel on Xing Lin</description>
+    <description>Recent content in Kernel on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 13 Aug 2019 00:00:00 +0000</lastBuildDate>
@@ -18,9 +18,9 @@
       
       <guid>http://www.cs.utah.edu/~xinglin/blog/dynamic-kernel-debugging/</guid>
       <description>Compile kernel with CONFIG_DYNAMIC_DEBUG=y
-  Mount debugfs, if not mounted yet
- sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
- echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control    The flags are:
+ Mount debugfs, if not mounted yet
+sudo mount -t debugfs none /sys/kernel/debug  Turn on debug for a specific module
+echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control   The flags are:
  p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.</description>
     </item>
     
