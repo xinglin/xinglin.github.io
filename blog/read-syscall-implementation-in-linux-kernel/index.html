@@ -1133,14 +1133,9 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    
-
-<h3 id="interactions-among-vfs-page-cache-and-ext2-on-serving-a-read-request">Interactions among vfs, page cache, and ext2 on serving a read request</h3>
-
-<p><img src="../sysread.png" alt="" /></p>
-
+    <h3 id="interactions-among-vfs-page-cache-and-ext2-on-serving-a-read-request">Interactions among vfs, page cache, and ext2 on serving a read request</h3>
+<p><img src="../sysread.png" alt=""></p>
 <h1 id="stack-trace-for-ext2-readpages-in-ext2">stack trace for ext2_readpages() in ext2</h1>
-
 <pre><code>[   84.037457] Call Trace:
 [   84.037458]  dump_stack+0x46/0x5b
 [   84.037460]  ext2_readpages+0x3e/0x90
@@ -1167,12 +1162,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 [   84.037431]  do_syscall_64+0x4f/0x100
 [   84.037438]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
 
-</code></pre>
-
-<h1 id="read-write-syscall-definitions">read/write syscall definitions</h1>
-
+</code></pre><h1 id="readwrite-syscall-definitions">read/write syscall definitions</h1>
 <p>read/write syscalls are defined in fs/read_write.c, as following.</p>
-
 <pre><code>SYSCALL_DEFINE3(read, unsigned int, fd, char __user *, buf, size_t, count)
 {
 	return ksys_read(fd, buf, count);
@@ -1182,10 +1173,7 @@ SYSCALL_DEFINE3(write, unsigned int, fd, const char __user *, buf,
 {
 	return ksys_write(fd, buf, count);
 }
-</code></pre>
-
-<h1 id="read-syscall-call-stack">Read syscall call stack</h1>
-
+</code></pre><h1 id="read-syscall-call-stack">Read syscall call stack</h1>
 <pre><code>ksys_read(fd, buf, count);
   vfs_read(f.file, buf, count, &amp;pos);
     __vfs_read(file, buf, count, pos);
@@ -1217,10 +1205,7 @@ const struct file_operations ext2_file_operations = {
 new_sync_read()
   call_read_iter(filp, &amp;kiocb, &amp;iter);
     file-&gt;f_op-&gt;read_iter(kio, iter);
-</code></pre>
-
-<h1 id="ext2-file-read-iter">ext2_file_read_iter()</h1>
-
+</code></pre><h1 id="ext2-file-read-iter">ext2_file_read_iter()</h1>
 <pre><code>ext2_file_read_iter(): ext2_file_operations.read_iter
   generic_file_read_iter()
     generic_file_buffered_read()
@@ -1252,9 +1237,7 @@ const struct address_space_operations ext2_aops = {
 ext2_readpages()
     mpage_readpages()
         mpage_bio_submit()
-</code></pre>
-
-<pre><code>/*
+</code></pre><pre><code>/*
  * __do_page_cache_readahead() actually reads a chunk of disk.  It allocates
  * the pages first, then submits them for I/O. This avoids the very bad
  * behaviour which would occur if page allocations are causing VM writeback.
@@ -1341,16 +1324,10 @@ out:
 
 	return ret;
 }
-</code></pre>
-
-<h1 id="io-path-from-understanding-the-linux-kernel">IO Path from Understanding the Linux Kernel</h1>
-
+</code></pre><h1 id="io-path-from-understanding-the-linux-kernel">IO Path from Understanding the Linux Kernel</h1>
 <p>The following explanation is from the book, Understanding the Linux Kernel. It seems that the implementions of Linux VFS and specific filesystems have evolved that the explanation from the book is not accurate.</p>
-
 <p>In Linux, when a file is opened by a process, its file object will be added to the process control block (struct task_struct). The process control block has a pointer, struct files_struct* files, to keep track of all opened files. Within the files_struct, there exists struct fdtable, storing file objects for all file descriptors. A file descriptor is an index into this file object array of type struct file. Each file object (struct file) has a pointer to a file operations object (struct file_operations), to invoke file system specific operations for that file.</p>
-
 <p>When a read() is called from the process for a file descriptor, it will invoke the sys_read(), which calls the read() operation for that file object (file-&gt;f_op-&gt;read(&hellip;)).</p>
-
 <pre><code>
 struct task_struct {
 	...
@@ -1422,7 +1399,6 @@ struct file {
 
 
 </code></pre>
-
 
                 <br>
             </div>

@@ -1129,12 +1129,9 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    
-
-<p>Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD.
+    <p>Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD.
 I was thinking that using SPDK might lead to better performance, than through traditional block device interface.
 However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.</p>
-
 <table>
 <thead>
 <tr>
@@ -1143,26 +1140,22 @@ However, using fio with 4KiB random read requests at the queue depth equal to 1,
 <th>/dev/nvme0n1</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>IOPS</td>
 <td>12.8 K</td>
 <td>11.6 K</td>
 </tr>
-
 <tr>
 <td>slat</td>
 <td>0.18 usec</td>
 <td>&ndash;</td>
 </tr>
-
 <tr>
 <td>clat</td>
 <td>77.73 usec</td>
 <td>84.19 usec</td>
 </tr>
-
 <tr>
 <td>lat</td>
 <td>77.91 usec</td>
@@ -1170,14 +1163,11 @@ However, using fio with 4KiB random read requests at the queue depth equal to 1,
 </tr>
 </tbody>
 </table>
-
 <p>slat, clat and lat are average submission latency, submission to IO completion latency and total IO latency. As we can see, this device still have a quite high read latency. The latest Intel Optane DC P4800X SSDs can achieve 10 us read latency, with 550 K IOPS. For this Samsung device, software overhead seems still fine. It would be really interesting to test out for the Intel Optane PC4800X SSDs though.</p>
-
 <h2 id="tips">Tips</h2>
-
 <ul>
-<li>Dependencies to install, in order to compile SPDK in debian 8<br />
-    <code>sudo apt-get install libnuma-dev uuid-dev libaio-dev libcunit1-dev</code><br /></li>
+<li>Dependencies to install, in order to compile SPDK in debian 8<br>
+<code>sudo apt-get install libnuma-dev uuid-dev libaio-dev libcunit1-dev</code></li>
 </ul>
 
 

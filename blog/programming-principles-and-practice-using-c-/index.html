@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/kvm-notes/" />
-<meta property="og:title" content="KVM Notes" />
-<meta property="twitter:title" content="KVM Notes">
+<meta property="og:url" content="https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/" />
+<meta property="og:title" content="Programming - Principles and Practice Using C&#43;&#43;" />
+<meta property="twitter:title" content="Programming - Principles and Practice Using C&#43;&#43;">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - KVM Notes 
+     Xing Lin - Programming - Principles and Practice Using C&#43;&#43; 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/kvm-notes/">
+<link rel="canonical" href="https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/">
 
 
 <style media="screen">
@@ -1098,13 +1098,13 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                 <div class="title-container">
                     <div class="page-heading">
 
-    KVM Notes
+    Programming - Principles and Practice Using C&#43;&#43;
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Wed Apr 8 2015 00:00:00 UTC">Apr 8, 2015</div>
+                    <div class="date" title="Thu Apr 25 2019 00:00:00 UTC">Apr 25, 2019</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
@@ -1114,7 +1114,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="tags">
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/kvm">KVM</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/book">book</a> </li>
                           
                         </ul>
                     </div>
@@ -1129,46 +1129,14 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <ul>
-<li>
-<p>List storage pools<br>
-<code>virsh pool-list --details</code></p>
-</li>
-<li>
-<p>List all volumes for a pool<br>
-<code>vol-list --details POOLNAME</code></p>
-</li>
-<li>
-<p>To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.<br>
-<code>virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img</code><br>
-<code>virsh pool-start qcow2</code></p>
-</li>
-<li>
-<p>To create a Qemu guest with bridged network<br>
-<code>sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.04.5-desktop-amd64.iso --network bridge=virbr0 --graphics vnc,listen=0.0.0.0 --noautoconsole -v</code></p>
-</li>
-<li>
-<p>To create a qemu guest with qemu_system-x86_64 binary directly<br>
-<code>qemu-system-x86_64 -enable-kvm -m 1024 -name vm2 -hda /var/lib/libvirt/images/vm2.img -vnc :2 -device e1000,netdev=net1,mac=22:22:33:44:00:02  -netdev tap,id=net1 -cdrom /mnt/sdb1/ubuntu-14.04.1-desktop-i386.iso -boot d</code></p>
-</li>
-<li>
-<p>To get console access for guest VMs created with virt-install</p>
-<ul>
-<li>
-<p>Create a guest VM<br>
-<code>sudo virt-install -n vm1 -r 256 --disk path=/var/lib/libvirt/images/vm1.img,bus=virtio,size=10 -c ubuntu-14.04-server-i386.iso --network network=default,model=virtio --graphics vnc,listen=0.0.0.0 --noautoconsole -v</code></p>
-</li>
-<li>
-<p>Added console to kernel parameter, by editing the file /etc/default/grub and added &ldquo;console=ttyS0&rdquo; to the variable GRUB_CMDLINE_LINUX_DEFAULT.</p>
-</li>
-<li>
-<p>Create /etc/init/ttyS0.conf and change last line to be &ldquo;exec /sbin/getty -8 38400 ttyS0 xterm&rdquo;
-<code>cp /etc/init/tty1.conf /etc/init/ttyS0.conf</code><br>
-<code> +exec /sbin/getty -8 38400 ttyS0 xterm</code></p>
-</li>
-</ul>
-</li>
-</ul>
+    <p>This is an introductory book about programming, written by Bjarne Stroustrup, the C++ creator.</p>
+<h2 id="quotes">Quotes</h2>
+<ol>
+<li>Programming is (among other things) a practical skill that you need to practice to master.</li>
+<li>Learning involves repetition.</li>
+<li>You must run before you can walk! Babies really do run by themselves before they learn
+the finer skills of slow, controlled walking. Similarly, you will dash ahead, occasionally stumbling, to get a feel of programming before slowing down to gain the necessary finer control and understanding.</li>
+</ol>
 
 
                 <br>
@@ -1186,13 +1154,13 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     
                     <div>
                         <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                        <a href="https://xinglin.github.io/blog/proposal-defense/">Proposal Defense</a>
+                        <a href="https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/">Coordinating Garbage Collection for Arrays of Solid-State Drives</a>
                     </div>
                     
                     <div style="width: 100%;"></div>
                     
                     <div>
-                        <a href="https://xinglin.github.io/blog/sketch-data-structures/">Sketch Data Structures</a>
+                        <a href="https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/">Create The Author Version for Your Paper (ACM)</a>
                         <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
                     </div>
                     

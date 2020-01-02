@@ -1138,18 +1138,15 @@ and runtime. So, in their work, they tried to estimate it, with a goal to reduce
 They got very impressive results. Together with other papers, I suddenly realized that it is actually
 quite common in compute science community, to take this approach: <strong>when it is too expensive to
 get the accurate result, it is usually a good time to think about how to approximate it with much lower overhead.</strong></p>
-
 <p>There are a few examples, pop up in my mind. One is the use of bloom filter in tracking unique chunks
 for deduplication. The memory consumption is too high to keep track of every unique chunks.
-So, bloom filters are used, to keep track of memberships, with a low probability of introducing duplicates.<br />
+So, bloom filters are used, to keep track of memberships, with a low probability of introducing duplicates.<br>
 <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-wires.pdf">Sparse Indexing</a> is another example: a full chunk index is not scalable as data size increases.
 Thus, instead of deduplicating against the full chunk index, they only deduplicate new data blocks with a few
 data blocks that are most similar. There are probably more such projects that I can not remember all of them.</p>
-
 <p>12/16/2014: found another example - <a href="http://blinkdb.org/">BlinkDB</a>. It trade-offs query accurary for
 response time, and thus enables interactive queries over massive data by running
 queries on sampled data and presenting results with annotated error bars.</p>
-
 <p>02/21/2015: add another example - <a href="https://www.usenix.org/conference/fast15/technical-sessions/presentation/waldspurger">MRC estimation</a>. This is another piece of work, trying
 to approximate miss rate curve, with low memory consumption and runs quickly. The key idea is again
 to do sampling! It samples a subset of IO requests and uses re-use distances from this subset as an approximation

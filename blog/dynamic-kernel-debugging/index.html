@@ -1131,22 +1131,22 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <ol>
-<li>Compile kernel with CONFIG_DYNAMIC_DEBUG=y<br /></li>
-
-<li><p>Mount debugfs, if not mounted yet</p>
-
-<pre><code>sudo mount -t debugfs none /sys/kernel/debug
-</code></pre></li>
-
-<li><p>Turn on debug for a specific module</p>
-
-<pre><code>echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control
-</code></pre></li>
+    <ol start="0">
+<li>
+<p>Compile kernel with CONFIG_DYNAMIC_DEBUG=y</p>
+</li>
+<li>
+<p>Mount debugfs, if not mounted yet</p>
+<pre><code> sudo mount -t debugfs none /sys/kernel/debug
+</code></pre>
+</li>
+<li>
+<p>Turn on debug for a specific module</p>
+<pre><code> echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control
+</code></pre>
+</li>
 </ol>
-
 <p>The flags are:</p>
-
 <pre><code>    p    enables the pr_debug() callsite.
     f    Include the function name in the printed message
     l    Include line number in the printed message

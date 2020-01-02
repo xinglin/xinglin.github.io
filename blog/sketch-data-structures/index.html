@@ -1135,86 +1135,83 @@ working in the area of big data analysis. The topic of his talk is about
 sketch data structure - data structures which uses a much smaller
 amount of memory to summarize the represented data.This is a cool
 technique and I am very interested to learn more.</p>
-
 <p>Sketch data structures are commonly used in the following three use
 cases.</p>
-
 <ul>
-<li>frequent items, like IP addresses<br /></li>
-<li>distinct items (harder to do)<br /></li>
-<li>approximate distribution of items<br /></li>
+<li>frequent items, like IP addresses</li>
+<li>distinct items (harder to do)</li>
+<li>approximate distribution of items</li>
 </ul>
-
 <p>And it is now also becoming popular to use sketches to represent matrixes and graphs</p>
-
 <ul>
-<li>matrix sketch (hot)<br /></li>
-<li>graph sketch (new)<br /></li>
+<li>matrix sketch (hot)</li>
+<li>graph sketch (new)</li>
 </ul>
-
 <p>Here is a list of sketches Jeff talked in his talk.</p>
-
 <ul>
-<li><p>reservoir sampling: keep k samples over a streaming items</p>
-
-<p>keep the first k items;<br />
-  for j_th item where j&gt;k, keep it at probability of k/j.</p></li>
+<li>
+<p>reservoir sampling: keep k samples over a streaming items</p>
+<pre><code>keep the first k items;  
+for j_th item where j&gt;k, keep it at probability of k/j.  
+</code></pre>
+</li>
 </ul>
-
-<p>Frequent items sketches<br />
+<p>Frequent items sketches<br>
 Assume we want to find top k frequent items</p>
-
 <ul>
-<li><p>Misra-Gries sketch (under-count)</p>
-
-<p>initialize k counters = 0<br />
-  for i_th item<br />
-    if (we have a counter that is not 0 for this item)<br />
-      increase the counter by 1<br />
-    elsif (we have a counter that is 0)<br />
-      increase the counter by 1 and assign this counter to this item<br />
-    else<br />
-      decrease all counters by 1</p></li>
-
-<li><p>spacesaving sketch (over-count)</p>
-
-<p>initialize k counters = 0<br />
-  for i_th item<br />
-    if (we have a counter that is not 0 for this item)<br />
-      increase the counter by 1<br />
-    else<br />
-      find the counter with minimal value;<br />
-      increase the counter by 1 and assign this counter to this item</p></li>
+<li>
+<p>Misra-Gries sketch (under-count)</p>
+<pre><code>initialize k counters = 0  
+for i_th item  
+  if (we have a counter that is not 0 for this item)  
+    increase the counter by 1  
+  elsif (we have a counter that is 0)  
+    increase the counter by 1 and assign this counter to this item  
+  else  
+    decrease all counters by 1  
+</code></pre>
+</li>
+<li>
+<p>spacesaving sketch (over-count)</p>
+<pre><code>initialize k counters = 0  
+for i_th item  
+  if (we have a counter that is not 0 for this item)  
+    increase the counter by 1  
+  else  
+    find the counter with minimal value;  
+    increase the counter by 1 and assign this counter to this item  
+</code></pre>
+</li>
 </ul>
-
 <p>Two generic sketches to estimate frequency of any item</p>
-
 <ul>
-<li><p>count-min sketch (over-count, report minimal value, support substraction)</p>
+<li>
+<p>count-min sketch (over-count, report minimal value, support substraction)</p>
+<pre><code>initialize a two-dimensional t*k array of counters  
+pick t independent hash fuctions  
+for i_th item  
+  foreach hash function h  
+    increase the counter of h(item)  
 
-<p>initialize a two-dimensional t*k array of counters<br />
-  pick t independent hash fuctions<br />
-  for i_th item<br />
-    foreach hash function h<br />
-      increase the counter of h(item)</p>
+for any item, report the minimal value of h(item) as the estimation of 
+its frequency
+</code></pre>
+</li>
+<li>
+<p>count sketch</p>
+<pre><code>initialize a two-dimensional t*k array of counters  
+pick t independent hash fuctions h_1,...,h_t, each maps an item to {1,...,k}
+pick t independent hash functions s_1,...,s_t, each maps an item to {+1, -1}  
+for i_th item  
+  foreach hash function h_i  
+    h_i(item) += s_i(item) 
 
-<p>for any item, report the minimal value of h(item) as the estimation of
-  its frequency</p></li>
-
-<li><p>count sketch</p>
-
-<p>initialize a two-dimensional t*k array of counters<br />
-  pick t independent hash fuctions h_1,&hellip;,h_t, each maps an item to {1,&hellip;,k}
-  pick t independent hash functions s_1,&hellip;,s_t, each maps an item to {+1, -1}<br />
-  for i_th item<br />
-    foreach hash function h_i<br />
-      h_i(item) += s_i(item)</p>
-
-<p>for any item, report the median value of h(item) as the estimation of
-  its frequency</p></li>
+for any item, report the median value of h(item) as the estimation of 
+its frequency
+</code></pre>
+</li>
 </ul>
-
-<p>Count sketch: &ldquo;Finding Frequent Items in Data Streams&rdquo;, Moses Charikar, Kevin Chen and
+<p>Count sketch: &ldquo;Finding Frequent Items in Data Streams&rdquo;, Moses Charikar,	Kevin Chen and
 Martin Farach-Colton, ICALP &lsquo;02 Proceedings of the 29th International Colloquium on Automata, Languages and Programming.</p>
 
 

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kvm on Xing Lin</title>
+    <title>KVM on Xing Lin</title>
     <link>https://xinglin.github.io/tags/kvm/</link>
-    <description>Recent content in Kvm on Xing Lin</description>
+    <description>Recent content in KVM on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 08 Apr 2015 00:00:00 +0000</lastBuildDate>
@@ -19,13 +19,13 @@
       <guid>https://xinglin.github.io/blog/kvm-notes/</guid>
       <description>List storage pools
 virsh pool-list --details
- List all volumes for a pool
+  List all volumes for a pool
 vol-list --details POOLNAME
- To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
+  To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
 virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img
 virsh pool-start qcow2
- To create a Qemu guest with bridged network
-sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.04.5-desktop-amd64.iso --network bridge=virbr0 --graphics vnc,listen=0.</description>
+  To create a Qemu guest with bridged network
+sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.</description>
     </item>
     
     <item>

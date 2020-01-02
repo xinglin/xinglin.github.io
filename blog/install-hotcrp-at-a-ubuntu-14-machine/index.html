@@ -1131,84 +1131,89 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <ol>
-<li><p>Update packages</p>
-
-<pre><code>sudo apt-get update
-</code></pre></li>
-
-<li><p>Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.</p>
-
+    <ol start="0">
+<li>
+<p>Update packages</p>
+<pre><code> sudo apt-get update
+</code></pre>
+</li>
+<li>
+<p>Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.</p>
 <ol>
-<li><p>Install the <code>software-properties-common</code> package to get the <code>add-apt-repository</code> command.</p>
-
-<pre><code>sudo apt-get install software-properties-common
-</code></pre></li>
-
-<li><p>Add php7 ppa and do an update</p>
-
-<pre><code>sudo add-apt-repository ppa:ondrej/php  
-sudo apt-get update
-</code></pre></li>
-
-<li><p>Install php7</p>
-
-<pre><code>sudo apt-get install php7.2 php7.2-mysql
-</code></pre></li>
-</ol></li>
-
-<li><p>Install other required packages</p>
-
-<pre><code>sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail
-</code></pre></li>
-
-<li><p>Get hotCRP source code</p>
-
-<pre><code>git clone https://github.com/kohler/hotcrp.git 
-</code></pre></li>
-
-<li><p>Create the database for hotCRP</p>
-
-<pre><code>lib/createdb.sh --user root --password  
-</code></pre></li>
-
-<li><p>Add the read permission for conf/options.conf</p>
-
-<pre><code>chmod +r conf/options.conf
-</code></pre></li>
-
-<li><p>Add the directory to /etc/apache2/apache2.conf</p>
-
-<pre><code>    &lt;Directory &quot;/w/hotcrp&quot;&gt;    
-        Options Indexes Includes FollowSymLinks  
-        AllowOverride all  
-        Require all granted  
-    &lt;/Directory&gt;  
-    Alias /hotcrp /w/hotcrp  
-</code></pre></li>
-
-<li><p>Set <code>upload_max_filesize</code>, <code>post_max_size</code>, and <code>max_input_vars</code> in hotcrp/.htaccess file. Use default values are good enough.</p></li>
-
-<li><p>/etc/php/7.2/apache2/php.in</p>
-
+<li>
+<p>Install the <code>software-properties-common</code> package to get the <code>add-apt-repository</code> command.</p>
+<pre><code> sudo apt-get install software-properties-common
+</code></pre>
+</li>
+<li>
+<p>Add php7 ppa and do an update</p>
+<pre><code> sudo add-apt-repository ppa:ondrej/php	
+ sudo apt-get update
+</code></pre>
+</li>
+<li>
+<p>Install php7</p>
+<pre><code> sudo apt-get install php7.2 php7.2-mysql
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Install other required packages</p>
+<pre><code> sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail
+</code></pre>
+</li>
+<li>
+<p>Get hotCRP source code</p>
+<pre><code> git clone https://github.com/kohler/hotcrp.git 
+</code></pre>
+</li>
+<li>
+<p>Create the database for hotCRP</p>
+<pre><code> lib/createdb.sh --user root --password  
+</code></pre>
+</li>
+<li>
+<p>Add the read permission for conf/options.conf</p>
+<pre><code> chmod +r conf/options.conf
+</code></pre>
+</li>
+<li>
+<p>Add the directory to /etc/apache2/apache2.conf</p>
+<pre><code>     &lt;Directory &quot;/w/hotcrp&quot;&gt;    
+         Options Indexes Includes FollowSymLinks  
+         AllowOverride all  
+         Require all granted  
+     &lt;/Directory&gt;  
+     Alias /hotcrp /w/hotcrp  
+</code></pre>
+</li>
+<li>
+<p>Set <code>upload_max_filesize</code>, <code>post_max_size</code>, and <code>max_input_vars</code> in hotcrp/.htaccess file. Use default values are good enough.</p>
+</li>
+<li>
+<p>/etc/php/7.2/apache2/php.in</p>
 <ul>
-<li><p>Increase the session gc life time</p>
-
-<pre><code>session.gc_maxlifetime = 86400
-</code></pre></li>
-
-<li><p>Enable mysqli extension, by uncommenting the following line</p>
-
-<pre><code>;extension=mysqli
-</code></pre></li>
-</ul></li>
-
-<li><p>Restart the Apache web server</p>
-
-<pre><code>sudo service apache2 restart
-</code></pre></li>
-
-<li><p>The website is up and running. Visit <code>IP_address/hotcrp</code> to check it out.</p></li>
+<li>
+<p>Increase the session gc life time</p>
+<pre><code>  session.gc_maxlifetime = 86400
+</code></pre>
+</li>
+<li>
+<p>Enable mysqli extension, by uncommenting the following line</p>
+<pre><code>  ;extension=mysqli
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Restart the Apache web server</p>
+<pre><code> sudo service apache2 restart
+</code></pre>
+</li>
+<li>
+<p>The website is up and running. Visit <code>IP_address/hotcrp</code> to check it out.</p>
+</li>
 </ol>
 
 

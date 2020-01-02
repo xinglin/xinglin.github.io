@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Xing Lin</title>
@@ -18,7 +18,7 @@
       
       <guid>https://xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</guid>
       <description>When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
-Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&amp;rsquo;t survive on a power lose.</description>
+Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&#39;t survive on a power lose.</description>
     </item>
     
     <item>
@@ -27,8 +27,7 @@ Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one 
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/notes-for-myself/</guid>
-      <description> When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
-  </description>
+      <description> When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.  </description>
     </item>
     
     <item>
@@ -38,9 +37,9 @@ Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one 
       
       <guid>https://xinglin.github.io/blog/dynamic-kernel-debugging/</guid>
       <description>Compile kernel with CONFIG_DYNAMIC_DEBUG=y
- Mount debugfs, if not mounted yet
-sudo mount -t debugfs none /sys/kernel/debug  Turn on debug for a specific module
-echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control   The flags are:
+  Mount debugfs, if not mounted yet
+ sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
+ echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control    The flags are:
  p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.</description>
     </item>
     
@@ -51,9 +50,9 @@ echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control
       
       <guid>https://xinglin.github.io/blog/open-channel-ssd/</guid>
       <description>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
- Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
- Read code path (from the media) in pblk
-  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&amp;gt;ops-&amp;gt;submit_io(dev, rqd);   Write code path in pblk  pblk_write_to_cache() { for (i = 0; i &amp;lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.</description>
+  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
+  Read code path (from the media) in pblk
+  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&amp;gt;ops-&amp;gt;submit_io(dev, rqd);  Write code path in pblk  pblk_write_to_cache() { for (i = 0; i &amp;lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.</description>
     </item>
     
     <item>
@@ -63,20 +62,18 @@ echo &#39;module pblk +pfl&#39; &amp;gt; /sys/kernel/debug/dynamic_debug/control
       
       <guid>https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</guid>
       <description>So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
-In acmart.cls, change the execution option for authorversion from false to true.  -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true} 
+In acmart.cls, change the execution option for authorversion from false to true.
 You may also want to add page numbers into your paper.</description>
     </item>
     
     <item>
       <title>Programming - Principles and Practice Using C&#43;&#43;</title>
-      <link>https://xinglin.github.io/blog/programming---principles-and-practice-using-c--/</link>
+      <link>https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/</link>
       <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xinglin.github.io/blog/programming---principles-and-practice-using-c--/</guid>
+      <guid>https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/</guid>
       <description>This is an introductory book about programming, written by Bjarne Stroustrup, the C++ creator.
-Quotes  Programming is (among other things) a practical skill that you need to practice to master.
- Learning involves repetition.
- You must run before you can walk! Babies really do run by themselves before they learn the finer skills of slow, controlled walking. Similarly, you will dash ahead, occasionally stumbling, to get a feel of programming before slowing down to gain the necessary finer control and understanding.</description>
+Quotes  Programming is (among other things) a practical skill that you need to practice to master. Learning involves repetition. You must run before you can walk! Babies really do run by themselves before they learn the finer skills of slow, controlled walking. Similarly, you will dash ahead, occasionally stumbling, to get a feel of programming before slowing down to gain the necessary finer control and understanding.</description>
     </item>
     
     <item>
@@ -122,8 +119,7 @@ The main idea of this paper is to run garbage collection during idle times to mi
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/aws-reinvent-2018-tidbits/</guid>
-      <description>Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)
-  Supports Postgre 9.6&amp;frasl;10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data.</description>
+      <description>Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)   Supports Postgre 9.6/10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data. Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements.</description>
     </item>
     
     <item>
@@ -142,7 +138,7 @@ The main idea of this paper is to run garbage collection during idle times to mi
       
       <guid>https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/</guid>
       <description>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
-   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database     AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</description>
+   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database      AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</description>
     </item>
     
     <item>
@@ -161,7 +157,7 @@ The main idea of this paper is to run garbage collection during idle times to mi
       
       <guid>https://xinglin.github.io/blog/spdk-on-intel-optane-and-samsung-zssd/</guid>
       <description>Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.</description>
+Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.8 usec   clat 6.</description>
     </item>
     
     <item>
@@ -171,12 +167,11 @@ Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 u
       
       <guid>https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/</guid>
       <description>Update packages
-sudo apt-get update  Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
- Install the software-properties-common package to get the add-apt-repository command.
-sudo apt-get install software-properties-common  Add php7 ppa and do an update
-sudo add-apt-repository ppa:ondrej/php sudo apt-get update  Install php7
-sudo apt-get install php7.2 php7.2-mysql   Install other required packages
-sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail  Get hotCRP source code</description>
+ sudo apt-get update    Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
+  Install the software-properties-common package to get the add-apt-repository command.
+ sudo apt-get install software-properties-common    Add php7 ppa and do an update
+ sudo add-apt-repository ppa:ondrej/php	sudo apt-get update    Install php7
+ sudo apt-get install php7.2 php7.</description>
     </item>
     
     <item>
@@ -204,12 +199,11 @@ sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail  Get ho
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/great-books-and-papers/</guid>
-      <description>Books  HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison
- THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University
- China&amp;rsquo;s Economy, Arthur R. Kroeber
+      <description>Books   HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison
+  THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University
+  China&#39;s Economy, Arthur R. Kroeber
   Papers There are some papers that are so well written that I really enjoyed reading them. Here is a list of them.
- Optimizing Space Amplification in RocksDB
-This paper provides a great introduction on LSM-tree, how RocksDB is used as the storage engine for MySQL and some statistics of three LSM-tree based systems used in production in Facebook.</description>
+ Optimizing Space Amplification in RocksDB</description>
     </item>
     
     <item>
@@ -248,13 +242,13 @@ This paper provides a great introduction on LSM-tree, how RocksDB is used as the
       <guid>https://xinglin.github.io/blog/kvm-notes/</guid>
       <description>List storage pools
 virsh pool-list --details
- List all volumes for a pool
+  List all volumes for a pool
 vol-list --details POOLNAME
- To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
+  To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
 virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img
 virsh pool-start qcow2
- To create a Qemu guest with bridged network
-sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.04.5-desktop-amd64.iso --network bridge=virbr0 --graphics vnc,listen=0.</description>
+  To create a Qemu guest with bridged network
+sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.</description>
     </item>
     
     <item>

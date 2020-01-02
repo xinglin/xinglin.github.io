@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Paper on Xing Lin</title>
+    <title>paper on Xing Lin</title>
     <link>https://xinglin.github.io/tags/paper/</link>
-    <description>Recent content in Paper on Xing Lin</description>
+    <description>Recent content in paper on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 28 Apr 2019 00:00:00 +0000</lastBuildDate>
@@ -18,7 +18,7 @@
       
       <guid>https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</guid>
       <description>So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
-In acmart.cls, change the execution option for authorversion from false to true.  -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true} 
+In acmart.cls, change the execution option for authorversion from false to true.
 You may also want to add page numbers into your paper.</description>
     </item>
     

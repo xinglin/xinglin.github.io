@@ -1137,10 +1137,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    
-
-<h3 id="msync-syscall">msync syscall</h3>
-
+    <h3 id="msync-syscall">msync syscall</h3>
 <pre><code>/mm/msync.c
 
 / * MS_SYNC syncs the entire file - including mappings. */
@@ -1182,10 +1179,7 @@ void ext2_set_file_ops(struct inode *inode)
 	else
 		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_aops;
 }
-</code></pre>
-
-<h3 id="nvdimm-driver">nvdimm driver</h3>
-
+</code></pre><h3 id="nvdimm-driver">nvdimm driver</h3>
 <pre><code>/drivers/nvdimm/pmem.h
 
 /drivers/nvdimm/pmem.c
@@ -1288,10 +1282,7 @@ static const struct dax_operations pmem_dax_ops = {
 	.copy_to_iter = pmem_copy_to_iter,
 };
 
-</code></pre>
-
-<h3 id="ext2">ext2</h3>
-
+</code></pre><h3 id="ext2">ext2</h3>
 <pre><code># /fs/ext2/file.c
 
 ext2_file_read_iter()
@@ -1326,7 +1317,6 @@ static int ext2_file_mmap(struct file *file, struct vm_area_struct *vma)
 	return 0;
 }
 </code></pre>
-
 
                 <br>
             </div>

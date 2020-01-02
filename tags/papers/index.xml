@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Papers on Xing Lin</title>
+    <title>papers on Xing Lin</title>
     <link>https://xinglin.github.io/tags/papers/</link>
-    <description>Recent content in Papers on Xing Lin</description>
+    <description>Recent content in papers on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Fri, 25 Dec 2015 00:00:00 +0000</lastBuildDate>
@@ -17,12 +17,11 @@
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/great-books-and-papers/</guid>
-      <description>Books  HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison
- THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University
- China&amp;rsquo;s Economy, Arthur R. Kroeber
+      <description>Books   HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison
+  THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University
+  China&#39;s Economy, Arthur R. Kroeber
   Papers There are some papers that are so well written that I really enjoyed reading them. Here is a list of them.
- Optimizing Space Amplification in RocksDB
-This paper provides a great introduction on LSM-tree, how RocksDB is used as the storage engine for MySQL and some statistics of three LSM-tree based systems used in production in Facebook.</description>
+ Optimizing Space Amplification in RocksDB</description>
     </item>
     
   </channel>

@@ -1144,17 +1144,18 @@ as a cloud service. So, we want to use OpenStack as our cloud platform. We had a
 time in setting up a Xen+libvirt OpenStack cluster and we finally gave up on this approach
 since it is not supported well yet (in the group C support). As far as I know,
 there is no online documentation on this topic, until I wrote <a href="http://wiki.xenproject.org/wiki/Xen_via_libvirt_for_OpenStack_juno">this one</a>.</p>
-
 <p>Because of all the difficulties in setting up a Xen+libvirt OpenStck cluster, we decided
-to go with KVM. Here is how we can clone a KVM virtual machine and restart it at another machine.<br />
-*  Take a live snapshot at the source machine<br />
-        <code>snapshot-create-as vm1 snapshot1 &quot;firt snapshot for vm1&quot; --live --memspec file=/dev/shm/vm1.memsnapshot</code><br />
-*  Transfer the memory image, disk file, and configuration file to the destination machine<br />
-        <code>scp /dev/shm/vm1.memsnapshot dest:/mnt/</code><br />
-        <code>scp /etc/libvirt/qemu/vm1.xml dest:/etc/libvirt/qemu/vm1.xml</code><br />
-        <code>scp /var/lib/libvirt/images/vm1.img dest:/var/lib/libvirt/images/vm1.img</code><br />
-*  Restart(Restore) vm1 at destination machine<br />
-        <code>virsh restore /mnt/vm1.memsnapshot</code></p>
+to go with KVM. Here is how we can clone a KVM virtual machine and restart it at another machine.</p>
+<ul>
+<li>Take a live snapshot at the source machine<br>
+<code>snapshot-create-as vm1 snapshot1 &quot;firt snapshot for vm1&quot; --live --memspec file=/dev/shm/vm1.memsnapshot</code></li>
+<li>Transfer the memory image, disk file, and configuration file to the destination machine<br>
+<code>scp /dev/shm/vm1.memsnapshot dest:/mnt/</code><br>
+<code>scp /etc/libvirt/qemu/vm1.xml dest:/etc/libvirt/qemu/vm1.xml</code><br>
+<code>scp /var/lib/libvirt/images/vm1.img dest:/var/lib/libvirt/images/vm1.img</code></li>
+<li>Restart(Restore) vm1 at destination machine<br>
+<code>virsh restore /mnt/vm1.memsnapshot</code></li>
+</ul>
 
 
                 <br>

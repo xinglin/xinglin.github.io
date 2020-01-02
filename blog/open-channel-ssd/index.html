@@ -1134,13 +1134,16 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                 
     
     <ul>
-<li><p>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.</p></li>
-
-<li><p>Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.</p></li>
-
-<li><p>Read code path (from the media) in pblk</p></li>
+<li>
+<p>In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.</p>
+</li>
+<li>
+<p>Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.</p>
+</li>
+<li>
+<p>Read code path (from the media) in pblk</p>
+</li>
 </ul>
-
 <pre><code>/* pblk-read.c */
 
 pblk_submit_read()
@@ -1150,12 +1153,9 @@ pblk_submit_read()
   pblk_submit_io(pblk, rqd);
     nvm_submit_io(dev, rqd);
       dev-&gt;ops-&gt;submit_io(dev, rqd);
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Write code path in pblk</li>
 </ul>
-
 <pre><code>pblk_write_to_cache() {
 
  	for (i = 0; i &lt; nr_entries; i++) {
@@ -1201,13 +1201,10 @@ pblk_submit_write(struct pblk* pblk, int *secs_left)
   pblk_submit_io(pblk, rqd);
     nvm_submit_io(dev, rqd);
       dev-&gt;ops-&gt;submit_io(dev, rqd);
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Garbage Collection code path in pblk
-Erase operations are done during writes (when flushing the write buffer to the media).<br /></li>
+Erase operations are done during writes (when flushing the write buffer to the media).</li>
 </ul>
-
 <pre><code>/* pblk-gc.c */
 int pblk_gc_init(struct pblk *pblk)
 {
@@ -1251,12 +1248,9 @@ pblk_gc_writer_ts()
    pblk_rb_write_entry_gc();
     __pblk_rb_write_entry();
     pblk_update_map_gc();
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Scratch space</li>
 </ul>
-
 <pre><code>/* pblk-init.c */
 
 pblk_make_rq()
@@ -1389,9 +1383,7 @@ pblk_map_erase_rq()
  pblk_map_page_data()
   if (pblk_line_is_full(line)) 
     line = pblk_line_replace_data(pblk);
-</code></pre>
-
-<pre><code>/* pblk.h */
+</code></pre><pre><code>/* pblk.h */
 
 /* a line is an erase block. */
 
@@ -1412,7 +1404,6 @@ enum {
 
 };
 </code></pre>
-
 
                 <br>
             </div>

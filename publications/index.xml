@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publications on Xing Lin</title>
@@ -21,7 +21,7 @@
 Conference Papers Storage  SS-CDC: A Two-stage Parallel Content-Defined Chunking for Deduplicating Backup Storage [slides :: bibtex]
 Fan Ni, Xing Lin, Song Jiang
 SYSTOR 19: The 12th ACM International Systems and Storage Conference
- Fail-Slow at Scale: Evidence of Hardware Performance Faults in Large Production Systems [bibtex]
+  Fail-Slow at Scale: Evidence of Hardware Performance Faults in Large Production Systems [bibtex]
 Haryadi S. Gunawi and Riza O.</description>
     </item>
     
