@@ -6,14 +6,14 @@
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
+
 <meta name="description" content="Example blog">
 
 
     <meta property="twitter:site" content="@xinglin87">
 
 <meta property="og:site_name" content="Xing Lin" />
-<meta property="og:locale" content="nn_NO" />
+<meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xinglin.github.io/blog/" />
 <meta property="og:title" content="Blog" />
@@ -195,7 +195,9 @@ div.header .content {
   align-items: center;
 }
 div.header .container .logo {
+  
   max-width: 100px;
+  
   margin-left: -2em;
 }
 div.header .name {
@@ -204,12 +206,13 @@ div.header .name {
   font-size: 28px;
   font-family: 'Nexa Bold', 'Helvetica Neue', 'Arial', sans-serif;
   letter-spacing: -0.005rem;
+  
   text-transform: uppercase;
+  
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   color: #333333;
-  color: #555555;
 }
 div.header nav {
   margin-bottom: 16px;
@@ -318,7 +321,8 @@ div.main .content .title-container {
   justify-content: space-between;
 }
 div.main .content .posts {
-  margin-bottom: 4em;
+  
+  
 }
 div.main .content .page-heading {
   font-size: 20px;
@@ -385,6 +389,7 @@ div.main .content .front-matter .tags ul li:hover {
 div.main .content .front-matter .tags ul li a {
   color: #666666;
 }
+
 div.main .container.f04 {
   -webkit-justify-content: center;
   -moz-justify-content: center;
@@ -729,8 +734,28 @@ div.main .content .share {
 div.main .content .share a {
   margin: 0 6px;
 }
+kbd {
+  padding: 0.1em 0.6em;
+  border: 1px solid #ccc;
+  font-size: 11px;
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 0.1em;
+  text-shadow: 0 1px 0 #fff;
+  line-height: 1.4;
+  white-space: nowrap;
+}
 
 /* Fonts */
+
 
 .wf-raleway-n4-active body, 
 .wf-raleway-n4-active div.header nav ul a,
@@ -742,17 +767,18 @@ div.main .content .share a {
 .wf-raleway-n7-active div.main .content .markdown h4,
 .wf-raleway-n7-active div.main .content .markdown h5,
 .wf-raleway-n7-active div.main .content .markdown h6 {
-  font-family: 'Raleway';
+      font-family: 'Raleway';
 }
 
 .wf-merriweather-n3-active div.main .content .markdown {
-  font-family: 'Merriweather';
+      font-family: 'Merriweather';
 }
 
 .wf-ubuntu-mono-n4-active div.main .content .markdown code,
 .wf-ubuntu-mono-n4-active div.main .content .markdown pre {
-  font-family: 'Ubuntu Mono';
+      font-family: 'Ubuntu Mono';
 }
+
 
 </style>
 <style media="(min-width: 600px)">
@@ -769,13 +795,15 @@ section {
 padding: 0 16px;
 margin-left: 100px;
 margin-right: 100px;
+
 max-width: 750px;
+
 }
 div.column {
 padding: 0 16px;
-margin-left: 100px;
-margin-right: 100px;
+
 max-width: 750px;
+
 }
 div.header {
 background-color: transparent;
@@ -790,8 +818,8 @@ div.header .container .logo {
 margin: 0;
 }
 div.header-home .container .logo {
-max-width: 180px;
-margin-left: 20px;
+max-width: 216px;
+margin-left: 24px;
 }
 div.header-home .name-home {
 padding-top: 30px;
@@ -876,11 +904,16 @@ padding-top: 60px;
 padding-bottom: 60px;
 }
 div.footer {
-padding-top: 30px;
+padding-top: 60px;
 padding-bottom: 60px;
 }
 div.main {
 padding-top: 0;
+}
+div.main .content {
+  
+  font-size: 16px;
+  
 }
 div.main .container .content .post-item {
 display: flex;
@@ -889,10 +922,6 @@ padding-left: 1.5em;
 }
 div.main .container .content .post-item .meta {
 display: block;
-}
-div.main.post {
-padding-top: 60px;
-padding-bottom: 60px;
 }
 div.main .content .markdown blockquote {
 padding-right: 5rem;
@@ -940,7 +969,8 @@ margin-left: -4%;
 
 
   <style type="text/css" media="screen">
-    .progressive{overflow:hidden;position:relative;background:#efefef}.progressive__img{width:100%;height:100%;position:absolute;-webkit-transform:translateZ(0);transform:translateZ(0)}.progressive--not-loaded{filter:blur(30px);-webkit-filter:blur(30px)}.progressive--is-loaded{filter:blur(20px);-webkit-filter:blur(20px);-webkit-animation:sharpen .5s both;animation:sharpen .5s both}@-webkit-keyframes sharpen{from{filter:blur(20px);-webkit-filter:blur(20px)}to{filter:blur(0);-webkit-filter:blur(0)}}@keyframes sharpen{from{filter:blur(20px);-webkit-filter:blur(20px)}to{filter:blur(0);-webkit-filter:blur(0)}}
+    .progressive{overflow:hidden;position:relative;background:#efefef}.progressive__img{width:100%;height:100%;transform:translateZ(0)}.progressive--not-loaded{filter:blur(30px)}.progressive--is-loaded{filter:blur(20px);animation:a .5s both}@keyframes a{0%{filter:blur(20px)}to{filter:blur(0)}}
+
   </style>
 
 
@@ -1030,8 +1060,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-
-
 <link rel="shortcut icon"
 
     href="https://xinglin.github.io/img/BlockU_redweb.png"
@@ -1052,13 +1080,15 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <div class="header header-home column">
 
     <div class="container">
-        <a href="https://xinglin.github.io/"><img class="logo" src="https://xinglin.github.io/img/Ulogo_1200px.png" alt="logo" /></a>
+        
+        <a href="https://xinglin.github.io/"><img class="logo" src="https://xinglin.github.io/img/Ulogo_1200px.png" alt="logo"></a>
+        
         <div class="content">
             <a href="https://xinglin.github.io/"><div class="name"><h1>Xing Lin</h1></div></a>
             <nav>
                 <ul>
                     
-                        <li><a href="https://xinglin.github.io/blog/">Blog</a></li>
+                            <li><a href="https://xinglin.github.io/blog/">Blog</a></li>
                     
                     
                         
@@ -1097,211 +1127,351 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
         <div class="content">
             <div class="posts">
                 <div class="page-heading">Blog</div>
+
+                
+
+                
                 <ul>
                     
+                      
                         <li class="groupby">Sep, 2019</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Sep 2, 2019</span>
+    
     <a href="https://xinglin.github.io/blog/flush-data-to-stable-storage-in-c/"><span>Flush data to stable storage in C</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Aug, 2019</li>
                         
-                            <li class="post-item">
-    <span class="meta">Aug 13, 2019</span>
-    <a href="https://xinglin.github.io/blog/open-channel-ssd/"><span>Open-Channel SSD</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Aug 13, 2019</span>
-    <a href="https://xinglin.github.io/blog/dynamic-kernel-debugging/"><span>Dynamic Kernel Debugging</span></a>
-</li>
-
-                        
+                          
                             <li class="post-item">
     <span class="meta">Aug 26, 2019</span>
+    
     <a href="https://xinglin.github.io/blog/notes-for-myself/"><span>Notes for Myself</span></a>
+    
 </li>
 
+                          
                         
+                          
+                            <li class="post-item">
+    <span class="meta">Aug 13, 2019</span>
+    
+    <a href="https://xinglin.github.io/blog/open-channel-ssd/"><span>Open-Channel SSD</span></a>
+    
+</li>
+
+                          
+                        
+                          
+                            <li class="post-item">
+    <span class="meta">Aug 13, 2019</span>
+    
+    <a href="https://xinglin.github.io/blog/dynamic-kernel-debugging/"><span>Dynamic Kernel Debugging</span></a>
+    
+</li>
+
+                          
+                        
+                      
                     
+                      
                         <li class="groupby">Apr, 2019</li>
                         
-                            <li class="post-item">
-    <span class="meta">Apr 25, 2019</span>
-    <a href="https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/"><span>Programming - Principles and Practice Using C&#43;&#43;</span></a>
-</li>
-
-                        
+                          
                             <li class="post-item">
     <span class="meta">Apr 28, 2019</span>
+    
     <a href="https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/"><span>Create The Author Version for Your Paper (ACM)</span></a>
+    
 </li>
 
+                          
                         
+                          
+                            <li class="post-item">
+    <span class="meta">Apr 25, 2019</span>
+    
+    <a href="https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/"><span>Programming - Principles and Practice Using C&#43;&#43;</span></a>
+    
+</li>
+
+                          
+                        
+                      
                     
+                      
                         <li class="groupby">Mar, 2019</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Mar 8, 2019</span>
+    
     <a href="https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/"><span>Coordinating Garbage Collection for Arrays of Solid-State Drives</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Jan, 2019</li>
                         
-                            <li class="post-item">
-    <span class="meta">Jan 16, 2019</span>
-    <a href="https://xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/"><span>Read syscall implementation in Linux Kernel</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Jan 17, 2019</span>
-    <a href="https://xinglin.github.io/blog/wisdom-from-michael-stonebraker/"><span>Wisdom from Michael Stonebraker</span></a>
-</li>
-
-                        
+                          
                             <li class="post-item">
     <span class="meta">Jan 24, 2019</span>
+    
     <a href="https://xinglin.github.io/blog/dax-in-ext2-filesystem/"><span>DAX in ext2 filesystem</span></a>
+    
 </li>
 
+                          
                         
+                          
+                            <li class="post-item">
+    <span class="meta">Jan 17, 2019</span>
+    
+    <a href="https://xinglin.github.io/blog/wisdom-from-michael-stonebraker/"><span>Wisdom from Michael Stonebraker</span></a>
+    
+</li>
+
+                          
+                        
+                          
+                            <li class="post-item">
+    <span class="meta">Jan 16, 2019</span>
+    
+    <a href="https://xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/"><span>Read syscall implementation in Linux Kernel</span></a>
+    
+</li>
+
+                          
+                        
+                      
                     
+                      
                         <li class="groupby">Dec, 2018</li>
                         
-                            <li class="post-item">
-    <span class="meta">Dec 2, 2018</span>
-    <a href="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/"><span>Systems and services built on top of postgreSQL</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Dec 3, 2018</span>
-    <a href="https://xinglin.github.io/blog/aws-reinvent-2018/"><span>AWS re:Invent 2018</span></a>
-</li>
-
-                        
+                          
                             <li class="post-item">
     <span class="meta">Dec 7, 2018</span>
+    
     <a href="https://xinglin.github.io/blog/aws-reinvent-2018-tidbits/"><span>AWS re:Invent 2018 tidbits</span></a>
+    
 </li>
 
+                          
                         
+                          
+                            <li class="post-item">
+    <span class="meta">Dec 3, 2018</span>
+    
+    <a href="https://xinglin.github.io/blog/aws-reinvent-2018/"><span>AWS re:Invent 2018</span></a>
+    
+</li>
+
+                          
+                        
+                          
+                            <li class="post-item">
+    <span class="meta">Dec 2, 2018</span>
+    
+    <a href="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/"><span>Systems and services built on top of postgreSQL</span></a>
+    
+</li>
+
+                          
+                        
+                      
                     
+                      
                         <li class="groupby">Nov, 2018</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Nov 20, 2018</span>
+    
     <a href="https://xinglin.github.io/blog/lines-of-code-for-various-software/"><span>Lines of Code for Various Software</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">May, 2018</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">May 10, 2018</span>
+    
     <a href="https://xinglin.github.io/blog/spdk-on-intel-optane-and-samsung-zssd/"><span>SPDK on Intel Optane and Samsung ZSSD</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Apr, 2018</li>
                         
-                            <li class="post-item">
-    <span class="meta">Apr 11, 2018</span>
-    <a href="https://xinglin.github.io/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/"><span>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</span></a>
-</li>
-
-                        
+                          
                             <li class="post-item">
     <span class="meta">Apr 12, 2018</span>
+    
     <a href="https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/"><span>Install hotCRP at a Ubuntu 14 Machine</span></a>
+    
 </li>
 
+                          
                         
+                          
+                            <li class="post-item">
+    <span class="meta">Apr 11, 2018</span>
+    
+    <a href="https://xinglin.github.io/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/"><span>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</span></a>
+    
+</li>
+
+                          
+                        
+                      
                     
+                      
                         <li class="groupby">Dec, 2017</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Dec 1, 2017</span>
+    
     <a href="https://xinglin.github.io/blog/spdk-on-samsung-960-evo-nvme-ssd/"><span>SPDK on Samsung 960 EVO NVMe SSD</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Dec, 2015</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Dec 25, 2015</span>
+    
     <a href="https://xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/"><span>NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</span></a>
+    
 </li>
 
+                          
                         
+                          
                             <li class="post-item">
     <span class="meta">Dec 25, 2015</span>
+    
     <a href="https://xinglin.github.io/blog/great-books-and-papers/"><span>Great Books and Papers</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Jul, 2015</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Jul 22, 2015</span>
+    
     <a href="https://xinglin.github.io/blog/reflection-after-dissertation-defense/"><span>Reflection After Dissertation Defense</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Jun, 2015</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Jun 9, 2015</span>
+    
     <a href="https://xinglin.github.io/blog/sketch-data-structures/"><span>Sketch Data Structures</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Apr, 2015</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Apr 8, 2015</span>
+    
     <a href="https://xinglin.github.io/blog/kvm-notes/"><span>KVM Notes</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Dec, 2014</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Dec 19, 2014</span>
+    
     <a href="https://xinglin.github.io/blog/proposal-defense/"><span>Proposal Defense</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
+                      
                         <li class="groupby">Nov, 2014</li>
                         
+                          
                             <li class="post-item">
     <span class="meta">Nov 26, 2014</span>
+    
     <a href="https://xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/"><span>Trade-off Between Accuracy and Runtime Overhead</span></a>
+    
 </li>
 
+                          
                         
+                          
                             <li class="post-item">
     <span class="meta">Nov 26, 2014</span>
+    
     <a href="https://xinglin.github.io/blog/clone-a-single-kvm/qemu-virtual-machine/"><span>Clone a Single KVM/qemu Virtual Machine</span></a>
+    
 </li>
 
+                          
                         
+                      
                     
                 </ul>
             </div>
@@ -1310,6 +1480,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 </div>
 <div class="footer column">
     <div class="container">
+
+        
 
         
 
@@ -1323,15 +1495,29 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
         
 
         
-            <a href="https://github.com/xinglin" target="_blank">
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="https://github.com/xinglin" rel=me target="_blank">
                 <img class="icon" src="https://xinglin.github.io/img/github.svg" alt="github" />
             </a>
         
 
         
-            <a href="https://twitter.com/xinglin87" target="_blank">
+            <a href="https://twitter.com/xinglin87" rel=me target="_blank">
                 <img class="icon" src="https://xinglin.github.io/img/twitter.svg" alt="twitter" />
             </a>
+        
+
+        
+
         
 
         
@@ -1352,6 +1538,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 <script>
   WebFont.load({
@@ -1360,6 +1547,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     }
   });
 </script>
+
 
 
   <script src="https://xinglin.github.io/js/highlight.min.js" defer></script>
@@ -1371,10 +1559,9 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-
-
-
   <script src="https://xinglin.github.io/js/social-share-kit.min.js" defer></script>
+
+
 
 
 
@@ -1397,6 +1584,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     
   };
 </script>
+
+
 
 
 </body>
