@@ -27,7 +27,9 @@ Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one 
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/notes-for-myself/</guid>
-      <description> When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.  </description>
+      <description>When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
+  Learn one piece at a time.
+When learning a new thing, it could come with many new concepts, making it harder to understand all at once.</description>
     </item>
     
     <item>
