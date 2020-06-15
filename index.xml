@@ -6,10 +6,19 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Foundamentals of a Storage System</title>
+      <link>https://xinglin.github.io/blog/foundamentals-of-a-storage-system/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/foundamentals-of-a-storage-system/</guid>
+      <description>Caching LRU ARC File systems EXT filesystems btrfs Data Reliability RAID Erasure coding Solid State Drive FTL K/V stores LevelDB/RocksDB Distributed Storage Systems Ceph </description>
+    </item>
     
     <item>
       <title>Flush data to stable storage in C</title>
