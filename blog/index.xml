@@ -6,10 +6,25 @@
     <description>Recent content in Blog on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 14 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Evaluate Research Ideas for SSDs</title>
+      <link>https://xinglin.github.io/blog/how-to-evaluate-research-ideas-for-ssds/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/how-to-evaluate-research-ideas-for-ssds/</guid>
+      <description>This blog lists tools/simulators/platforms people used to evaluate SSD researches.
+  MQSim
+MQSIM FAST18, ATC19-Kim
+  SSDSimSSDSim Microsoft Patch [ATC12][atc12]
+  FEMU
+FEMU-fast18
+  </description>
+    </item>
     
     <item>
       <title>Foundamentals of a Storage System</title>
