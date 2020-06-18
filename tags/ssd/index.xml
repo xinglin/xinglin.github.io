@@ -20,9 +20,10 @@
       <description>This blog lists tools/simulators/platforms people used to evaluate SSD researches.
   MQSim
 MQSIM FAST18, ATC19-Kim
-  SSDSimSSDSim Microsoft Patch [ATC12][atc12]
+  SSDSim SSDSim Microsoft Patch
+[ATC12][atc12]
   FEMU
-FEMU-fast18
+FEMU-fast18-short
   </description>
     </item>
     
