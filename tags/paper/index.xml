@@ -42,23 +42,5 @@ The main idea of this paper is to run garbage collection during idle times to mi
  Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.</description>
     </item>
     
-    <item>
-      <title>Sketch Data Structures</title>
-      <link>https://xinglin.github.io/blog/sketch-data-structures/</link>
-      <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://xinglin.github.io/blog/sketch-data-structures/</guid>
-      <description>Tonight, I went to attend a local meetup event. The talk was given by a faculty from my own department, Jeff Phillips, an assistant professor working in the area of big data analysis. The topic of his talk is about sketch data structure - data structures which uses a much smaller amount of memory to summarize the represented data.This is a cool technique and I am very interested to learn more.</description>
-    </item>
-    
-    <item>
-      <title>Proposal Defense</title>
-      <link>https://xinglin.github.io/blog/proposal-defense/</link>
-      <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://xinglin.github.io/blog/proposal-defense/</guid>
-      <description>I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.</description>
-    </item>
-    
   </channel>
 </rss>
