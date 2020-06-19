@@ -15,24 +15,24 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/" />
-<meta property="og:title" content="Blog" />
-<meta property="twitter:title" content="Blog">
+<meta property="og:url" content="https://xinglin.github.io/blog/copysets-reducing-the-frequency-of-data-loss-in-cloud-storage/" />
+<meta property="og:title" content="Copysets: Reducing the Frequency of Data Loss in Cloud Storage" />
+<meta property="twitter:title" content="Copysets: Reducing the Frequency of Data Loss in Cloud Storage">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
     <meta property="twitter:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
 
-<meta property="og:description" content="">
-<meta property="twitter:description" content="">
+<meta property="og:description" content="paper summary for Copysets, published at USENIX ATC13">
+<meta property="twitter:description" content="paper summary for Copysets, published at USENIX ATC13">
 
 <title>
 
 
-     Xing Lin - Blog 
+     Xing Lin - Copysets: Reducing the Frequency of Data Loss in Cloud Storage 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/">
+<link rel="canonical" href="https://xinglin.github.io/blog/copysets-reducing-the-frequency-of-data-loss-in-cloud-storage/">
 
 
 <style media="screen">
@@ -1068,8 +1068,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="https://xinglin.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
-
 
 </head>
 
@@ -1077,7 +1075,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1122,407 +1120,145 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Blog</div>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-                
+    
+    Copysets: Reducing the Frequency of Data Loss in Cloud Storage
+    
 
-                
-                <ul>
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Thu Jun 18 2020 00:00:00 UTC">Jun 18, 2020</div>
                     
-                      
-                        <li class="groupby">Jun, 2020</li>
                         
-                          
-                            <li class="post-item">
-    <span class="meta">Jun 18, 2020</span>
-    
-    <a href="https://xinglin.github.io/blog/on-my-33rd-birthday/"><span>On my 33rd Birthday</span></a>
-    
-</li>
-
-                          
+                        <div class="author middot" title="Xing Lin">Xing Lin</div>
                         
-                          
-                            <li class="post-item">
-    <span class="meta">Jun 18, 2020</span>
-    
-    <a href="https://xinglin.github.io/blog/copysets-reducing-the-frequency-of-data-loss-in-cloud-storage/"><span>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Jun 17, 2020</span>
-    
-    <a href="https://xinglin.github.io/blog/how-to-evaluate-research-ideas-for-ssds/"><span>How to Evaluate Research Ideas for SSDs</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Jun 14, 2020</span>
-    
-    <a href="https://xinglin.github.io/blog/foundamentals-of-a-storage-system/"><span>Foundamentals of a Storage System</span></a>
-    
-</li>
-
-                          
-                        
-                      
                     
-                      
-                        <li class="groupby">Sep, 2019</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Sep 2, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/flush-data-to-stable-storage-in-c/"><span>Flush data to stable storage in C</span></a>
-    
-</li>
-
-                          
-                        
-                      
                     
-                      
-                        <li class="groupby">Aug, 2019</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Aug 26, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/notes-for-myself/"><span>Notes for Myself</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Aug 13, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/open-channel-ssd/"><span>Open-Channel SSD</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Aug 13, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/dynamic-kernel-debugging/"><span>Dynamic Kernel Debugging</span></a>
-    
-</li>
-
-                          
-                        
-                      
+                    <div class="reading-time middot">2 minute read</div>
                     
-                      
-                        <li class="groupby">Apr, 2019</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Apr 28, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/"><span>Create The Author Version for Your Paper (ACM)</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Apr 25, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/programming-principles-and-practice-using-c-/"><span>Programming - Principles and Practice Using C&#43;&#43;</span></a>
-    
-</li>
-
-                          
-                        
-                      
                     
-                      
-                        <li class="groupby">Mar, 2019</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Mar 8, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/"><span>Coordinating Garbage Collection for Arrays of Solid-State Drives</span></a>
-    
-</li>
-
-                          
-                        
-                      
+                      <div class="tags">
                     
-                      
-                        <li class="groupby">Jan, 2019</li>
-                        
+                        <ul>
                           
-                            <li class="post-item">
-    <span class="meta">Jan 24, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/dax-in-ext2-filesystem/"><span>DAX in ext2 filesystem</span></a>
-    
-</li>
-
+                            <li class="middot"><a href="https://xinglin.github.io/tags/paper">paper</a> </li>
                           
-                        
+                            <li class="middot"><a href="https://xinglin.github.io/tags/storage">storage</a> </li>
                           
-                            <li class="post-item">
-    <span class="meta">Jan 17, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/wisdom-from-michael-stonebraker/"><span>Wisdom from Michael Stonebraker</span></a>
-    
-</li>
-
+                            <li class="middot"><a href="https://xinglin.github.io/tags/replication">replication</a> </li>
                           
-                        
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
                           
-                            <li class="post-item">
-    <span class="meta">Jan 16, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/read-syscall-implementation-in-linux-kernel/"><span>Read syscall implementation in Linux Kernel</span></a>
-    
-</li>
-
                           
-                        
-                      
-                    
-                      
-                        <li class="groupby">Dec, 2018</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 7, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/aws-reinvent-2018-tidbits/"><span>AWS re:Invent 2018 tidbits</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 3, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/aws-reinvent-2018/"><span>AWS re:Invent 2018</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 2, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/"><span>Systems and services built on top of postgreSQL</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Nov, 2018</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Nov 20, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/lines-of-code-for-various-software/"><span>Lines of Code for Various Software</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">May, 2018</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">May 10, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/spdk-on-intel-optane-and-samsung-zssd/"><span>SPDK on Intel Optane and Samsung ZSSD</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Apr, 2018</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Apr 12, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/install-hotcrp-at-a-ubuntu-14-machine/"><span>Install hotCRP at a Ubuntu 14 Machine</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Apr 11, 2018</span>
-    
-    <a href="https://xinglin.github.io/blog/best-practices-for-running-the-conference-review-process-based-on-usenix-atc-2018/"><span>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Dec, 2017</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 1, 2017</span>
-    
-    <a href="https://xinglin.github.io/blog/spdk-on-samsung-960-evo-nvme-ssd/"><span>SPDK on Samsung 960 EVO NVMe SSD</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Dec, 2015</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 25, 2015</span>
-    
-    <a href="https://xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/"><span>NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 25, 2015</span>
-    
-    <a href="https://xinglin.github.io/blog/great-books-and-papers/"><span>Great Books and Papers</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Jul, 2015</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Jul 22, 2015</span>
-    
-    <a href="https://xinglin.github.io/blog/reflection-after-dissertation-defense/"><span>Reflection After Dissertation Defense</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Jun, 2015</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Jun 9, 2015</span>
-    
-    <a href="https://xinglin.github.io/blog/sketch-data-structures/"><span>Sketch Data Structures</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Apr, 2015</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Apr 8, 2015</span>
-    
-    <a href="https://xinglin.github.io/blog/kvm-notes/"><span>KVM Notes</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Dec, 2014</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Dec 19, 2014</span>
-    
-    <a href="https://xinglin.github.io/blog/proposal-defense/"><span>Proposal Defense</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                      
-                        <li class="groupby">Nov, 2014</li>
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Nov 26, 2014</span>
-    
-    <a href="https://xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/"><span>Trade-off Between Accuracy and Runtime Overhead</span></a>
-    
-</li>
-
-                          
-                        
-                          
-                            <li class="post-item">
-    <span class="meta">Nov 26, 2014</span>
-    
-    <a href="https://xinglin.github.io/blog/clone-a-single-kvm/qemu-virtual-machine/"><span>Clone a Single KVM/qemu Virtual Machine</span></a>
-    
-</li>
-
-                          
-                        
-                      
-                    
-                </ul>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    <h1 id="summary">Summary</h1>
+<p>Copysets proposed another approach/perspective for data replication, than the traditional random replication.
+In random replication, <em>N</em> nodes are selected randomly from the cluster to store a data chunk.
+Random replication provides a strong protection against uncorrelated failures.
+For each individual chunk, since it can be stored randomly at N nodes in the cluster,
+it is quite resilient to data loss. However, when we consider all data chunks,
+any <em>N</em> node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes. For certain large scale
+deployments, they prefer to have much fewer frequent data loss events and are willing
+to achieve that, even at the expense of larger amount of data loss during each data loss.</p>
+<p>They introduced the concept of <em>Copysets</em>: a set of unique nodes that are used to store
+a copy of a chunk. Only when all nodes in a copyset are down will we lose that chunk.
+By limiting the number of copysets in a  cluster, one can reduce the number of
+data loss probability.</p>
+<h1 id="terms-used-in-the-paper">Terms used in the paper.</h1>
+<ul>
+<li>R: replication factor. Also means the number of replicas of each chunk.</li>
+<li>Copyset: a set of R unique nodes, to store a chunk</li>
+<li>N: the number of nodes in a cluster</li>
+<li>S: scatter width. Each node's data is split uniformly across a group of S other nodes.</li>
+<li>P: the number of permutations used, to generate the copysets. P = S/(R-1)</li>
+</ul>
+<h1 id="how-it-works">How it works:</h1>
+<ul>
+<li>Use permutations, P times, to generate copysets.
+** Each copyset overlaps with another by only one node.
+** The copysets covers all nodes equally, for load balancing.</li>
+<li>Pick a random node in the cluster as the primary node. The other replicas can
+be placed on the nodes of a randomly chosen copyset that contains the primary node.</li>
+</ul>
+<h1 id="my-comments">My Comments</h1>
+<ul>
+<li>This paper is not easy to follow. The scatter width and the copyset are
+not easy to understand simultaneously.</li>
+<li>The introduction of the abbreviations makes the paper harder to understand. I
+forgot what <em>P</em> stands for when reading the paper.</li>
+<li>The paper cited from their collaborators in large paragraphs, to help motivate
+their work. I find this can be done in a more professional approach.</li>
+<li>A lot of simulation results. Quite surprised to see in a full ATC paper.
+The evaluation on HDFS/RAMCloud was quite light.</li>
+</ul>
+
+
+            </div>
+            
+            <br>
+            <div class="share">
+                  
+                  <a href="" class="ssk ssk-facebook"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-twitter"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-google-plus"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-linkedin"></a>
+                  
+            </div>
+            
+            
+            <br>
+            <div class="navigation">
+                
+                <div>
+                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
+                    <a href="https://xinglin.github.io/blog/on-my-33rd-birthday/">On my 33rd Birthday</a>
+                </div>
+                
+                <div style="width: 100%;"></div>
+                
+            </div>
+            
+            
+
+            
+            
+
+            
+
+            
         </div>
     </div>
 </div>
+
+
+
 <div class="footer column">
     <div class="container">
 
