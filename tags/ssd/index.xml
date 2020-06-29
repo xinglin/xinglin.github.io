@@ -17,9 +17,8 @@
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/</guid>
-      <description>Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.
-The SSD reserves a special LBA range, called random write log buffer (RWLB),
-whose logical addresses can be used as temporary LBAs for small random write requests.</description>
+      <description>I really liked the paper. The idea is neat. The paper is also well written and the design and the new idea is clearly presented. A very good paper to read and learn from on how to write good papers.
+Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.</description>
     </item>
     
     <item>
