@@ -4,7 +4,32 @@
   
   <url>
     <loc>https://xinglin.github.io/blog/</loc>
-    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/ftl/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/paper/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/ssd/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/</loc>
+    <lastmod>2020-06-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,11 +39,6 @@
   
   <url>
     <loc>https://xinglin.github.io/blog/on-my-33rd-birthday/</loc>
-    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xinglin.github.io/tags/paper/</loc>
     <lastmod>2020-06-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,17 +58,7 @@
   </url>
   
   <url>
-    <loc>https://xinglin.github.io/</loc>
-    <lastmod>2020-06-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xinglin.github.io/blog/how-to-evaluate-research-ideas-for-ssds/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xinglin.github.io/tags/ssd/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   

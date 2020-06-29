@@ -6,10 +6,21 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</title>
+      <link>https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/</guid>
+      <description>Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.
+The SSD reserves a special LBA range, called random write log buffer (RWLB),
+whose logical addresses can be used as temporary LBAs for small random write requests.</description>
+    </item>
     
     <item>
       <title>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</title>
