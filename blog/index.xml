@@ -6,10 +6,20 @@
     <description>Recent content in Blog on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Measure Network Latency</title>
+      <link>https://xinglin.github.io/blog/measure-network-latency/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/measure-network-latency/</guid>
+      <description>Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, today, I just found it out I probably used the ping tool in a wrong way all the time.
+By default, ping sends out a packet every second. It can have a huge impact on the network latency. We can use the -I option, to set the interval.</description>
+    </item>
     
     <item>
       <title>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</title>

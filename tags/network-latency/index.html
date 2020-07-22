@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/" />
-<meta property="og:title" content="SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device" />
-<meta property="twitter:title" content="SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device">
+<meta property="og:url" content="https://xinglin.github.io/tags/network-latency/" />
+<meta property="og:title" content="network latency" />
+<meta property="twitter:title" content="network latency">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device 
+     Xing Lin - network latency 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/">
+<link rel="canonical" href="https://xinglin.github.io/tags/network-latency/">
 
 
 <style media="screen">
@@ -1068,6 +1068,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
+  <link href="https://xinglin.github.io/tags/network-latency/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
+
 
 </head>
 
@@ -1075,7 +1077,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header column">
+<div class="header header-home column">
 
     <div class="container">
         
@@ -1120,139 +1122,26 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-
-
-
-
-<div class="main post non-narrow zero-top-spacing column">
+<div class="main column">
     <div class="container">
         <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
+            <div class="posts">
+                <div class="page-heading">Posts about network latency</div>
+                <ul>
+                    
+                        <li class="post-item">
+    <span class="meta">Jul 22, 2020</span>
     
-    SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device
+    <a href="https://xinglin.github.io/blog/measure-network-latency/"><span>Measure Network Latency</span></a>
     
+</li>
 
-</div>
-
-                </div>
-                <div class="meta">
-                    <div class="date" title="Sun Jun 28 2020 00:00:00 UTC">Jun 28, 2020</div>
                     
-                        
-                        <div class="author middot" title="Xing Lin">Xing Lin</div>
-                        
-                    
-                    
-                    <div class="reading-time middot">2 minute read</div>
-                    
-                    
-                      <div class="tags">
-                    
-                        <ul>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/paper">paper</a> </li>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/ssd">SSD</a> </li>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/ftl">FTL</a> </li>
-                          
-                        </ul>
-                    </div>
-                    <div class="tags">
-                        <ul>
-                          
-                          
-                        </ul>
-                    </div>
-                </div>
+                </ul>
             </div>
-            <div class="markdown">
-                
-    
-    <p>I really liked the paper. The idea is neat. The paper is also well written and
-the design and the new idea is clearly presented. A very good paper to read and learn from
-on how to write good papers.</p>
-<h1 id="summary">Summary</h1>
-<p>The key idea is to convert random small writes into large sequential writes at the device driver.
-This reduces data fragmentation and also reduces request handling overhead for the SSD, as
-it can combine multiple small write requests into fewer large write requests.</p>
-<p><img src="../shrd-arch.png" alt="">
-<img src="../shrd-example.png" alt=""></p>
-<p>The SSD reserves a special LBA range, called random write log buffer (RWLB),<br>
-whose logical addresses can be used as temporary LBAs for small random write requests.
-When the device driver receives small random write requests,
-they are translated into large sequential write requests,
-using temporary LBAs from RWLB. For example,
-write requests to four random pages can be converted into
-one 4-page sequential write request into the RWLB area.
-The device driver then only needs to send the resulting large write request
-to the SSD, instead of 4 small write requests.</p>
-<p>Two new write requests are added to send data and metadata for sequentialized write requests
-to the SSD: twrite_data() and twrite_header().
-twrite_data() sends data pages to the SSD.
-twrite_header() sends the orignal/actual LBA to the SSD, which will be stored
-in the OOB area for mapping table recovery in crash.
-A read redirect table is maintained in the host DRAM, to redirect read requests
-for sequentialized write requests, to read from the RWLB area, instead of their
-original LBAs.
-When the RWLB space is exausted, a remap operation is issued to the SSD,
-to restore the mapping entries for sequentialized pages to their original LBAs.
-No data copying is needed during this remap process.</p>
-
-
-            </div>
-            
-            <br>
-            <div class="share">
-                  
-                  <a href="" class="ssk ssk-facebook"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-twitter"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-google-plus"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-linkedin"></a>
-                  
-            </div>
-            
-            
-            <br>
-            <div class="navigation">
-                
-                <div>
-                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/copysets-reducing-the-frequency-of-data-loss-in-cloud-storage/">Copysets: Reducing the Frequency of Data Loss in Cloud Storage</a>
-                </div>
-                
-                <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/measure-network-latency/">Measure Network Latency</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
-                
-            </div>
-            
-            
-
-            
-            
-
-            
-
-            
         </div>
     </div>
 </div>
-
-
-
 <div class="footer column">
     <div class="container">
 
