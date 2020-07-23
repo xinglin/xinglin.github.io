@@ -6,10 +6,21 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Storage Research Vision 2025</title>
+      <link>https://xinglin.github.io/blog/data-storage-research-vision-2025/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/data-storage-research-vision-2025/</guid>
+      <description>NFS sponsored a data storage visioning workshop in 2018. The workshop was hosted by IBM Research. From the workshop, they produced a report, summarizing the discussion from the workshop. The report outlines the future research challenges and opportunities that the attendees recommend to work on.
+The discussion of the workshop was organized in the four groups. Below are some interesting points I copied from the report.
+ Storage for the Cloud, Edge, and IoT Systems   More desegregated, composable software architectures are highly desirable.</description>
+    </item>
     
     <item>
       <title>Measure Network Latency</title>
