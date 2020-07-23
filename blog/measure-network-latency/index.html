@@ -1216,9 +1216,7 @@ For the common cases, I guess we should use the flooding mode where
 a new packet is sent out immediately after the previous packet is received.</p>
 <p>netperf is another tool used for network performance testing as well.
 By default, it sends out a request immediately after the previous one completes.
-One can use netperf to test TCP/UDP round-trip time.<br>
-It is probably the preferred tool to do latency measurement, than ping.
-netperf shows the TCP RTT is 37 us for the same two servers where I used ping to test RTT.</p>
+One can use netperf to test TCP/UDP round-trip time.  It is probably the preferred tool to do latency measurement, than ping. netperf shows the TCP RTT is 37 us for the same two servers where I used ping to test RTT.</p>
 <p>To use netperf, we need to first start netserver at one server.
 Then, at the other server, start netperf to do the tests.</p>
 <pre><code>$netperf -p 12345 -H 172.16.0.25 -l 100 -t TCP_RR -- -o min_latency,mean_latency,max_latency,stddev_latency,transaction_rate
