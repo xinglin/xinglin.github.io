@@ -17,8 +17,8 @@
       <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/measure-network-latency/</guid>
-      <description>Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, today, I just found it out I probably used the ping tool in a wrong way all the time.
-By default, ping sends out a packet every second. It can have a huge impact on the network latency. We can use the -I option, to set the interval.</description>
+      <description>Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
+By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.</description>
     </item>
     
   </channel>
