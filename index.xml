@@ -310,10 +310,11 @@ I was a PHD student in the school of computing at the University of Utah. My adv
       
       <guid>https://xinglin.github.io/publications/publications/</guid>
       <description>PhD Dissertation Using Similarity in Content and Access Patterns to Improve Space Efficiency and Performance in Storage Systems [slides]
-Conference Papers Storage   SEFEE: Lightweight Storage Error Forecasting in Large Scale Enterprise Storage Systems
+Conference Papers   SEFEE: Lightweight Storage Error Forecasting in Large Scale Enterprise Storage Systems
 Amirhesam Yazdi, Xing Lin, Lei Yang, Feng Yan
 SC 2020: International Conference for High Performance Computing, Networking, Storage and Analysis
-  SS-CDC: A Two-stage Parallel Content-Defined Chunking for Deduplicating Backup Storage [slides :: bibtex]</description>
+  SS-CDC: A Two-stage Parallel Content-Defined Chunking for Deduplicating Backup Storage [slides :: bibtex]
+Fan Ni, Xing Lin, Song Jiang</description>
     </item>
     
     <item>
