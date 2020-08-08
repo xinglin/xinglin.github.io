@@ -6,10 +6,21 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Use Options File for Benchmarking RocksDB using YCSB</title>
+      <link>https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/</guid>
+      <description>In YCSB, we can also use the options file (-p rocksdb.optionsfile=/tmp/ycsb-options.ini, e.g.,) to configure the options for RocksDB. However, for a new user, it is actually not easy to figure out what needs to be configured for RocksDB for YCSB. Here is a quick way to get it start.
+Use the ycsb tool to load a rocksdb without specifying the options.
+$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data  Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.</description>
+    </item>
     
     <item>
       <title>Data Storage Research Vision 2025</title>
