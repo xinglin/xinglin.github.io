@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/" />
-<meta property="og:title" content="Use Options File for Benchmarking RocksDB using YCSB" />
-<meta property="twitter:title" content="Use Options File for Benchmarking RocksDB using YCSB">
+<meta property="og:url" content="https://xinglin.github.io/tags/ios/" />
+<meta property="og:title" content="iOS" />
+<meta property="twitter:title" content="iOS">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Use Options File for Benchmarking RocksDB using YCSB 
+     Xing Lin - iOS 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/">
+<link rel="canonical" href="https://xinglin.github.io/tags/ios/">
 
 
 <style media="screen">
@@ -1068,6 +1068,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
+  <link href="https://xinglin.github.io/tags/ios/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
+
 
 </head>
 
@@ -1075,7 +1077,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header column">
+<div class="header header-home column">
 
     <div class="container">
         
@@ -1120,120 +1122,26 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-
-
-
-
-<div class="main post non-narrow zero-top-spacing column">
+<div class="main column">
     <div class="container">
         <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
+            <div class="posts">
+                <div class="page-heading">Posts about iOS</div>
+                <ul>
+                    
+                        <li class="post-item">
+    <span class="meta">Aug 23, 2020</span>
     
-    Use Options File for Benchmarking RocksDB using YCSB
+    <a href="https://xinglin.github.io/blog/hit-the-road-ios-app/"><span>Hit the Road iOS App</span></a>
     
+</li>
 
-</div>
-
-                </div>
-                <div class="meta">
-                    <div class="date" title="Sat Aug 8 2020 00:00:00 UTC">Aug 8, 2020</div>
                     
-                        
-                        <div class="author middot" title="Xing Lin">Xing Lin</div>
-                        
-                    
-                    
-                    <div class="reading-time middot">1 minute read</div>
-                    
-                    
-                      <div class="tags">
-                    
-                        <ul>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/tips">tips</a> </li>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/rocksdb">rocksdb</a> </li>
-                          
-                        </ul>
-                    </div>
-                    <div class="tags">
-                        <ul>
-                          
-                          
-                        </ul>
-                    </div>
-                </div>
+                </ul>
             </div>
-            <div class="markdown">
-                
-    
-    <p>In YCSB, we can also use the options file (<code>-p rocksdb.optionsfile=/tmp/ycsb-options.ini</code>, e.g.,) to configure the options for RocksDB.
-However, for a new user, it is actually not easy to figure out what needs to be configured
-for RocksDB for YCSB. Here is a quick way to get it start.</p>
-<p>Use the ycsb tool to load a rocksdb without specifying the options.</p>
-<pre><code>$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data
-</code></pre>
-<p>Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.
-We can copy out this options file to somewhere else, and delete all files in the rocksdb dir.
-Next, we can modify the options file.
-Specifically, we should modify the CFOptions and TableOptions/BlockBasedTable
-for the <code>usertable</code> sections, as YCSB will use this as the database (or column family) for loading data and running tests.</p>
-<p>Hope this helps.</p>
-
-
-            </div>
-            
-            <br>
-            <div class="share">
-                  
-                  <a href="" class="ssk ssk-facebook"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-twitter"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-google-plus"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-linkedin"></a>
-                  
-            </div>
-            
-            
-            <br>
-            <div class="navigation">
-                
-                <div>
-                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/data-storage-research-vision-2025/">Data Storage Research Vision 2025</a>
-                </div>
-                
-                <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/hit-the-road-ios-app/">Hit the Road iOS App</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
-                
-            </div>
-            
-            
-
-            
-            
-
-            
-
-            
         </div>
     </div>
 </div>
-
-
-
 <div class="footer column">
     <div class="container">
 

@@ -4,7 +4,27 @@
   
   <url>
     <loc>https://xinglin.github.io/blog/</loc>
-    <lastmod>2020-08-08T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/blog/hit-the-road-ios-app/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/ios/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/support/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -19,11 +39,6 @@
   
   <url>
     <loc>https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/</loc>
-    <lastmod>2020-08-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xinglin.github.io/</loc>
     <lastmod>2020-08-08T00:00:00+00:00</lastmod>
   </url>
   

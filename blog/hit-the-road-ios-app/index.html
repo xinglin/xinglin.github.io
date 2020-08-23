@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/" />
-<meta property="og:title" content="Use Options File for Benchmarking RocksDB using YCSB" />
-<meta property="twitter:title" content="Use Options File for Benchmarking RocksDB using YCSB">
+<meta property="og:url" content="https://xinglin.github.io/blog/hit-the-road-ios-app/" />
+<meta property="og:title" content="Hit the Road iOS App" />
+<meta property="twitter:title" content="Hit the Road iOS App">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Use Options File for Benchmarking RocksDB using YCSB 
+     Xing Lin - Hit the Road iOS App 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/">
+<link rel="canonical" href="https://xinglin.github.io/blog/hit-the-road-ios-app/">
 
 
 <style media="screen">
@@ -1132,14 +1132,14 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Use Options File for Benchmarking RocksDB using YCSB
+    Hit the Road iOS App
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Sat Aug 8 2020 00:00:00 UTC">Aug 8, 2020</div>
+                    <div class="date" title="Sun Aug 23 2020 00:00:00 UTC">Aug 23, 2020</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
@@ -1153,9 +1153,9 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/tips">tips</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/ios">iOS</a> </li>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/rocksdb">rocksdb</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/support">support</a> </li>
                           
                         </ul>
                     </div>
@@ -1170,18 +1170,17 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>In YCSB, we can also use the options file (<code>-p rocksdb.optionsfile=/tmp/ycsb-options.ini</code>, e.g.,) to configure the options for RocksDB.
-However, for a new user, it is actually not easy to figure out what needs to be configured
-for RocksDB for YCSB. Here is a quick way to get it start.</p>
-<p>Use the ycsb tool to load a rocksdb without specifying the options.</p>
-<pre><code>$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data
-</code></pre>
-<p>Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.
-We can copy out this options file to somewhere else, and delete all files in the rocksdb dir.
-Next, we can modify the options file.
-Specifically, we should modify the CFOptions and TableOptions/BlockBasedTable
-for the <code>usertable</code> sections, as YCSB will use this as the database (or column family) for loading data and running tests.</p>
-<p>Hope this helps.</p>
+    <p>Hit the Road is an iOS app for tracking ourdoor exercises.
+It can track walking, running, and biking.
+It is supposed to run on iPhones, but not iPads or iWatchs.</p>
+<h1 id="user-privacy">User Privacy</h1>
+<p>The app only stores the duration and mileage for each activity locally
+in the installed device. The app does not store the GPS locations.
+It only uses GPS locations during an activity to get the mileage.
+The app does not send any data over the network.</p>
+<h1 id="support">Support</h1>
+<p>For bug reports and feature requests, please send emails to <a href="mailto:linxingnku@gmail.com">linxingnku@gmail.com</a>,
+with a topic starting with &ldquo;Hit the Road:&quot;.</p>
 
 
             </div>
@@ -1208,15 +1207,10 @@ for the <code>usertable</code> sections, as YCSB will use this as the database (
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/data-storage-research-vision-2025/">Data Storage Research Vision 2025</a>
+                    <a href="https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/">Use Options File for Benchmarking RocksDB using YCSB</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/hit-the-road-ios-app/">Hit the Road iOS App</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
                 
             </div>
             

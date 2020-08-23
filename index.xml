@@ -6,10 +6,20 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 08 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hit the Road iOS App</title>
+      <link>https://xinglin.github.io/blog/hit-the-road-ios-app/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/hit-the-road-ios-app/</guid>
+      <description>Hit the Road is an iOS app for tracking ourdoor exercises. It can track walking, running, and biking. It is supposed to run on iPhones, but not iPads or iWatchs.
+User Privacy The app only stores the duration and mileage for each activity locally in the installed device. The app does not store the GPS locations. It only uses GPS locations during an activity to get the mileage. The app does not send any data over the network.</description>
+    </item>
     
     <item>
       <title>Use Options File for Benchmarking RocksDB using YCSB</title>
