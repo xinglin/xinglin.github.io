@@ -1146,7 +1146,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                         
                     
                     
-                    <div class="reading-time middot">1 minute read</div>
+                    <div class="reading-time middot">2 minute read</div>
                     
                     
                       <div class="tags">
@@ -1177,6 +1177,10 @@ the vaccum process can mark its TID as FrozenTransactionId.
 FrozenTransactionId is smaller than any normal transaction ID
 and thus these frozen rows are visible for all current
 and future transactions.</p>
+<p>NOTE:<br>
+The requirement of a periodical vaccum process to set rows as frozen
+(set TID to FrozenTransactionId), in order to handle TID wraparound
+problem does not seem optimal/elegant. Is there any better way to handle it?</p>
 <pre><code>/* ----------------
  *		Special transaction ID values
  *
