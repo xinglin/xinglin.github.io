@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/" />
-<meta property="og:title" content="Systems and services built on top of postgreSQL" />
-<meta property="twitter:title" content="Systems and services built on top of postgreSQL">
+<meta property="og:url" content="https://xinglin.github.io/blog/random-notes/" />
+<meta property="og:title" content="Random Notes" />
+<meta property="twitter:title" content="Random Notes">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Systems and services built on top of postgreSQL 
+     Xing Lin - Random Notes 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/">
+<link rel="canonical" href="https://xinglin.github.io/blog/random-notes/">
 
 
 <style media="screen">
@@ -1132,14 +1132,14 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Systems and services built on top of postgreSQL
+    Random Notes
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Sun Dec 2 2018 00:00:00 UTC">Dec 2, 2018</div>
+                    <div class="date" title="Sun Sep 27 2020 00:00:00 UTC">Sep 27, 2020</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
@@ -1153,7 +1153,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/engineering">engineering</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/notes">notes</a> </li>
                           
                         </ul>
                     </div>
@@ -1168,33 +1168,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Systems/services</th>
-<th style="text-align:center">Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">AWS Redshift</td>
-<td style="text-align:center">data warehousing</td>
-</tr>
-<tr>
-<td style="text-align:center">TimeScale</td>
-<td style="text-align:center">time series database</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</p>
-</li>
-<li>
-<p>TimeScale: TimeScale DB is a new time series database. It basically is a cluster of postgreSQL databases.   Data is partitioned based on data source and time intervals to facilitate faster query processing, with each query accessing local data as much as possible.</p>
-</li>
-</ul>
+    <p>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</p>
 
 
             </div>
@@ -1221,13 +1195,13 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/lines-of-code-for-various-software/">Lines of Code for Various Software</a>
+                    <a href="https://xinglin.github.io/blog/hit-the-road-ios-app/">Hit the Road iOS App</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
                 
                 <div>
-                    <a href="https://xinglin.github.io/blog/aws-reinvent-2018/">AWS re:Invent 2018</a>
+                    <a href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">Postgres Handling Transaction ID Wrap Around</a>
                     <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
                 </div>
                 

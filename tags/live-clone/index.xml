@@ -6,11 +6,7 @@
     <description>Recent content in live clone on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xinglin.github.io/tags/live-clone/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/live-clone/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clone a Single KVM/qemu Virtual Machine</title>
       <link>https://xinglin.github.io/blog/clone-a-single-kvm/qemu-virtual-machine/</link>

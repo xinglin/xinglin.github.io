@@ -6,11 +6,7 @@
     <description>Recent content in replication on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xinglin.github.io/tags/replication/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/replication/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</title>
       <link>https://xinglin.github.io/blog/copysets-reducing-the-frequency-of-data-loss-in-cloud-storage/</link>

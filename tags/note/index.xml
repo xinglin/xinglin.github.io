@@ -6,11 +6,7 @@
     <description>Recent content in note on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xinglin.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Measure Network Latency</title>
       <link>https://xinglin.github.io/blog/measure-network-latency/</link>
@@ -28,7 +24,7 @@ By default, ping sends out a packet every second. The interval which ping uses t
       
       <guid>https://xinglin.github.io/blog/flush-data-to-stable-storage-in-c/</guid>
       <description>When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
-Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&#39;t survive on a power lose.</description>
+Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&amp;rsquo;t survive on a power lose.</description>
     </item>
     
     <item>

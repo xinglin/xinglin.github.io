@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/" />
-<meta property="og:title" content="Systems and services built on top of postgreSQL" />
-<meta property="twitter:title" content="Systems and services built on top of postgreSQL">
+<meta property="og:url" content="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/" />
+<meta property="og:title" content="Postgres Handling Transaction ID Wrap Around" />
+<meta property="twitter:title" content="Postgres Handling Transaction ID Wrap Around">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Systems and services built on top of postgreSQL 
+     Xing Lin - Postgres Handling Transaction ID Wrap Around 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/systems-and-services-built-on-top-of-postgresql/">
+<link rel="canonical" href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">
 
 
 <style media="screen">
@@ -1132,14 +1132,14 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Systems and services built on top of postgreSQL
+    Postgres Handling Transaction ID Wrap Around
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Sun Dec 2 2018 00:00:00 UTC">Dec 2, 2018</div>
+                    <div class="date" title="Thu Dec 17 2020 00:00:00 UTC">Dec 17, 2020</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
@@ -1153,7 +1153,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/engineering">engineering</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/postgres">postgres</a> </li>
                           
                         </ul>
                     </div>
@@ -1168,34 +1168,50 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Systems/services</th>
-<th style="text-align:center">Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">AWS Redshift</td>
-<td style="text-align:center">data warehousing</td>
-</tr>
-<tr>
-<td style="text-align:center">TimeScale</td>
-<td style="text-align:center">time series database</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</p>
-</li>
-<li>
-<p>TimeScale: TimeScale DB is a new time series database. It basically is a cluster of postgreSQL databases.   Data is partitioned based on data source and time intervals to facilitate faster query processing, with each query accessing local data as much as possible.</p>
-</li>
-</ul>
+    <p>Three special values are reserved as special transaction IDs,
+including invalid, bootstrap and frozen transactions.
+The rest values are used in a circular fashion.</p>
+<p>Once a row is older enough (controlled by <em>vacuum_freeze_min_age</em>, an
+integer value measuring the number of transactions),
+the vaccum process can mark its TID as FrozenTransactionId.
+FrozenTransactionId is smaller than any normal transaction ID
+and thus these frozen rows are visible for all current
+and future transactions.</p>
+<pre><code>/* ----------------
+ *		Special transaction ID values
+ *
+ * BootstrapTransactionId is the XID for &quot;bootstrap&quot; operations, and
+ * FrozenTransactionId is used for very old tuples.  Both should
+ * always be considered valid.
+ *
+ * FirstNormalTransactionId is the first &quot;normal&quot; transaction id.
+ * Note: if you need to change it, you must change pg_class.h as well.
+ * ----------------
+ */
+#define InvalidTransactionId		((TransactionId) 0)
+#define BootstrapTransactionId		((TransactionId) 1)
+#define FrozenTransactionId			((TransactionId) 2)
+#define FirstNormalTransactionId	((TransactionId) 3)
+#define MaxTransactionId			((TransactionId) 0xFFFFFFFF)
 
+#define TransactionIdIsValid(xid)		((xid) != InvalidTransactionId)
+#define TransactionIdIsNormal(xid)		((xid) &gt;= FirstNormalTransactionId)
+
+/* advance a transaction ID variable, handling wraparound correctly */
+#define TransactionIdAdvance(dest)	\
+	do { \
+		(dest)++; \
+		if ((dest) &lt; FirstNormalTransactionId) \
+			(dest) = FirstNormalTransactionId; \
+	} while(0)
+
+
+/* back up a transaction ID variable, handling wraparound correctly */
+#define TransactionIdRetreat(dest)	\
+	do { \
+		(dest)--; \
+	} while ((dest) &lt; FirstNormalTransactionId)
+</code></pre>
 
             </div>
             
@@ -1221,15 +1237,10 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/lines-of-code-for-various-software/">Lines of Code for Various Software</a>
+                    <a href="https://xinglin.github.io/blog/random-notes/">Random Notes</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/aws-reinvent-2018/">AWS re:Invent 2018</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
                 
             </div>
             

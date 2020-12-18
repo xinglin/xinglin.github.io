@@ -6,11 +6,7 @@
     <description>Recent content in SSD on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xinglin.github.io/tags/ssd/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/ssd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</title>
       <link>https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/</link>

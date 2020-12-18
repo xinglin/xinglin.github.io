@@ -1174,7 +1174,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     
     <h3 id="interactions-among-vfs-page-cache-and-ext2-on-serving-a-read-request">Interactions among vfs, page cache, and ext2 on serving a read request</h3>
 <p><img src="../sysread.png" alt=""></p>
-<h1 id="stack-trace-for-ext2-readpages-in-ext2">stack trace for ext2_readpages() in ext2</h1>
+<h1 id="stack-trace-for-ext2_readpages-in-ext2">stack trace for ext2_readpages() in ext2</h1>
 <pre><code>[   84.037457] Call Trace:
 [   84.037458]  dump_stack+0x46/0x5b
 [   84.037460]  ext2_readpages+0x3e/0x90
@@ -1244,7 +1244,7 @@ const struct file_operations ext2_file_operations = {
 new_sync_read()
   call_read_iter(filp, &amp;kiocb, &amp;iter);
     file-&gt;f_op-&gt;read_iter(kio, iter);
-</code></pre><h1 id="ext2-file-read-iter">ext2_file_read_iter()</h1>
+</code></pre><h1 id="ext2_file_read_iter">ext2_file_read_iter()</h1>
 <pre><code>ext2_file_read_iter(): ext2_file_operations.read_iter
   generic_file_read_iter()
     generic_file_buffered_read()

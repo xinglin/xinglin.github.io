@@ -6,11 +6,7 @@
     <description>Recent content in methodology on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xinglin.github.io/tags/methodology/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 26 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/methodology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Trade-off Between Accuracy and Runtime Overhead</title>
       <link>https://xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/</link>

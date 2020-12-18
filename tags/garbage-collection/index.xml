@@ -6,11 +6,7 @@
     <description>Recent content in Garbage Collection on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 08 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://xinglin.github.io/tags/garbage-collection/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 08 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/garbage-collection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
       <link>https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/</link>
