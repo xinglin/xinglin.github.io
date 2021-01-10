@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>leveldb on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/leveldb/</link>
+    <description>Recent content in leveldb on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/leveldb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Delete Request in LevelDB</title>
+      <link>https://xinglin.github.io/blog/delete-request-in-leveldb/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/delete-request-in-leveldb/</guid>
+      <description>When I searched for how leveldb/rocksdb and a few other KV stores handle delete requests, the document will usually say ``we insert a special a tombstone value or a tombstone entry.&#39;&#39;. However, for KV stores which allow storing arbitrary keys and values, I am not sure which value we should use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/" />
-<meta property="og:title" content="Postgres Handling Transaction ID Wrap Around" />
-<meta property="twitter:title" content="Postgres Handling Transaction ID Wrap Around">
+<meta property="og:url" content="https://xinglin.github.io/blog/delete-request-in-leveldb/" />
+<meta property="og:title" content="Delete Request in LevelDB" />
+<meta property="twitter:title" content="Delete Request in LevelDB">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Postgres Handling Transaction ID Wrap Around 
+     Xing Lin - Delete Request in LevelDB 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">
+<link rel="canonical" href="https://xinglin.github.io/blog/delete-request-in-leveldb/">
 
 
 <style media="screen">
@@ -1132,28 +1132,28 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Postgres Handling Transaction ID Wrap Around
+    Delete Request in LevelDB
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Thu Dec 17 2020 00:00:00 UTC">Dec 17, 2020</div>
+                    <div class="date" title="Sun Jan 10 2021 00:00:00 UTC">Jan 10, 2021</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
                         
                     
                     
-                    <div class="reading-time middot">2 minute read</div>
+                    <div class="reading-time middot">1 minute read</div>
                     
                     
                       <div class="tags">
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/postgres">postgres</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/leveldb">leveldb</a> </li>
                           
                         </ul>
                     </div>
@@ -1168,54 +1168,22 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>Three special values are reserved as special transaction IDs,
-including invalid, bootstrap and frozen transactions.
-The rest values are used in a circular fashion.</p>
-<p>Once a row is older enough (controlled by <em>vacuum_freeze_min_age</em>, an
-integer value measuring the number of transactions),
-the vaccum process can mark its TID as FrozenTransactionId.
-FrozenTransactionId is smaller than any normal transaction ID
-and thus these frozen rows are visible for all current
-and future transactions.</p>
-<p>NOTE:<br>
-The requirement of a periodical vaccum process to set rows as frozen
-(set TID to FrozenTransactionId), in order to handle TID wraparound
-problem does not seem optimal/elegant. Is there any better way to handle it?</p>
-<pre><code>/* ----------------
- *		Special transaction ID values
- *
- * BootstrapTransactionId is the XID for &quot;bootstrap&quot; operations, and
- * FrozenTransactionId is used for very old tuples.  Both should
- * always be considered valid.
- *
- * FirstNormalTransactionId is the first &quot;normal&quot; transaction id.
- * Note: if you need to change it, you must change pg_class.h as well.
- * ----------------
- */
-#define InvalidTransactionId		((TransactionId) 0)
-#define BootstrapTransactionId		((TransactionId) 1)
-#define FrozenTransactionId			((TransactionId) 2)
-#define FirstNormalTransactionId	((TransactionId) 3)
-#define MaxTransactionId			((TransactionId) 0xFFFFFFFF)
+    <p>When I searched for how leveldb/rocksdb and a few other KV stores
+handle delete requests, the document will usually say ``we insert a special
+a tombstone value or a tombstone entry.''. However, for KV stores which
+allow storing arbitrary keys and values, I am not sure which value we should
+use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user. I looked up leveldb source
+code and I think I have figured out how leveldb handles this case.</p>
+<p>In stead of using a special tombstone value, it instead inserts a special
+tombstone record which indicates whether this is a new PUT or a delete.
+The internal key used in leveldb includes both an increasing sequence number
+but also a type field. The type field can have two values: kTypeValue (0x01) or kTypeDelete (0x00). If it is a kTypeDelete, the value field is empty and
+this request is a delete operation.</p>
+<pre><code>internal_key = user_key + sequence_num (56-bit) + type (8-bit)
+</code></pre><p>So, essentially, for each KV pair, from a PUT or a Delete request,
+besides user_key/user_value, leveldb also stores a sequence number and
+a type which indicates whether this is a PUT or a delete (this KV is deleted).</p>
 
-#define TransactionIdIsValid(xid)		((xid) != InvalidTransactionId)
-#define TransactionIdIsNormal(xid)		((xid) &gt;= FirstNormalTransactionId)
-
-/* advance a transaction ID variable, handling wraparound correctly */
-#define TransactionIdAdvance(dest)	\
-	do { \
-		(dest)++; \
-		if ((dest) &lt; FirstNormalTransactionId) \
-			(dest) = FirstNormalTransactionId; \
-	} while(0)
-
-
-/* back up a transaction ID variable, handling wraparound correctly */
-#define TransactionIdRetreat(dest)	\
-	do { \
-		(dest)--; \
-	} while ((dest) &lt; FirstNormalTransactionId)
-</code></pre>
 
             </div>
             
@@ -1241,15 +1209,10 @@ problem does not seem optimal/elegant. Is there any better way to handle it?</p>
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/random-notes/">Random Notes</a>
+                    <a href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">Postgres Handling Transaction ID Wrap Around</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/delete-request-in-leveldb/">Delete Request in LevelDB</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
                 
             </div>
             
