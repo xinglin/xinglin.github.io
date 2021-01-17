@@ -6,11 +6,11 @@
     <description>Recent content in key-value on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/key-value/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/key-value/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Secondary Index Built on top of a Key-value Store</title>
       <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
-      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</guid>
       <description>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.

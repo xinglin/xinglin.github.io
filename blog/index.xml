@@ -6,7 +6,17 @@
     <description>Recent content in Blog on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secondary Index Built on top of a Key-value Store</title>
+      <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</guid>
+      <description>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.
+Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&amp;gt; salary,age as key/value pairs.</description>
+    </item>
+    
     <item>
       <title>Enduring Ideas/Techniques that are used today</title>
       <link>https://xinglin.github.io/blog/enduring-ideas/techniques-that-are-used-today/</link>
@@ -142,16 +152,6 @@ FEMU-fast18-short
       
       <guid>https://xinglin.github.io/blog/foundamentals-of-a-storage-system/</guid>
       <description>Caching  LRU ARC  File systems  EXT filesystems btrfs  Data Reliability  RAID Erasure coding  Solid State Drive  FTL  K/V stores  LevelDB/RocksDB  Distributed Storage Systems  Ceph  Deduplication </description>
-    </item>
-    
-    <item>
-      <title>Secondary Index Built on top of a Key-value Store</title>
-      <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
-      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</guid>
-      <description>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.
-Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&amp;gt; salary,age as key/value pairs.</description>
     </item>
     
     <item>
