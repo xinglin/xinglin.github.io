@@ -1172,8 +1172,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach people take is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.</p>
-<p>User table </p>
+    <p>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.</p>
+<p>Employee table </p>
 <table>
 <thead>
 <tr>
@@ -1205,7 +1205,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 </tr>
 </tbody>
 </table>
-<p>To store the user table, we can store each record using <code>tableName,primary_key/salary,age</code> as key/value pairs.</p>
+<p>To store the user table, we can store each record using <code>tableName,primary_key -&gt; salary,age</code> as key/value pairs.</p>
 <table>
 <thead>
 <tr>
@@ -1232,7 +1232,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 </tr>
 </tbody>
 </table>
-<p>To support secondary index based on the salary column, one could store <code>salary,primary_key</code> as the key with an empty value into the key/value store (or set the value to be something that would be interesting for the use case).</p>
+<p>To support secondary index based on the salary column, one could store <code>salary,primary_key</code> as the key with an empty value into the key/value store (or set the value to be something that would be interesting for the use case). This will ensure efficient search for employees with a particular amount of salary, as the key/value pairs are sorted by keys.</p>
 <table>
 <thead>
 <tr>
