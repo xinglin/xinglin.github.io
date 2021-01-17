@@ -1153,7 +1153,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/notes">notes</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/note">note</a> </li>
                           
                         </ul>
                     </div>
@@ -1168,7 +1168,10 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</p>
+    <p>Quota from Design Data-Intensive Applications book.</p>
+<ul>
+<li>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</li>
+</ul>
 
 
             </div>

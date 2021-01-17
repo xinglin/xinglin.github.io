@@ -6,7 +6,17 @@
     <description>Recent content in note on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random Notes</title>
+      <link>https://xinglin.github.io/blog/random-notes/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/random-notes/</guid>
+      <description>Quota from Design Data-Intensive Applications book.
+ Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item.</description>
+    </item>
+    
     <item>
       <title>Measure Network Latency</title>
       <link>https://xinglin.github.io/blog/measure-network-latency/</link>
@@ -15,6 +25,16 @@
       <guid>https://xinglin.github.io/blog/measure-network-latency/</guid>
       <description>Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
 By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.</description>
+    </item>
+    
+    <item>
+      <title>Secondary Index Built on top of a Key-value Store</title>
+      <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</guid>
+      <description>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach people take is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.
+User table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key/salary,age as key/value pairs.</description>
     </item>
     
     <item>

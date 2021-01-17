@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/" />
-<meta property="og:title" content="Postgres Handling Transaction ID Wrap Around" />
-<meta property="twitter:title" content="Postgres Handling Transaction ID Wrap Around">
+<meta property="og:url" content="https://xinglin.github.io/tags/idea/" />
+<meta property="og:title" content="idea" />
+<meta property="twitter:title" content="idea">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Postgres Handling Transaction ID Wrap Around 
+     Xing Lin - idea 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">
+<link rel="canonical" href="https://xinglin.github.io/tags/idea/">
 
 
 <style media="screen">
@@ -1068,6 +1068,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
+  <link href="https://xinglin.github.io/tags/idea/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
+
 
 </head>
 
@@ -1075,7 +1077,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header column">
+<div class="header header-home column">
 
     <div class="container">
         
@@ -1120,156 +1122,34 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-
-
-
-
-<div class="main post non-narrow zero-top-spacing column">
+<div class="main column">
     <div class="container">
         <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
+            <div class="posts">
+                <div class="page-heading">Posts about idea</div>
+                <ul>
+                    
+                        <li class="post-item">
+    <span class="meta">Jan 17, 2020</span>
     
-    Postgres Handling Transaction ID Wrap Around
+    <a href="https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/"><span>Secondary Index Built on top of a Key-value Store</span></a>
     
+</li>
 
-</div>
-
-                </div>
-                <div class="meta">
-                    <div class="date" title="Thu Dec 17 2020 00:00:00 UTC">Dec 17, 2020</div>
                     
-                        
-                        <div class="author middot" title="Xing Lin">Xing Lin</div>
-                        
-                    
-                    
-                    <div class="reading-time middot">2 minute read</div>
-                    
-                    
-                      <div class="tags">
-                    
-                        <ul>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/postgres">postgres</a> </li>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/idea">idea</a> </li>
-                          
-                        </ul>
-                    </div>
-                    <div class="tags">
-                        <ul>
-                          
-                          
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="markdown">
-                
+                        <li class="post-item">
+    <span class="meta">Dec 17, 2020</span>
     
-    <p><strong>NOTE</strong>: OpenGauss may fix this problem.</p>
-<p>Three special values are reserved as special transaction IDs,
-including invalid, bootstrap and frozen transactions.
-The rest values are used in a circular fashion.</p>
-<p>Once a row is older enough (controlled by <em>vacuum_freeze_min_age</em>, an
-integer value measuring the number of transactions),
-the vaccum process can mark its TID as FrozenTransactionId.
-FrozenTransactionId is smaller than any normal transaction ID
-and thus these frozen rows are visible for all current
-and future transactions.</p>
-<p>NOTE:<br>
-The requirement of a periodical vaccum process to set rows as frozen
-(set TID to FrozenTransactionId), in order to handle TID wraparound
-problem does not seem optimal/elegant. Is there any better way to handle it?</p>
-<pre><code>/* ----------------
- *		Special transaction ID values
- *
- * BootstrapTransactionId is the XID for &quot;bootstrap&quot; operations, and
- * FrozenTransactionId is used for very old tuples.  Both should
- * always be considered valid.
- *
- * FirstNormalTransactionId is the first &quot;normal&quot; transaction id.
- * Note: if you need to change it, you must change pg_class.h as well.
- * ----------------
- */
-#define InvalidTransactionId		((TransactionId) 0)
-#define BootstrapTransactionId		((TransactionId) 1)
-#define FrozenTransactionId			((TransactionId) 2)
-#define FirstNormalTransactionId	((TransactionId) 3)
-#define MaxTransactionId			((TransactionId) 0xFFFFFFFF)
+    <a href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/"><span>Postgres Handling Transaction ID Wrap Around</span></a>
+    
+</li>
 
-#define TransactionIdIsValid(xid)		((xid) != InvalidTransactionId)
-#define TransactionIdIsNormal(xid)		((xid) &gt;= FirstNormalTransactionId)
-
-/* advance a transaction ID variable, handling wraparound correctly */
-#define TransactionIdAdvance(dest)	\
-	do { \
-		(dest)++; \
-		if ((dest) &lt; FirstNormalTransactionId) \
-			(dest) = FirstNormalTransactionId; \
-	} while(0)
-
-
-/* back up a transaction ID variable, handling wraparound correctly */
-#define TransactionIdRetreat(dest)	\
-	do { \
-		(dest)--; \
-	} while ((dest) &lt; FirstNormalTransactionId)
-</code></pre>
-
+                    
+                </ul>
             </div>
-            
-            <br>
-            <div class="share">
-                  
-                  <a href="" class="ssk ssk-facebook"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-twitter"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-google-plus"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-linkedin"></a>
-                  
-            </div>
-            
-            
-            <br>
-            <div class="navigation">
-                
-                <div>
-                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/random-notes/">Random Notes</a>
-                </div>
-                
-                <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/delete-request-in-leveldb/">Delete Request in LevelDB</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
-                
-            </div>
-            
-            
-
-            
-            
-
-            
-
-            
         </div>
     </div>
 </div>
-
-
-
 <div class="footer column">
     <div class="container">
 

@@ -44,7 +44,8 @@ Once a row is older enough (controlled by vacuum_freeze_min_age, an integer valu
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/blog/random-notes/</guid>
-      <description>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item.</description>
+      <description>Quota from Design Data-Intensive Applications book.
+ Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item.</description>
     </item>
     
     <item>
@@ -141,6 +142,16 @@ FEMU-fast18-short
       
       <guid>https://xinglin.github.io/blog/foundamentals-of-a-storage-system/</guid>
       <description>Caching  LRU ARC  File systems  EXT filesystems btrfs  Data Reliability  RAID Erasure coding  Solid State Drive  FTL  K/V stores  LevelDB/RocksDB  Distributed Storage Systems  Ceph  Deduplication </description>
+    </item>
+    
+    <item>
+      <title>Secondary Index Built on top of a Key-value Store</title>
+      <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</guid>
+      <description>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach people take is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.
+User table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key/salary,age as key/value pairs.</description>
     </item>
     
     <item>

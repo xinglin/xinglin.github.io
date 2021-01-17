@@ -33,6 +33,11 @@
   </url>
   
   <url>
+    <loc>https://xinglin.github.io/tags/idea/</loc>
+    <lastmod>2020-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xinglin.github.io/tags/postgres/</loc>
     <lastmod>2020-12-17T00:00:00+00:00</lastmod>
   </url>
@@ -43,7 +48,7 @@
   </url>
   
   <url>
-    <loc>https://xinglin.github.io/tags/notes/</loc>
+    <loc>https://xinglin.github.io/tags/note/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -113,11 +118,6 @@
   </url>
   
   <url>
-    <loc>https://xinglin.github.io/tags/note/</loc>
-    <lastmod>2020-07-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xinglin.github.io/tags/tech/</loc>
     <lastmod>2020-07-22T00:00:00+00:00</lastmod>
   </url>
@@ -180,6 +180,16 @@
   <url>
     <loc>https://xinglin.github.io/tags/outline/</loc>
     <lastmod>2020-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/key-value/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>

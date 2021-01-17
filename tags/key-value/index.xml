@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>key-value on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/key-value/</link>
+    <description>Recent content in key-value on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 17 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/key-value/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secondary Index Built on top of a Key-value Store</title>
+      <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</guid>
+      <description>Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach people take is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.
+User table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key/salary,age as key/value pairs.</description>
+    </item>
+    
+  </channel>
+</rss>
