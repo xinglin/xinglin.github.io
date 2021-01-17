@@ -1260,7 +1260,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 </tbody>
 </table>
 <ul>
-<li>For both cases, the key/value pairs are sorted based on keys. Because keys are sorted, similar keys will be grouped together. Thus, <em>prefix compression</em>  is important to reduce space consumption when storing keys, as done in LevelDB (in LevelDB, for every N key-value pairs in an SSTable, the key for the first key-value pair is stored in complete while the keys for the rest key-value pairs are prefix-compressed based on the key before it. Each time a complete key is stored, it is called a restart point in LevelDB. Restart points enable quick binary search within an SSTable.).</li>
+<li>For both cases, the key/value pairs are sorted based on keys. Because keys are sorted, similar keys will be grouped together. Thus, <strong>prefix compression</strong>  is important to reduce space consumption when storing keys, as done in LevelDB (in LevelDB, for every N key-value pairs in an SSTable, the key for the first key-value pair is stored in complete while the keys for the rest key-value pairs are prefix-compressed based on the key before it. Each time a complete key is stored, it is called a restart point in LevelDB. Restart points enable quick binary search within an SSTable.).</li>
 <li>Since keys are sorted and nearby keys are similar, could we use a data structure such as trie to organize data within an SSTables? Maybe make sense when values are small.</li>
 </ul>
 <p>Reference</p>
