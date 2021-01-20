@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/hit-the-road-ios-app/" />
-<meta property="og:title" content="Hit the Road iOS App" />
-<meta property="twitter:title" content="Hit the Road iOS App">
+<meta property="og:url" content="https://xinglin.github.io/blog/transaction/" />
+<meta property="og:title" content="Transaction" />
+<meta property="twitter:title" content="Transaction">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Hit the Road iOS App 
+     Xing Lin - Transaction 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/hit-the-road-ios-app/">
+<link rel="canonical" href="https://xinglin.github.io/blog/transaction/">
 
 
 <style media="screen">
@@ -1132,30 +1132,32 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Hit the Road iOS App
+    Transaction
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Sun Aug 23 2020 00:00:00 UTC">Aug 23, 2020</div>
+                    <div class="date" title="Sun Sep 27 2020 00:00:00 UTC">Sep 27, 2020</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
                         
                     
                     
-                    <div class="reading-time middot">1 minute read</div>
+                    <div class="reading-time middot">2 minute read</div>
                     
                     
                       <div class="tags">
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/ios">iOS</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/note">note</a> </li>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/support">support</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/transaction">transaction</a> </li>
+                          
+                            <li class="middot"><a href="https://xinglin.github.io/tags/acid">acid</a> </li>
                           
                         </ul>
                     </div>
@@ -1170,17 +1172,27 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>Hit the Road is an iOS app for tracking ourdoor exercises.
-It can track walking, running, and biking.
-It is supposed to run on iPhones, but not iPads or iWatchs.</p>
-<h1 id="user-privacy">User Privacy</h1>
-<p>The app only stores the duration and mileage for each activity locally
-in the installed device. The app does not store the GPS locations.
-It only uses GPS locations during an activity to get the mileage.
-The app does not send any data over the network.</p>
-<h1 id="support">Support</h1>
-<p>For bug reports and feature requests, please send emails to <a href="mailto:linxingnku@gmail.com">linxingnku@gmail.com</a>,
-with a topic starting with &ldquo;Hit the Road:&rdquo;.</p>
+    <p>The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability.</p>
+<p>| Property | Definition | Technique to achieve that property |
+| :&mdash;&mdash;: | :&ndash;:|
+| Atomicity| A transaction either succeeds or fails as a single operation. | Undo log |
+| Consistency | A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions. | Undo log|
+| Isolation | Each transaction should be executed as if it was the only transaction that is running. Transactions are isolated and are not aware of each other. Allowing concurrent transactions. | 2-phase locking or MVCC |
+| Durability | Writes made to the database will survive system failures. | Redo log |</p>
+<p>Quota from Design Data-Intensive Applications book.</p>
+<ul>
+<li>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</li>
+</ul>
+<p><a href="https://zhuanlan.zhihu.com/p/48327345">知乎link</a></p>
+<blockquote>
+<p>ACD三个特性是通过Redo log（重做日志）和Undo log 实现的。 而隔离性是通过锁来实现的。
+重做日志用来实现事务的持久性，即D特性.
+Undo log (MySQL):</p>
+<ol>
+<li>实现事务回滚</li>
+<li>实现MVCC</li>
+</ol>
+</blockquote>
 
 
             </div>
@@ -1207,13 +1219,13 @@ with a topic starting with &ldquo;Hit the Road:&rdquo;.</p>
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/use-options-file-for-benchmarking-rocksdb-using-ycsb/">Use Options File for Benchmarking RocksDB using YCSB</a>
+                    <a href="https://xinglin.github.io/blog/hit-the-road-ios-app/">Hit the Road iOS App</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
                 
                 <div>
-                    <a href="https://xinglin.github.io/blog/transaction/">Transaction</a>
+                    <a href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">Postgres Handling Transaction ID Wrap Around</a>
                     <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
                 </div>
                 

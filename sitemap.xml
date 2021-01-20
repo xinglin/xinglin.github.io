@@ -63,7 +63,17 @@
   </url>
   
   <url>
-    <loc>https://xinglin.github.io/blog/random-notes/</loc>
+    <loc>https://xinglin.github.io/tags/acid/</loc>
+    <lastmod>2020-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/blog/transaction/</loc>
+    <lastmod>2020-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/tags/transaction/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url>
   
