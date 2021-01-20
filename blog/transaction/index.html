@@ -1172,7 +1172,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability.</p>
+    <p>The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability.
+The purpose of transactions is to maintain data in the face of concurrent access and system failures.</p>
 <table>
 <thead>
 <tr>
@@ -1204,6 +1205,14 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 </tr>
 </tbody>
 </table>
+<h2 id="database-management-systems">Database Management Systems</h2>
+<ul>
+<li>Strict Two-Phase Locking (Strict 2PL)</li>
+</ul>
+<blockquote>
+<p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests a shared (respectively, exclusive) lock on the object.<br>
+Rule 2. All locks held by a transaction are released when the transaction is completed.</p>
+</blockquote>
 <p>Quota from Design Data-Intensive Applications book.</p>
 <ul>
 <li>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</li>
