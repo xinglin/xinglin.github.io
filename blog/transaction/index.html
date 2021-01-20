@@ -1218,6 +1218,17 @@ Undo log (MySQL):</p>
 <li>实现MVCC</li>
 </ol>
 </blockquote>
+<p><a href="https://segmentfault.com/a/1190000012650596">repeatable read vs read committed</a></p>
+<blockquote>
+<p>在innodb中(默认repeatable read级别), 事务在begin/start transaction之后的第一条select读操作后, 会创建一个快照(read view), 将当前系统中活跃的其他事务记录记录起来;
+在innodb中(默认read committed级别), 事务中每条select语句都会创建一个快照(read view);
+其中INSERT操作在事务提交前只对当前事务可见，因此产生的Undo日志可以在事务提交后直接删除（谁会对刚插入的数据有可见性需求呢！！），而对于UPDATE/DELETE则需要维护多版本信息，在InnoDB里，UPDATE和DELETE操作产生的Undo日志被归成一类，即update_undo
+在回滚段中的undo logs分为: insert undo log 和 update undo log</p>
+<ul>
+<li>insert undo log : 事务对insert新记录时产生的undolog, 只在事务回滚时需要, 并且在事务提交后就可以立即丢弃。(The new record is stored in the table itself. No need to serve reads from undo log. Undo records for insert only serve for transaction rollback. log only needs to tell when that new record was inserted so that we can determine when to undo it (remove it during rollback).)</li>
+<li>update undo log : 事务对记录进行delete和update操作时产生的undo log, 不仅在事务回滚时需要, 一致性读也需要，所以不能随便删除，只有当数据库所使用的快照中不涉及该日志记录，对应的回滚日志才会被purge线程删除</li>
+</ul>
+</blockquote>
 
 
             </div>
