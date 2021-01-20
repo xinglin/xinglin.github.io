@@ -1146,7 +1146,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                         
                     
                     
-                    <div class="reading-time middot">2 minute read</div>
+                    <div class="reading-time middot">3 minute read</div>
                     
                     
                       <div class="tags">
@@ -1212,6 +1212,7 @@ The purpose of transactions is to maintain data in the face of concurrent access
 <blockquote>
 <p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests a shared (respectively, exclusive) lock on the object.<br>
 Rule 2. All locks held by a transaction are released when the transaction is completed.</p>
+<p>If two transactions access the same object, and one wants to modify it, their actions are effectively ordered serially·all actions of one of these transactions (the one that gets the lock on the common object first) are completed before (this lock is released and) the other transaction can proceed.</p>
 </blockquote>
 <p>Quota from Design Data-Intensive Applications book.</p>
 <ul>
