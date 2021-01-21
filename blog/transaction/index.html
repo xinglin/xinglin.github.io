@@ -1146,7 +1146,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                         
                     
                     
-                    <div class="reading-time middot">3 minute read</div>
+                    <div class="reading-time middot">4 minute read</div>
                     
                     
                       <div class="tags">
@@ -1210,8 +1210,17 @@ The purpose of transactions is to maintain data in the face of concurrent access
 <li>Strict Two-Phase Locking (Strict 2PL)</li>
 </ul>
 <blockquote>
-<p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests a shared (respectively, exclusive) lock on the object.<br>
-Rule 2. All locks held by a transaction are released when the transaction is completed.</p>
+<p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests
+a shared (respectively, exclusive) lock on the object.<br>
+Rule 2. All locks held by a transaction are released <strong>when the transaction is completed</strong>.</p>
+</blockquote>
+<ul>
+<li>Two-Phase Locking (2PL)</li>
+</ul>
+<blockquote>
+<p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests
+a shared (respectively, exclusive) lock on the object (same as strict 2PL).<br>
+Rule 2. <strong>A transaction cannot request additional locks once it releases any lock</strong>.</p>
 <p>If two transactions access the same object, and one wants to modify it, their actions are
 effectively ordered serially: all actions of one of these transactions (the one that gets
 the lock on the common object first) are completed before (this lock is released and) the
@@ -1221,6 +1230,14 @@ durability. It ensures atomicity by undoing the actions of transactions that do 
 and durability by making sure that all actions of committed transactions survive systenl
 crashes, (e.g., a core dump caused by a bus error) and media failures (e.g., a disk is
 corrupted).</p>
+</blockquote>
+<ul>
+<li>Lock Implementation in DBMS</li>
+</ul>
+<blockquote>
+<p>The lock manager maintains a lock table, which is a hash table with the data object
+identifier as the key.<br>
+A lock table entry for an object &ndash; which can be a page, a record, and so on, depending on the DBMS &ndash; contains the following inforrnation: the number of transactions currently holding a. lock on the object (this can be more than one if the object is locked in shared mode), the nature of the lock (shared or exclusive), and a pointer to the queue of lock requests.</p>
 </blockquote>
 <p>Quota from Design Data-Intensive Applications book.</p>
 <ul>
