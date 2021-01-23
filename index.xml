@@ -6,7 +6,18 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crash Recovery</title>
+      <link>https://xinglin.github.io/blog/crash-recovery/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/crash-recovery/</guid>
+      <description>The following content is selected from the Database Management Systems book, chapter 18.
+ARIES  Three main principles lie behind the ARIES recovery algorithm:
+ Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.</description>
+    </item>
+    
     <item>
       <title>Secondary Index Built on top of a Key-value Store</title>
       <link>https://xinglin.github.io/blog/secondary-index-built-on-top-of-a-key-value-store/</link>
