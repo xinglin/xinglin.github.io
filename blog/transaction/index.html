@@ -1146,7 +1146,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                         
                     
                     
-                    <div class="reading-time middot">4 minute read</div>
+                    <div class="reading-time middot">11 minute read</div>
                     
                     
                       <div class="tags">
@@ -1205,7 +1205,8 @@ The purpose of transactions is to maintain data in the face of concurrent access
 </tr>
 </tbody>
 </table>
-<h2 id="database-management-systems">Database Management Systems</h2>
+<h1 id="database-management-systems">Database Management Systems</h1>
+<p>The following content was selected from chapter 17, Transactions.</p>
 <ul>
 <li>Strict Two-Phase Locking (Strict 2PL)</li>
 </ul>
@@ -1244,7 +1245,87 @@ corrupted).</p>
 identifier as the key.<br>
 A lock table entry for an object &ndash; which can be a page, a record, and so on, depending on the DBMS &ndash; contains the following inforrnation: the number of transactions currently holding a. lock on the object (this can be more than one if the object is locked in shared mode), the nature of the lock (shared or exclusive), and a pointer to the queue of lock requests.</p>
 </blockquote>
-<h2 id="design-data-intensive-applications-book">Design Data-Intensive Applications book.</h2>
+<ul>
+<li>Concurrency control in B+ Trees</li>
+</ul>
+<blockquote>
+<ol>
+<li>The higher levels of the tree only direct searches. All the &lsquo;real&rsquo; data is in the leaf levels (in the forrnat of one of the three alternatives for data entries).</li>
+<li>For inserts, a node must be locked (in exclusive rnode, of course) only if a split can propagate up to it from the modified leaf.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Searches should obtain shared locks on nodes, starting at the root and proceeding along a path to the desired leaf. The first observation suggests that a lock on a node can be released as soon as a lock on a child node is obtained, because searches never go back up the tree.</p>
+</blockquote>
+<blockquote>
+<p>A conservative locking strategy for inserts would be to obtain exclusive locks on all nodes as we go down from the root to the leaf node to be modified, because splits can propagate all the way from a leaf to the root. However, once we lock the child of a node, the lock on the node is required only in the event that a split propagates back to it. In particular, if the child of this node (on the path to the modified leaf) is not full when it is locked, any split that propagates up to the child can be resolved at the child, and does not propagate further to the current node. Therefore, when we lock a child node, we can release the lock on the parent if the child is not full. The locks held thus by an insert force any other transaction following the same path to wait at the earliest point (i.e., the node nearest the root) that might be affected by the insert. The technique of locking a child node and (if possible) releasing the lock on the parent is called lock-coupling, or crabbing (think of how a crab walks, and compare it to how we proceed down a tree, alternately releasing a lock on a parent and setting a lock on a child).</p>
+</blockquote>
+<h1 id="concurrency-control-without-locking">Concurrency Control Without Locking</h1>
+<h2 id="optimistic-concurrency-control">Optimistic Concurrency Control</h2>
+<pre><code>* pessimistic: lock-based approach, 2PL
+* optimistic: do not use locks. Read-Validation-Write
+</code></pre>
+<blockquote>
+<p>Optimistic concurrent control:</p>
+<ol>
+<li>Read: The transaction executes, reading values from the database and writing to a private workspace.</li>
+<li>Validation: If the transaction decides that it wants to commit, the DBMS checks whether the transaction could possibly have conflicted with any other concurrently executing transaction. If there is a possible conflict, the transaction is aborted; its private workspace is cleared and it is restarted.</li>
+<li>Write: If validation determines that there are no possible conflicts, the changes to data objects made by the transaction in its private workspace are copied into the database.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Each transaction Ti is assigned a timstamp TS(Ti) at the beginning of its validation phase, and the validation criterion checks whether the timestamp ordering of transactions is an equivalent serial order. For every pair of transac-tions Ti and Tj such that TS(Ti) &lt; TS(Tj), one of the following validation conditions must hold:</p>
+<ol>
+<li>Ti completes (all three phases) before Tj begins.</li>
+<li>Ti completes before Tj starts its Write phase, and Ti does not write any
+database object read by Tj.</li>
+<li>Ti completes its Read phase before Tj completes its Read phase, and Ti
+does not write any database object that is either read or written by Tj.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>To validate Tj, we must check to see that one of these conditions holds with respect to each comlnitted transaction Ti such that TS(Ti) &lt; TS(Tj). Each of these conditions ensures that Tj&rsquo;s modifications are not visible to Ti.</p>
+</blockquote>
+<blockquote>
+<p>Further, the first condition allows T j to see some of Ti&rsquo;s changes, but clearly, they execute completely in serial order with respect to each other. The second condition allows Tj to read objects while Ti is still modifying objects, but there is no conflict because Tj does not read any object modified by Ti. Although Tj might overwrite some objects written by Ti, all of Ti&rsquo;s writes precede all of Tj&rsquo;s writes. The third condition allows Ti and Tj to write objects at the same time and thus have even more overlap in time than the second condition, but the sets of objects written by the two transactions cannot overlap. Thus, no RW, WR, or WW conflicts are possible if any of these three conditions is met.</p>
+</blockquote>
+<blockquote>
+<p>Checking these validation criteria requires us to maintain lists of objects read and written by each transaction. Further, while one transaction is being validated, no other transaction can be allowed to commit; otherwise, the validation of the first transaction might miss conflicts with respect to the newly committed transaction. The Write phase of a validated transaction must also be completed (so that its effects are visible outside its private workspace) before other transactions can be validated.
+A synchronization mechanism such as a critical section can be used to ensure that at most one transaction is in its (combined) Validation/Write phases at any time.</p>
+</blockquote>
+<blockquote>
+<p>Clearly, it is not the case that optimistic concurrency control has no overheads; rather, the locking overheads of lock-based approaches are replaced with the overheads of recording read-lists and write-lists for transactions, checking for conflicts, and copying changes from the private workspace. Similarly, the implicit cost of blocking in a lock-based approach is replaced by the implicit cost of the work wasted by restarted transactions.</p>
+</blockquote>
+<h2 id="improved-conflict-resolution-for-optimisic-concurrency-control">Improved Conflict Resolution for optimisic concurrency control</h2>
+<p>problem: If Ti writes all data items required by Tj before Tj reads them, we can still commit Tj. But basic optimistic concurrency control does not permit this. We don&rsquo;t know when Ti wrote the object at the time when we validate Tj, because we only have a list of read/write objects by Ti (without recording their timestamps).</p>
+<p>Details workflow is as following.</p>
+<blockquote>
+<p>Before reading a data item, a transaction enters an access entry in a hash table. The access entry contains the transaction id, a data object id, and a modified flag (initially set to false), and entries are hashed on the data object id. A temporary exclusive lock is obtained on the
+hash bucket containing the entry, and the lock is held while the read data item is copied from the database buffer into the private workspace of the transaction.</p>
+</blockquote>
+<blockquote>
+<p>During validation of T, the hash buckets of all data objects accessed by T are again locked (in exclusive mode) to check if T has encountered any data conflicts. T has encountered a conflict if the modified flag is set to true in one of its access entries. (This assumes that the &lsquo;die&rsquo; policy is being used; if the &lsquo;kill&rsquo; policy is used, T is restarted when the flag is set to true.)
+If T is successfully validated, we lock the hash bucket of each object modified by T, retrieve all access entries for this object (some of these entries could be added by other transactions), set the modified flag to true, and release the lock on the bucket. If the &lsquo;kill&rsquo; policy is used, the transactions that entered these access entries are restarted. We then complete T&rsquo;s Write phase.</p>
+</blockquote>
+<h2 id="timestamp-based-concurrency-control">Timestamp-Based Concurrency Control</h2>
+<p>This is not MVCC. Each object has a single copy. However, <strong>this protocol may permit schedules that are not recoverable. Use MVCC instead.</strong></p>
+<blockquote>
+<p>Each transaction can be assigned a timestamp at startup, and we can ensure, at execution time, that if action a_i of transaction Ti conflicts with action a_j of transaction Tj, a_i occurs before a_j if TS(Ti) &lt; TS(Tj). If an action violates this ordering, the transaction is aborted and restarted.
+To implernent this concurrency control scheme, every database object O is given a read timestamp RTS(O) and a write timestamp WTS(O). If a transaction T wants to read object O, and TS(T) &lt; WTS(O), the order of this read with respect to the most recent write on O would violate the timestamp order between this transaction and the writer. Therefore, T is aborted and restarted with a new, larger timestamp. If TS(T) &gt; WTS(O), T reads O, and RTS(O) is set to the larger of RTS(O) and TS(T). (Note that a physical change&ndash;the change to RTS(O)-is written to disk and recorded in the log for recovery purposes, even on reads. This write operation is a significant overhead.)
+For writes, we need to check:</p>
+<ol>
+<li>If TS(T) &lt; RTS(O), the write action conflicts with the most recent read action of O, and T is therefore aborted and restarted.</li>
+<li>If TS(T) &lt; WTS(O), a naive approach would be to abort T because its write action conflicts with the most recent write of O and is out of timestamp order. However, we can safely <strong>ignore</strong> such writes and continue. Ignoring outdated writes is called the Thomas Write Rule.</li>
+<li>Otherwise, T writes O and WTS(O) is set to TS(T).</li>
+</ol>
+</blockquote>
+<h2 id="multiversion-concurrency-control">Multiversion Concurrency Control</h2>
+<blockquote>
+<p>The goal is to ensure that a transaction never has to wait to read a database object, and the idea is to maintain several versions of each database object, each with a write timestamp, and let transaction Ti read the most recent version whose timestamp precedes TS(Ti).
+If transaction Ti wants to write an object, we must ensure that the object has not already been read by some other transaction Tj such that TS (Ti) &lt; TS(Tj). If we allow Ti to write such an object, its change should be seen by Tj for serializability, but obviously Tj, which read the object at some time in the past, will not see Ti&rsquo;s change.
+To check this condition, every object also has an associated read timestarnp, and whenever a transaction reads the object, the read timestamp is set to the maximum of the current read timestamp and the reader&rsquo;s timestamp. If Ti wants to write an object O and TS(Ti) &lt; RTS(O), Ti is aborted and restarted with a new, larger timestamp. Otherwise, Ti creates a new version of O and sets the read and write timestamps of the new version to TS(Ti).</p>
+</blockquote>
+<h1 id="design-data-intensive-applications-book">Design Data-Intensive Applications book.</h1>
 <blockquote>
 <p>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</p>
 </blockquote>
