@@ -1225,7 +1225,7 @@ Dirty page table: This table contains one entry for each dirty page in the buffe
 <h2 id="write-ahead-log-procotol">Write-ahead log procotol</h2>
 <blockquote>
 <p>Before writing a page to disk, every update log record that describes a change to this page must be forced to stable storage. This is accomplished by forcing all log records up to and including the one with LSN equal to the pageLSN to stable storage before writing the page to disk.
-the definition of a committed transaction is effectively &lsquo;a transaction all of whose log records including a commit record have been written to stable storage&rsquo;.</p>
+The definition of a committed transaction is effectively &lsquo;a transaction all of whose log records including a commit record have been written to stable storage&rsquo;.</p>
 </blockquote>
 
 
