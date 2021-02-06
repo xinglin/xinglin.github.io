@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/tags/coding/" />
-<meta property="og:title" content="coding" />
-<meta property="twitter:title" content="coding">
+<meta property="og:url" content="https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/" />
+<meta property="og:title" content="Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)" />
+<meta property="twitter:title" content="Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - coding 
+     Xing Lin - Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;) 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/tags/coding/">
+<link rel="canonical" href="https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/">
 
 
 <style media="screen">
@@ -1068,8 +1068,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="https://xinglin.github.io/tags/coding/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
-
 
 </head>
 
@@ -1077,7 +1075,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1122,34 +1120,155 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Posts about coding</div>
-                <ul>
-                    
-                        <li class="post-item">
-    <span class="meta">Jan 1, 0001</span>
-    
-    <a href="https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/"><span>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</span></a>
-    
-</li>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-                    
-                        <li class="post-item">
-    <span class="meta">Nov 20, 2018</span>
     
-    <a href="https://xinglin.github.io/blog/lines-of-code-for-various-software/"><span>Lines of Code for Various Software</span></a>
+    Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)
     
-</li>
 
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Mon Jan 1 0001 00:00:00 UTC">Jan 1, 0001</div>
                     
-                </ul>
+                        
+                        <div class="author middot" title="Xing Lin">Xing Lin</div>
+                        
+                    
+                    
+                    <div class="reading-time middot">2 minute read</div>
+                    
+                    
+                      <div class="tags">
+                    
+                        <ul>
+                          
+                            <li class="middot"><a href="https://xinglin.github.io/tags/coding">coding</a> </li>
+                          
+                            <li class="middot"><a href="https://xinglin.github.io/tags/c/c&#43;&#43;">C/C&#43;&#43;</a> </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    <p>The ``<strong>C++ Primer</strong>'' book has a very interesting recommendation
+to use postfix operators, only when necessary (on page 148 for the 5th version).</p>
+<p>The authors shared the following in their book.</p>
+<blockquote>
+<p>The prefix version avoids unnecessary work.
+It increments the value and returns the incremented version.
+The postfix operator must store the original value so that it
+can return the unincremented value as its result.&quot;</p>
+<p>For ints and pointers, the compiler can optimize away this extra work.</p>
+</blockquote>
+<p>After reading this, I started to use prefix instead of postfix more often.
+However, I have always been doubting the statement the authors made in their book,
+until this moment.</p>
+<p>To finally test the authors' claim, I created the following program.</p>
+<pre><code>#include &lt;iostream&gt;
+int main() {
+        long i=0, j;
+        j = i++;
+        j = ++i;
+        return 0;
+}
+</code></pre><p>Here is the assembly code for the above short code.</p>
+<pre><code>_main:                                  ## @main
+        .cfi_startproc
+## %bb.0:
+        pushq   %rbp
+        .cfi_def_cfa_offset 16
+        .cfi_offset %rbp, -16
+        movq    %rsp, %rbp
+        .cfi_def_cfa_register %rbp
+        xorl    %eax, %eax
+        movl    $0, -4(%rbp)
+        movq    $0, -16(%rbp)       // assign 0 to i
+
+                                    // j = i++;
+        movq    -16(%rbp), %rcx     // move i from memory to register rcx
+        movq    %rcx, %rdx          // copy rcx to rdx
+        addq    $1, %rdx            // increment rdx
+        movq    %rdx, -16(%rbp)     // store rdx into i
+        movq    %rcx, -24(%rbp)     // store rcx into j
+
+                                    // j = ++i;    
+        movq    -16(%rbp), %rcx     // move i from memory to rcx
+        addq    $1, %rcx            // increment rcx
+        movq    %rcx, -16(%rbp)     // move rcx into i
+        movq    %rcx, -24(%rbp)     // move rcx into j
+
+        popq    %rbp
+        retq
+        .cfi_endproc
+</code></pre><p>As we can see from the assembly code, indeed, we avoid one copy by using prefix operators.
+I am now convinced!</p>
+
+
+            </div>
+            
+            <br>
+            <div class="share">
+                  
+                  <a href="" class="ssk ssk-facebook"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-twitter"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-google-plus"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-linkedin"></a>
+                  
+            </div>
+            
+            
+            <br>
+            <div class="navigation">
+                
+                <div style="width: 100%;"></div>
+                
+                <div>
+                    <a href="https://xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/">Trade-off Between Accuracy and Runtime Overhead</a>
+                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
+                </div>
+                
+            </div>
+            
+            
+
+            
+            
+
+            
+
+            
         </div>
     </div>
 </div>
+
+
+
 <div class="footer column">
     <div class="container">
 
