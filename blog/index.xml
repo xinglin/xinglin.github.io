@@ -6,7 +6,19 @@
     <description>Recent content in Blog on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
+      <link>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</guid>
+      <description>The ``C++ Primer&#39;&#39; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
+The authors shared the following in their book.
+ The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&amp;quot;
+For ints and pointers, the compiler can optimize away this extra work.</description>
+    </item>
+    
     <item>
       <title>Crash Recovery</title>
       <link>https://xinglin.github.io/blog/crash-recovery/</link>
@@ -432,18 +444,6 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
       
       <guid>https://xinglin.github.io/blog/trade-off-between-accuracy-and-runtime-overhead/</guid>
       <description>During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &amp;lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime.</description>
-    </item>
-    
-    <item>
-      <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
-      <link>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</guid>
-      <description>The ``C++ Primer&#39;&#39; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
-The authors shared the following in their book.
- The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&amp;quot;
-For ints and pointers, the compiler can optimize away this extra work.</description>
     </item>
     
   </channel>

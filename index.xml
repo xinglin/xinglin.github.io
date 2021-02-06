@@ -6,7 +6,19 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
+      <link>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</guid>
+      <description>The ``C++ Primer&#39;&#39; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
+The authors shared the following in their book.
+ The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&amp;quot;
+For ints and pointers, the compiler can optimize away this extra work.</description>
+    </item>
+    
     <item>
       <title>Crash Recovery</title>
       <link>https://xinglin.github.io/blog/crash-recovery/</link>
@@ -487,18 +499,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
       
       <guid>https://xinglin.github.io/services/services/</guid>
       <description> Program Committees  ACM SOCC 2020 USENIX HotEdge 2020 USENIX ATC 2019 (light) USENIX ATC 2018 MSST 2017 MSST 2016   Co-chair for IEEE Special Technical Community on Operating Systems (STCOS), 2016 - 2018 Journals  ACM Transactions on Computer Systems (TOCS) ACM Transactions on Storage IEEE Transactions on Computers IEEE Transactions on Knowledge and Data Engineering IEEE Internet Computing IEEE Computer    </description>
-    </item>
-    
-    <item>
-      <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
-      <link>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/</guid>
-      <description>The ``C++ Primer&#39;&#39; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
-The authors shared the following in their book.
- The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&amp;quot;
-For ints and pointers, the compiler can optimize away this extra work.</description>
     </item>
     
   </channel>
