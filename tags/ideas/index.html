@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/delete-request-in-leveldb/" />
-<meta property="og:title" content="Delete Request in LevelDB" />
-<meta property="twitter:title" content="Delete Request in LevelDB">
+<meta property="og:url" content="https://xinglin.github.io/tags/ideas/" />
+<meta property="og:title" content="ideas" />
+<meta property="twitter:title" content="ideas">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Delete Request in LevelDB 
+     Xing Lin - ideas 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/delete-request-in-leveldb/">
+<link rel="canonical" href="https://xinglin.github.io/tags/ideas/">
 
 
 <style media="screen">
@@ -1068,6 +1068,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
+  <link href="https://xinglin.github.io/tags/ideas/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
+
 
 </head>
 
@@ -1075,7 +1077,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header column">
+<div class="header header-home column">
 
     <div class="container">
         
@@ -1120,128 +1122,26 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-
-
-
-
-<div class="main post non-narrow zero-top-spacing column">
+<div class="main column">
     <div class="container">
         <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
+            <div class="posts">
+                <div class="page-heading">Posts about ideas</div>
+                <ul>
+                    
+                        <li class="post-item">
+    <span class="meta">Feb 22, 2021</span>
     
-    Delete Request in LevelDB
+    <a href="https://xinglin.github.io/blog/idea-repository/"><span>Idea Repository</span></a>
     
+</li>
 
-</div>
-
-                </div>
-                <div class="meta">
-                    <div class="date" title="Sun Jan 10 2021 00:00:00 UTC">Jan 10, 2021</div>
                     
-                        
-                        <div class="author middot" title="Xing Lin">Xing Lin</div>
-                        
-                    
-                    
-                    <div class="reading-time middot">2 minute read</div>
-                    
-                    
-                      <div class="tags">
-                    
-                        <ul>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/leveldb">leveldb</a> </li>
-                          
-                        </ul>
-                    </div>
-                    <div class="tags">
-                        <ul>
-                          
-                          
-                        </ul>
-                    </div>
-                </div>
+                </ul>
             </div>
-            <div class="markdown">
-                
-    
-    <p>When I searched for how leveldb/rocksdb and a few other KV stores
-handle delete requests, the document will usually say ``we insert a special
-a tombstone value or a tombstone entry.''. However, for KV stores which
-allow storing arbitrary keys and values, I am not sure which value we should
-use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user. I looked up leveldb source
-code and I think I have figured out how leveldb handles this case.</p>
-<p>In stead of using a special tombstone value, it instead inserts a special
-tombstone record which indicates whether this is a new PUT or a delete.
-The internal key used in leveldb includes both an increasing sequence number
-but also a type field. The type field can have two values: kTypeValue (0x01) or kTypeDelete (0x00). If it is a kTypeDelete, the value field is empty and
-this request is a delete operation.</p>
-<pre><code>internal_key = user_key + sequence_num (56-bit) + type (8-bit)
-</code></pre><p>So, essentially, for each KV pair, from a PUT or a Delete request,
-besides user_key/user_value, leveldb also stores a sequence number and
-a type which indicates whether this is a PUT or a delete (this KV is deleted).</p>
-<pre><code>//db/memtable.h:
-
-  // Add an entry into memtable that maps key to value at the
-  // specified sequence number and with the specified type.
-  // Typically value will be empty if type==kTypeDeletion.
-  void Add(SequenceNumber seq, ValueType type, const Slice&amp; key,
-           const Slice&amp; value);
-</code></pre>
-
-            </div>
-            
-            <br>
-            <div class="share">
-                  
-                  <a href="" class="ssk ssk-facebook"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-twitter"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-google-plus"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-linkedin"></a>
-                  
-            </div>
-            
-            
-            <br>
-            <div class="navigation">
-                
-                <div>
-                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/postgres-handling-transaction-id-wrap-around/">Postgres Handling Transaction ID Wrap Around</a>
-                </div>
-                
-                <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/enduring-ideas/techniques-that-are-still-in-use-today/">Enduring Ideas/Techniques that are still in use today</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
-                
-            </div>
-            
-            
-
-            
-            
-
-            
-
-            
         </div>
     </div>
 </div>
-
-
-
 <div class="footer column">
     <div class="container">
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ideas on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/ideas/</link>
+    <description>Recent content in ideas on Xing Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/ideas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Idea Repository</title>
+      <link>https://xinglin.github.io/blog/idea-repository/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/idea-repository/</guid>
+      <description>List of ideas to explore.
+  Interaction between a filesystem and a computational SSD that does transparent compression.
+ Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space.    Key prefix compression in k/v store
+ Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this? In Rockset/Foundationdb, secondary indexes are stored as &amp;lt;key, null&amp;gt; key/value pairs.</description>
+    </item>
+    
+  </channel>
+</rss>
