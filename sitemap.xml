@@ -473,6 +473,10 @@
   </url>
   
   <url>
+    <loc>https://xinglin.github.io/blog/</loc>
+  </url>
+  
+  <url>
     <loc>https://xinglin.github.io/tags/c/c&#43;&#43;/</loc>
   </url>
   
@@ -490,6 +494,14 @@
   
   <url>
     <loc>https://xinglin.github.io/services/services/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/software/</loc>
+  </url>
+  
+  <url>
+    <loc>https://xinglin.github.io/software/software/</loc>
   </url>
   
 </urlset>

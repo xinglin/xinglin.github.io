@@ -458,5 +458,14 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
       <description>During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &amp;lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://xinglin.github.io/blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/</guid>
+      <description>Rocksdb checksum: checksum for every k/v pair can add significant overhead for small kv pairs. checksum for a group of small kv pairs. for large kv pairs, one checksum per kv pair.</description>
+    </item>
+    
   </channel>
 </rss>
