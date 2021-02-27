@@ -398,10 +398,10 @@ Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 u
     
     <item>
       <title>About</title>
-      <link>https://xinglin.github.io/about/</link>
+      <link>https://xinglin.github.io/about/about/</link>
       <pubDate>Sat, 22 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://xinglin.github.io/about/</guid>
+      <guid>https://xinglin.github.io/about/about/</guid>
       <description>I successfully defended my PhD dissertation on July 22nd, 2015! Currently, I am working in the Advanced Technology Group at NetApp.
 I was a PHD student in the school of computing at the University of Utah. My advisor is Prof. Robert Ricci. I worked as a research assistant in the FLUX research group, for six years. Before that, I got my Bachelor degree from College of Software, Nankai University, China in 2009.</description>
     </item>
