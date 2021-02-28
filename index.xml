@@ -508,7 +508,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://xinglin.github.io/software/software/</guid>
-      <description> logKV: a simple log-structure key/value store mtar: Migratory Tar, improving data deduplication for tar files by separating metadata blocks from data blocks. Hit the Road iOS app: An iOS app for tracking outdoor exercises. SSDSim: DiskSim 4.0 developed by CMU, with Microsoft SSD-add-on patch applied for you.  </description>
+      <description>Software  logKV: a simple log-structure key/value store mtar: Migratory Tar, improving data deduplication for tar files by separating metadata blocks from data blocks. SSDSim: DiskSim 4.0 developed by CMU, with Microsoft SSD-add-on patch applied for you.  Hit the Road An iOS app for tracking outdoor exercises.</description>
     </item>
     
   </channel>
