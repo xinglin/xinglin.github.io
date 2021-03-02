@@ -1172,12 +1172,15 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     
     <p>So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.</p>
 <p>In acmart.cls, change the execution option for <code>authorversion</code> from false to true.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre>
+-\ExecuteOptionsX{authorversion=false}
++\ExecuteOptionsX{authorversion=true}
+</pre>
 <p>You may also want to add page numbers into your paper.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<blockquote>
+<pre>
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+</pre><blockquote>
 </blockquote>
 
 

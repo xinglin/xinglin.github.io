@@ -252,7 +252,7 @@ When learning a new thing, it could come with many new concepts, making it harde
       <guid>https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/</guid>
       <description>So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
 In acmart.cls, change the execution option for authorversion from false to true.
-You may also want to add page numbers into your paper.</description>
+ -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true}  You may also want to add page numbers into your paper.</description>
     </item>
     
     <item>
