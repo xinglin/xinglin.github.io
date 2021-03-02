@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/idea-repository/" />
-<meta property="og:title" content="Idea Repository" />
-<meta property="twitter:title" content="Idea Repository">
+<meta property="og:url" content="https://xinglin.github.io/blog/key-value-systems/" />
+<meta property="og:title" content="Key Value Systems" />
+<meta property="twitter:title" content="Key Value Systems">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Idea Repository 
+     Xing Lin - Key Value Systems 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/idea-repository/">
+<link rel="canonical" href="https://xinglin.github.io/blog/key-value-systems/">
 
 
 <style media="screen">
@@ -1134,14 +1134,14 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Idea Repository
+    Key Value Systems
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Mon Feb 22 2021 00:00:00 UTC">Feb 22, 2021</div>
+                    <div class="date" title="Mon Mar 1 2021 00:00:00 UTC">Mar 1, 2021</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
@@ -1155,7 +1155,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/idea">idea</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/keyvalue">keyvalue</a> </li>
                           
                         </ul>
                     </div>
@@ -1170,25 +1170,12 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <p>List of ideas to explore.</p>
-<ul>
-<li>
-<p>Interaction between a filesystem and a computational SSD that does transparent compression.</p>
-<ul>
-<li>Problem: How to manage SSD space in this case? What API should be use?</li>
-<li>Can use SSDSim to explore the design space.</li>
-</ul>
-</li>
-<li>
-<p>Key prefix compression in k/v store</p>
-<ul>
-<li>Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this?</li>
-<li>In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs. This creates an opportunity that significant storage saving can be achieved if we can do a better key compression.</li>
-</ul>
-</li>
-<li>
-<p><a href="http://zonedstorage.io/introduction/">Zoned namespace SSDs</a></p>
-</li>
+    <ul>
+<li>WiscKey: key/value separation</li>
+<li>HashKV</li>
+<li>LSM-trie</li>
+<li>PebblesDB</li>
+<li>KVell</li>
 </ul>
 
 
@@ -1216,15 +1203,10 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/use-prefix-operators-i-vs.-postfix-operators-i-/">Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</a>
+                    <a href="https://xinglin.github.io/blog/idea-repository/">Idea Repository</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/key-value-systems/">Key Value Systems</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
                 
             </div>
             
