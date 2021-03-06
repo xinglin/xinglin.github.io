@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/tags/paper/" />
-<meta property="og:title" content="paper" />
-<meta property="twitter:title" content="paper">
+<meta property="og:url" content="https://xinglin.github.io/blog/key-value-workloads/" />
+<meta property="og:title" content="Key Value Workloads" />
+<meta property="twitter:title" content="Key Value Workloads">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - paper 
+     Xing Lin - Key Value Workloads 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/tags/paper/">
+<link rel="canonical" href="https://xinglin.github.io/blog/key-value-workloads/">
 
 
 <style media="screen">
@@ -1061,8 +1061,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="https://xinglin.github.io/tags/paper/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
-
 
 </head>
 
@@ -1070,7 +1068,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1115,66 +1113,152 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Posts about paper</div>
-                <ul>
-                    
-                        <li class="post-item">
-    <span class="meta">Dec 25, 2015</span>
-    
-    <a href="https://xinglin.github.io/blog/nv-tree-reducing-consistency-cost-for-nvm-based-single-level-systems/"><span>NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</span></a>
-    
-</li>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-                    
-                        <li class="post-item">
-    <span class="meta">Mar 8, 2019</span>
     
-    <a href="https://xinglin.github.io/blog/coordinating-garbage-collection-for-arrays-of-solid-state-drives/"><span>Coordinating Garbage Collection for Arrays of Solid-State Drives</span></a>
+    Key Value Workloads
     
-</li>
 
-                    
-                        <li class="post-item">
-    <span class="meta">Apr 28, 2019</span>
-    
-    <a href="https://xinglin.github.io/blog/create-the-author-version-for-your-paper-acm/"><span>Create The Author Version for Your Paper (ACM)</span></a>
-    
-</li>
+</div>
 
+                </div>
+                <div class="meta">
+                    <div class="date" title="Fri Mar 5 2021 00:00:00 UTC">Mar 5, 2021</div>
                     
-                        <li class="post-item">
-    <span class="meta">Jun 18, 2020</span>
-    
-    <a href="https://xinglin.github.io/blog/copysets-reducing-the-frequency-of-data-loss-in-cloud-storage/"><span>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</span></a>
-    
-</li>
-
+                        
+                        <div class="author middot" title="Xing Lin">Xing Lin</div>
+                        
                     
-                        <li class="post-item">
-    <span class="meta">Jun 28, 2020</span>
-    
-    <a href="https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/"><span>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</span></a>
-    
-</li>
-
                     
-                        <li class="post-item">
-    <span class="meta">Mar 1, 2021</span>
-    
-    <a href="https://xinglin.github.io/blog/key-value-systems/"><span>Key Value Systems</span></a>
-    
-</li>
-
+                    <div class="reading-time middot">1 minute read</div>
                     
-                </ul>
+                    
+                      <div class="tags">
+                    
+                        <ul>
+                          
+                            <li class="middot"><a href="https://xinglin.github.io/tags/keyvalue">keyvalue</a> </li>
+                          
+                            <li class="middot"><a href="https://xinglin.github.io/tags/workload">workload</a> </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    <h1 id="ycsb">YCSB</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Workload</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:center">Example</th>
+<th style="text-align:center">Operation breakdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">Update heavy workload</td>
+<td style="text-align:center">session store recording recent actions</td>
+<td style="text-align:center">read: 50%, update: 50%</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">read mostly workload</td>
+<td style="text-align:center">photo tagging;  add a tag is an update, but most operations are to read tags</td>
+<td style="text-align:center">read: 95%, update: 5%</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">read only</td>
+<td style="text-align:center">user profile cache, where profiles are constructed elsewhere )e.g., Hadoop)</td>
+<td style="text-align:center">read: 100%</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">read latest workload</td>
+<td style="text-align:center">user status updates; people want to read the latest</td>
+<td style="text-align:center">read: 95%, insert  5%</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">short ranges</td>
+<td style="text-align:center">threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id)</td>
+<td style="text-align:center">scan: 95% (maxscanlength=100), insert: 5</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">read-modify-write workload</td>
+<td style="text-align:center">user database, where user records are read and modified by the user or to record user activity.</td>
+<td style="text-align:center">read: 50%, readmodifywrite: 50%</td>
+</tr>
+</tbody>
+</table>
+
+
+            </div>
+            
+            <br>
+            <div class="share">
+                  
+                  <a href="" class="ssk ssk-facebook"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-twitter"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-google-plus"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-linkedin"></a>
+                  
+            </div>
+            
+            
+            <br>
+            <div class="navigation">
+                
+                <div>
+                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
+                    <a href="https://xinglin.github.io/blog/key-value-systems/">Key Value Systems</a>
+                </div>
+                
+                <div style="width: 100%;"></div>
+                
+            </div>
+            
+            
+
+            
+            
+
+            
+
+            
         </div>
     </div>
 </div>
+
+
+
 <div class="footer column">
     <div class="container">
 

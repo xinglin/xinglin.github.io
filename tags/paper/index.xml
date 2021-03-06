@@ -6,7 +6,16 @@
     <description>Recent content in paper on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 28 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Key Value Systems</title>
+      <link>https://xinglin.github.io/blog/key-value-systems/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/key-value-systems/</guid>
+      <description>LSM-tree survey WiscKey: key/value separation HashKV: store cold keys separately. LSM-trie PebblesDB KVell Skip-Tree: put kv items directly to non-adjacent layers (skipping some intermediate layers) to reduce write amplification from level-to-level data compaction. TRIAD: separate hot keys from cold keys. hot keys are stored in memtable for as long as possible. Use multiple memtables and flush them at once to disk. Pipelined Compaction Procedure: A compaction contains three phases: read phase, merge-sort phase, and write phase.</description>
+    </item>
+    
     <item>
       <title>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</title>
       <link>https://xinglin.github.io/blog/shrd-improving-spatial-locality-in-flash-storage-accesses-by-sequentializing-in-host-and-randomizing-in-device/</link>
