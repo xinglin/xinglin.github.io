@@ -1215,22 +1215,28 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <h1 id="rocksdb-workloads-in-facebook-paper-linkrocksdbfb">RocksDB Workloads in Facebook <a href="https://www.usenix.org/conference/fast20/presentation/cao-zhichao">paper link</a></h1>
 <h2 id="udb">UDB</h2>
 <blockquote>
-<p>Social graph data stored in MyRocks<br>
-Get: 75%, Put: 20%<br>
-75+% of KV-pairs are Put only once. <br>
-Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs.</p>
+<ul>
+<li>Social graph data stored in MyRocks</li>
+<li>Get: 75%, Put: 20%</li>
+<li>75+% of KV-pairs are Put only once.</li>
+<li>Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs.</li>
+</ul>
 </blockquote>
 <h2 id="zippydb">ZippyDB</h2>
 <blockquote>
-<p>Distributed KV store, mapping some metadata of an object to the object address in an object storage system<br>
-78% Get, 13% Put, 6% Delete, and 3% Iterator<br>
-For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV- pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does.</p>
+<ul>
+<li>Distributed KV store, mapping some metadata of an object to the object address in an object storage system</li>
+<li>78% Get, 13% Put, 6% Delete, and 3% Iterator</li>
+<li>For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV-pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does.</li>
+</ul>
 </blockquote>
 <h2 id="up2x">UP2X</h2>
 <blockquote>
-<p>statistic counters of user activities for AI/ML prediction and interference<br>
-merge (read-modify-write): 92.53%, 7.46% Get<br>
-Merge and Get have wide distributions of access counts. Most KV pairs are Put only once.</p>
+<ul>
+<li>statistic counters of user activities for AI/ML prediction and interference</li>
+<li>merge (read-modify-write): 92.53%, 7.46% Get</li>
+<li>Merge and Get have wide distributions of access counts. Most KV pairs are Put only once.</li>
+</ul>
 </blockquote>
 <h3 id="udb-request-distribution">UDB Request Distribution</h3>
 <p><img src="../UDB-requests.png" alt=""></p>
