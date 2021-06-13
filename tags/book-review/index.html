@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/key-value-workloads/" />
-<meta property="og:title" content="Key Value Workloads" />
-<meta property="twitter:title" content="Key Value Workloads">
+<meta property="og:url" content="https://xinglin.github.io/tags/book-review/" />
+<meta property="og:title" content="book review" />
+<meta property="twitter:title" content="book review">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Key Value Workloads 
+     Xing Lin - book review 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/key-value-workloads/">
+<link rel="canonical" href="https://xinglin.github.io/tags/book-review/">
 
 
 <style media="screen">
@@ -1061,6 +1061,8 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
+  <link href="https://xinglin.github.io/tags/book-review/index.xml" rel="alternate" type="application/rss+xml" title="Xing Lin" />
+
 
 </head>
 
@@ -1068,7 +1070,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header column">
+<div class="header header-home column">
 
     <div class="container">
         
@@ -1113,198 +1115,26 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-
-
-
-
-<div class="main post non-narrow zero-top-spacing column">
+<div class="main column">
     <div class="container">
         <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
+            <div class="posts">
+                <div class="page-heading">Posts about book review</div>
+                <ul>
+                    
+                        <li class="post-item">
+    <span class="meta">Jun 13, 2021</span>
     
-    Key Value Workloads
+    <a href="https://xinglin.github.io/blog/book-review-high-output-management/"><span>Book Review: High Output Management</span></a>
     
+</li>
 
-</div>
-
-                </div>
-                <div class="meta">
-                    <div class="date" title="Fri Mar 5 2021 00:00:00 UTC">Mar 5, 2021</div>
                     
-                        
-                        <div class="author middot" title="Xing Lin">Xing Lin</div>
-                        
-                    
-                    
-                    <div class="reading-time middot">2 minute read</div>
-                    
-                    
-                      <div class="tags">
-                    
-                        <ul>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/keyvalue">keyvalue</a> </li>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/workload">workload</a> </li>
-                          
-                        </ul>
-                    </div>
-                    <div class="tags">
-                        <ul>
-                          
-                          
-                        </ul>
-                    </div>
-                </div>
+                </ul>
             </div>
-            <div class="markdown">
-                
-    
-    <h1 id="ycsb">YCSB</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Workload</th>
-<th style="text-align:center">Description</th>
-<th style="text-align:center">Example</th>
-<th style="text-align:center">Operation breakdown</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">Update heavy workload</td>
-<td style="text-align:center">session store recording recent actions</td>
-<td style="text-align:center">read: 50%, update: 50%</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">read mostly workload</td>
-<td style="text-align:center">photo tagging;  add a tag is an update, but most operations are to read tags</td>
-<td style="text-align:center">read: 95%, update: 5%</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">read only</td>
-<td style="text-align:center">user profile cache, where profiles are constructed elsewhere )e.g., Hadoop)</td>
-<td style="text-align:center">read: 100%</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">read latest workload</td>
-<td style="text-align:center">user status updates; people want to read the latest</td>
-<td style="text-align:center">read: 95%, insert  5%</td>
-</tr>
-<tr>
-<td style="text-align:center">E</td>
-<td style="text-align:center">short ranges</td>
-<td style="text-align:center">threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id)</td>
-<td style="text-align:center">scan: 95% (maxscanlength=100), insert: 5</td>
-</tr>
-<tr>
-<td style="text-align:center">F</td>
-<td style="text-align:center">read-modify-write workload</td>
-<td style="text-align:center">user database, where user records are read and modified by the user or to record user activity.</td>
-<td style="text-align:center">read: 50%, readmodifywrite: 50%</td>
-</tr>
-</tbody>
-</table>
-<h1 id="rocksdb-workloads-in-facebook-paper-linkrocksdbfb">RocksDB Workloads in Facebook <a href="https://www.usenix.org/conference/fast20/presentation/cao-zhichao">paper link</a></h1>
-<h2 id="udb">UDB</h2>
-<blockquote>
-<ul>
-<li>Social graph data stored in MyRocks</li>
-<li>Get: 75%, Put: 20%</li>
-<li>75+% of KV-pairs are Put only once.</li>
-<li>Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs.</li>
-</ul>
-</blockquote>
-<h2 id="zippydb">ZippyDB</h2>
-<blockquote>
-<ul>
-<li>Distributed KV store, mapping some metadata of an object to the object address in an object storage system</li>
-<li>78% Get, 13% Put, 6% Delete, and 3% Iterator</li>
-<li>For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV-pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does.</li>
-</ul>
-</blockquote>
-<h2 id="up2x">UP2X</h2>
-<blockquote>
-<ul>
-<li>statistic counters of user activities for AI/ML prediction and interference</li>
-<li>merge (read-modify-write): 92.53%, 7.46% Get</li>
-<li>Merge and Get have wide distributions of access counts. Most KV pairs are Put only once.</li>
-</ul>
-</blockquote>
-<h3 id="udb-request-distribution">UDB Request Distribution</h3>
-<p><img src="../UDB-requests.png" alt=""></p>
-<h3 id="key-value-sizes">Key Value Sizes</h3>
-<p><img src="../kvsize.png" alt="">
-<img src="../kvsize-distribution.png" alt=""></p>
-<h1 id="memcached-workloads-at-twitter-linkmemcachedtwitter">Memcached workloads at Twitter <a href="https://www.usenix.org/system/files/osdi20-yang.pdf">link</a></h1>
-<blockquote>
-<p>Average get ratio is close to 90% indicating most of the caches are serving read-heavy workloads.<br>
-More than 35% of all Twemcache clusters are write-heavy, and more than 20% have a write ratio higher than 50%.<br>
-Majority of the cache workloads still follow Zipfian distribution.
-KV sizes are small.</p>
-</blockquote>
-<p><img src="../twitter-kvsize.png" alt="">
-<img src="../twitter-operations.png" alt=""></p>
-<p>Note: Couldn&rsquo;t find DeleteProportion in <a href="https://github.com/brianfrankcooper/YCSB/wiki/Core-Properties">Core-properties</a> for YCSB&hellip;</p>
-
-
-            </div>
-            
-            <br>
-            <div class="share">
-                  
-                  <a href="" class="ssk ssk-facebook"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-twitter"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-google-plus"></a>
-                  
-                  
-                  <a href="" class="ssk ssk-linkedin"></a>
-                  
-            </div>
-            
-            
-            <br>
-            <div class="navigation">
-                
-                <div>
-                    <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/key-value-systems/">Key Value Systems</a>
-                </div>
-                
-                <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/book-review-high-output-management/">Book Review: High Output Management</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
-                
-            </div>
-            
-            
-
-            
-            
-
-            
-
-            
         </div>
     </div>
 </div>
-
-
-
 <div class="footer column">
     <div class="container">
 

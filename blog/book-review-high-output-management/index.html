@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Xing Lin" />
 <meta property="og:locale" content="en-US" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/blog/key-value-workloads/" />
-<meta property="og:title" content="Key Value Workloads" />
-<meta property="twitter:title" content="Key Value Workloads">
+<meta property="og:url" content="https://xinglin.github.io/blog/book-review-high-output-management/" />
+<meta property="og:title" content="Book Review: High Output Management" />
+<meta property="twitter:title" content="Book Review: High Output Management">
 
     <meta property="og:image" content="https://xinglin.github.io/img/BlockU_redweb.png">
     <meta property="twitter:card" content="summary">
@@ -29,10 +29,10 @@
 <title>
 
 
-     Xing Lin - Key Value Workloads 
+     Xing Lin - Book Review: High Output Management 
 
 </title>
-<link rel="canonical" href="https://xinglin.github.io/blog/key-value-workloads/">
+<link rel="canonical" href="https://xinglin.github.io/blog/book-review-high-output-management/">
 
 
 <style media="screen">
@@ -1125,30 +1125,28 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
                     <div class="page-heading">
 
     
-    Key Value Workloads
+    Book Review: High Output Management
     
 
 </div>
 
                 </div>
                 <div class="meta">
-                    <div class="date" title="Fri Mar 5 2021 00:00:00 UTC">Mar 5, 2021</div>
+                    <div class="date" title="Sun Jun 13 2021 00:00:00 UTC">Jun 13, 2021</div>
                     
                         
                         <div class="author middot" title="Xing Lin">Xing Lin</div>
                         
                     
                     
-                    <div class="reading-time middot">2 minute read</div>
+                    <div class="reading-time middot">5 minute read</div>
                     
                     
                       <div class="tags">
                     
                         <ul>
                           
-                            <li class="middot"><a href="https://xinglin.github.io/tags/keyvalue">keyvalue</a> </li>
-                          
-                            <li class="middot"><a href="https://xinglin.github.io/tags/workload">workload</a> </li>
+                            <li class="middot"><a href="https://xinglin.github.io/tags/book-review">book review</a> </li>
                           
                         </ul>
                     </div>
@@ -1163,96 +1161,125 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
             <div class="markdown">
                 
     
-    <h1 id="ycsb">YCSB</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Workload</th>
-<th style="text-align:center">Description</th>
-<th style="text-align:center">Example</th>
-<th style="text-align:center">Operation breakdown</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">Update heavy workload</td>
-<td style="text-align:center">session store recording recent actions</td>
-<td style="text-align:center">read: 50%, update: 50%</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">read mostly workload</td>
-<td style="text-align:center">photo tagging;  add a tag is an update, but most operations are to read tags</td>
-<td style="text-align:center">read: 95%, update: 5%</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">read only</td>
-<td style="text-align:center">user profile cache, where profiles are constructed elsewhere )e.g., Hadoop)</td>
-<td style="text-align:center">read: 100%</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">read latest workload</td>
-<td style="text-align:center">user status updates; people want to read the latest</td>
-<td style="text-align:center">read: 95%, insert  5%</td>
-</tr>
-<tr>
-<td style="text-align:center">E</td>
-<td style="text-align:center">short ranges</td>
-<td style="text-align:center">threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id)</td>
-<td style="text-align:center">scan: 95% (maxscanlength=100), insert: 5</td>
-</tr>
-<tr>
-<td style="text-align:center">F</td>
-<td style="text-align:center">read-modify-write workload</td>
-<td style="text-align:center">user database, where user records are read and modified by the user or to record user activity.</td>
-<td style="text-align:center">read: 50%, readmodifywrite: 50%</td>
-</tr>
-</tbody>
-</table>
-<h1 id="rocksdb-workloads-in-facebook-paper-linkrocksdbfb">RocksDB Workloads in Facebook <a href="https://www.usenix.org/conference/fast20/presentation/cao-zhichao">paper link</a></h1>
-<h2 id="udb">UDB</h2>
-<blockquote>
+    <p>I finished reading Andrew Grove&rsquo;s book on ``High Output Management'' and
+really liked it, especially when reading the second half.
+It explains a few concepts, such as how a person&rsquo;s needs may change
+and what is controlling a person&rsquo;s behavior.
+It also contains quite a few practical advices on how to handle issues
+that could happen in a workplace.
+I highly recommend everyone to take a look at this book.</p>
 <ul>
-<li>Social graph data stored in MyRocks</li>
-<li>Get: 75%, Put: 20%</li>
-<li>75+% of KV-pairs are Put only once.</li>
-<li>Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs.</li>
+<li>Maslow&rsquo;s hierarchy of needs: physiological -&gt; safety/security -&gt; social/affiliation -&gt; esteem/recognition -&gt; self actualization.</li>
 </ul>
-</blockquote>
-<h2 id="zippydb">ZippyDB</h2>
-<blockquote>
+<p>When a lower need is satisfied, one higher is likely to take over.</p>
 <ul>
-<li>Distributed KV store, mapping some metadata of an object to the object address in an object storage system</li>
-<li>78% Get, 13% Put, 6% Delete, and 3% Iterator</li>
-<li>For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV-pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does.</li>
-</ul>
-</blockquote>
-<h2 id="up2x">UP2X</h2>
-<blockquote>
+<li>
+<p>Models of control</p>
 <ul>
-<li>statistic counters of user activities for AI/ML prediction and interference</li>
-<li>merge (read-modify-write): 92.53%, 7.46% Get</li>
-<li>Merge and Get have wide distributions of access counts. Most KV pairs are Put only once.</li>
+<li>Free-market forces
+<ul>
+<li>For simple situations.</li>
+<li>Everyone is openly serving his own self-interest.</li>
+<li>The goods/services have a very clearly defined dollar value.</li>
+<li>Example: buying a tire</li>
 </ul>
-</blockquote>
-<h3 id="udb-request-distribution">UDB Request Distribution</h3>
-<p><img src="../UDB-requests.png" alt=""></p>
-<h3 id="key-value-sizes">Key Value Sizes</h3>
-<p><img src="../kvsize.png" alt="">
-<img src="../kvsize-distribution.png" alt=""></p>
-<h1 id="memcached-workloads-at-twitter-linkmemcachedtwitter">Memcached workloads at Twitter <a href="https://www.usenix.org/system/files/osdi20-yang.pdf">link</a></h1>
-<blockquote>
-<p>Average get ratio is close to 90% indicating most of the caches are serving read-heavy workloads.<br>
-More than 35% of all Twemcache clusters are write-heavy, and more than 20% have a write ratio higher than 50%.<br>
-Majority of the cache workloads still follow Zipfian distribution.
-KV sizes are small.</p>
-</blockquote>
-<p><img src="../twitter-kvsize.png" alt="">
-<img src="../twitter-operations.png" alt=""></p>
-<p>Note: Couldn&rsquo;t find DeleteProportion in <a href="https://github.com/brianfrankcooper/YCSB/wiki/Core-Properties">Core-properties</a> for YCSB&hellip;</p>
+</li>
+<li>Contractual obligations
+<ul>
+<li>Values are not so clearly defined (what is the contribution of a team member to the overal team/project? ).</li>
+<li>governed by a set of agreed-upon rules</li>
+<li>Example: stop at red signal; Employment contract</li>
+</ul>
+</li>
+<li>Cultural values:
+<ul>
+<li>The environment changes more rapidly than one change rules.</li>
+<li>When a set of circumstances is so ambiguous and unclear that a contract between parties that attempted to cover all possibilities would be prohibitively complicated.</li>
+<li>Example: stop your car to help accident.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Money in the physiological- and security-driven modes only motivates until the need is satisfied, but money as a measure of achievement will motivate without limit.</p>
+</li>
+<li>
+<p>Comparing our work to sports may also teach us how to cope with failure. One of the big impediments to a fully committed, highly motivated state of mind is preoccupation with failure. Yet we know that in any competitive sport, at least 50 percent of all matches are lost. All participants know that from the outset, and yet rarely do they give up at any stage of a contest.</p>
+</li>
+<li>
+<p>The performance rating of a manager cannot be higher than the one we would accord to his organization. It is very important to assess actual performance, not appearances; real output, not good form.</p>
+</li>
+<li>
+<p>By elevating someone, we are, in effect, creating role models for others in our organization.</p>
+</li>
+<li>
+<p>The old saying has it that when we promote the good salesman and make him a manager, we ruin a good salesman and get a bad manager.</p>
+</li>
+<li>
+<p>Performance review is about giving suggestions on improving his performance.</p>
+</li>
+<li>
+<p>When giving feedbacks to your team members,
+the key is to recognize that everyone has only a <em>finite capacity</em> to deal with facts, issues, and suggestions. You may possess seven truths about his performance, but if his capacity is only four, at best you&rsquo;ll waste your breath on the other three. At worst you will have left him with a case of sensory overload, and he will go away without getting anything out of the review.</p>
+</li>
+<li>
+<p>Stages of problem-solving: ignore -&gt; deny -&gt; blame others -&gt; assume responsibility -&gt; find solution. The critical part is to move from the &ldquo;blame others&rdquo; stage to the &ldquo;assume responsibility&rdquo; stage.</p>
+</li>
+<li>
+<p>We should spend more time trying to improve the performance of our stars. These people account for a disproportionately large share of the work in any organization. Put another way, concentrating on the starts is a high-leverage activity: if they get better, the impact on group output is very great indeed.</p>
+</li>
+<li>
+<p>Best interview questions</p>
+<ul>
+<li>Describe some projects that were highly regarded by your management, especially by the levels above your immediate supervisor</li>
+<li>What are your weaknesses? How are you working to eliminate them?</li>
+<li>Convince me why my company should hire you.</li>
+<li>What are some of the problems you are encountering in your current position? How are you going about solving them? What could you have done to prevent them from cropping up?</li>
+<li>Why do you think you are ready for this new job?</li>
+<li>What do you consdier your most significant achievements? Why were they important to you?</li>
+<li>What do you consider your most significant failures? What do you learn from them?</li>
+<li>Why do you think an engineer should be chosen for a marketing position? (very this one according to the situation.)</li>
+<li>What was the most important course or project you completed in your college career? Why was it so important?</li>
+</ul>
+</li>
+<li>
+<p>Four categories</p>
+<ul>
+<li>Technical/skills
+<ul>
+<li>describe some projects</li>
+<li>what are your weaknesses</li>
+</ul>
+</li>
+<li>What he did with knowledge
+<ul>
+<li>past achievments</li>
+<li>past failures</li>
+</ul>
+</li>
+<li>Discrepancies
+<ul>
+<li>what did you learn from failures</li>
+<li>problems with current position</li>
+</ul>
+</li>
+<li>Operational values
+<ul>
+<li>why are you ready for the new job</li>
+<li>why should my company hire you</li>
+<li>why should engineer be chosen for marketing</li>
+<li>most important college course/project</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>When someone tells you he is quitting: <strong>drop what you are doing</strong>. sit him down and ask him <em>why</em> he is quitting. Let him talk&ndash;don&rsquo;t argue about anything with him. Believe me, he&rsquo;s rehearsed his speech countless times during more than one sleepless night. After he&rsquo;s finished going through all his reasons for wanting to leave (they won&rsquo;t be good ones), ask him more questions. Make <em>him/her</em> talk, because after the prepared points are delivered, the real issues may come out. Don&rsquo;t argue, don&rsquo;t lecture, and don&rsquo;t panic. Remember, this is only the opening skirmish, not the war. And you cann&rsquo;t win the war here&ndash;but you can lose it! You have to convey to him <em>by what you do</em> that he is important to you, and you have to find out what is really troubling him. DOn&rsquo;t try to change his mind at this point, but buy time. After he&rsquo;s said all he has to say, ask for whatever time you feel is necessary to prepare yourself for the next round. But know that you must follow through on whatever you&rsquo;ve committed yourself to do.</p>
+</li>
+<li>
+<p>Then your subordinate may say he&rsquo;s accepted a job somewhere else and can&rsquo;t back out. You have to make him/her quit again. You say he&rsquo;s really made two commitments: first to a potential employer he only vaguely knows and second to you, his present employer. And commitments he has made to the people he has been working with daily are far stronger than one made to a casual new acquaintance.</p>
+</li>
+</ul>
 
 
             </div>
@@ -1279,15 +1306,10 @@ KV sizes are small.</p>
                 
                 <div>
                     <img class="icon" src="https://xinglin.github.io/img/back.svg" alt="back" />
-                    <a href="https://xinglin.github.io/blog/key-value-systems/">Key Value Systems</a>
+                    <a href="https://xinglin.github.io/blog/key-value-workloads/">Key Value Workloads</a>
                 </div>
                 
                 <div style="width: 100%;"></div>
-                
-                <div>
-                    <a href="https://xinglin.github.io/blog/book-review-high-output-management/">Book Review: High Output Management</a>
-                    <img class="icon" src="https://xinglin.github.io/img/next.svg" alt="next" />
-                </div>
                 
             </div>
             

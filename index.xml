@@ -6,7 +6,16 @@
     <description>Recent content on Xing Lin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://xinglin.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Book Review: High Output Management</title>
+      <link>https://xinglin.github.io/blog/book-review-high-output-management/</link>
+      <pubDate>Sun, 13 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://xinglin.github.io/blog/book-review-high-output-management/</guid>
+      <description>I finished reading Andrew Grove&amp;rsquo;s book on ``High Output Management&#39;&#39; and really liked it, especially when reading the second half. It explains a few concepts, such as how a person&amp;rsquo;s needs may change and what is controlling a person&amp;rsquo;s behavior. It also contains quite a few practical advices on how to handle issues that could happen in a workplace. I highly recommend everyone to take a look at this book.</description>
+    </item>
+    
     <item>
       <title>Key Value Workloads</title>
       <link>https://xinglin.github.io/blog/key-value-workloads/</link>
