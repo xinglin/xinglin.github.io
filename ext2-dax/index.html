@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>DAX in ext2 filesystem - Xing Lin</title><meta name="Description" content="DAX in ext2 filesystem"><meta property="og:title" content="DAX in ext2 filesystem" />
+<meta property="og:description" content="DAX in ext2 filesystem" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/ext2-dax/" /><meta property="og:image" content="https://example.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-01-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-01-24T00:00:00+00:00" /><meta property="og:site_name" content="Xing Lin" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="DAX in ext2 filesystem"/>
+<meta name="twitter:description" content="DAX in ext2 filesystem"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/ext2-dax/" /><link rel="prev" href="https://example.com/making-databases-work/" /><link rel="next" href="https://example.com/global-garbage-collection/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "DAX in ext2 filesystem",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/ext2-dax\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/example.com\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "engineering, linux, source code, ext2, dax","wordcount":  672 ,
+        "url": "https:\/\/example.com\/ext2-dax\/","datePublished": "2019-01-24T00:00:00+00:00","dateModified": "2019-01-24T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/example.com\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "Xing Lin"
+            },"description": "DAX in ext2 filesystem"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Xing Lin">Hello, World</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/publications/"> Publications </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/xinglin" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Xing Lin">Hello, World</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/publications/" title="">Publications</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/xinglin" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">DAX in ext2 filesystem</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2019-01-24">2019-01-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;672 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/ext2-dax/" class="leancloud_visitors" data-flag-title="DAX in ext2 filesystem">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#msync-syscall">msync syscall</a></li>
+        <li><a href="#nvdimm-driver">nvdimm driver</a></li>
+        <li><a href="#ext2">ext2</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="msync-syscall">msync syscall</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/mm/msync.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/ * MS_SYNC syncs the entire file - including mappings. */
+</span></span><span class="line"><span class="cl">SYSCALL_DEFINE3(msync, unsigned long, start, size_t, len, int, flags)
+</span></span><span class="line"><span class="cl">    vfs_fsync_range(file, fstart, fend, 1);
+</span></span><span class="line"><span class="cl">        file-&gt;f_op-&gt;fsync(file, start, end, datasync);
+</span></span><span class="line"><span class="cl">        == ext2_fsync();
+</span></span><span class="line"><span class="cl">            generic_file_fsync(file, start, end, datasync);
+</span></span><span class="line"><span class="cl">                __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync)
+</span></span><span class="line"><span class="cl">                    file_write_and_wait_range(file, start, end);
+</span></span><span class="line"><span class="cl">                        __filemap_fdatawrite_range(mapping, lstart, lend, WB_SYNC_ALL);
+</span></span><span class="line"><span class="cl">                            do_writepages(mapping, &amp;wbc);
+</span></span><span class="line"><span class="cl">                                mapping-&gt;a_ops-&gt;writepages(mapping, wbc);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ext2_dax_writepages()
+</span></span><span class="line"><span class="cl">    dax_writeback_mapping_range(mapping, mapping-&gt;host-&gt;i_sb-&gt;s_bdev, wbc);
+</span></span><span class="line"><span class="cl">        dax_writeback_one(&amp;xas, dax_dev, mapping, entry);
+</span></span><span class="line"><span class="cl">            dax_flush(dax_dev, page_address(pfn_to_page(pfn)), size);
+</span></span><span class="line"><span class="cl">                arch_wb_cache_pmem(addr, size);
+</span></span><span class="line"><span class="cl">                    clean_cache_range(addr, size);
+</span></span><span class="line"><span class="cl">                        for (p = (void *)((unsigned long)addr &amp; ~clflush_mask); p &lt; vend; p += x86_clflush_size)
+</span></span><span class="line"><span class="cl">                            clwb(p);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static const struct address_space_operations ext2_dax_aops = {
+</span></span><span class="line"><span class="cl">	.writepages		= ext2_dax_writepages,
+</span></span><span class="line"><span class="cl">	.direct_IO		= noop_direct_IO,
+</span></span><span class="line"><span class="cl">	.set_page_dirty		= noop_set_page_dirty,
+</span></span><span class="line"><span class="cl">	.invalidatepage		= noop_invalidatepage,
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">void ext2_set_file_ops(struct inode *inode)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">	inode-&gt;i_op = &amp;ext2_file_inode_operations;
+</span></span><span class="line"><span class="cl">	inode-&gt;i_fop = &amp;ext2_file_operations;
+</span></span><span class="line"><span class="cl">	if (IS_DAX(inode))
+</span></span><span class="line"><span class="cl">		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_dax_aops;
+</span></span><span class="line"><span class="cl">	else if (test_opt(inode-&gt;i_sb, NOBH))
+</span></span><span class="line"><span class="cl">		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_nobh_aops;
+</span></span><span class="line"><span class="cl">	else
+</span></span><span class="line"><span class="cl">		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_aops;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="nvdimm-driver">nvdimm driver</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/drivers/nvdimm/pmem.h
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/drivers/nvdimm/pmem.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pmem_dax_direct_access()
+</span></span><span class="line"><span class="cl">    __pmem_direct_access()
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pmem_copy_from_iter()
+</span></span><span class="line"><span class="cl">    copy_from_iter_flushcache(addr, bytes, i);
+</span></span><span class="line"><span class="cl">        _copy_from_iter_flushcache(addr, bytes, i);
+</span></span><span class="line"><span class="cl">            iterate_and_advance(i, bytes, v,
+</span></span><span class="line"><span class="cl">                __copy_from_user_flushcache((to += v.iov_len) - v.iov_len,
+</span></span><span class="line"><span class="cl">                    v.iov_base, v.iov_len),
+</span></span><span class="line"><span class="cl">                memcpy_page_flushcache((to += v.bv_len) - v.bv_len, v.bv_page,
+</span></span><span class="line"><span class="cl">                    v.bv_offset, v.bv_len),
+</span></span><span class="line"><span class="cl">                memcpy_flushcache((to += v.iov_len) - v.iov_len, v.iov_base,
+</span></span><span class="line"><span class="cl">                    v.iov_len)
+</span></span><span class="line"><span class="cl">            )
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pmem_rw_page(struct block_device *bdev, sector_t sector, struct page *page, unsigned int op);
+</span></span><span class="line"><span class="cl">    pmem_do_bvec(pmem, page, hpage_nr_pages(page) * PAGE_SIZE, 0, op, sector);
+</span></span><span class="line"><span class="cl">        if (!op_is_write(op)) {
+</span></span><span class="line"><span class="cl">            read_pmem(page, off, pmem_addr, len);
+</span></span><span class="line"><span class="cl">            flush_dcache_page(page);
+</span></span><span class="line"><span class="cl">        } else {
+</span></span><span class="line"><span class="cl">            flush_dcache_page(page);
+</span></span><span class="line"><span class="cl">            write_pmem(pmem_addr, page, off, len);
+</span></span><span class="line"><span class="cl">        }  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">write_pmem()
+</span></span><span class="line"><span class="cl">    memcpy_flushcache()
+</span></span><span class="line"><span class="cl">        __memcpy_flushcache(dst, src, cnt);
+</span></span><span class="line"><span class="cl">            /* assembly code ... */
+</span></span><span class="line"><span class="cl">            while (size &gt;= 32) {
+</span></span><span class="line"><span class="cl">                asm(&#34;movq    (%0), %%r8\n&#34;
+</span></span><span class="line"><span class="cl">                &#34;movq   8(%0), %%r9\n&#34;
+</span></span><span class="line"><span class="cl">                &#34;movq  16(%0), %%r10\n&#34;
+</span></span><span class="line"><span class="cl">                &#34;movq  24(%0), %%r11\n&#34;
+</span></span><span class="line"><span class="cl">                &#34;movnti  %%r8,   (%1)\n&#34;
+</span></span><span class="line"><span class="cl">                &#34;movnti  %%r9,  8(%1)\n&#34;
+</span></span><span class="line"><span class="cl">				...
+</span></span><span class="line"><span class="cl">                :: &#34;r&#34; (source), &#34;r&#34; (dest)
+</span></span><span class="line"><span class="cl">                : &#34;memory&#34;, &#34;r8&#34;, &#34;r9&#34;, &#34;r10&#34;, &#34;r11&#34;);
+</span></span><span class="line"><span class="cl">                dest += 32;
+</span></span><span class="line"><span class="cl">                source += 32;
+</span></span><span class="line"><span class="cl">                size -= 32;
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static void write_pmem(void *pmem_addr, struct page *page,
+</span></span><span class="line"><span class="cl">		unsigned int off, unsigned int len)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">	unsigned int chunk;
+</span></span><span class="line"><span class="cl">	void *mem;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	while (len) {
+</span></span><span class="line"><span class="cl">		mem = kmap_atomic(page);
+</span></span><span class="line"><span class="cl">		chunk = min_t(unsigned int, len, PAGE_SIZE);
+</span></span><span class="line"><span class="cl">		memcpy_flushcache(pmem_addr, mem + off, chunk);
+</span></span><span class="line"><span class="cl">		kunmap_atomic(mem);
+</span></span><span class="line"><span class="cl">		len -= chunk;
+</span></span><span class="line"><span class="cl">		off = 0;
+</span></span><span class="line"><span class="cl">		page++;
+</span></span><span class="line"><span class="cl">		pmem_addr += PAGE_SIZE;
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static blk_status_t read_pmem(struct page *page, unsigned int off,
+</span></span><span class="line"><span class="cl">		void *pmem_addr, unsigned int len)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">	unsigned int chunk;
+</span></span><span class="line"><span class="cl">	unsigned long rem;
+</span></span><span class="line"><span class="cl">	void *mem;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	while (len) {
+</span></span><span class="line"><span class="cl">		mem = kmap_atomic(page);
+</span></span><span class="line"><span class="cl">		chunk = min_t(unsigned int, len, PAGE_SIZE);
+</span></span><span class="line"><span class="cl">		rem = memcpy_mcsafe(mem + off, pmem_addr, chunk);
+</span></span><span class="line"><span class="cl">		kunmap_atomic(mem);
+</span></span><span class="line"><span class="cl">		if (rem)
+</span></span><span class="line"><span class="cl">			return BLK_STS_IOERR;
+</span></span><span class="line"><span class="cl">		len -= chunk;
+</span></span><span class="line"><span class="cl">		off = 0;
+</span></span><span class="line"><span class="cl">		page++;
+</span></span><span class="line"><span class="cl">		pmem_addr += PAGE_SIZE;
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">	return BLK_STS_OK;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static const struct block_device_operations pmem_fops = {
+</span></span><span class="line"><span class="cl">	.owner =		THIS_MODULE,
+</span></span><span class="line"><span class="cl">	.rw_page =		pmem_rw_page,
+</span></span><span class="line"><span class="cl">	.revalidate_disk =	nvdimm_revalidate_disk,
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static const struct dax_operations pmem_dax_ops = {
+</span></span><span class="line"><span class="cl">	.direct_access = pmem_dax_direct_access,
+</span></span><span class="line"><span class="cl">	.copy_from_iter = pmem_copy_from_iter,
+</span></span><span class="line"><span class="cl">	.copy_to_iter = pmem_copy_to_iter,
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="ext2">ext2</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># /fs/ext2/file.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ext2_file_read_iter()
+</span></span><span class="line"><span class="cl">    ext2_dax_read_iter()
+</span></span><span class="line"><span class="cl">        dax_iomap_rw();
+</span></span><span class="line"><span class="cl">            iomap_apply();
+</span></span><span class="line"><span class="cl">                dax_iomap_actor();
+</span></span><span class="line"><span class="cl">                    dax_direct_access();
+</span></span><span class="line"><span class="cl">                    dax_copy_from_iter();
+</span></span><span class="line"><span class="cl">                    dax_copy_to_iter();
+</span></span><span class="line"><span class="cl">                        dax_dev-&gt;ops-&gt;copy_from_iter(dax_dev, pgoff, addr, bytes, i);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static const struct vm_operations_struct ext2_dax_vm_ops = {
+</span></span><span class="line"><span class="cl">	.fault		= ext2_dax_fault,
+</span></span><span class="line"><span class="cl">	/*
+</span></span><span class="line"><span class="cl">	 * .huge_fault is not supported for DAX because allocation in ext2
+</span></span><span class="line"><span class="cl">	 * cannot be reliably aligned to huge page sizes and so pmd faults
+</span></span><span class="line"><span class="cl">	 * will always fail and fail back to regular faults.
+</span></span><span class="line"><span class="cl">	 */
+</span></span><span class="line"><span class="cl">	.page_mkwrite	= ext2_dax_fault,
+</span></span><span class="line"><span class="cl">	.pfn_mkwrite	= ext2_dax_fault,
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static int ext2_file_mmap(struct file *file, struct vm_area_struct *vma)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">	if (!IS_DAX(file_inode(file)))
+</span></span><span class="line"><span class="cl">		return generic_file_mmap(file, vma);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	file_accessed(file);
+</span></span><span class="line"><span class="cl">	vma-&gt;vm_ops = &amp;ext2_dax_vm_ops;
+</span></span><span class="line"><span class="cl">	return 0;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-01-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/ext2-dax/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://example.com/ext2-dax/" data-title="DAX in ext2 filesystem" data-hashtags="engineering,linux,source code,ext2,dax"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://example.com/ext2-dax/" data-hashtag="engineering"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://example.com/ext2-dax/" data-title="DAX in ext2 filesystem"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://example.com/ext2-dax/" data-title="DAX in ext2 filesystem"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://example.com/ext2-dax/" data-title="DAX in ext2 filesystem"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a>,&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/source-code/">source code</a>,&nbsp;<a href="/tags/ext2/">ext2</a>,&nbsp;<a href="/tags/dax/">dax</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/making-databases-work/" class="prev" rel="prev" title="Wisdom from Michael Stonebraker"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Wisdom from Michael Stonebraker</a>
+            <a href="/global-garbage-collection/" class="next" rel="next" title="Coordinating Garbage Collection for Arrays of Solid-State Drives">Coordinating Garbage Collection for Arrays of Solid-State Drives<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

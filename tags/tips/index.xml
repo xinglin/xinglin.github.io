@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>tips - Tag - Xing Lin</title>
+        <link>https://example.com/tags/tips/</link>
+        <description>tips - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/tips/" rel="self" type="application/rss+xml" /><item>
+    <title>Use Options File for Benchmarking RocksDB using YCSB</title>
+    <link>https://example.com/ycsb-rocksdb-options/</link>
+    <pubDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/ycsb-rocksdb-options/</guid>
+    <description><![CDATA[In YCSB, we can also use the options file (-p rocksdb.optionsfile=/tmp/ycsb-options.ini, e.g.,) to configure the options for RocksDB. However, for a new user, it is actually not easy to figure out what needs to be configured for RocksDB for YCSB. Here is a quick way to get it start.
+Use the ycsb tool to load a rocksdb without specifying the options.
+$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data  Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.]]></description>
+</item>
+</channel>
+</rss>

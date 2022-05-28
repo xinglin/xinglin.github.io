@@ -1,0 +1,176 @@
+# SPDK on Intel Optane and Samsung ZSSD
+
+
+Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
+
+# Intel Optane SSD  
+| Metric | SPDK    | /dev/nvme1n1 |
+|--------|---------|-------------|
+| IOPS   | 150 K  | 66.1 K      |
+| slat   | 0.13 usec | 2.8 usec |
+| clat   | 6.2 usec| 11.4 usec|
+| lat    | 6.35 usec| 14.32 usec|
+
+# Samsung ZSSD  
+| Metric | SPDK    | /dev/nvme0n1 |
+|--------|---------|-------------|
+| IOPS   | 73.9 K  | 46.2 K      |
+| slat   | 0.14 usec | 3.2 usec |
+| clat   | 13.0 usec| 17.4 usec|
+| lat    | 13.12 usec| 20.73 usec|
+
+
+slat: average submission latency  
+clat: the time between submission to the kernel and when the IO is complete  
+lat: total IO latency   
+
+Fio output:
+
+* SPDK on Intel Optane SSD
+
+        xing@atg-s-holder:~/w/spdk/examples/nvme/fio_plugin$ sudo LD_PRELOAD=/home/xing/w/spdk/examples/nvme/fio_plugin/fio_plugin /home/xing/w/fio/fio /home/xing/w/spdk/examples/nvme/fio_plugin/example_config.fio
+        test: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=spdk,iodepth=1
+        fio-3.3
+        Starting 1 thread
+        Starting SPDK v18.07-pre / DPDK 18.02.0 initialization...
+        [ DPDK EAL parameters: fio -c 0x1 -m 512 --file-prefix=spdk_pid25303 ]
+        EAL: Detected 32 lcore(s)
+        EAL: Multi-process socket /var/run/.spdk_pid25303_unix
+        EAL: Probing VFIO support...
+        EAL: PCI device 0000:81:00.0 on NUMA socket 1
+        EAL:   probe driver: 8086:2701 spdk_nvme
+        Jobs: 1 (f=1): [r(1)][100.0%][r=587MiB/s,w=0KiB/s][r=150k,w=0 IOPS][eta 00m:00s]
+        test: (groupid=0, jobs=1): err= 0: pid=25339: Thu May 10 21:47:08 2018
+            read: IOPS=150k, BW=587MiB/s (615MB/s)(68.8GiB/120000msec)
+            slat (nsec): min=121, max=515336, avg=130.59, stdev=126.80
+            clat (nsec): min=137, max=821212, avg=6217.80, stdev=1214.79
+            lat (usec): min=5, max=821, avg= 6.35, stdev= 1.22
+            clat percentiles (nsec):
+                |  1.00th=[ 5984],  5.00th=[ 6048], 10.00th=[ 6048], 20.00th=[ 6048],
+                | 30.00th=[ 6048], 40.00th=[ 6112], 50.00th=[ 6112], 60.00th=[ 6112],
+                | 70.00th=[ 6176], 80.00th=[ 6176], 90.00th=[ 6240], 95.00th=[ 6304],
+                | 99.00th=[ 7392], 99.50th=[14784], 99.90th=[30592], 99.95th=[33024],
+                | 99.99th=[35072]
+            bw (  KiB/s): min=597485, max=602936, per=99.99%, avg=600786.28, stdev=973.76, samples=239
+            iops        : min=149373, max=150734, avg=150196.54, stdev=243.53, samples=239
+            lat (nsec)   : 250=0.01%, 500=0.01%
+            lat (usec)   : 2=0.01%, 4=0.01%, 10=99.29%, 20=0.57%, 50=0.14%
+            lat (usec)   : 100=0.01%, 250=0.01%, 1000=0.01%
+            cpu          : usr=100.01%, sys=0.07%, ctx=11458, majf=0, minf=3110
+            IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+                submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                issued rwt: total=18026026,0,0, short=0,0,0, dropped=0,0,0
+                latency   : target=0, window=0, percentile=100.00%, depth=1
+            Run status group 0 (all jobs):
+                READ: bw=587MiB/s (615MB/s), 587MiB/s-587MiB/s (615MB/s-615MB/s), io=68.8GiB (73.8GB), run=120000-120000msec
+
+* Linux block device on Intel Optane SSD
+
+        xing@atg-s-holder:~/w/spdk/examples/nvme/fio_plugin$ sudo ~/w/fio/fio example_config-nvme.fio
+        test: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+        fio-3.3
+        Starting 1 thread
+        Jobs: 1 (f=1): [r(1)][100.0%][r=261MiB/s,w=0KiB/s][r=66.9k,w=0 IOPS][eta 00m:00s]
+        test: (groupid=0, jobs=1): err= 0: pid=26385: Thu May 10 21:56:17 2018
+            read: IOPS=66.1k, BW=258MiB/s (271MB/s)(30.3GiB/120001msec)
+            slat (nsec): min=1836, max=120042, avg=2817.72, stdev=926.54
+            clat (nsec): min=832, max=190920, avg=11409.63, stdev=1911.75
+            lat (usec): min=10, max=194, avg=14.32, stdev= 2.33
+            clat percentiles (nsec):
+                |  1.00th=[10560],  5.00th=[10688], 10.00th=[10816], 20.00th=[10944],
+                | 30.00th=[10944], 40.00th=[11072], 50.00th=[11072], 60.00th=[11200],
+                | 70.00th=[11200], 80.00th=[11456], 90.00th=[11968], 95.00th=[12352],
+                | 99.00th=[23168], 99.50th=[24192], 99.90th=[36608], 99.95th=[39168],
+                | 99.99th=[48384]
+            bw (  KiB/s): min=253128, max=272792, per=100.00%, avg=264530.47, stdev=3153.35, samples=239
+            iops        : min=63282, max=68198, avg=66132.56, stdev=788.38, samples=239
+            lat (nsec)   : 1000=0.01%
+            lat (usec)   : 2=0.07%, 4=0.01%, 10=0.04%, 20=98.55%, 50=1.33%
+            lat (usec)   : 100=0.01%, 250=0.01%
+            cpu          : usr=20.80%, sys=33.21%, ctx=7935851, majf=0, minf=2373
+            IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+                submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                issued rwt: total=7935937,0,0, short=0,0,0, dropped=0,0,0
+                latency   : target=0, window=0, percentile=100.00%, depth=1
+
+        Run status group 0 (all jobs):
+            READ: bw=258MiB/s (271MB/s), 258MiB/s-258MiB/s (271MB/s-271MB/s), io=30.3GiB (32.5GB), run=120001-120001msec
+
+        Disk stats (read/write):
+            nvme1n1: ios=7926469/0, merge=0/0, ticks=63604/0, in_queue=63600, util=53.03%  
+* SPDK on Samsung ZSSD
+
+        root@atg-s-holder:/home/xing/w# LD_PRELOAD=/home/xing/w/spdk/examples/nvme/fio_plugin/fio_plugin /home/xing/w/fio/fio /home/xing/w/spdk/examples/nvme/fio_plugin/example_config.fio
+        test: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=spdk, iodepth=1
+        fio-3.3
+        Starting 1 thread
+        Starting SPDK v18.07-pre / DPDK 18.02.0 initialization...
+        [ DPDK EAL parameters: fio -c 0x1 -m 512 --file-prefix=spdk_pid29210 ]
+        EAL: Detected 32 lcore(s)
+        EAL: Multi-process socket /var/run/.spdk_pid29210_unix
+        EAL: Probing VFIO support...
+        EAL: PCI device 0000:03:00.0 on NUMA socket 0
+        EAL:   probe driver: 144d:a808 spdk_nvme
+        Jobs: 1 (f=0): [f(1)][100.0%][r=0KiB/s,w=0KiB/s][r=0,w=0 IOPS][eta 00m:00s]
+        test: (groupid=0, jobs=1): err= 0: pid=29246: Fri May 11 10:12:19 2018
+            read: IOPS=73.9k, BW=289MiB/s (303MB/s)(33.8GiB/120001msec)
+            slat (nsec): min=122, max=520336, avg=135.33, stdev=176.83
+            clat (nsec): min=467, max=253260, avg=12983.33, stdev=1533.86
+            lat (usec): min=10, max=531, avg=13.12, stdev= 1.54
+            clat percentiles (nsec):
+                |  1.00th=[11328],  5.00th=[11328], 10.00th=[11456], 20.00th=[11584],
+                | 30.00th=[11712], 40.00th=[12224], 50.00th=[12480], 60.00th=[12992],
+                | 70.00th=[14016], 80.00th=[14272], 90.00th=[15040], 95.00th=[15552],
+                | 99.00th=[17280], 99.50th=[17792], 99.90th=[18048], 99.95th=[18304],
+                | 99.99th=[23936]
+            bw (  KiB/s): min=291192, max=310600, per=99.99%, avg=295456.21, stdev=1192.19, samples=239
+            iops        : min=72798, max=77650, avg=73864.03, stdev=298.06, samples=239
+            lat (nsec)   : 500=0.01%
+            lat (usec)   : 4=0.01%, 10=0.01%, 20=99.98%, 50=0.02%, 100=0.01%
+            lat (usec)   : 250=0.01%, 500=0.01%
+            cpu          : usr=100.03%, sys=0.05%, ctx=10288, majf=0, minf=3147
+            IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+                submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                issued rwt: total=8864745,0,0, short=0,0,0, dropped=0,0,0
+                latency   : target=0, window=0, percentile=100.00%, depth=1
+
+        Run status group 0 (all jobs):
+            READ: bw=289MiB/s (303MB/s), 289MiB/s-289MiB/s (303MB/s-303MB/s), io=33.8GiB (36.3GB), run=120001-120001msec
+* Linux block device on Samsung ZSSD
+
+        root@atg-s-holder:/home/xing/w# fio/fio spdk/examples/nvme/fio_plugin/example_config-nvme.fio
+        test: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+        fio-3.3
+        Starting 1 thread
+        Jobs: 1 (f=1): [r(1)][100.0%][r=178MiB/s,w=0KiB/s][r=45.7k,w=0 IOPS][eta 00m:00s]
+        test: (groupid=0, jobs=1): err= 0: pid=28392: Fri May 11 10:03:51 2018
+            read: IOPS=46.2k, BW=180MiB/s (189MB/s)(21.1GiB/120001msec)
+            slat (nsec): min=1238, max=190574, avg=3201.31, stdev=744.78
+            clat (nsec): min=569, max=198982, avg=17433.56, stdev=1273.69
+            lat (usec): min=14, max=210, avg=20.73, stdev= 1.63
+            clat percentiles (nsec):
+                |  1.00th=[13632],  5.00th=[14912], 10.00th=[17024], 20.00th=[17024],
+                | 30.00th=[17024], 40.00th=[17280], 50.00th=[17280], 60.00th=[17536],
+                | 70.00th=[17792], 80.00th=[18048], 90.00th=[18560], 95.00th=[18816],
+                | 99.00th=[19072], 99.50th=[19328], 99.90th=[30848], 99.95th=[32384],
+                | 99.99th=[34048]
+            bw (  KiB/s): min=176168, max=250320, per=100.00%, avg=184649.87, stdev=11443.77, samples=239
+            iops        : min=44042, max=62580, avg=46162.46, stdev=2860.95, samples=239
+            lat (nsec)   : 750=0.02%, 1000=0.01%
+            lat (usec)   : 2=0.01%, 4=0.01%, 10=0.02%, 20=99.58%, 50=0.36%
+            lat (usec)   : 100=0.01%, 250=0.01%
+            cpu          : usr=16.37%, sys=26.77%, ctx=5541994, majf=0, minf=9582
+            IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+                submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+                issued rwt: total=5538757,0,0, short=0,0,0, dropped=0,0,0
+                latency   : target=0, window=0, percentile=100.00%, depth=1
+
+        Run status group 0 (all jobs):
+            READ: bw=180MiB/s (189MB/s), 180MiB/s-180MiB/s (189MB/s-189MB/s), io=21.1GiB (22.7GB), run=120001-120001msec
+
+        Disk stats (read/write):
+            nvme0n1: ios=5532325/0, merge=0/0, ticks=74680/0, in_queue=74680, util=62.34%

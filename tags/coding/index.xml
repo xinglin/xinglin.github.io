@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>coding - Tag - Xing Lin</title>
+        <link>https://example.com/tags/coding/</link>
+        <description>coding - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/coding/" rel="self" type="application/rss+xml" /><item>
+    <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
+    <link>https://example.com/prefix-vs-postfix/</link>
+    <pubDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/prefix-vs-postfix/</guid>
+    <description><![CDATA[The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
+The authors shared the following in their book.
+ The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
+For ints and pointers, the compiler can optimize away this extra work.]]></description>
+</item>
+<item>
+    <title>Lines of Code for Various Software</title>
+    <link>https://example.com/loc/</link>
+    <pubDate>Tue, 20 Nov 2018 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/loc/</guid>
+    <description><![CDATA[Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.]]></description>
+</item>
+</channel>
+</rss>

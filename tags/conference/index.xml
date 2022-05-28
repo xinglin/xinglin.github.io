@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>conference - Tag - Xing Lin</title>
+        <link>https://example.com/tags/conference/</link>
+        <description>conference - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 07 Dec 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/conference/" rel="self" type="application/rss+xml" /><item>
+    <title>AWS re:Invent 2018 tidbits</title>
+    <link>https://example.com/reinvent2018-tidbits/</link>
+    <pubDate>Fri, 07 Dec 2018 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/reinvent2018-tidbits/</guid>
+    <description><![CDATA[Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)   Supports Postgre 9.6/10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data. Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements.]]></description>
+</item>
+<item>
+    <title>AWS re:Invent 2018</title>
+    <link>https://example.com/reinvent2018/</link>
+    <pubDate>Mon, 03 Dec 2018 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/reinvent2018/</guid>
+    <description><![CDATA[I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks.]]></description>
+</item>
+<item>
+    <title>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</title>
+    <link>https://example.com/atc18-best-practice/</link>
+    <pubDate>Wed, 11 Apr 2018 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/atc18-best-practice/</guid>
+    <description><![CDATA[I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions. To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.]]></description>
+</item>
+</channel>
+</rss>

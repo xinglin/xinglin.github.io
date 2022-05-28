@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Transaction - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Transaction" />
+<meta property="og:description" content="The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
+   Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/transaction/" /><meta property="og:image" content="https://example.com/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-09-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-27T00:00:00+00:00" /><meta property="og:site_name" content="Xing Lin" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/logo.png"/>
+
+<meta name="twitter:title" content="Transaction"/>
+<meta name="twitter:description" content="The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
+   Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/transaction/" /><link rel="prev" href="https://example.com/hit-the-road/" /><link rel="next" href="https://example.com/postgres-tid-wraparound/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Transaction",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/transaction\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/example.com\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "note, transaction, acid","wordcount":  2317 ,
+        "url": "https:\/\/example.com\/transaction\/","datePublished": "2020-09-27T00:00:00+00:00","dateModified": "2020-09-27T00:00:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/example.com\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "Xing Lin"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Xing Lin">Hello, World</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/publications/"> Publications </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/xinglin" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Xing Lin">Hello, World</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/publications/" title="">Publications</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/xinglin" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Transaction</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-09-27">2020-09-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2317 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;<span id="/transaction/" class="leancloud_visitors" data-flag-title="Transaction">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#optimistic-concurrency-control">Optimistic Concurrency Control</a></li>
+    <li><a href="#improved-conflict-resolution-for-optimisic-concurrency-control">Improved Conflict Resolution for optimisic concurrency control</a></li>
+    <li><a href="#timestamp-based-concurrency-control">Timestamp-Based Concurrency Control</a></li>
+    <li><a href="#multiversion-concurrency-control">Multiversion Concurrency Control</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability.
+The purpose of transactions is to maintain data in the face of concurrent access and system failures.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Property</th>
+<th style="text-align:center">Definition</th>
+<th style="text-align:center">Technique to achieve that property</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Atomicity</td>
+<td style="text-align:center">A transaction either succeeds or fails as a single operation.</td>
+<td style="text-align:center">Undo log</td>
+</tr>
+<tr>
+<td style="text-align:center">Consistency</td>
+<td style="text-align:center">A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.</td>
+<td style="text-align:center">Relies on the other three properties.</td>
+</tr>
+<tr>
+<td style="text-align:center">Isolation</td>
+<td style="text-align:center">Each transaction should be executed as if it was the only transaction that is running. Transactions are isolated and are not aware of each other. Allowing concurrent transactions.</td>
+<td style="text-align:center">2-phase locking or MVCC</td>
+</tr>
+<tr>
+<td style="text-align:center">Durability</td>
+<td style="text-align:center">Writes made to the database will survive system failures.</td>
+<td style="text-align:center">Redo log</td>
+</tr>
+</tbody>
+</table>
+<h1 id="database-management-systems">Database Management Systems</h1>
+<p>The following content was selected from chapter 17, Transactions.</p>
+<ul>
+<li>Strict Two-Phase Locking (Strict 2PL)</li>
+</ul>
+<blockquote>
+<p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests
+a shared (respectively, exclusive) lock on the object.<br>
+Rule 2. All locks held by a transaction are released <strong>when the transaction is completed</strong>.</p>
+<p>If two transactions access the same object, and one wants to modify it, their actions are
+effectively ordered serially: all actions of one of these transactions (the one that gets
+the lock on the common object first) are completed before (this lock is released and) the
+other transaction can proceed.</p>
+</blockquote>
+<ul>
+<li>Two-Phase Locking (2PL)</li>
+</ul>
+<blockquote>
+<p>Rule 1. If a transaction T wants to read (respectively, modify) an object, it first requests
+a shared (respectively, exclusive) lock on the object (same as strict 2PL).<br>
+Rule 2. <strong>A transaction cannot request additional locks once it releases any lock</strong>.</p>
+</blockquote>
+<ul>
+<li>Recovery Manager</li>
+</ul>
+<blockquote>
+<p>The recovery manager of a DBMS is responsible for ensuring transaction atomicity and
+durability. It ensures atomicity by undoing the actions of transactions that do not commit,
+and durability by making sure that all actions of committed transactions survive systenl
+crashes, (e.g., a core dump caused by a bus error) and media failures (e.g., a disk is
+corrupted).</p>
+</blockquote>
+<ul>
+<li>Lock Implementation in DBMS</li>
+</ul>
+<blockquote>
+<p>The lock manager maintains a lock table, which is a hash table with the data object
+identifier as the key.<br>
+A lock table entry for an object &ndash; which can be a page, a record, and so on, depending on the DBMS &ndash; contains the following inforrnation: the number of transactions currently holding a. lock on the object (this can be more than one if the object is locked in shared mode), the nature of the lock (shared or exclusive), and a pointer to the queue of lock requests.</p>
+</blockquote>
+<ul>
+<li>Concurrency control in B+ Trees</li>
+</ul>
+<blockquote>
+<ol>
+<li>The higher levels of the tree only direct searches. All the &lsquo;real&rsquo; data is in the leaf levels (in the forrnat of one of the three alternatives for data entries).</li>
+<li>For inserts, a node must be locked (in exclusive rnode, of course) only if a split can propagate up to it from the modified leaf.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Searches should obtain shared locks on nodes, starting at the root and proceeding along a path to the desired leaf. The first observation suggests that a lock on a node can be released as soon as a lock on a child node is obtained, because searches never go back up the tree.</p>
+</blockquote>
+<blockquote>
+<p>A conservative locking strategy for inserts would be to obtain exclusive locks on all nodes as we go down from the root to the leaf node to be modified, because splits can propagate all the way from a leaf to the root. However, once we lock the child of a node, the lock on the node is required only in the event that a split propagates back to it. In particular, if the child of this node (on the path to the modified leaf) is not full when it is locked, any split that propagates up to the child can be resolved at the child, and does not propagate further to the current node. Therefore, when we lock a child node, we can release the lock on the parent if the child is not full. The locks held thus by an insert force any other transaction following the same path to wait at the earliest point (i.e., the node nearest the root) that might be affected by the insert. The technique of locking a child node and (if possible) releasing the lock on the parent is called lock-coupling, or crabbing (think of how a crab walks, and compare it to how we proceed down a tree, alternately releasing a lock on a parent and setting a lock on a child).</p>
+</blockquote>
+<h1 id="concurrency-control-without-locking">Concurrency Control Without Locking</h1>
+<h2 id="optimistic-concurrency-control">Optimistic Concurrency Control</h2>
+<pre><code>* pessimistic: lock-based approach, 2PL
+* optimistic: do not use locks. Read-Validation-Write
+</code></pre>
+<blockquote>
+<p>Optimistic concurrent control:</p>
+<ol>
+<li>Read: The transaction executes, reading values from the database and writing to a private workspace.</li>
+<li>Validation: If the transaction decides that it wants to commit, the DBMS checks whether the transaction could possibly have conflicted with any other concurrently executing transaction. If there is a possible conflict, the transaction is aborted; its private workspace is cleared and it is restarted.</li>
+<li>Write: If validation determines that there are no possible conflicts, the changes to data objects made by the transaction in its private workspace are copied into the database.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Each transaction Ti is assigned a timstamp TS(Ti) at the beginning of its validation phase, and the validation criterion checks whether the timestamp ordering of transactions is an equivalent serial order. For every pair of transac-tions Ti and Tj such that TS(Ti) &lt; TS(Tj), one of the following validation conditions must hold:</p>
+<ol>
+<li>Ti completes (all three phases) before Tj begins.</li>
+<li>Ti completes before Tj starts its Write phase, and Ti does not write any
+database object read by Tj.</li>
+<li>Ti completes its Read phase before Tj completes its Read phase, and Ti
+does not write any database object that is either read or written by Tj.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>To validate Tj, we must check to see that one of these conditions holds with respect to each comlnitted transaction Ti such that TS(Ti) &lt; TS(Tj). Each of these conditions ensures that Tj&rsquo;s modifications are not visible to Ti.</p>
+</blockquote>
+<blockquote>
+<p>Further, the first condition allows T j to see some of Ti&rsquo;s changes, but clearly, they execute completely in serial order with respect to each other. The second condition allows Tj to read objects while Ti is still modifying objects, but there is no conflict because Tj does not read any object modified by Ti. Although Tj might overwrite some objects written by Ti, all of Ti&rsquo;s writes precede all of Tj&rsquo;s writes. The third condition allows Ti and Tj to write objects at the same time and thus have even more overlap in time than the second condition, but the sets of objects written by the two transactions cannot overlap. Thus, no RW, WR, or WW conflicts are possible if any of these three conditions is met.</p>
+</blockquote>
+<blockquote>
+<p>Checking these validation criteria requires us to maintain lists of objects read and written by each transaction. Further, while one transaction is being validated, no other transaction can be allowed to commit; otherwise, the validation of the first transaction might miss conflicts with respect to the newly committed transaction. The Write phase of a validated transaction must also be completed (so that its effects are visible outside its private workspace) before other transactions can be validated.
+A synchronization mechanism such as a critical section can be used to ensure that at most one transaction is in its (combined) Validation/Write phases at any time.</p>
+</blockquote>
+<blockquote>
+<p>Clearly, it is not the case that optimistic concurrency control has no overheads; rather, the locking overheads of lock-based approaches are replaced with the overheads of recording read-lists and write-lists for transactions, checking for conflicts, and copying changes from the private workspace. Similarly, the implicit cost of blocking in a lock-based approach is replaced by the implicit cost of the work wasted by restarted transactions.</p>
+</blockquote>
+<h2 id="improved-conflict-resolution-for-optimisic-concurrency-control">Improved Conflict Resolution for optimisic concurrency control</h2>
+<p>problem: If Ti writes all data items required by Tj before Tj reads them, we can still commit Tj. But basic optimistic concurrency control does not permit this. We don&rsquo;t know when Ti wrote the object at the time when we validate Tj, because we only have a list of read/write objects by Ti (without recording their timestamps).</p>
+<p>Details workflow is as following.</p>
+<blockquote>
+<p>Before reading a data item, a transaction enters an access entry in a hash table. The access entry contains the transaction id, a data object id, and a modified flag (initially set to false), and entries are hashed on the data object id. A temporary exclusive lock is obtained on the
+hash bucket containing the entry, and the lock is held while the read data item is copied from the database buffer into the private workspace of the transaction.</p>
+</blockquote>
+<blockquote>
+<p>During validation of T, the hash buckets of all data objects accessed by T are again locked (in exclusive mode) to check if T has encountered any data conflicts. T has encountered a conflict if the modified flag is set to true in one of its access entries. (This assumes that the &lsquo;die&rsquo; policy is being used; if the &lsquo;kill&rsquo; policy is used, T is restarted when the flag is set to true.)
+If T is successfully validated, we lock the hash bucket of each object modified by T, retrieve all access entries for this object (some of these entries could be added by other transactions), set the modified flag to true, and release the lock on the bucket. If the &lsquo;kill&rsquo; policy is used, the transactions that entered these access entries are restarted. We then complete T&rsquo;s Write phase.</p>
+</blockquote>
+<h2 id="timestamp-based-concurrency-control">Timestamp-Based Concurrency Control</h2>
+<p>This is not MVCC. Each object has a single copy. However, <strong>this protocol may permit schedules that are not recoverable. Use MVCC instead.</strong></p>
+<blockquote>
+<p>Each transaction can be assigned a timestamp at startup, and we can ensure, at execution time, that if action a_i of transaction Ti conflicts with action a_j of transaction Tj, a_i occurs before a_j if TS(Ti) &lt; TS(Tj). If an action violates this ordering, the transaction is aborted and restarted.
+To implernent this concurrency control scheme, every database object O is given a read timestamp RTS(O) and a write timestamp WTS(O). If a transaction T wants to read object O, and TS(T) &lt; WTS(O), the order of this read with respect to the most recent write on O would violate the timestamp order between this transaction and the writer. Therefore, T is aborted and restarted with a new, larger timestamp. If TS(T) &gt; WTS(O), T reads O, and RTS(O) is set to the larger of RTS(O) and TS(T). (Note that a physical change&ndash;the change to RTS(O)-is written to disk and recorded in the log for recovery purposes, even on reads. This write operation is a significant overhead.)
+For writes, we need to check:</p>
+<ol>
+<li>If TS(T) &lt; RTS(O), the write action conflicts with the most recent read action of O, and T is therefore aborted and restarted.</li>
+<li>If TS(T) &lt; WTS(O), a naive approach would be to abort T because its write action conflicts with the most recent write of O and is out of timestamp order. However, we can safely <strong>ignore</strong> such writes and continue. Ignoring outdated writes is called the Thomas Write Rule.</li>
+<li>Otherwise, T writes O and WTS(O) is set to TS(T).</li>
+</ol>
+</blockquote>
+<h2 id="multiversion-concurrency-control">Multiversion Concurrency Control</h2>
+<blockquote>
+<p>The goal is to ensure that a transaction never has to wait to read a database object, and the idea is to maintain several versions of each database object, each with a write timestamp, and let transaction Ti read the most recent version whose timestamp precedes TS(Ti).
+If transaction Ti wants to write an object, we must ensure that the object has not already been read by some other transaction Tj such that TS (Ti) &lt; TS(Tj). If we allow Ti to write such an object, its change should be seen by Tj for serializability, but obviously Tj, which read the object at some time in the past, will not see Ti&rsquo;s change.
+To check this condition, every object also has an associated read timestarnp, and whenever a transaction reads the object, the read timestamp is set to the maximum of the current read timestamp and the reader&rsquo;s timestamp. If Ti wants to write an object O and TS(Ti) &lt; RTS(O), Ti is aborted and restarted with a new, larger timestamp. Otherwise, Ti creates a new version of O and sets the read and write timestamps of the new version to TS(Ti).</p>
+</blockquote>
+<h1 id="design-data-intensive-applications-book">Design Data-Intensive Applications book.</h1>
+<blockquote>
+<p>Isolation is the property that provides guarantees in the concurrent accesses to data. Isolation is implemented by means of a concurrency control protocol. The simplest way is to make all readers wait until the writer is done, which is known as a read-write lock. Locks are known to create contention especially between long read transactions and update transactions. MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user connected to the database sees a snapshot of the database at a particular instant in time. Any changes made by a writer will not be seen by other users of the database until the changes have been completed (or, in database terms: until the transaction has been committed.)</p>
+</blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/48327345" target="_blank" rel="noopener noreffer">知乎link</a></p>
+<blockquote>
+<p>ACD三个特性是通过Redo log（重做日志）和Undo log 实现的。 而隔离性是通过锁来实现的。<br>
+重做日志用来实现事务的持久性，即D特性.<br>
+Undo log (MySQL):</p>
+<ol>
+<li>实现事务回滚</li>
+<li>实现MVCC</li>
+</ol>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000012650596" target="_blank" rel="noopener noreffer">repeatable read vs read committed</a></p>
+<blockquote>
+<p>在innodb中(默认repeatable read级别), 事务在begin/start transaction之后的第一条select读操作后, 会创建一个快照(read view), 将当前系统中活跃的其他事务记录记录起来;
+在innodb中(默认read committed级别), 事务中每条select语句都会创建一个快照(read view);
+其中INSERT操作在事务提交前只对当前事务可见，因此产生的Undo日志可以在事务提交后直接删除（谁会对刚插入的数据有可见性需求呢！！），而对于UPDATE/DELETE则需要维护多版本信息，在InnoDB里，UPDATE和DELETE操作产生的Undo日志被归成一类，即update_undo
+在回滚段中的undo logs分为: insert undo log 和 update undo log</p>
+<ul>
+<li>insert undo log : 事务对insert新记录时产生的undolog, 只在事务回滚时需要, 并且在事务提交后就可以立即丢弃。(The new record is stored in the table itself. No need to serve reads from undo log. Undo records for insert only serve for transaction rollback. log only needs to tell when that new record was inserted so that we can determine when to undo it (remove it during rollback).)</li>
+<li>update undo log : 事务对记录进行delete和update操作时产生的undo log, 不仅在事务回滚时需要, 一致性读也需要，所以不能随便删除，只有当数据库所使用的快照中不涉及该日志记录，对应的回滚日志才会被purge线程删除</li>
+</ul>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-09-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/transaction/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://example.com/transaction/" data-title="Transaction" data-hashtags="note,transaction,acid"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://example.com/transaction/" data-hashtag="note"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://example.com/transaction/" data-title="Transaction"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://example.com/transaction/" data-title="Transaction"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://example.com/transaction/" data-title="Transaction"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/acid/">acid</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hit-the-road/" class="prev" rel="prev" title="Hit the Road iOS App"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hit the Road iOS App</a>
+            <a href="/postgres-tid-wraparound/" class="next" rel="next" title="Postgres Handling Transaction ID Wrap Around">Postgres Handling Transaction ID Wrap Around<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C/C&#43;&#43; - Tag - Xing Lin</title>
+        <link>https://example.com/tags/c/c&#43;&#43;/</link>
+        <description>C/C&#43;&#43; - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://example.com/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
+    <link>https://example.com/prefix-vs-postfix/</link>
+    <pubDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/prefix-vs-postfix/</guid>
+    <description><![CDATA[The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
+The authors shared the following in their book.
+ The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
+For ints and pointers, the compiler can optimize away this extra work.]]></description>
+</item>
+</channel>
+</rss>

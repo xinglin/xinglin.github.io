@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>postgres - Tag - Xing Lin</title>
+        <link>https://example.com/tags/postgres/</link>
+        <description>postgres - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 17 Dec 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/postgres/" rel="self" type="application/rss+xml" /><item>
+    <title>Postgres Handling Transaction ID Wrap Around</title>
+    <link>https://example.com/postgres-tid-wraparound/</link>
+    <pubDate>Thu, 17 Dec 2020 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/postgres-tid-wraparound/</guid>
+    <description><![CDATA[NOTE: OpenGauss may fix this problem.
+Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
+Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>live clone - Tag - Xing Lin</title>
+        <link>https://example.com/tags/live-clone/</link>
+        <description>live clone - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Nov 2014 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/live-clone/" rel="self" type="application/rss+xml" /><item>
+    <title>Clone a Single KVM/qemu Virtual Machine</title>
+    <link>https://example.com/clone-kvm/</link>
+    <pubDate>Wed, 26 Nov 2014 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/clone-kvm/</guid>
+    <description><![CDATA[I am working on virtual machine cloning for security testing for the TCloud project. We are looking for an efficient and transparent virtual machine cloning technique that has minimal impact on the virtual machine to be cloned. After some investigation, we found that KVM supports live snapshot for both memory and disk state while Xen4.4 currently does not support this feature yet but could be patched to do live snapshot for memory state easily.]]></description>
+</item>
+</channel>
+</rss>

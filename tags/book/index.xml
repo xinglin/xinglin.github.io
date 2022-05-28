@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>book - Tag - Xing Lin</title>
+        <link>https://example.com/tags/book/</link>
+        <description>book - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 25 Apr 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/book/" rel="self" type="application/rss+xml" /><item>
+    <title>Programming - Principles and Practice Using C&#43;&#43;</title>
+    <link>https://example.com/programming/</link>
+    <pubDate>Thu, 25 Apr 2019 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/programming/</guid>
+    <description><![CDATA[This is an introductory book about programming, written by Bjarne Stroustrup, the C++ creator.
+Quotes  Programming is (among other things) a practical skill that you need to practice to master. Learning involves repetition. You must run before you can walk! Babies really do run by themselves before they learn the finer skills of slow, controlled walking. Similarly, you will dash ahead, occasionally stumbling, to get a feel of programming before slowing down to gain the necessary finer control and understanding.]]></description>
+</item>
+<item>
+    <title>Wisdom from Michael Stonebraker</title>
+    <link>https://example.com/making-databases-work/</link>
+    <pubDate>Thu, 17 Jan 2019 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/making-databases-work/</guid>
+    <description><![CDATA[Where do ideas come from? Ideas come from two sources: talking to real users with real problems and then trying to solve them. This ensures somebody cares about the ideas and the rubber meets the road and not the sky. The second source is to bounce possibly good (or bad) ideas off colleages that will challenge them. In summary, the best chance for generating a good idea is to spend time in the real world and find an enviroment where you will be intellectually challenged.]]></description>
+</item>
+</channel>
+</rss>

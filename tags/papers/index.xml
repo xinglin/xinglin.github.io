@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>papers - Tag - Xing Lin</title>
+        <link>https://example.com/tags/papers/</link>
+        <description>papers - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 25 Dec 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/papers/" rel="self" type="application/rss+xml" /><item>
+    <title>Great Books and Papers</title>
+    <link>https://example.com/books-papers/</link>
+    <pubDate>Fri, 25 Dec 2015 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/books-papers/</guid>
+    <description><![CDATA[Books  A Philosophy of Software Design, John Ousterhout, Professor at Stanford University The Innovator&rsquo;s Dilemma, Clayton Christensen UNIX - A History and a Memorior, Brian Kernighan, Professor at Princeton University HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University China&rsquo;s Economy, Arthur R. Kroeber  Papers There are some papers that are so well written that I really enjoyed reading them.]]></description>
+</item>
+</channel>
+</rss>

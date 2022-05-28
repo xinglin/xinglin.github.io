@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>reflection - Tag - Xing Lin</title>
+        <link>https://example.com/tags/reflection/</link>
+        <description>reflection - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/reflection/" rel="self" type="application/rss+xml" /><item>
+    <title>On my 33rd Birthday</title>
+    <link>https://example.com/33rd-birthday/</link>
+    <pubDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/33rd-birthday/</guid>
+    <description><![CDATA[How time flies! I am 33 years old now and have lived in US for more than 10 years. I have also graduated from University of Utah for almost 5 years now. Wahoo! Each week passed very quickly. Now is the time to pause a little bit and reflect what has been achieved and what could be done better.
+Achievements  Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them have been accepted yet.]]></description>
+</item>
+</channel>
+</rss>

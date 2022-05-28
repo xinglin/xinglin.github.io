@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>methodology - Tag - Xing Lin</title>
+        <link>https://example.com/tags/methodology/</link>
+        <description>methodology - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 26 Nov 2014 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/methodology/" rel="self" type="application/rss+xml" /><item>
+    <title>Trade-off Between Accuracy and Runtime Overhead</title>
+    <link>https://example.com/accurate-approximate-tradeoff/</link>
+    <pubDate>Wed, 26 Nov 2014 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://example.com/accurate-approximate-tradeoff/</guid>
+    <description><![CDATA[During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime.]]></description>
+</item>
+</channel>
+</rss>
