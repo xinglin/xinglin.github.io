@@ -8,7 +8,7 @@
 # Conference Papers
 
 1. Fantastic SSD Internals and How to Learn and Use Them  
-   Nanqinqin Li, Mingzhe Hao, Huaicheng Li, Xing Lin, Tim Emami, and Haryadi S. Gunawi  
+   Nanqinqin Li, Mingzhe Hao, Huaicheng Li, **Xing Lin**, Tim Emami, and Haryadi S. Gunawi  
    *(To appear) SYSTOR 2022: The 15th ACM International Systems and Storage Conference*
 2. [IODA: A Host/Device Co-Design for Strong Predictability Contract on Modern Flash Storage][sosp2021] [[bibtex][sosp2021-bib]]  
    Huaicheng Li, Martin L. Putra, Ronald Shi, **Xing Lin**, Gregory R. Ganger, and Haryadi S. Gunawi  
