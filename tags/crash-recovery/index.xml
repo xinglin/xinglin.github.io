@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>crash recovery - Tag - Xing Lin</title>
-        <link>https://example.com/tags/crash-recovery/</link>
+        <link>https://xinglin.github.io/tags/crash-recovery/</link>
         <description>crash recovery - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/crash-recovery/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/crash-recovery/" rel="self" type="application/rss+xml" /><item>
     <title>Crash Recovery</title>
-    <link>https://example.com/crash-recovery/</link>
+    <link>https://xinglin.github.io/crash-recovery/</link>
     <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/crash-recovery/</guid>
+    <guid>https://xinglin.github.io/crash-recovery/</guid>
     <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
 ARIES  Three main principles lie behind the ARIES recovery algorithm:
  Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>

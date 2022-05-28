@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>data summarization - Tag - Xing Lin</title>
-        <link>https://example.com/tags/data-summarization/</link>
+        <link>https://xinglin.github.io/tags/data-summarization/</link>
         <description>data summarization - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 09 Jun 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/data-summarization/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 09 Jun 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/data-summarization/" rel="self" type="application/rss+xml" /><item>
     <title>Sketch Data Structures</title>
-    <link>https://example.com/sketch-data-structures/</link>
+    <link>https://xinglin.github.io/sketch-data-structures/</link>
     <pubDate>Tue, 09 Jun 2015 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/sketch-data-structures/</guid>
+    <guid>https://xinglin.github.io/sketch-data-structures/</guid>
     <description><![CDATA[Tonight, I went to attend a local meetup event. The talk was given by a faculty from my own department, Jeff Phillips, an assistant professor working in the area of big data analysis. The topic of his talk is about sketch data structure - data structures which uses a much smaller amount of memory to summarize the represented data.This is a cool technique and I am very interested to learn more.]]></description>
 </item>
 </channel>

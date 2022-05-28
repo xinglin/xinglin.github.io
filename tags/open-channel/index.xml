@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>open channel - Tag - Xing Lin</title>
-        <link>https://example.com/tags/open-channel/</link>
+        <link>https://xinglin.github.io/tags/open-channel/</link>
         <description>open channel - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/open-channel/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/open-channel/" rel="self" type="application/rss+xml" /><item>
     <title>Open-Channel SSD</title>
-    <link>https://example.com/ocssd/</link>
+    <link>https://xinglin.github.io/ocssd/</link>
     <pubDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/ocssd/</guid>
+    <guid>https://xinglin.github.io/ocssd/</guid>
     <description><![CDATA[In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
   Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
   Read code path (from the media) in pblk

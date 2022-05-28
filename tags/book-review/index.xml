@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>book review - Tag - Xing Lin</title>
-        <link>https://example.com/tags/book-review/</link>
+        <link>https://xinglin.github.io/tags/book-review/</link>
         <description>book review - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/book-review/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/book-review/" rel="self" type="application/rss+xml" /><item>
     <title>Book Review: High Output Management</title>
-    <link>https://example.com/high-output-management/</link>
+    <link>https://xinglin.github.io/high-output-management/</link>
     <pubDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/high-output-management/</guid>
+    <guid>https://xinglin.github.io/high-output-management/</guid>
     <description><![CDATA[I finished reading Andrew Grove&rsquo;s book on ``High Output Management&rsquo;&rsquo; and really liked it, especially when reading the second half. It explains a few concepts, such as how a person&rsquo;s needs may change and what is controlling a person&rsquo;s behavior. It also contains quite a few practical advices on how to handle issues that could happen in a workplace. I highly recommend everyone to take a look at this book.]]></description>
 </item>
 </channel>

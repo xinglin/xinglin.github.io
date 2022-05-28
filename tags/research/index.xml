@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>research - Tag - Xing Lin</title>
-        <link>https://example.com/tags/research/</link>
+        <link>https://xinglin.github.io/tags/research/</link>
         <description>research - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 23 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/research/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 23 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/research/" rel="self" type="application/rss+xml" /><item>
     <title>Data Storage Research Vision 2025</title>
-    <link>https://example.com/data-storage-research-vision-2025/</link>
+    <link>https://xinglin.github.io/data-storage-research-vision-2025/</link>
     <pubDate>Thu, 23 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/data-storage-research-vision-2025/</guid>
+    <guid>https://xinglin.github.io/data-storage-research-vision-2025/</guid>
     <description><![CDATA[NFS sponsored a data storage visioning workshop in 2018. The workshop was hosted by IBM Research. From the workshop, they produced a report, summarizing the discussion from the workshop. The report outlines the future research challenges and opportunities that the attendees recommend to work on.
 The discussion of the workshop was organized in the four groups. Below are some interesting points I copied from the report.
  Storage for the Cloud, Edge, and IoT Systems   More desegregated, composable software architectures are highly desirable.]]></description>

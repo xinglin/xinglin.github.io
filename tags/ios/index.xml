@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>iOS - Tag - Xing Lin</title>
-        <link>https://example.com/tags/ios/</link>
+        <link>https://xinglin.github.io/tags/ios/</link>
         <description>iOS - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/ios/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 23 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/ios/" rel="self" type="application/rss+xml" /><item>
     <title>Hit the Road iOS App</title>
-    <link>https://example.com/hit-the-road/</link>
+    <link>https://xinglin.github.io/hit-the-road/</link>
     <pubDate>Sun, 23 Aug 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/hit-the-road/</guid>
+    <guid>https://xinglin.github.io/hit-the-road/</guid>
     <description><![CDATA[Hit the Road is an iOS app for tracking ourdoor exercises. It can track walking, running, and biking. It is supposed to run on iPhones, but not iPads or iWatchs.
 User Privacy The app only stores the duration and mileage for each activity locally in the installed device. The app does not store the GPS locations. It only uses GPS locations during an activity to get the mileage. The app does not send any data over the network.]]></description>
 </item>

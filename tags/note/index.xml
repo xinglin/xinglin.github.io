@@ -1,71 +1,71 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>note - Tag - Xing Lin</title>
-        <link>https://example.com/tags/note/</link>
+        <link>https://xinglin.github.io/tags/note/</link>
         <description>note - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/note/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/note/" rel="self" type="application/rss+xml" /><item>
     <title>Crash Recovery</title>
-    <link>https://example.com/crash-recovery/</link>
+    <link>https://xinglin.github.io/crash-recovery/</link>
     <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/crash-recovery/</guid>
+    <guid>https://xinglin.github.io/crash-recovery/</guid>
     <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
 ARIES  Three main principles lie behind the ARIES recovery algorithm:
  Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
 </item>
 <item>
     <title>Secondary Index Built on top of a Key-value Store</title>
-    <link>https://example.com/secondary-index-kv-store/</link>
+    <link>https://xinglin.github.io/secondary-index-kv-store/</link>
     <pubDate>Sun, 17 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/secondary-index-kv-store/</guid>
+    <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
     <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
 Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
 </item>
 <item>
     <title>Transaction</title>
-    <link>https://example.com/transaction/</link>
+    <link>https://xinglin.github.io/transaction/</link>
     <pubDate>Sun, 27 Sep 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/transaction/</guid>
+    <guid>https://xinglin.github.io/transaction/</guid>
     <description><![CDATA[The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
    Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.]]></description>
 </item>
 <item>
     <title>Measure Network Latency</title>
-    <link>https://example.com/measure-network-latency/</link>
+    <link>https://xinglin.github.io/measure-network-latency/</link>
     <pubDate>Wed, 22 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/measure-network-latency/</guid>
+    <guid>https://xinglin.github.io/measure-network-latency/</guid>
     <description><![CDATA[Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
 By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.]]></description>
 </item>
 <item>
     <title>Flush data to stable storage in C</title>
-    <link>https://example.com/flush-data-to-disk/</link>
+    <link>https://xinglin.github.io/flush-data-to-disk/</link>
     <pubDate>Mon, 02 Sep 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/flush-data-to-disk/</guid>
+    <guid>https://xinglin.github.io/flush-data-to-disk/</guid>
     <description><![CDATA[When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
 Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&rsquo;t survive on a power lose.]]></description>
 </item>
 <item>
     <title>Notes for Myself</title>
-    <link>https://example.com/self-notes/</link>
+    <link>https://xinglin.github.io/self-notes/</link>
     <pubDate>Mon, 26 Aug 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/self-notes/</guid>
+    <guid>https://xinglin.github.io/self-notes/</guid>
     <description><![CDATA[When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
   Learn one piece at a time.
 When learning a new thing, it could come with many new concepts, making it harder to understand all at once.]]></description>
 </item>
 <item>
     <title>Dynamic Kernel Debugging</title>
-    <link>https://example.com/kernel-dynamic-debug/</link>
+    <link>https://xinglin.github.io/kernel-dynamic-debug/</link>
     <pubDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/kernel-dynamic-debug/</guid>
+    <guid>https://xinglin.github.io/kernel-dynamic-debug/</guid>
     <description><![CDATA[Compile kernel with CONFIG_DYNAMIC_DEBUG=y
   Mount debugfs, if not mounted yet
  sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
@@ -74,10 +74,10 @@ When learning a new thing, it could come with many new concepts, making it harde
 </item>
 <item>
     <title>Install hotCRP at a Ubuntu 14 Machine</title>
-    <link>https://example.com/hotcrp-ubuntu14/</link>
+    <link>https://xinglin.github.io/hotcrp-ubuntu14/</link>
     <pubDate>Thu, 12 Apr 2018 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/hotcrp-ubuntu14/</guid>
+    <guid>https://xinglin.github.io/hotcrp-ubuntu14/</guid>
     <description><![CDATA[Update packages
  sudo apt-get update    Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
   Install the software-properties-common package to get the add-apt-repository command.

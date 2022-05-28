@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Garbage Collection - Tag - Xing Lin</title>
-        <link>https://example.com/tags/garbage-collection/</link>
+        <link>https://xinglin.github.io/tags/garbage-collection/</link>
         <description>Garbage Collection - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 08 Mar 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/garbage-collection/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 08 Mar 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/garbage-collection/" rel="self" type="application/rss+xml" /><item>
     <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
-    <link>https://example.com/global-garbage-collection/</link>
+    <link>https://xinglin.github.io/global-garbage-collection/</link>
     <pubDate>Fri, 08 Mar 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/global-garbage-collection/</guid>
+    <guid>https://xinglin.github.io/global-garbage-collection/</guid>
     <description><![CDATA[This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
 The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.]]></description>
 </item>

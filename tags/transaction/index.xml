@@ -1,25 +1,25 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>transaction - Tag - Xing Lin</title>
-        <link>https://example.com/tags/transaction/</link>
+        <link>https://xinglin.github.io/tags/transaction/</link>
         <description>transaction - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/transaction/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/transaction/" rel="self" type="application/rss+xml" /><item>
     <title>Crash Recovery</title>
-    <link>https://example.com/crash-recovery/</link>
+    <link>https://xinglin.github.io/crash-recovery/</link>
     <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/crash-recovery/</guid>
+    <guid>https://xinglin.github.io/crash-recovery/</guid>
     <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
 ARIES  Three main principles lie behind the ARIES recovery algorithm:
  Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
 </item>
 <item>
     <title>Transaction</title>
-    <link>https://example.com/transaction/</link>
+    <link>https://xinglin.github.io/transaction/</link>
     <pubDate>Sun, 27 Sep 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/transaction/</guid>
+    <guid>https://xinglin.github.io/transaction/</guid>
     <description><![CDATA[The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
    Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.]]></description>
 </item>

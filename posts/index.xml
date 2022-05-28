@@ -1,39 +1,39 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Xing Lin</title>
-        <link>https://example.com/posts/</link>
+        <link>https://xinglin.github.io/posts/</link>
         <description>All Posts | Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Book Review: High Output Management</title>
-    <link>https://example.com/high-output-management/</link>
+    <link>https://xinglin.github.io/high-output-management/</link>
     <pubDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/high-output-management/</guid>
+    <guid>https://xinglin.github.io/high-output-management/</guid>
     <description><![CDATA[I finished reading Andrew Grove&rsquo;s book on ``High Output Management&rsquo;&rsquo; and really liked it, especially when reading the second half. It explains a few concepts, such as how a person&rsquo;s needs may change and what is controlling a person&rsquo;s behavior. It also contains quite a few practical advices on how to handle issues that could happen in a workplace. I highly recommend everyone to take a look at this book.]]></description>
 </item>
 <item>
     <title>Key Value Workloads</title>
-    <link>https://example.com/keyvalue-workloads/</link>
+    <link>https://xinglin.github.io/keyvalue-workloads/</link>
     <pubDate>Fri, 05 Mar 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/keyvalue-workloads/</guid>
+    <guid>https://xinglin.github.io/keyvalue-workloads/</guid>
     <description><![CDATA[YCSB    Workload Description Example Operation breakdown     A Update heavy workload session store recording recent actions read: 50%, update: 50%   B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5%   C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100%   D read latest workload user status updates; people want to read the latest read: 95%, insert 5%   E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5   F read-modify-write workload user database, where user records are read and modified by the user or to record user activity.]]></description>
 </item>
 <item>
     <title>Key Value Systems</title>
-    <link>https://example.com/keyvalue/</link>
+    <link>https://xinglin.github.io/keyvalue/</link>
     <pubDate>Mon, 01 Mar 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/keyvalue/</guid>
+    <guid>https://xinglin.github.io/keyvalue/</guid>
     <description><![CDATA[LSM-tree survey WiscKey: key/value separation HashKV: store cold keys separately. LSM-trie PebblesDB KVell Skip-Tree: put kv items directly to non-adjacent layers (skipping some intermediate layers) to reduce write amplification from level-to-level data compaction. TRIAD: separate hot keys from cold keys. hot keys are stored in memtable for as long as possible. Use multiple memtables and flush them at once to disk. Pipelined Compaction Procedure: A compaction contains three phases: read phase, merge-sort phase, and write phase.]]></description>
 </item>
 <item>
     <title>Idea Repository</title>
-    <link>https://example.com/idea-repository/</link>
+    <link>https://xinglin.github.io/idea-repository/</link>
     <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/idea-repository/</guid>
+    <guid>https://xinglin.github.io/idea-repository/</guid>
     <description><![CDATA[List of ideas to explore.
   Interaction between a filesystem and a computational SSD that does transparent compression.
  Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space.    Key prefix compression in k/v store
@@ -41,10 +41,10 @@
 </item>
 <item>
     <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
-    <link>https://example.com/prefix-vs-postfix/</link>
+    <link>https://xinglin.github.io/prefix-vs-postfix/</link>
     <pubDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/prefix-vs-postfix/</guid>
+    <guid>https://xinglin.github.io/prefix-vs-postfix/</guid>
     <description><![CDATA[The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
 The authors shared the following in their book.
  The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
@@ -52,47 +52,47 @@ For ints and pointers, the compiler can optimize away this extra work.]]></descr
 </item>
 <item>
     <title>Crash Recovery</title>
-    <link>https://example.com/crash-recovery/</link>
+    <link>https://xinglin.github.io/crash-recovery/</link>
     <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/crash-recovery/</guid>
+    <guid>https://xinglin.github.io/crash-recovery/</guid>
     <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
 ARIES  Three main principles lie behind the ARIES recovery algorithm:
  Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
 </item>
 <item>
     <title>Secondary Index Built on top of a Key-value Store</title>
-    <link>https://example.com/secondary-index-kv-store/</link>
+    <link>https://xinglin.github.io/secondary-index-kv-store/</link>
     <pubDate>Sun, 17 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/secondary-index-kv-store/</guid>
+    <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
     <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
 Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
 </item>
 <item>
     <title>Enduring Ideas/Techniques that are still in use today</title>
-    <link>https://example.com/enduring-ideas/</link>
+    <link>https://xinglin.github.io/enduring-ideas/</link>
     <pubDate>Fri, 15 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/enduring-ideas/</guid>
+    <guid>https://xinglin.github.io/enduring-ideas/</guid>
     <description><![CDATA[There are a few ideas/techniques that were invented a long time ago but they are being used/re-implemented again and again, even in today&rsquo;s sytems. Why do people look and reimplement these techniques, even after 50 years? Because, even after 50 years, we face largely the same problem when we design new systems.
 Here are a few examples.
    Ideas First-time Introduced What problem is solved?     Trasactions  Make it easy to develop on top of a data store.]]></description>
 </item>
 <item>
     <title>Delete Request in LevelDB</title>
-    <link>https://example.com/leveldb/</link>
+    <link>https://xinglin.github.io/leveldb/</link>
     <pubDate>Sun, 10 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/leveldb/</guid>
+    <guid>https://xinglin.github.io/leveldb/</guid>
     <description><![CDATA[When I searched for how leveldb/rocksdb and a few other KV stores handle delete requests, the document will usually say ``we insert a special a tombstone value or a tombstone entry.&rsquo;&rsquo;. However, for KV stores which allow storing arbitrary keys and values, I am not sure which value we should use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user.]]></description>
 </item>
 <item>
     <title>Postgres Handling Transaction ID Wrap Around</title>
-    <link>https://example.com/postgres-tid-wraparound/</link>
+    <link>https://xinglin.github.io/postgres-tid-wraparound/</link>
     <pubDate>Thu, 17 Dec 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/postgres-tid-wraparound/</guid>
+    <guid>https://xinglin.github.io/postgres-tid-wraparound/</guid>
     <description><![CDATA[NOTE: OpenGauss may fix this problem.
 Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
 Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.]]></description>

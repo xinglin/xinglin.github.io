@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>replication - Tag - Xing Lin</title>
-        <link>https://example.com/tags/replication/</link>
+        <link>https://xinglin.github.io/tags/replication/</link>
         <description>replication - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/replication/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/replication/" rel="self" type="application/rss+xml" /><item>
     <title>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</title>
-    <link>https://example.com/copysets/</link>
+    <link>https://xinglin.github.io/copysets/</link>
     <pubDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/copysets/</guid>
+    <guid>https://xinglin.github.io/copysets/</guid>
     <description><![CDATA[Summary Copysets proposed another approach/perspective for data replication, than the traditional random replication. In random replication, N nodes are selected randomly from the cluster to store a data chunk. Random replication provides a strong protection against uncorrelated failures. For each individual chunk, since it can be stored randomly at N nodes in the cluster, it is quite resilient to data loss. However, when we consider all data chunks, any N node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes.]]></description>
 </item>
 </channel>

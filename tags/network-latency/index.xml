@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>network latency - Tag - Xing Lin</title>
-        <link>https://example.com/tags/network-latency/</link>
+        <link>https://xinglin.github.io/tags/network-latency/</link>
         <description>network latency - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/network-latency/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/network-latency/" rel="self" type="application/rss+xml" /><item>
     <title>Measure Network Latency</title>
-    <link>https://example.com/measure-network-latency/</link>
+    <link>https://xinglin.github.io/measure-network-latency/</link>
     <pubDate>Wed, 22 Jul 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/measure-network-latency/</guid>
+    <guid>https://xinglin.github.io/measure-network-latency/</guid>
     <description><![CDATA[Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
 By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.]]></description>
 </item>

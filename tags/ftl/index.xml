@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>FTL - Tag - Xing Lin</title>
-        <link>https://example.com/tags/ftl/</link>
+        <link>https://xinglin.github.io/tags/ftl/</link>
         <description>FTL - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/ftl/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/ftl/" rel="self" type="application/rss+xml" /><item>
     <title>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</title>
-    <link>https://example.com/shrd/</link>
+    <link>https://xinglin.github.io/shrd/</link>
     <pubDate>Sun, 28 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/shrd/</guid>
+    <guid>https://xinglin.github.io/shrd/</guid>
     <description><![CDATA[I really liked the paper. The idea is neat. The paper is also well written and the design and the new idea is clearly presented. A very good paper to read and learn from on how to write good papers.
 Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.]]></description>
 </item>

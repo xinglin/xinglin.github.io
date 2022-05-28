@@ -1,24 +1,24 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SPDK - Tag - Xing Lin</title>
-        <link>https://example.com/tags/spdk/</link>
+        <link>https://xinglin.github.io/tags/spdk/</link>
         <description>SPDK - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 10 May 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/spdk/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 10 May 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/spdk/" rel="self" type="application/rss+xml" /><item>
     <title>SPDK on Intel Optane and Samsung ZSSD</title>
-    <link>https://example.com/spdk-optane-zssd/</link>
+    <link>https://xinglin.github.io/spdk-optane-zssd/</link>
     <pubDate>Thu, 10 May 2018 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/spdk-optane-zssd/</guid>
+    <guid>https://xinglin.github.io/spdk-optane-zssd/</guid>
     <description><![CDATA[Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
 Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.8 usec   clat 6.]]></description>
 </item>
 <item>
     <title>SPDK on Samsung 960 EVO NVMe SSD</title>
-    <link>https://example.com/spdk-samsung-960-evo/</link>
+    <link>https://xinglin.github.io/spdk-samsung-960-evo/</link>
     <pubDate>Fri, 01 Dec 2017 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/spdk-samsung-960-evo/</guid>
+    <guid>https://xinglin.github.io/spdk-samsung-960-evo/</guid>
     <description><![CDATA[Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD. I was thinking that using SPDK might lead to better performance, than through traditional block device interface. However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.
    Metric SPDK /dev/nvme0n1     IOPS 12.8 K 11.]]></description>
 </item>

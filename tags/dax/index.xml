@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>dax - Tag - Xing Lin</title>
-        <link>https://example.com/tags/dax/</link>
+        <link>https://xinglin.github.io/tags/dax/</link>
         <description>dax - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 24 Jan 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/dax/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 24 Jan 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/dax/" rel="self" type="application/rss+xml" /><item>
     <title>DAX in ext2 filesystem</title>
-    <link>https://example.com/ext2-dax/</link>
+    <link>https://xinglin.github.io/ext2-dax/</link>
     <pubDate>Thu, 24 Jan 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/ext2-dax/</guid>
+    <guid>https://xinglin.github.io/ext2-dax/</guid>
     <description><![CDATA[msync syscall 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  /mm/msync.c / * MS_SYNC syncs the entire file - including mappings. */ SYSCALL_DEFINE3(msync, unsigned long, start, size_t, len, int, flags) vfs_fsync_range(file, fstart, fend, 1); file-&gt;f_op-&gt;fsync(file, start, end, datasync); == ext2_fsync(); generic_file_fsync(file, start, end, datasync); __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync) file_write_and_wait_range(file, start, end); __filemap_fdatawrite_range(mapping, lstart, lend, WB_SYNC_ALL); do_writepages(mapping, &amp;wbc); mapping-&gt;a_ops-&gt;writepages(mapping, wbc); ext2_dax_writepages() dax_writeback_mapping_range(mapping, mapping-&gt;host-&gt;i_sb-&gt;s_bdev, wbc); dax_writeback_one(&amp;xas, dax_dev, mapping, entry); dax_flush(dax_dev, page_address(pfn_to_page(pfn)), size); arch_wb_cache_pmem(addr, size); clean_cache_range(addr, size); for (p = (void *)((unsigned long)addr &amp; ~clflush_mask); p &lt; vend; p += x86_clflush_size) clwb(p); static const struct address_space_operations ext2_dax_aops = { .]]></description>
 </item>
 </channel>

@@ -1,59 +1,59 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>paper - Tag - Xing Lin</title>
-        <link>https://example.com/tags/paper/</link>
+        <link>https://xinglin.github.io/tags/paper/</link>
         <description>paper - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 01 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/paper/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 01 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/paper/" rel="self" type="application/rss+xml" /><item>
     <title>Key Value Systems</title>
-    <link>https://example.com/keyvalue/</link>
+    <link>https://xinglin.github.io/keyvalue/</link>
     <pubDate>Mon, 01 Mar 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/keyvalue/</guid>
+    <guid>https://xinglin.github.io/keyvalue/</guid>
     <description><![CDATA[LSM-tree survey WiscKey: key/value separation HashKV: store cold keys separately. LSM-trie PebblesDB KVell Skip-Tree: put kv items directly to non-adjacent layers (skipping some intermediate layers) to reduce write amplification from level-to-level data compaction. TRIAD: separate hot keys from cold keys. hot keys are stored in memtable for as long as possible. Use multiple memtables and flush them at once to disk. Pipelined Compaction Procedure: A compaction contains three phases: read phase, merge-sort phase, and write phase.]]></description>
 </item>
 <item>
     <title>SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</title>
-    <link>https://example.com/shrd/</link>
+    <link>https://xinglin.github.io/shrd/</link>
     <pubDate>Sun, 28 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/shrd/</guid>
+    <guid>https://xinglin.github.io/shrd/</guid>
     <description><![CDATA[I really liked the paper. The idea is neat. The paper is also well written and the design and the new idea is clearly presented. A very good paper to read and learn from on how to write good papers.
 Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.]]></description>
 </item>
 <item>
     <title>Copysets: Reducing the Frequency of Data Loss in Cloud Storage</title>
-    <link>https://example.com/copysets/</link>
+    <link>https://xinglin.github.io/copysets/</link>
     <pubDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/copysets/</guid>
+    <guid>https://xinglin.github.io/copysets/</guid>
     <description><![CDATA[Summary Copysets proposed another approach/perspective for data replication, than the traditional random replication. In random replication, N nodes are selected randomly from the cluster to store a data chunk. Random replication provides a strong protection against uncorrelated failures. For each individual chunk, since it can be stored randomly at N nodes in the cluster, it is quite resilient to data loss. However, when we consider all data chunks, any N node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes.]]></description>
 </item>
 <item>
     <title>Create The Author Version for Your Paper (ACM)</title>
-    <link>https://example.com/authorversion/</link>
+    <link>https://xinglin.github.io/authorversion/</link>
     <pubDate>Sun, 28 Apr 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/authorversion/</guid>
+    <guid>https://xinglin.github.io/authorversion/</guid>
     <description><![CDATA[So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
 In acmart.cls, change the execution option for authorversion from false to true.
  -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true}  You may also want to add page numbers into your paper.]]></description>
 </item>
 <item>
     <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
-    <link>https://example.com/global-garbage-collection/</link>
+    <link>https://xinglin.github.io/global-garbage-collection/</link>
     <pubDate>Fri, 08 Mar 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/global-garbage-collection/</guid>
+    <guid>https://xinglin.github.io/global-garbage-collection/</guid>
     <description><![CDATA[This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
 The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.]]></description>
 </item>
 <item>
     <title>NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</title>
-    <link>https://example.com/nv-tree/</link>
+    <link>https://xinglin.github.io/nv-tree/</link>
     <pubDate>Fri, 25 Dec 2015 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/nv-tree/</guid>
+    <guid>https://xinglin.github.io/nv-tree/</guid>
     <description><![CDATA[This paper introduces a new B+ tree variation that is optimized for NVM by reducing consistency cost from memory fence and cacheline flush operations.
  Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.]]></description>
 </item>

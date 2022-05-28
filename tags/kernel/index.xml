@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>kernel - Tag - Xing Lin</title>
-        <link>https://example.com/tags/kernel/</link>
+        <link>https://xinglin.github.io/tags/kernel/</link>
         <description>kernel - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/kernel/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/kernel/" rel="self" type="application/rss+xml" /><item>
     <title>Dynamic Kernel Debugging</title>
-    <link>https://example.com/kernel-dynamic-debug/</link>
+    <link>https://xinglin.github.io/kernel-dynamic-debug/</link>
     <pubDate>Tue, 13 Aug 2019 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/kernel-dynamic-debug/</guid>
+    <guid>https://xinglin.github.io/kernel-dynamic-debug/</guid>
     <description><![CDATA[Compile kernel with CONFIG_DYNAMIC_DEBUG=y
   Mount debugfs, if not mounted yet
  sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module

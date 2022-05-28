@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>outline - Tag - Xing Lin</title>
-        <link>https://example.com/tags/outline/</link>
+        <link>https://xinglin.github.io/tags/outline/</link>
         <description>outline - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 14 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://example.com/tags/outline/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 14 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/outline/" rel="self" type="application/rss+xml" /><item>
     <title>Foundamentals of a Storage System</title>
-    <link>https://example.com/foundamentals-of-storage-system/</link>
+    <link>https://xinglin.github.io/foundamentals-of-storage-system/</link>
     <pubDate>Sun, 14 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
-    <guid>https://example.com/foundamentals-of-storage-system/</guid>
+    <guid>https://xinglin.github.io/foundamentals-of-storage-system/</guid>
     <description><![CDATA[Caching  LRU ARC  File systems  EXT filesystems btrfs  Data Reliability  RAID Erasure coding  Solid State Drive  FTL  K/V stores  LevelDB/RocksDB  Distributed Storage Systems  Ceph  Deduplication ]]></description>
 </item>
 </channel>
