@@ -1,7 +1,7 @@
 # Home
 
 
-<img src="https://xinglin.github.io/img/head.jpg" width="200" style="margin: 5px 15px -1px 0px;" alt="Xing's head photo" align="left"/>
+<img src="https://xinglin.github.io/images/head.jpg" width="200" style="margin: 5px 15px -1px 0px;" alt="Xing's head photo" align="left"/>
 
 Hi, my name is Xing Lin. 
 I am a big data infrastructure engineer at Linkedin since 2021.
@@ -23,3 +23,4 @@ In my spare time, I like reading books (especially history and biography), hikin
 [ricci]: https://ricci.io/
 [fred]: http://www.douglis.org/fred/ 
 [gokul]: http://www.gokulsoundar.com/
+
