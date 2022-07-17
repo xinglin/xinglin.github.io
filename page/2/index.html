@@ -106,6 +106,12 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/hit-the-road/">Hit the Road iOS App</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-23">2020-08-23</time></span></div><div class="content">Hit the Road is an iOS app for tracking ourdoor exercises. It can track walking, running, and biking. It is supposed to run on iPhones, but not iPads or iWatchs.
+User Privacy The app only stores the duration and mileage for each activity locally in the installed device. The app does not store the GPS locations. It only uses GPS locations during an activity to get the mileage. The app does not send any data over the network.</div><div class="post-footer">
+        <a href="/hit-the-road/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ios/">iOS</a>,&nbsp;<a href="/tags/support/">support</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/ycsb-rocksdb-options/">Use Options File for Benchmarking RocksDB using YCSB</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-08">2020-08-08</time></span></div><div class="content">In YCSB, we can also use the options file (-p rocksdb.optionsfile=/tmp/ycsb-options.ini, e.g.,) to configure the options for RocksDB. However, for a new user, it is actually not easy to figure out what needs to be configured for RocksDB for YCSB. Here is a quick way to get it start.
 Use the ycsb tool to load a rocksdb without specifying the options.
@@ -181,14 +187,6 @@ When learning a new thing, it could come with many new concepts, making it harde
 	p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.</div><div class="post-footer">
         <a href="/kernel-dynamic-debug/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kernel/">kernel</a>,&nbsp;<a href="/tags/note/">note</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ocssd/">Open-Channel SSD</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-08-13">2019-08-13</time></span></div><div class="content">In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
-  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
-  Read code path (from the media) in pblk
-  1 2 3 4 5 6 7 8 9  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&gt;ops-&gt;submit_io(dev, rqd);    Write code path in pblk  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45  pblk_write_to_cache() { for (i = 0; i &lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.</div><div class="post-footer">
-        <a href="/ocssd/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a>,&nbsp;<a href="/tags/open-channel/">open channel</a>,&nbsp;<a href="/tags/ssd/">SSD</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
