@@ -4,7 +4,17 @@
         <link>https://xinglin.github.io/posts/</link>
         <description>All Posts | Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>The CacheLib Caching Engine: Design and Experiences at Scale</title>
+    <link>https://xinglin.github.io/cachelib/</link>
+    <pubDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/cachelib/</guid>
+    <description><![CDATA[CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.
+  CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.
+  All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.]]></description>
+</item>
+<item>
     <title>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</title>
     <link>https://xinglin.github.io/dynamodb/</link>
     <pubDate>Sat, 16 Jul 2022 00:00:00 &#43;0000</pubDate>
@@ -88,14 +98,6 @@ Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000
     <description><![CDATA[There are a few ideas/techniques that were invented a long time ago but they are being used/re-implemented again and again, even in today&rsquo;s sytems. Why do people look and reimplement these techniques, even after 50 years? Because, even after 50 years, we face largely the same problem when we design new systems.
 Here are a few examples.
    Ideas First-time Introduced What problem is solved?     Trasactions  Make it easy to develop on top of a data store.]]></description>
-</item>
-<item>
-    <title>Delete Request in LevelDB</title>
-    <link>https://xinglin.github.io/leveldb/</link>
-    <pubDate>Sun, 10 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/leveldb/</guid>
-    <description><![CDATA[When I searched for how leveldb/rocksdb and a few other KV stores handle delete requests, the document will usually say ``we insert a special a tombstone value or a tombstone entry.&rsquo;&rsquo;. However, for KV stores which allow storing arbitrary keys and values, I am not sure which value we should use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user.]]></description>
 </item>
 </channel>
 </rss>

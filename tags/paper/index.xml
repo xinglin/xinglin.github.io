@@ -4,7 +4,17 @@
         <link>https://xinglin.github.io/tags/paper/</link>
         <description>paper - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 16 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/paper/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/paper/" rel="self" type="application/rss+xml" /><item>
+    <title>The CacheLib Caching Engine: Design and Experiences at Scale</title>
+    <link>https://xinglin.github.io/cachelib/</link>
+    <pubDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/cachelib/</guid>
+    <description><![CDATA[CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.
+  CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.
+  All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.]]></description>
+</item>
+<item>
     <title>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</title>
     <link>https://xinglin.github.io/dynamodb/</link>
     <pubDate>Sat, 16 Jul 2022 00:00:00 &#43;0000</pubDate>

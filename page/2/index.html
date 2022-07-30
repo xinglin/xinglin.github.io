@@ -106,6 +106,12 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/transaction/">Transaction</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-27">2020-09-27</time></span></div><div class="content">The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
+   Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.</div><div class="post-footer">
+        <a href="/transaction/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/acid/">acid</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/hit-the-road/">Hit the Road iOS App</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-23">2020-08-23</time></span></div><div class="content">Hit the Road is an iOS app for tracking ourdoor exercises. It can track walking, running, and biking. It is supposed to run on iPhones, but not iPads or iWatchs.
 User Privacy The app only stores the duration and mileage for each activity locally in the installed device. The app does not store the GPS locations. It only uses GPS locations during an activity to get the mileage. The app does not send any data over the network.</div><div class="post-footer">
@@ -178,15 +184,6 @@ Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one 
 When learning a new thing, it could come with many new concepts, making it harder to understand all at once.</div><div class="post-footer">
         <a href="/self-notes/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/kernel-dynamic-debug/">Dynamic Kernel Debugging</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-08-13">2019-08-13</time></span></div><div class="content">Compile kernel with CONFIG_DYNAMIC_DEBUG=y
-  Mount debugfs, if not mounted yet
- sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
- echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control    The flags are:
-	p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.</div><div class="post-footer">
-        <a href="/kernel-dynamic-debug/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kernel/">kernel</a>,&nbsp;<a href="/tags/note/">note</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

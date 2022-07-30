@@ -4,39 +4,39 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service - Xing Lin</title><meta name="Description" content="USENIX ATC 2022"><meta property="og:title" content="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service" />
-<meta property="og:description" content="USENIX ATC 2022" />
+        <title>The CacheLib Caching Engine: Design and Experiences at Scale - Xing Lin</title><meta name="Description" content="USENIX OSDI 2020"><meta property="og:title" content="The CacheLib Caching Engine: Design and Experiences at Scale" />
+<meta property="og:description" content="USENIX OSDI 2020" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/dynamodb/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-16T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-07-29T22:55:39-07:00" /><meta property="og:site_name" content="Xing Lin" />
+<meta property="og:url" content="https://xinglin.github.io/cachelib/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-29T23:10:20-07:00" /><meta property="og:site_name" content="Xing Lin" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
 
-<meta name="twitter:title" content="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service"/>
-<meta name="twitter:description" content="USENIX ATC 2022"/>
+<meta name="twitter:title" content="The CacheLib Caching Engine: Design and Experiences at Scale"/>
+<meta name="twitter:description" content="USENIX OSDI 2020"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xinglin.github.io/dynamodb/" /><link rel="prev" href="https://xinglin.github.io/high-output-management/" /><link rel="next" href="https://xinglin.github.io/cachelib/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xinglin.github.io/cachelib/" /><link rel="prev" href="https://xinglin.github.io/dynamodb/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service",
+        "headline": "The CacheLib Caching Engine: Design and Experiences at Scale",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/xinglin.github.io\/dynamodb\/"
+            "@id": "https:\/\/xinglin.github.io\/cachelib\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "https:\/\/xinglin.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "paper, NoSQL, AWS","wordcount":  813 ,
-        "url": "https:\/\/xinglin.github.io\/dynamodb\/","datePublished": "2022-07-16T00:00:00+00:00","dateModified": "2022-07-29T22:55:39-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "paper, NoSQL, AWS","wordcount":  460 ,
+        "url": "https:\/\/xinglin.github.io\/cachelib\/","datePublished": "2022-07-29T00:00:00+00:00","dateModified": "2022-07-29T23:10:20-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -46,7 +46,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "Xing Lin"
-            },"description": "USENIX ATC 2022"
+            },"description": "USENIX OSDI 2020"
     }
     </script></head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -113,10 +113,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The CacheLib Caching Engine: Design and Experiences at Scale</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-16">2022-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;813 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-29">2022-07-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;460 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -124,73 +124,39 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
             </div><div class="content" id="content"><blockquote>
-<p>Hundreds of thousands of customers rely on DynamoDB for its fundamental properties</p>
+<p>CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.</p>
 </blockquote>
 <blockquote>
-<p>In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.</p>
+<p>CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.</p>
 </blockquote>
 <blockquote>
-<p>For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.</p>
+<p>All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.</p>
 </blockquote>
 <blockquote>
-<p>DynamoDB offers an availability SLA of 99.99 for regular tables and 99.999 for global tables (where DynamoDB replicates across tables across multiple AWS Regions)</p>
+<p>systems built on CacheLib achieve peak throughputs of a million requests per second on a single production server and hit ratios between 60 and 90%.</p>
 </blockquote>
 <blockquote>
-<p>a service-oriented architecture was adopted to encapsulate an application’s data behind service-level APIs that allowed sufficient decoupling to address tasks like reconfiguration without having to disrupt clients.</p>
+<p>Because workloads at Facebook are less cacheable than is generally assumed, caches at Facebook require massive capacities to achieve acceptable hit ratios.
+Caching systems at Facebook often comprise large distributed systems where each node has hundreds of gigabytes of cache capacity. This makes the use of flash for caching attractive.</p>
 </blockquote>
 <blockquote>
-<p>Only the leader replica can serve write and strongly consistent read requests.</p>
+<p>CDN focuses on serving HTTP requests for static media objects such as photos, audio, and video chunks from servers in user proximity.</p>
 </blockquote>
 <blockquote>
-<p>we discovered that application workloads frequently have non-uniform access patterns both over time and over key ranges. When the request rate within a table is non-uniform, splitting a partition and dividing performance allocation proportionately can result in the hot portion of the partition having less available performance than it did before the split.</p>
+<p>Churn refers to the change in the working set due to the introduction of new keys and changes in popularity of existing keys over time. The popular YCSB [24] workload generator assumes that there is no churn, i.e., each key will remain equally popular throughout the benchmark.</p>
 </blockquote>
 <blockquote>
-<p>The key observation that partitions had non-uniform access also led us to observe that not all partitions hosted by a storage node used their allocated throughput simultaneously.</p>
+<p>In Facebook production workloads, we find a high degree of churn. We define an object to be popular if it is among the 10% of objects that receive the most requests. Across all workloads, over two-thirds of popular objects in a given hour fall out of the top 10% after just one hour. Such high churn applies independent of which hour we use as the baseline, for different percentiles (e.g., top 25%), and with different time granularities (e.g., after 10 minutes, 50% of popular objects are no longer popular).</p>
 </blockquote>
 <blockquote>
-<p>If a table experienced throttling and the table level throughput was not exceeded, then it would automatically increase (boost) the allocated throughput of the partitions of the table using a proportional control algorithm.</p>
+<p>For Storage and CDN , we find that 64KB and 128KB chunks, respectively, are very common, which result from dividing large objects into chunks.</p>
 </blockquote>
 <blockquote>
-<p>adaptive capacity was also best-effort but eliminated over 99.99% of the throttling due to skewed access pattern.</p>
+<p>production caches frequently restart in order to pick up code fixes and updates. For example, 75% of Lookaside caches and 95% of CDN caches have an uptime less than 7 days. Even systems such as Storage and Social-Graph which have longer uptimes on average follow a regular monthly maintenance schedule which requires restarting cache processes.</p>
 </blockquote>
 <blockquote>
-<p>Bursting was only helpful for short-lived spikes in traffic and it was dependent on the node having throughput to support bursting. Adaptive capacity was reactive and kicked in only after throttling had been observed. This meant that the application using the table had already experienced brief pe- riod of unavailability.</p>
-</blockquote>
-<blockquote>
-<p>quick healing of impacted replication groups using log replicas ensures high durability of most recent writes.</p>
-</blockquote>
-<blockquote>
-<p>the data of the live replicas matches with a copy of a replica built offline using the archived write-ahead log entries.</p>
-</blockquote>
-<blockquote>
-<p>we have learned that continuous verification of data-at-rest is the most reliable method of protecting against hardware failures, silent data corruption, and even software bugs.</p>
-</blockquote>
-<blockquote>
-<p>We use formal methods [16] extensively to ensure the correctness of our replication protocols. The core replication protocol was specified using TLA+. Model checking has allowed us to catch subtle bugs that could have led to durability and correctness issues before the code went into production.</p>
-</blockquote>
-<blockquote>
-<p>formal methods have also been used to verify the correctness of our control plane and features such as distributed transactions.</p>
-</blockquote>
-<blockquote>
-<p>Backups or restores don’t affect performance or availability of the table as they are built using the write-ahead logs that are archived in S3.</p>
-</blockquote>
-<blockquote>
-<p>If one of the replicas is unresponsive, the leader adds a log replica to the group. Adding a log replica is the fastest way to ensure that the write quorum of the group is always met.</p>
-</blockquote>
-<blockquote>
-<p>We have been able to run millions of Paxos groups in a Region with log replicas.</p>
-</blockquote>
-<blockquote>
-<p>To solve the availability problem caused by gray failures, a follower that wants to trigger a failover sends a message to other replicas in the replication group asking if they can communicate with the leader.</p>
-</blockquote>
-<blockquote>
-<p>The rolled-back state might be different from the initial state of the software. The rollback procedure is often missed in testing and can lead to customer impact. DynamoDB runs a suite of upgrade and downgrade tests at a component level before every deployment. Then, the software is rolled back on purpose and tested by running functional tests. DynamoDB has found this process valuable for catching issues that otherwise would make it hard to rollback if needed.</p>
-</blockquote>
-<blockquote>
-<p>The additional challenge with distributed deployments is that the new software might introduce a new type of message or change the protocol in a way that old software in the system doesn’t understand. DynamoDB handles these kinds of changes with read-write deployments. Read-write deployment is completed as a multistep process. The first step is to deploy the software to read the new message format or protocol. Once all the nodes can handle the new message, the software is updated to send new messages. New messages are enabled with software deployment as well. Read-write deployments ensure that both types of messages can coexist in the system. Even in the case of rollbacks, the system can understand both old and new messages.</p>
-</blockquote>
-<blockquote>
-<p>DynamoDB should be able to continue to operate even when the services on which it depends are impaired. If IAM or KMS were to become unavailable, the routers will continue to use the cached results for pre-determined extended period.</p>
+<p>For example, under LRU, popular Items frequently compete to be reset to the most-recently-used (MRU) position, leading to lock contention and limit throughput.
+CacheLib adopts a simple solution to reduce contention: Items that were recently reset to the MRU position are not reset again for some time T [9, 87]. T is set to 60 seconds in most deployments.</p>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -200,10 +166,10 @@
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/dynamodb/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/cachelib/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xinglin.github.io/dynamodb/" data-title="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service" data-hashtags="paper,NoSQL,AWS"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xinglin.github.io/dynamodb/" data-hashtag="paper"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xinglin.github.io/dynamodb/" data-title="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xinglin.github.io/dynamodb/" data-title="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xinglin.github.io/dynamodb/" data-title="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale" data-hashtags="paper,NoSQL,AWS"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xinglin.github.io/cachelib/" data-hashtag="paper"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -215,8 +181,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/high-output-management/" class="prev" rel="prev" title="Book Review: High Output Management"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Book Review: High Output Management</a>
-            <a href="/cachelib/" class="next" rel="next" title="The CacheLib Caching Engine: Design and Experiences at Scale">The CacheLib Caching Engine: Design and Experiences at Scale<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/dynamodb/" class="prev" rel="prev" title="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
