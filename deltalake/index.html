@@ -4,39 +4,39 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>The CacheLib Caching Engine: Design and Experiences at Scale - Xing Lin</title><meta name="Description" content="USENIX OSDI 2020"><meta property="og:title" content="The CacheLib Caching Engine: Design and Experiences at Scale" />
-<meta property="og:description" content="USENIX OSDI 2020" />
+        <title>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores - Xing Lin</title><meta name="Description" content="VLDB 2020"><meta property="og:title" content="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores" />
+<meta property="og:description" content="VLDB 2020" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/cachelib/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-07-29T23:14:28-07:00" /><meta property="og:site_name" content="Xing Lin" />
+<meta property="og:url" content="https://xinglin.github.io/deltalake/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-12T20:34:46-07:00" /><meta property="og:site_name" content="Xing Lin" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
 
-<meta name="twitter:title" content="The CacheLib Caching Engine: Design and Experiences at Scale"/>
-<meta name="twitter:description" content="USENIX OSDI 2020"/>
+<meta name="twitter:title" content="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"/>
+<meta name="twitter:description" content="VLDB 2020"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xinglin.github.io/cachelib/" /><link rel="prev" href="https://xinglin.github.io/dynamodb/" /><link rel="next" href="https://xinglin.github.io/deltalake/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xinglin.github.io/deltalake/" /><link rel="prev" href="https://xinglin.github.io/cachelib/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "The CacheLib Caching Engine: Design and Experiences at Scale",
+        "headline": "Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/xinglin.github.io\/cachelib\/"
+            "@id": "https:\/\/xinglin.github.io\/deltalake\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "https:\/\/xinglin.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "paper, Facebook, caching","wordcount":  460 ,
-        "url": "https:\/\/xinglin.github.io\/cachelib\/","datePublished": "2022-07-29T00:00:00+00:00","dateModified": "2022-07-29T23:14:28-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "paper, cloud storage, delta lake, ACID, transaction, Database, big data, databrick, vldb","wordcount":  445 ,
+        "url": "https:\/\/xinglin.github.io\/deltalake\/","datePublished": "2022-08-12T00:00:00+00:00","dateModified": "2022-08-12T20:34:46-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -46,7 +46,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "Xing Lin"
-            },"description": "USENIX OSDI 2020"
+            },"description": "VLDB 2020"
     }
     </script></head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -113,9 +113,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The CacheLib Caching Engine: Design and Experiences at Scale</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-29">2022-07-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;460 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-12">2022-08-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;445 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -123,66 +123,70 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><blockquote>
-<p>CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.</p>
+            </div><div class="content" id="content"><p>Read/write performance for cloud object store.</p>
+<blockquote>
+<p>Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.</p>
 </blockquote>
 <blockquote>
-<p>CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.</p>
+<p>The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.</p>
 </blockquote>
 <blockquote>
-<p>All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.</p>
+<p>Google Cloud Storage and Azure Blob Store support atomic put-if-absent operations, so we use those.</p>
 </blockquote>
 <blockquote>
-<p>systems built on CacheLib achieve peak throughputs of a million requests per second on a single production server and hit ratios between 60 and 90%.</p>
+<p>Delta Lake is deployed at thousands of Databricks customers that process exabytes of data per day, with the largest instances managing exabyte-scale datasets and billions of objects.</p>
 </blockquote>
 <blockquote>
-<p>Because workloads at Facebook are less cacheable than is generally assumed, caches at Facebook require massive capacities to achieve acceptable hit ratios.
-Caching systems at Facebook often comprise large distributed systems where each node has hundreds of gigabytes of cache capacity. This makes the use of flash for caching attractive.</p>
+<p>although many systems support reading and writing to cloud object stores, achieving performant and mutable table storage over these systems is challenging, making it difficult to implement data warehousing capabilities over them. Unlike distributed filesystems such as HDFS [5], or custom storage engines in a DBMS, most cloud object stores are merely key-value stores, with no cross-key consistency guarantees. Their performance characteristics also differ greatly from distributed filesystems and require special care.</p>
 </blockquote>
 <blockquote>
-<p>CDN focuses on serving HTTP requests for static media objects such as photos, audio, and video chunks from servers in user proximity.</p>
+<p>Parquet files include footers with min/max statistics that can be used to skip reading them in selective queries. Reading such a footer on HDFS might take a few milliseconds, but the latency of cloud object stores is so much higher that these data skipping checks can take longer than the actual query.</p>
 </blockquote>
 <blockquote>
-<p>Churn refers to the change in the working set due to the introduction of new keys and changes in popularity of existing keys over time. The popular YCSB [24] workload generator assumes that there is no churn, i.e., each key will remain equally popular throughout the benchmark.</p>
+<p>in the first few years of Databricks’ cloud service (2014–2016), around half the support escalations we received were due to data corruption, consistency or performance issues due to cloud storage strategies (e.g., undoing the effect of a crashed update job, or improving the performance of a query that reads tens of thousands of objects).</p>
 </blockquote>
 <blockquote>
-<p>In Facebook production workloads, we find a high degree of churn. We define an object to be popular if it is among the 10% of objects that receive the most requests. Across all workloads, over two-thirds of popular objects in a given hour fall out of the top 10% after just one hour. Such high churn applies independent of which hour we use as the baseline, for different percentiles (e.g., top 25%), and with different time granularities (e.g., after 10 minutes, 50% of popular objects are no longer popular).</p>
+<p>The core idea of Delta Lake is simple: we maintain information about which objects are part of a Delta table in an ACID manner, using a write-ahead log that is itself stored in the cloud object store.</p>
 </blockquote>
 <blockquote>
-<p>For Storage and CDN , we find that 64KB and 128KB chunks, respectively, are very common, which result from dividing large objects into chunks.</p>
+<p>enable a “lakehouse” paradigm that combines the key features of data warehouses and data lakes: standard DBMS management functions usable directly against low-cost object stores.</p>
 </blockquote>
 <blockquote>
-<p>production caches frequently restart in order to pick up code fixes and updates. For example, 75% of Lookaside caches and 95% of CDN caches have an uptime less than 7 days. Even systems such as Storage and Social-Graph which have longer uptimes on average follow a regular monthly maintenance schedule which requires restarting cache processes.</p>
+<p>cloud object stores do not provide cheap renames of objects or of “directories”.</p>
 </blockquote>
 <blockquote>
-<p>For example, under LRU, popular Items frequently compete to be reset to the most-recently-used (MRU) position, leading to lock contention and limit throughput.
-CacheLib adopts a simple solution to reduce contention: Items that were recently reset to the MRU position are not reset again for some time T [9, 87]. T is set to 60 seconds in most deployments.</p>
+<p>S3’s LIST only returns up to 1000 keys per call, and each call takes tens to hundreds of milliseconds, so it can take minutes to list a dataset with millions of objects using a sequential implementation.</p>
+</blockquote>
+<blockquote>
+<p>Updating objects usually requires rewriting the whole object at once.</p>
+</blockquote>
+<blockquote>
+<p>Other cloud object stores offer stronger guarantees [31], but still lack atomic operations across multiple keys.</p>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-07-29</span>
+                <span>Updated on 2022-08-12</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/cachelib/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/deltalake/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale" data-hashtags="paper,Facebook,caching"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xinglin.github.io/cachelib/" data-hashtag="paper"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xinglin.github.io/cachelib/" data-title="The CacheLib Caching Engine: Design and Experiences at Scale"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores" data-hashtags="paper,cloud storage,delta lake,ACID,transaction,Database,big data,databrick,vldb"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xinglin.github.io/deltalake/" data-hashtag="paper"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/facebook/">Facebook</a>,&nbsp;<a href="/tags/caching/">caching</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/cloud-storage/">cloud storage</a>,&nbsp;<a href="/tags/delta-lake/">delta lake</a>,&nbsp;<a href="/tags/acid/">ACID</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/big-data/">big data</a>,&nbsp;<a href="/tags/databrick/">databrick</a>,&nbsp;<a href="/tags/vldb/">vldb</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/dynamodb/" class="prev" rel="prev" title="Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</a>
-            <a href="/deltalake/" class="next" rel="next" title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores">Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/cachelib/" class="prev" rel="prev" title="The CacheLib Caching Engine: Design and Experiences at Scale"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>The CacheLib Caching Engine: Design and Experiences at Scale</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

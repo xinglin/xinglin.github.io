@@ -4,7 +4,17 @@
         <link>https://xinglin.github.io/posts/</link>
         <description>All Posts | Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</title>
+    <link>https://xinglin.github.io/deltalake/</link>
+    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/deltalake/</guid>
+    <description><![CDATA[Read/write performance for cloud object store.
+ Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
+  The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
+</item>
+<item>
     <title>The CacheLib Caching Engine: Design and Experiences at Scale</title>
     <link>https://xinglin.github.io/cachelib/</link>
     <pubDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</pubDate>
@@ -88,16 +98,6 @@ ARIES  Three main principles lie behind the ARIES recovery algorithm:
     <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
     <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
 Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
-</item>
-<item>
-    <title>Enduring Ideas/Techniques that are still in use today</title>
-    <link>https://xinglin.github.io/enduring-ideas/</link>
-    <pubDate>Fri, 15 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/enduring-ideas/</guid>
-    <description><![CDATA[There are a few ideas/techniques that were invented a long time ago but they are being used/re-implemented again and again, even in today&rsquo;s sytems. Why do people look and reimplement these techniques, even after 50 years? Because, even after 50 years, we face largely the same problem when we design new systems.
-Here are a few examples.
-   Ideas First-time Introduced What problem is solved?     Trasactions  Make it easy to develop on top of a data store.]]></description>
 </item>
 </channel>
 </rss>

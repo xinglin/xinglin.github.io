@@ -4,7 +4,17 @@
         <link>https://xinglin.github.io/tags/transaction/</link>
         <description>transaction - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/transaction/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/transaction/" rel="self" type="application/rss+xml" /><item>
+    <title>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</title>
+    <link>https://xinglin.github.io/deltalake/</link>
+    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/deltalake/</guid>
+    <description><![CDATA[Read/write performance for cloud object store.
+ Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
+  The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
+</item>
+<item>
     <title>Crash Recovery</title>
     <link>https://xinglin.github.io/crash-recovery/</link>
     <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
