@@ -76,7 +76,7 @@ public class ExecutorServiceCoreThreadIdleTimeoutTest implements Closeable {
   }
 }
 ```
-- When we comment out `pool.allowCoreThreadTimeOut(true);`, the core 
+- When we comment out line 17 `pool.allowCoreThreadTimeOut(true);`, the core 
 thread will be kept running and the JVM process kept running, though the main thread exits.
 ```bash
 Mon Jul 03 15:42:50 PDT 2023: Main thread started
