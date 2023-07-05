@@ -106,6 +106,12 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/postgresql/">Systems and services built on top of postgreSQL</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-02">2018-12-02</time></span></div><div class="content">It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
+   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database   openGauss/GaussDB distributed relational db, by Huawei      AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine.</div><div class="post-footer">
+        <a href="/postgresql/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/loc/">Lines of Code for Various Software</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-11-20">2018-11-20</time></span></div><div class="content">Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.</div><div class="post-footer">
         <a href="/loc/">Read More</a><div class="post-tags">
@@ -176,11 +182,6 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-12-19">2014-12-19</time></span></div><div class="content">I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.</div><div class="post-footer">
         <a href="/proposal-defense/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">PhD life</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/clone-kvm/">Clone a Single KVM/qemu Virtual Machine</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-11-26">2014-11-26</time></span></div><div class="content">I am working on virtual machine cloning for security testing for the TCloud project. We are looking for an efficient and transparent virtual machine cloning technique that has minimal impact on the virtual machine to be cloned. After some investigation, we found that KVM supports live snapshot for both memory and disk state while Xen4.4 currently does not support this feature yet but could be patched to do live snapshot for memory state easily.</div><div class="post-footer">
-        <a href="/clone-kvm/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kvm/">KVM</a>,&nbsp;<a href="/tags/live-clone/">live clone</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -204,7 +205,7 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
                 </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

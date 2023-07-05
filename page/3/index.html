@@ -106,6 +106,12 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/flush-data-to-disk/">Flush data to stable storage in C</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-09-02">2019-09-02</time></span></div><div class="content">When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
+Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&rsquo;t survive on a power lose.</div><div class="post-footer">
+        <a href="/flush-data-to-disk/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/self-notes/">Notes for Myself</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-08-26">2019-08-26</time></span></div><div class="content">When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
   Learn one piece at a time.
@@ -173,12 +179,6 @@ The main idea of this paper is to run garbage collection during idle times to mi
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-03">2018-12-03</time></span></div><div class="content">I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks.</div><div class="post-footer">
         <a href="/reinvent2018/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">conference</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/postgresql/">Systems and services built on top of postgreSQL</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-02">2018-12-02</time></span></div><div class="content">It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
-   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database   openGauss/GaussDB distributed relational db, by Huawei      AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine.</div><div class="post-footer">
-        <a href="/postgresql/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -202,7 +202,7 @@ The main idea of this paper is to run garbage collection during idle times to mi
                 </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

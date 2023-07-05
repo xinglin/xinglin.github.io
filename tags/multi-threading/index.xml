@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Multi-threading - Tag - Xing Lin</title>
+        <link>https://xinglin.github.io/tags/multi-threading/</link>
+        <description>Multi-threading - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/multi-threading/" rel="self" type="application/rss+xml" /><item>
+    <title>Java ExecutorService</title>
+    <link>https://xinglin.github.io/java-executorservice/</link>
+    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/java-executorservice/</guid>
+    <description><![CDATA[Recently, I was working on HDFS-17030 and used ExecutorService for multi-threading execution. We hit a non-intuitive `bug` of how JVM/garbage collector works. The issue is as following.
+We created an executorService with 1 core thread in a class. We did not set allowCoreThreadTimeOut to true (default is false). So, that core thread will be kept running, even when the main thread exits! Then, the JVM process won&rsquo;t exit, because there is still one thread running!]]></description>
+</item>
+</channel>
+</rss>

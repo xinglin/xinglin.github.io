@@ -106,6 +106,12 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/java-executorservice/">Java ExecutorService</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-03">2023-07-03</time></span></div><div class="content">Recently, I was working on HDFS-17030 and used ExecutorService for multi-threading execution. We hit a non-intuitive `bug` of how JVM/garbage collector works. The issue is as following.
+We created an executorService with 1 core thread in a class. We did not set allowCoreThreadTimeOut to true (default is false). So, that core thread will be kept running, even when the main thread exits! Then, the JVM process won&rsquo;t exit, because there is still one thread running!</div><div class="post-footer">
+        <a href="/java-executorservice/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tech/">tech</a>,&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/multi-threading/">Multi-threading</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/deltalake/">Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-08-12">2022-08-12</time></span></div><div class="content">Read/write performance for cloud object store.
  Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
@@ -177,11 +183,6 @@ Here are a few examples.
    Ideas First-time Introduced What problem is solved?     Trasactions  Make it easy to develop on top of a data store.</div><div class="post-footer">
         <a href="/enduring-ideas/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/techniques/">techniques</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/leveldb/">Delete Request in LevelDB</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-10">2021-01-10</time></span></div><div class="content">When I searched for how leveldb/rocksdb and a few other KV stores handle delete requests, the document will usually say ``we insert a special a tombstone value or a tombstone entry.&rsquo;&rsquo;. However, for KV stores which allow storing arbitrary keys and values, I am not sure which value we should use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user.</div><div class="post-footer">
-        <a href="/leveldb/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/leveldb/">leveldb</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -203,7 +204,7 @@ Here are a few examples.
                 </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

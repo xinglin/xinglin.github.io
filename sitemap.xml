@@ -2,25 +2,29 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://xinglin.github.io/tags/acid/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/big-data/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/cloud-storage/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/database/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/databrick/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/delta-lake/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/deltalake/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/paper/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/posts/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/transaction/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/vldb/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/caching/</loc><lastmod>2022-07-29T23:14:28-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://xinglin.github.io/tags/facebook/</loc><lastmod>2022-07-29T23:14:28-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://xinglin.github.io/cachelib/</loc><lastmod>2022-07-29T23:14:28-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://xinglin.github.io/dynamodb/</loc><lastmod>2022-07-29T22:55:39-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://xinglin.github.io/tags/aws/</loc><lastmod>2022-07-29T22:55:39-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://xinglin.github.io/tags/nosql/</loc><lastmod>2022-07-29T22:55:39-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://xinglin.github.io/tags/java/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/java-executorservice/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/multi-threading/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/posts/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/tech/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/</loc><lastmod>2023-07-03T22:33:23-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/acid/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/big-data/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/cloud-storage/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/database/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/databrick/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/delta-lake/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/deltalake/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/paper/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/transaction/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/vldb/</loc><lastmod>2022-08-12T20:34:46-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/caching/</loc><lastmod>2022-07-29T23:14:28-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/facebook/</loc><lastmod>2022-07-29T23:14:28-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/cachelib/</loc><lastmod>2022-07-29T23:14:28-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/dynamodb/</loc><lastmod>2022-07-29T22:55:39-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/aws/</loc><lastmod>2022-07-29T22:55:39-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xinglin.github.io/tags/nosql/</loc><lastmod>2022-07-29T22:55:39-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/book-review/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/high-output-management/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/keyvalue-workloads/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -55,7 +59,6 @@
             <loc>https://xinglin.github.io/tags/vision/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/measure-network-latency/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/network-latency/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://xinglin.github.io/tags/tech/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/tip/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/ftl/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/shrd/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -101,7 +104,7 @@
             <loc>https://xinglin.github.io/books-papers/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/nv-tree/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/papers/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://xinglin.github.io/publications/</loc><lastmod>2022-07-29T23:13:21-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://xinglin.github.io/publications/</loc><lastmod>2022-07-29T23:13:21-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/phd-life/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/dissertation-defense/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/data-summarization/</loc><lastmod>2022-05-28T11:36:16-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
