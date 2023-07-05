@@ -131,7 +131,7 @@ set <em>allowCoreThreadTimeOut</em> to true (default is false). So,
 that core thread will be kept running, even when the main thread exits!
 Then, the JVM process won&rsquo;t exit, because there is still one thread running!
 Even when we shut down the executorService in <em>.close()</em> method of that class,
-the same issue persists. The issue is <em>.close</em> method of a Closable
+the same issue persists. The issue is <em>.close()</em> method of a Closable
 object is called by Java garbage collector <em>only</em> when it is reclaiming
 that object. This does not happen immediately when there is
 no reference to an object. After an object becomes orphan (no
@@ -197,59 +197,59 @@ programmers on when the garbage collector will reclaim an object.</p>
 </span><span class="lnt">53
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import java.io.Closeable;
-</span></span><span class="line"><span class="cl">import java.io.IOException;
-</span></span><span class="line"><span class="cl">import java.util.Date;
-</span></span><span class="line"><span class="cl">import java.util.concurrent.ArrayBlockingQueue;
-</span></span><span class="line"><span class="cl">import java.util.concurrent.ThreadFactory;
-</span></span><span class="line"><span class="cl">import java.util.concurrent.ThreadPoolExecutor;
-</span></span><span class="line"><span class="cl">import java.util.concurrent.TimeUnit;
-</span></span><span class="line"><span class="cl">import java.util.concurrent.atomic.AtomicInteger;
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.Closeable</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.concurrent.ThreadFactory</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.concurrent.ThreadPoolExecutor</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">public class ExecutorServiceCoreThreadIdleTimeoutTest implements Closeable {
-</span></span><span class="line"><span class="cl">  ExecutorServiceCoreThreadIdleTimeoutTest() {
-</span></span><span class="line"><span class="cl">    pool =
-</span></span><span class="line"><span class="cl">    new ThreadPoolExecutor(1, 4, 10, TimeUnit.SECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(1024),
-</span></span><span class="line"><span class="cl">        namedThreadFactory);
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExecutorServiceCoreThreadIdleTimeoutTest</span> <span class="kd">implements</span> <span class="n">Closeable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ExecutorServiceCoreThreadIdleTimeoutTest</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pool</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="n">ThreadPoolExecutor</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">10</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">,</span> <span class="k">new</span> <span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;(</span><span class="n">1024</span><span class="o">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">namedThreadFactory</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">     
-</span></span><span class="line"><span class="cl">    //pool.allowCoreThreadTimeOut(true);
-</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">    <span class="c1">//pool.allowCoreThreadTimeOut(true);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  ThreadFactory namedThreadFactory = new ThreadFactory() {
-</span></span><span class="line"><span class="cl">    private final AtomicInteger threadNumber = new AtomicInteger(1);
+</span></span><span class="line"><span class="cl">  <span class="n">ThreadFactory</span> <span class="n">namedThreadFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadFactory</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">AtomicInteger</span> <span class="n">threadNumber</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicInteger</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    @Override
-</span></span><span class="line"><span class="cl">    public Thread newThread(Runnable r) {
-</span></span><span class="line"><span class="cl">      String name = &#34;myThread-&#34; + threadNumber.getAndIncrement();
-</span></span><span class="line"><span class="cl">      return new Thread(r, name);
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">  };
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Thread</span> <span class="nf">newThread</span><span class="o">(</span><span class="n">Runnable</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;myThread-&#34;</span> <span class="o">+</span> <span class="n">threadNumber</span><span class="o">.</span><span class="na">getAndIncrement</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  private final ThreadPoolExecutor pool;
+</span></span><span class="line"><span class="cl">  <span class="kd">private</span> <span class="kd">final</span> <span class="n">ThreadPoolExecutor</span> <span class="n">pool</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  public void submitTask() {
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">submitTask</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    pool.submit(() -&gt; {
-</span></span><span class="line"><span class="cl">      System.out.printf(&#34;%tc: task is running\n&#34;, new Date());
-</span></span><span class="line"><span class="cl">    });
-</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">    <span class="n">pool</span><span class="o">.</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%tc: task is running\n&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">});</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  public static void main(String[] args) throws InterruptedException {
-</span></span><span class="line"><span class="cl">    System.out.printf(&#34;%tc: Main thread started\n&#34;, new Date());
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%tc: Main thread started\n&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    ExecutorServiceCoreThreadIdleTimeoutTest test = new ExecutorServiceCoreThreadIdleTimeoutTest();
-</span></span><span class="line"><span class="cl">    test.submitTask();
-</span></span><span class="line"><span class="cl">    Thread.sleep(1000);
-</span></span><span class="line"><span class="cl">    System.out.printf(&#34;%tc: Main thread exited\n&#34;, new Date());
-</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">    <span class="n">ExecutorServiceCoreThreadIdleTimeoutTest</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ExecutorServiceCoreThreadIdleTimeoutTest</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test</span><span class="o">.</span><span class="na">submitTask</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%tc: Main thread exited\n&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  @Override
-</span></span><span class="line"><span class="cl">  public void close() throws IOException {
-</span></span><span class="line"><span class="cl">    pool.shutdown();
-</span></span><span class="line"><span class="cl">    System.out.printf(&#34;%tc: shutdown thread pool\n&#34;, new Date());
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">  <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pool</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%tc: shutdown thread pool\n&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -263,9 +263,9 @@ thread will be kept running and the JVM process kept running, though the main th
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Mon Jul 03 15:42:50 PDT 2023: Main thread started
-</span></span><span class="line"><span class="cl">Mon Jul 03 15:42:50 PDT 2023: task is running
-</span></span><span class="line"><span class="cl">Mon Jul 03 15:42:51 PDT 2023: Main thread exited
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Mon Jul <span class="m">03</span> 15:42:50 PDT 2023: Main thread started
+</span></span><span class="line"><span class="cl">Mon Jul <span class="m">03</span> 15:42:50 PDT 2023: task is running
+</span></span><span class="line"><span class="cl">Mon Jul <span class="m">03</span> 15:42:51 PDT 2023: Main thread exited
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Intellij threaddump showed there is a thread &ldquo;myThread-1&rdquo; in <code>parking</code> state,
@@ -285,11 +285,11 @@ message at the end.</li>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Mon Jul 03 15:43:43 PDT 2023: Main thread started
-</span></span><span class="line"><span class="cl">Mon Jul 03 15:43:43 PDT 2023: task is running
-</span></span><span class="line"><span class="cl">Mon Jul 03 15:43:44 PDT 2023: Main thread exited
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Mon Jul <span class="m">03</span> 15:43:43 PDT 2023: Main thread started
+</span></span><span class="line"><span class="cl">Mon Jul <span class="m">03</span> 15:43:43 PDT 2023: task is running
+</span></span><span class="line"><span class="cl">Mon Jul <span class="m">03</span> 15:43:44 PDT 2023: Main thread exited
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Process finished with exit code 0
+</span></span><span class="line"><span class="cl">Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>At first glance, this looks a bit wired, as when the main thread exits, we would expect
