@@ -11,8 +11,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/crash-recovery/</guid>
     <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
-ARIES  Three main principles lie behind the ARIES recovery algorithm:
- Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
+ARIES Three main principles lie behind the ARIES recovery algorithm:
+Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
 </item>
 </channel>
 </rss>

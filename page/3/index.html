@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.99.1" />
+	<meta name="generator" content="Hugo 0.120.4">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -106,79 +106,43 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/flush-data-to-disk/">Flush data to stable storage in C</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-09-02">2019-09-02</time></span></div><div class="content">When writing to a FILE object in C, it turns out there are multiple steps one needs to take in order to flush data from an application buffer to the stable storage (disk).
-Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one first needs to call fflush(fp), to flush the application buffer to the OS kernel page cache. Since the data still sits in the OS kernel space, it won&rsquo;t survive on a power lose.</div><div class="post-footer">
-        <a href="/flush-data-to-disk/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a></div></div>
+        <a href="/enduring-ideas/">Enduring Ideas/Techniques that are still in use today</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-15">2021-01-15</time></span></div><div class="content">There are a few ideas/techniques that were invented a long time ago but they are being used/re-implemented again and again, even in today&rsquo;s sytems. Why do people look and reimplement these techniques, even after 50 years? Because, even after 50 years, we face largely the same problem when we design new systems.
+Here are a few examples.
+Ideas First-time Introduced What problem is solved? Trasactions Make it easy to develop on top of a data store.</div><div class="post-footer">
+        <a href="/enduring-ideas/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/techniques/">techniques</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/self-notes/">Notes for Myself</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-08-26">2019-08-26</time></span></div><div class="content">When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
-  Learn one piece at a time.
-When learning a new thing, it could come with many new concepts, making it harder to understand all at once.</div><div class="post-footer">
-        <a href="/self-notes/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a></div></div>
+        <a href="/leveldb/">Delete Request in LevelDB</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-10">2021-01-10</time></span></div><div class="content">When I searched for how leveldb/rocksdb and a few other KV stores handle delete requests, the document will usually say ``we insert a special a tombstone value or a tombstone entry.&rsquo;&rsquo;. However, for KV stores which allow storing arbitrary keys and values, I am not sure which value we should use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user.</div><div class="post-footer">
+        <a href="/leveldb/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/leveldb/">leveldb</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/kernel-dynamic-debug/">Dynamic Kernel Debugging</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-08-13">2019-08-13</time></span></div><div class="content">Compile kernel with CONFIG_DYNAMIC_DEBUG=y
-  Mount debugfs, if not mounted yet
- sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
- echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control    The flags are:
-	p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.</div><div class="post-footer">
-        <a href="/kernel-dynamic-debug/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kernel/">kernel</a>,&nbsp;<a href="/tags/note/">note</a></div></div>
+        <a href="/postgres-tid-wraparound/">Postgres Handling Transaction ID Wrap Around</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-12-17">2020-12-17</time></span></div><div class="content">NOTE: OpenGauss may fix this problem.
+Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
+Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.</div><div class="post-footer">
+        <a href="/postgres-tid-wraparound/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/postgres/">postgres</a>,&nbsp;<a href="/tags/idea/">idea</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ocssd/">Open-Channel SSD</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-08-13">2019-08-13</time></span></div><div class="content">In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
-  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
-  Read code path (from the media) in pblk
-  1 2 3 4 5 6 7 8 9  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&gt;ops-&gt;submit_io(dev, rqd);    Write code path in pblk  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45  pblk_write_to_cache() { for (i = 0; i &lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.</div><div class="post-footer">
-        <a href="/ocssd/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a>,&nbsp;<a href="/tags/open-channel/">open channel</a>,&nbsp;<a href="/tags/ssd/">SSD</a></div></div>
+        <a href="/transaction/">Transaction</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-27">2020-09-27</time></span></div><div class="content">The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
+Property Definition Technique to achieve that property Atomicity A transaction either succeeds or fails as a single operation. Undo log Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.</div><div class="post-footer">
+        <a href="/transaction/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/acid/">ACID</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/authorversion/">Create The Author Version for Your Paper (ACM)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-04-28">2019-04-28</time></span></div><div class="content">So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
-In acmart.cls, change the execution option for authorversion from false to true.
- -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true}  You may also want to add page numbers into your paper.</div><div class="post-footer">
-        <a href="/authorversion/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a></div></div>
+        <a href="/hit-the-road/">Hit the Road iOS App</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-23">2020-08-23</time></span></div><div class="content">Hit the Road is an iOS app for tracking ourdoor exercises. It can track walking, running, and biking. It is supposed to run on iPhones, but not iPads or iWatchs.
+User Privacy The app only stores the duration and mileage for each activity locally in the installed device. The app does not store the GPS locations. It only uses GPS locations during an activity to get the mileage. The app does not send any data over the network.</div><div class="post-footer">
+        <a href="/hit-the-road/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ios/">iOS</a>,&nbsp;<a href="/tags/support/">support</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/programming/">Programming - Principles and Practice Using C++</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-04-25">2019-04-25</time></span></div><div class="content">This is an introductory book about programming, written by Bjarne Stroustrup, the C++ creator.
-Quotes  Programming is (among other things) a practical skill that you need to practice to master. Learning involves repetition. You must run before you can walk! Babies really do run by themselves before they learn the finer skills of slow, controlled walking. Similarly, you will dash ahead, occasionally stumbling, to get a feel of programming before slowing down to gain the necessary finer control and understanding.</div><div class="post-footer">
-        <a href="/programming/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/book/">book</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/global-garbage-collection/">Coordinating Garbage Collection for Arrays of Solid-State Drives</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-03-08">2019-03-08</time></span></div><div class="content">This is the start of a series of blogs I plan to write about existing work related with garbage collection for SSDs.
-The main idea of this paper is to run garbage collection during idle times to minimize the impact on foreground workloads. Garbage collection is scheduled to run simultaneously at all SSDs, to maximize the time window during which there is no garbage collection, and thus higher application performance. Figure 5 shows their approach and Figure 10 shows the effects.</div><div class="post-footer">
-        <a href="/global-garbage-collection/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ssd/">SSD</a>,&nbsp;<a href="/tags/garbage-collection/">Garbage Collection</a>,&nbsp;<a href="/tags/paper/">paper</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ext2-dax/">DAX in ext2 filesystem</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-01-24">2019-01-24</time></span></div><div class="content">msync syscall 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41  /mm/msync.c / * MS_SYNC syncs the entire file - including mappings. */ SYSCALL_DEFINE3(msync, unsigned long, start, size_t, len, int, flags) vfs_fsync_range(file, fstart, fend, 1); file-&gt;f_op-&gt;fsync(file, start, end, datasync); == ext2_fsync(); generic_file_fsync(file, start, end, datasync); __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync) file_write_and_wait_range(file, start, end); __filemap_fdatawrite_range(mapping, lstart, lend, WB_SYNC_ALL); do_writepages(mapping, &amp;wbc); mapping-&gt;a_ops-&gt;writepages(mapping, wbc); ext2_dax_writepages() dax_writeback_mapping_range(mapping, mapping-&gt;host-&gt;i_sb-&gt;s_bdev, wbc); dax_writeback_one(&amp;xas, dax_dev, mapping, entry); dax_flush(dax_dev, page_address(pfn_to_page(pfn)), size); arch_wb_cache_pmem(addr, size); clean_cache_range(addr, size); for (p = (void *)((unsigned long)addr &amp; ~clflush_mask); p &lt; vend; p += x86_clflush_size) clwb(p); static const struct address_space_operations ext2_dax_aops = { .</div><div class="post-footer">
-        <a href="/ext2-dax/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a>,&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/source-code/">source code</a>,&nbsp;<a href="/tags/ext2/">ext2</a>,&nbsp;<a href="/tags/dax/">dax</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/making-databases-work/">Wisdom from Michael Stonebraker</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-01-17">2019-01-17</time></span></div><div class="content">Where do ideas come from? Ideas come from two sources: talking to real users with real problems and then trying to solve them. This ensures somebody cares about the ideas and the rubber meets the road and not the sky. The second source is to bounce possibly good (or bad) ideas off colleages that will challenge them. In summary, the best chance for generating a good idea is to spend time in the real world and find an enviroment where you will be intellectually challenged.</div><div class="post-footer">
-        <a href="/making-databases-work/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/book/">book</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/linux-read-path/">Read syscall implementation in Linux Kernel</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-01-16">2019-01-16</time></span></div><div class="content">Interactions among vfs, page cache, and ext2 on serving a read request stack trace for ext2_readpages() in ext2 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  [ 84.037457] Call Trace: [ 84.037458] dump_stack+0x46/0x5b [ 84.037460] ext2_readpages+0x3e/0x90 [ 84.037464] read_pages+0x71/0x1a0 [ 84.037470] ? __do_page_cache_readahead+0x1c9/0x1e0 [ 84.037472] __do_page_cache_readahead+0x1c9/0x1e0 [ 84.037474] ondemand_readahead+0x171/0x2b0 [ 84.037478] ? pagecache_get_page+0x30/0x2c0 [ 84.</div><div class="post-footer">
-        <a href="/linux-read-path/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a>,&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/source-code/">source code</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/reinvent2018-tidbits/">AWS re:Invent 2018 tidbits</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-07">2018-12-07</time></span></div><div class="content">Amazon RDS PostgreSQL  2 flavors.  Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance)   Supports Postgre 9.6/10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data. Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements.</div><div class="post-footer">
-        <a href="/reinvent2018-tidbits/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">conference</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/reinvent2018/">AWS re:Invent 2018</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-03">2018-12-03</time></span></div><div class="content">I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks.</div><div class="post-footer">
-        <a href="/reinvent2018/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">conference</a></div></div>
+        <a href="/ycsb-rocksdb-options/">Use Options File for Benchmarking RocksDB using YCSB</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-08">2020-08-08</time></span></div><div class="content">In YCSB, we can also use the options file (-p rocksdb.optionsfile=/tmp/ycsb-options.ini, e.g.,) to configure the options for RocksDB. However, for a new user, it is actually not easy to figure out what needs to be configured for RocksDB for YCSB. Here is a quick way to get it start.
+Use the ycsb tool to load a rocksdb without specifying the options.
+$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.</div><div class="post-footer">
+        <a href="/ycsb-rocksdb-options/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tips/">tips</a>,&nbsp;<a href="/tags/rocksdb/">rocksdb</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -199,9 +163,15 @@ The main idea of this paper is to run garbage collection during idle times to mi
                     <span class="page-link">
                         <a href="/page/5/">5</a>
                     </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/9/">9</a>
+                    </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

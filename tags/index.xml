@@ -1,7 +1,88 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - Tag - </title>
-        <link>/tags/</link>
-        <description>Tags - Tag - </description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/tags/" rel="self" type="application/rss+xml" /></channel>
+        <title>Tags - Tag - Xing Lin</title>
+        <link>https://xinglin.github.io/tags/</link>
+        <description>Tags - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Hadoop</title>
+    <link>https://xinglin.github.io/tags/hadoop/</link>
+    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/hadoop/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>HDFS</title>
+    <link>https://xinglin.github.io/tags/hdfs/</link>
+    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/hdfs/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>note</title>
+    <link>https://xinglin.github.io/tags/note/</link>
+    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/note/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>sourcecode</title>
+    <link>https://xinglin.github.io/tags/sourcecode/</link>
+    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/sourcecode/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Java</title>
+    <link>https://xinglin.github.io/tags/java/</link>
+    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/java/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Multi-threading</title>
+    <link>https://xinglin.github.io/tags/multi-threading/</link>
+    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/multi-threading/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>tech</title>
+    <link>https://xinglin.github.io/tags/tech/</link>
+    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/tech/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>ACID</title>
+    <link>https://xinglin.github.io/tags/acid/</link>
+    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/acid/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>big data</title>
+    <link>https://xinglin.github.io/tags/big-data/</link>
+    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/big-data/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>cloud storage</title>
+    <link>https://xinglin.github.io/tags/cloud-storage/</link>
+    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/tags/cloud-storage/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
 </rss>

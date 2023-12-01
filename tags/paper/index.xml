@@ -11,8 +11,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/deltalake/</guid>
     <description><![CDATA[Read/write performance for cloud object store.
- Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
-  The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
+Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
+The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
 </item>
 <item>
     <title>The CacheLib Caching Engine: Design and Experiences at Scale</title>
@@ -21,8 +21,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/cachelib/</guid>
     <description><![CDATA[CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.
-  CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.
-  All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.]]></description>
+CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.
+All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.]]></description>
 </item>
 <item>
     <title>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</title>
@@ -31,8 +31,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/dynamodb/</guid>
     <description><![CDATA[Hundreds of thousands of customers rely on DynamoDB for its fundamental properties
-  In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.
-  For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.]]></description>
+In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.
+For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.]]></description>
 </item>
 <item>
     <title>Key Value Systems</title>
@@ -67,7 +67,7 @@ Summary The key idea is to convert random small writes into large sequential wri
     <guid>https://xinglin.github.io/authorversion/</guid>
     <description><![CDATA[So you have your paper accepted to a conference and completed your camera ready version. Now is the time to create an author version for it so that you can post it on your own web site! The trick is actually quite simple if you are using the ACM Latex template.
 In acmart.cls, change the execution option for authorversion from false to true.
- -\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true}  You may also want to add page numbers into your paper.]]></description>
+-\ExecuteOptionsX{authorversion=false} +\ExecuteOptionsX{authorversion=true} You may also want to add page numbers into your paper.]]></description>
 </item>
 <item>
     <title>Coordinating Garbage Collection for Arrays of Solid-State Drives</title>
@@ -85,7 +85,7 @@ The main idea of this paper is to run garbage collection during idle times to mi
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/nv-tree/</guid>
     <description><![CDATA[This paper introduces a new B+ tree variation that is optimized for NVM by reducing consistency cost from memory fence and cacheline flush operations.
- Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.]]></description>
+Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.]]></description>
 </item>
 </channel>
 </rss>

@@ -179,40 +179,40 @@ problem does not seem optimal/elegant. Is there any better way to handle it?</p>
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/* ----------------
-</span></span><span class="line"><span class="cl"> *		Special transaction ID values
-</span></span><span class="line"><span class="cl"> *
-</span></span><span class="line"><span class="cl"> * BootstrapTransactionId is the XID for &#34;bootstrap&#34; operations, and
-</span></span><span class="line"><span class="cl"> * FrozenTransactionId is used for very old tuples.  Both should
-</span></span><span class="line"><span class="cl"> * always be considered valid.
-</span></span><span class="line"><span class="cl"> *
-</span></span><span class="line"><span class="cl"> * FirstNormalTransactionId is the first &#34;normal&#34; transaction id.
-</span></span><span class="line"><span class="cl"> * Note: if you need to change it, you must change pg_class.h as well.
-</span></span><span class="line"><span class="cl"> * ----------------
-</span></span><span class="line"><span class="cl"> */
-</span></span><span class="line"><span class="cl">#define InvalidTransactionId		((TransactionId) 0)
-</span></span><span class="line"><span class="cl">#define BootstrapTransactionId		((TransactionId) 1)
-</span></span><span class="line"><span class="cl">#define FrozenTransactionId			((TransactionId) 2)
-</span></span><span class="line"><span class="cl">#define FirstNormalTransactionId	((TransactionId) 3)
-</span></span><span class="line"><span class="cl">#define MaxTransactionId			((TransactionId) 0xFFFFFFFF)
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">/*</span> <span class="o">----------------</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span>		<span class="n">Special</span> <span class="n">transaction</span> <span class="n">ID</span> <span class="n">values</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">BootstrapTransactionId</span> <span class="n">is</span> <span class="n">the</span> <span class="n">XID</span> <span class="k">for</span> <span class="s2">&#34;bootstrap&#34;</span> <span class="n">operations</span><span class="p">,</span> <span class="ow">and</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">FrozenTransactionId</span> <span class="n">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">very</span> <span class="n">old</span> <span class="n">tuples</span><span class="o">.</span>  <span class="n">Both</span> <span class="n">should</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">always</span> <span class="n">be</span> <span class="n">considered</span> <span class="n">valid</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">FirstNormalTransactionId</span> <span class="n">is</span> <span class="n">the</span> <span class="n">first</span> <span class="s2">&#34;normal&#34;</span> <span class="n">transaction</span> <span class="n">id</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">Note</span><span class="p">:</span> <span class="k">if</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">change</span> <span class="n">it</span><span class="p">,</span> <span class="n">you</span> <span class="n">must</span> <span class="n">change</span> <span class="n">pg_class</span><span class="o">.</span><span class="n">h</span> <span class="n">as</span> <span class="n">well</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="o">----------------</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define InvalidTransactionId		((TransactionId) 0)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define BootstrapTransactionId		((TransactionId) 1)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define FrozenTransactionId			((TransactionId) 2)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define FirstNormalTransactionId	((TransactionId) 3)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define MaxTransactionId			((TransactionId) 0xFFFFFFFF)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#define TransactionIdIsValid(xid)		((xid) != InvalidTransactionId)
-</span></span><span class="line"><span class="cl">#define TransactionIdIsNormal(xid)		((xid) &gt;= FirstNormalTransactionId)
+</span></span><span class="line"><span class="cl"><span class="c1">#define TransactionIdIsValid(xid)		((xid) != InvalidTransactionId)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define TransactionIdIsNormal(xid)		((xid) &gt;= FirstNormalTransactionId)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* advance a transaction ID variable, handling wraparound correctly */
-</span></span><span class="line"><span class="cl">#define TransactionIdAdvance(dest)	\
-</span></span><span class="line"><span class="cl">	do { \
-</span></span><span class="line"><span class="cl">		(dest)++; \
-</span></span><span class="line"><span class="cl">		if ((dest) &lt; FirstNormalTransactionId) \
-</span></span><span class="line"><span class="cl">			(dest) = FirstNormalTransactionId; \
-</span></span><span class="line"><span class="cl">	} while(0)
+</span></span><span class="line"><span class="cl"><span class="o">/*</span> <span class="n">advance</span> <span class="n">a</span> <span class="n">transaction</span> <span class="n">ID</span> <span class="n">variable</span><span class="p">,</span> <span class="n">handling</span> <span class="n">wraparound</span> <span class="n">correctly</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define TransactionIdAdvance(dest)	\</span>
+</span></span><span class="line"><span class="cl">	<span class="k">do</span> <span class="p">{</span> \
+</span></span><span class="line"><span class="cl">		<span class="p">(</span><span class="n">dest</span><span class="p">)</span><span class="o">++</span><span class="p">;</span> \
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">((</span><span class="n">dest</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">FirstNormalTransactionId</span><span class="p">)</span> \
+</span></span><span class="line"><span class="cl">			<span class="p">(</span><span class="n">dest</span><span class="p">)</span> <span class="o">=</span> <span class="n">FirstNormalTransactionId</span><span class="p">;</span> \
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* back up a transaction ID variable, handling wraparound correctly */
-</span></span><span class="line"><span class="cl">#define TransactionIdRetreat(dest)	\
-</span></span><span class="line"><span class="cl">	do { \
-</span></span><span class="line"><span class="cl">		(dest)--; \
-</span></span><span class="line"><span class="cl">	} while ((dest) &lt; FirstNormalTransactionId)
+</span></span><span class="line"><span class="cl"><span class="o">/*</span> <span class="n">back</span> <span class="n">up</span> <span class="n">a</span> <span class="n">transaction</span> <span class="n">ID</span> <span class="n">variable</span><span class="p">,</span> <span class="n">handling</span> <span class="n">wraparound</span> <span class="n">correctly</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define TransactionIdRetreat(dest)	\</span>
+</span></span><span class="line"><span class="cl">	<span class="k">do</span> <span class="p">{</span> \
+</span></span><span class="line"><span class="cl">		<span class="p">(</span><span class="n">dest</span><span class="p">)</span><span class="o">--</span><span class="p">;</span> \
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">while</span> <span class="p">((</span><span class="n">dest</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">FirstNormalTransactionId</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -243,7 +243,7 @@ problem does not seem optimal/elegant. Is there any better way to handle it?</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

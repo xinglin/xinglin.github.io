@@ -7,7 +7,7 @@
         <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;) - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)" />
 <meta property="og:description" content="The ``C&#43;&#43; Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
 The authors shared the following in their book.
- The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
+The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
 For ints and pointers, the compiler can optimize away this extra work." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xinglin.github.io/prefix-vs-postfix/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
@@ -20,7 +20,7 @@ For ints and pointers, the compiler can optimize away this extra work." />
 <meta name="twitter:title" content="Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)"/>
 <meta name="twitter:description" content="The ``C&#43;&#43; Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
 The authors shared the following in their book.
- The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
+The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
 For ints and pointers, the compiler can optimize away this extra work."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -154,13 +154,13 @@ until this moment.</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#include &lt;iostream&gt;
-</span></span><span class="line"><span class="cl">int main() {
-</span></span><span class="line"><span class="cl">        long i=0, j;
-</span></span><span class="line"><span class="cl">        j = i++;
-</span></span><span class="line"><span class="cl">        j = ++i;
-</span></span><span class="line"><span class="cl">        return 0;
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">j</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Here is the assembly code for the above short code.</p>
@@ -241,15 +241,15 @@ and then assign it to j. We use one more register for postfix operators.</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// program 2
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#include &lt;iostream&gt;
-</span></span><span class="line"><span class="cl">int main() {
-</span></span><span class="line"><span class="cl">        long i=0, j;
-</span></span><span class="line"><span class="cl">        i++;
-</span></span><span class="line"><span class="cl">        ++i;
-</span></span><span class="line"><span class="cl">        return 0;
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// program 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -338,7 +338,7 @@ generated code would be the same for both postfix and prefix operators.</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

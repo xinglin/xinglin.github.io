@@ -4,15 +4,23 @@
         <link>https://xinglin.github.io/tags/note/</link>
         <description>note - Tag - Xing Lin</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/note/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/note/" rel="self" type="application/rss+xml" /><item>
+    <title>HDFS Namenode RPC Request Execution Time Breakdown</title>
+    <link>https://xinglin.github.io/namenoderpctimebreakdown/</link>
+    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/namenoderpctimebreakdown/</guid>
+    <description><![CDATA[1 2 3 ----- enqueueTime queueingTime Processing/ResponseTime/HandlerTime |50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response) ----- \-&gt; pendingConnections &lt;- Reader2 A main listener thread is accepting new connections from clients and put connections into pendingConnections queue of a Reader thread. A Reader thread detects any ready connection, reads the request and puts the call into CallQueue. This put() operation is blocking and is accounted as enqueueTime.]]></description>
+</item>
+<item>
     <title>Crash Recovery</title>
     <link>https://xinglin.github.io/crash-recovery/</link>
     <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/crash-recovery/</guid>
     <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
-ARIES  Three main principles lie behind the ARIES recovery algorithm:
- Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
+ARIES Three main principles lie behind the ARIES recovery algorithm:
+Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
 </item>
 <item>
     <title>Secondary Index Built on top of a Key-value Store</title>
@@ -21,7 +29,8 @@ ARIES  Three main principles lie behind the ARIES recovery algorithm:
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
     <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
-Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
+Employee table
+userid (primary key) salary age Alice 40000 30 Bob 20000 23 Charlie 30000 30 David 20000 25 To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
 </item>
 <item>
     <title>Transaction</title>
@@ -30,7 +39,7 @@ Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/transaction/</guid>
     <description><![CDATA[The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
-   Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.]]></description>
+Property Definition Technique to achieve that property Atomicity A transaction either succeeds or fails as a single operation. Undo log Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.]]></description>
 </item>
 <item>
     <title>Measure Network Latency</title>
@@ -57,7 +66,7 @@ Assume we have a FILE object pointer, called fp. After the fwrite(fp) call, one 
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/self-notes/</guid>
     <description><![CDATA[When substantial changes have been made to a software, review the changes once before running the code. In most cases, you will be able to identify simple bugs/errors/typos in your code by just reviewing your code once. Jump directly to run and debug your code will probably take you more time to fix the program.
-  Learn one piece at a time.
+Learn one piece at a time.
 When learning a new thing, it could come with many new concepts, making it harder to understand all at once.]]></description>
 </item>
 <item>
@@ -67,10 +76,10 @@ When learning a new thing, it could come with many new concepts, making it harde
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/kernel-dynamic-debug/</guid>
     <description><![CDATA[Compile kernel with CONFIG_DYNAMIC_DEBUG=y
-  Mount debugfs, if not mounted yet
- sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
- echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control    The flags are:
-	p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.]]></description>
+Mount debugfs, if not mounted yet
+sudo mount -t debugfs none /sys/kernel/debug Turn on debug for a specific module
+echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control The flags are:
+p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.]]></description>
 </item>
 <item>
     <title>Install hotCRP at a Ubuntu 14 Machine</title>
@@ -79,11 +88,12 @@ When learning a new thing, it could come with many new concepts, making it harde
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/hotcrp-ubuntu14/</guid>
     <description><![CDATA[Update packages
- sudo apt-get update    Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
-  Install the software-properties-common package to get the add-apt-repository command.
- sudo apt-get install software-properties-common    Add php7 ppa and do an update
- sudo add-apt-repository ppa:ondrej/php	sudo apt-get update    Install php7
- sudo apt-get install php7.2 php7.]]></description>
+sudo apt-get update Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
+Install the software-properties-common package to get the add-apt-repository command.
+sudo apt-get install software-properties-common Add php7 ppa and do an update
+sudo add-apt-repository ppa:ondrej/php	sudo apt-get update Install php7
+sudo apt-get install php7.2 php7.2-mysql Install other required packages
+sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail Get hotCRP source code]]></description>
 </item>
 </channel>
 </rss>

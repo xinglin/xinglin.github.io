@@ -11,7 +11,7 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/spdk-optane-zssd/</guid>
     <description><![CDATA[Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.8 usec   clat 6.]]></description>
+Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14.]]></description>
 </item>
 <item>
     <title>SPDK on Samsung 960 EVO NVMe SSD</title>
@@ -20,7 +20,7 @@ Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 u
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/spdk-samsung-960-evo/</guid>
     <description><![CDATA[Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD. I was thinking that using SPDK might lead to better performance, than through traditional block device interface. However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.
-   Metric SPDK /dev/nvme0n1     IOPS 12.8 K 11.]]></description>
+Metric SPDK /dev/nvme0n1 IOPS 12.8 K 11.6 K slat 0.18 usec &ndash; clat 77.]]></description>
 </item>
 </channel>
 </rss>

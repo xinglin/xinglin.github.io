@@ -11,9 +11,9 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/ocssd/</guid>
     <description><![CDATA[In Linux pblk implementation, a line corresponds to a chunk which is one erase block. A LUN is a PU. A group is a channel.
-  Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
-  Read code path (from the media) in pblk
-  1 2 3 4 5 6 7 8 9  /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&gt;ops-&gt;submit_io(dev, rqd);    Write code path in pblk  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45  pblk_write_to_cache() { for (i = 0; i &lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.]]></description>
+Eventually, pblk calls pblk_submit_read() and pblk_submit_write() for reads/writes to the device.
+Read code path (from the media) in pblk
+1 2 3 4 5 6 7 8 9 /* pblk-read.c */ pblk_submit_read() pblk_read_ppalist_rq(); or pblk_read_rq(); pblk_lookup_l2p_seq(); // get physical addresses pblk_submit_io(pblk, rqd); nvm_submit_io(dev, rqd); dev-&gt;ops-&gt;submit_io(dev, rqd); Write code path in pblk 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 pblk_write_to_cache() { for (i = 0; i &lt; nr_entries; i++) { void *data = bio_data(bio); w_ctx.]]></description>
 </item>
 </channel>
 </rss>

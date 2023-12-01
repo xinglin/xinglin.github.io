@@ -179,47 +179,47 @@
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/mm/msync.c
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">/</span><span class="n">mm</span><span class="o">/</span><span class="n">msync</span><span class="o">.</span><span class="n">c</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/ * MS_SYNC syncs the entire file - including mappings. */
-</span></span><span class="line"><span class="cl">SYSCALL_DEFINE3(msync, unsigned long, start, size_t, len, int, flags)
-</span></span><span class="line"><span class="cl">    vfs_fsync_range(file, fstart, fend, 1);
-</span></span><span class="line"><span class="cl">        file-&gt;f_op-&gt;fsync(file, start, end, datasync);
-</span></span><span class="line"><span class="cl">        == ext2_fsync();
-</span></span><span class="line"><span class="cl">            generic_file_fsync(file, start, end, datasync);
-</span></span><span class="line"><span class="cl">                __generic_file_fsync(struct file *file, loff_t start, loff_t end, int datasync)
-</span></span><span class="line"><span class="cl">                    file_write_and_wait_range(file, start, end);
-</span></span><span class="line"><span class="cl">                        __filemap_fdatawrite_range(mapping, lstart, lend, WB_SYNC_ALL);
-</span></span><span class="line"><span class="cl">                            do_writepages(mapping, &amp;wbc);
-</span></span><span class="line"><span class="cl">                                mapping-&gt;a_ops-&gt;writepages(mapping, wbc);
+</span></span><span class="line"><span class="cl"><span class="o">/</span> <span class="o">*</span> <span class="n">MS_SYNC</span> <span class="n">syncs</span> <span class="n">the</span> <span class="n">entire</span> <span class="n">file</span> <span class="o">-</span> <span class="n">including</span> <span class="n">mappings</span><span class="o">.</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">msync</span><span class="p">,</span> <span class="n">unsigned</span> <span class="n">long</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="ne">int</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vfs_fsync_range</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">fstart</span><span class="p">,</span> <span class="n">fend</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">fsync</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">datasync</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">==</span> <span class="n">ext2_fsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">generic_file_fsync</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">datasync</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">__generic_file_fsync</span><span class="p">(</span><span class="n">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">start</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">end</span><span class="p">,</span> <span class="ne">int</span> <span class="n">datasync</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">file_write_and_wait_range</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">__filemap_fdatawrite_range</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">lstart</span><span class="p">,</span> <span class="n">lend</span><span class="p">,</span> <span class="n">WB_SYNC_ALL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">do_writepages</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wbc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span><span class="o">-&gt;</span><span class="n">writepages</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">wbc</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ext2_dax_writepages()
-</span></span><span class="line"><span class="cl">    dax_writeback_mapping_range(mapping, mapping-&gt;host-&gt;i_sb-&gt;s_bdev, wbc);
-</span></span><span class="line"><span class="cl">        dax_writeback_one(&amp;xas, dax_dev, mapping, entry);
-</span></span><span class="line"><span class="cl">            dax_flush(dax_dev, page_address(pfn_to_page(pfn)), size);
-</span></span><span class="line"><span class="cl">                arch_wb_cache_pmem(addr, size);
-</span></span><span class="line"><span class="cl">                    clean_cache_range(addr, size);
-</span></span><span class="line"><span class="cl">                        for (p = (void *)((unsigned long)addr &amp; ~clflush_mask); p &lt; vend; p += x86_clflush_size)
-</span></span><span class="line"><span class="cl">                            clwb(p);
+</span></span><span class="line"><span class="cl"><span class="n">ext2_dax_writepages</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dax_writeback_mapping_range</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">mapping</span><span class="o">-&gt;</span><span class="n">host</span><span class="o">-&gt;</span><span class="n">i_sb</span><span class="o">-&gt;</span><span class="n">s_bdev</span><span class="p">,</span> <span class="n">wbc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dax_writeback_one</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xas</span><span class="p">,</span> <span class="n">dax_dev</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">entry</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dax_flush</span><span class="p">(</span><span class="n">dax_dev</span><span class="p">,</span> <span class="n">page_address</span><span class="p">(</span><span class="n">pfn_to_page</span><span class="p">(</span><span class="n">pfn</span><span class="p">)),</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">arch_wb_cache_pmem</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">clean_cache_range</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="p">)((</span><span class="n">unsigned</span> <span class="n">long</span><span class="p">)</span><span class="n">addr</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">clflush_mask</span><span class="p">);</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">vend</span><span class="p">;</span> <span class="n">p</span> <span class="o">+=</span> <span class="n">x86_clflush_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">clwb</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static const struct address_space_operations ext2_dax_aops = {
-</span></span><span class="line"><span class="cl">	.writepages		= ext2_dax_writepages,
-</span></span><span class="line"><span class="cl">	.direct_IO		= noop_direct_IO,
-</span></span><span class="line"><span class="cl">	.set_page_dirty		= noop_set_page_dirty,
-</span></span><span class="line"><span class="cl">	.invalidatepage		= noop_invalidatepage,
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="n">struct</span> <span class="n">address_space_operations</span> <span class="n">ext2_dax_aops</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">writepages</span>		<span class="o">=</span> <span class="n">ext2_dax_writepages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">direct_IO</span>		<span class="o">=</span> <span class="n">noop_direct_IO</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">set_page_dirty</span>		<span class="o">=</span> <span class="n">noop_set_page_dirty</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">invalidatepage</span>		<span class="o">=</span> <span class="n">noop_invalidatepage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">void ext2_set_file_ops(struct inode *inode)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	inode-&gt;i_op = &amp;ext2_file_inode_operations;
-</span></span><span class="line"><span class="cl">	inode-&gt;i_fop = &amp;ext2_file_operations;
-</span></span><span class="line"><span class="cl">	if (IS_DAX(inode))
-</span></span><span class="line"><span class="cl">		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_dax_aops;
-</span></span><span class="line"><span class="cl">	else if (test_opt(inode-&gt;i_sb, NOBH))
-</span></span><span class="line"><span class="cl">		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_nobh_aops;
-</span></span><span class="line"><span class="cl">	else
-</span></span><span class="line"><span class="cl">		inode-&gt;i_mapping-&gt;a_ops = &amp;ext2_aops;
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">ext2_set_file_ops</span><span class="p">(</span><span class="n">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="n">inode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_op</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ext2_file_inode_operations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_fop</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ext2_file_operations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">IS_DAX</span><span class="p">(</span><span class="n">inode</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ext2_dax_aops</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">test_opt</span><span class="p">(</span><span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_sb</span><span class="p">,</span> <span class="n">NOBH</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ext2_nobh_aops</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="n">inode</span><span class="o">-&gt;</span><span class="n">i_mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ext2_aops</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="nvdimm-driver">nvdimm driver</h3>
@@ -328,107 +328,107 @@
 </span><span class="lnt">101
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/drivers/nvdimm/pmem.h
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">nvdimm</span><span class="o">/</span><span class="n">pmem</span><span class="o">.</span><span class="n">h</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/drivers/nvdimm/pmem.c
+</span></span><span class="line"><span class="cl"><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">nvdimm</span><span class="o">/</span><span class="n">pmem</span><span class="o">.</span><span class="n">c</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">pmem_dax_direct_access()
-</span></span><span class="line"><span class="cl">    __pmem_direct_access()
+</span></span><span class="line"><span class="cl"><span class="n">pmem_dax_direct_access</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__pmem_direct_access</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">pmem_copy_from_iter()
-</span></span><span class="line"><span class="cl">    copy_from_iter_flushcache(addr, bytes, i);
-</span></span><span class="line"><span class="cl">        _copy_from_iter_flushcache(addr, bytes, i);
-</span></span><span class="line"><span class="cl">            iterate_and_advance(i, bytes, v,
-</span></span><span class="line"><span class="cl">                __copy_from_user_flushcache((to += v.iov_len) - v.iov_len,
-</span></span><span class="line"><span class="cl">                    v.iov_base, v.iov_len),
-</span></span><span class="line"><span class="cl">                memcpy_page_flushcache((to += v.bv_len) - v.bv_len, v.bv_page,
-</span></span><span class="line"><span class="cl">                    v.bv_offset, v.bv_len),
-</span></span><span class="line"><span class="cl">                memcpy_flushcache((to += v.iov_len) - v.iov_len, v.iov_base,
-</span></span><span class="line"><span class="cl">                    v.iov_len)
-</span></span><span class="line"><span class="cl">            )
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">pmem_rw_page(struct block_device *bdev, sector_t sector, struct page *page, unsigned int op);
-</span></span><span class="line"><span class="cl">    pmem_do_bvec(pmem, page, hpage_nr_pages(page) * PAGE_SIZE, 0, op, sector);
-</span></span><span class="line"><span class="cl">        if (!op_is_write(op)) {
-</span></span><span class="line"><span class="cl">            read_pmem(page, off, pmem_addr, len);
-</span></span><span class="line"><span class="cl">            flush_dcache_page(page);
-</span></span><span class="line"><span class="cl">        } else {
-</span></span><span class="line"><span class="cl">            flush_dcache_page(page);
-</span></span><span class="line"><span class="cl">            write_pmem(pmem_addr, page, off, len);
-</span></span><span class="line"><span class="cl">        }  
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">write_pmem()
-</span></span><span class="line"><span class="cl">    memcpy_flushcache()
-</span></span><span class="line"><span class="cl">        __memcpy_flushcache(dst, src, cnt);
-</span></span><span class="line"><span class="cl">            /* assembly code ... */
-</span></span><span class="line"><span class="cl">            while (size &gt;= 32) {
-</span></span><span class="line"><span class="cl">                asm(&#34;movq    (%0), %%r8\n&#34;
-</span></span><span class="line"><span class="cl">                &#34;movq   8(%0), %%r9\n&#34;
-</span></span><span class="line"><span class="cl">                &#34;movq  16(%0), %%r10\n&#34;
-</span></span><span class="line"><span class="cl">                &#34;movq  24(%0), %%r11\n&#34;
-</span></span><span class="line"><span class="cl">                &#34;movnti  %%r8,   (%1)\n&#34;
-</span></span><span class="line"><span class="cl">                &#34;movnti  %%r9,  8(%1)\n&#34;
-</span></span><span class="line"><span class="cl">				...
-</span></span><span class="line"><span class="cl">                :: &#34;r&#34; (source), &#34;r&#34; (dest)
-</span></span><span class="line"><span class="cl">                : &#34;memory&#34;, &#34;r8&#34;, &#34;r9&#34;, &#34;r10&#34;, &#34;r11&#34;);
-</span></span><span class="line"><span class="cl">                dest += 32;
-</span></span><span class="line"><span class="cl">                source += 32;
-</span></span><span class="line"><span class="cl">                size -= 32;
-</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl"><span class="n">pmem_copy_from_iter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">copy_from_iter_flushcache</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">bytes</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_copy_from_iter_flushcache</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">bytes</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">iterate_and_advance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">bytes</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">__copy_from_user_flushcache</span><span class="p">((</span><span class="n">to</span> <span class="o">+=</span> <span class="n">v</span><span class="o">.</span><span class="n">iov_len</span><span class="p">)</span> <span class="o">-</span> <span class="n">v</span><span class="o">.</span><span class="n">iov_len</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">v</span><span class="o">.</span><span class="n">iov_base</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">iov_len</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">memcpy_page_flushcache</span><span class="p">((</span><span class="n">to</span> <span class="o">+=</span> <span class="n">v</span><span class="o">.</span><span class="n">bv_len</span><span class="p">)</span> <span class="o">-</span> <span class="n">v</span><span class="o">.</span><span class="n">bv_len</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">bv_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">v</span><span class="o">.</span><span class="n">bv_offset</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">bv_len</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">memcpy_flushcache</span><span class="p">((</span><span class="n">to</span> <span class="o">+=</span> <span class="n">v</span><span class="o">.</span><span class="n">iov_len</span><span class="p">)</span> <span class="o">-</span> <span class="n">v</span><span class="o">.</span><span class="n">iov_len</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">iov_base</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">v</span><span class="o">.</span><span class="n">iov_len</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static void write_pmem(void *pmem_addr, struct page *page,
-</span></span><span class="line"><span class="cl">		unsigned int off, unsigned int len)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	unsigned int chunk;
-</span></span><span class="line"><span class="cl">	void *mem;
+</span></span><span class="line"><span class="cl"><span class="n">pmem_rw_page</span><span class="p">(</span><span class="n">struct</span> <span class="n">block_device</span> <span class="o">*</span><span class="n">bdev</span><span class="p">,</span> <span class="n">sector_t</span> <span class="n">sector</span><span class="p">,</span> <span class="n">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span> <span class="n">op</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pmem_do_bvec</span><span class="p">(</span><span class="n">pmem</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">hpage_nr_pages</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">*</span> <span class="n">PAGE_SIZE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">sector</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">op_is_write</span><span class="p">(</span><span class="n">op</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">read_pmem</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">off</span><span class="p">,</span> <span class="n">pmem_addr</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flush_dcache_page</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flush_dcache_page</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">write_pmem</span><span class="p">(</span><span class="n">pmem_addr</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">off</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>  
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	while (len) {
-</span></span><span class="line"><span class="cl">		mem = kmap_atomic(page);
-</span></span><span class="line"><span class="cl">		chunk = min_t(unsigned int, len, PAGE_SIZE);
-</span></span><span class="line"><span class="cl">		memcpy_flushcache(pmem_addr, mem + off, chunk);
-</span></span><span class="line"><span class="cl">		kunmap_atomic(mem);
-</span></span><span class="line"><span class="cl">		len -= chunk;
-</span></span><span class="line"><span class="cl">		off = 0;
-</span></span><span class="line"><span class="cl">		page++;
-</span></span><span class="line"><span class="cl">		pmem_addr += PAGE_SIZE;
-</span></span><span class="line"><span class="cl">	}
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="n">write_pmem</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">memcpy_flushcache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">__memcpy_flushcache</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">/*</span> <span class="n">assembly</span> <span class="n">code</span> <span class="o">...</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="p">(</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="mi">32</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">asm</span><span class="p">(</span><span class="s2">&#34;movq    (%0), </span><span class="si">%%</span><span class="s2">r8</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;movq   8(%0), </span><span class="si">%%</span><span class="s2">r9</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;movq  16(%0), </span><span class="si">%%</span><span class="s2">r10</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;movq  24(%0), </span><span class="si">%%</span><span class="s2">r11</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;movnti  </span><span class="si">%%</span><span class="s2">r8,   (%1)</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;movnti  </span><span class="si">%%</span><span class="s2">r9,  8(%1)</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">				<span class="o">...</span>
+</span></span><span class="line"><span class="cl">                <span class="p">::</span> <span class="s2">&#34;r&#34;</span> <span class="p">(</span><span class="n">source</span><span class="p">),</span> <span class="s2">&#34;r&#34;</span> <span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">:</span> <span class="s2">&#34;memory&#34;</span><span class="p">,</span> <span class="s2">&#34;r8&#34;</span><span class="p">,</span> <span class="s2">&#34;r9&#34;</span><span class="p">,</span> <span class="s2">&#34;r10&#34;</span><span class="p">,</span> <span class="s2">&#34;r11&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">dest</span> <span class="o">+=</span> <span class="mi">32</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">source</span> <span class="o">+=</span> <span class="mi">32</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">size</span> <span class="o">-=</span> <span class="mi">32</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static blk_status_t read_pmem(struct page *page, unsigned int off,
-</span></span><span class="line"><span class="cl">		void *pmem_addr, unsigned int len)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	unsigned int chunk;
-</span></span><span class="line"><span class="cl">	unsigned long rem;
-</span></span><span class="line"><span class="cl">	void *mem;
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	while (len) {
-</span></span><span class="line"><span class="cl">		mem = kmap_atomic(page);
-</span></span><span class="line"><span class="cl">		chunk = min_t(unsigned int, len, PAGE_SIZE);
-</span></span><span class="line"><span class="cl">		rem = memcpy_mcsafe(mem + off, pmem_addr, chunk);
-</span></span><span class="line"><span class="cl">		kunmap_atomic(mem);
-</span></span><span class="line"><span class="cl">		if (rem)
-</span></span><span class="line"><span class="cl">			return BLK_STS_IOERR;
-</span></span><span class="line"><span class="cl">		len -= chunk;
-</span></span><span class="line"><span class="cl">		off = 0;
-</span></span><span class="line"><span class="cl">		page++;
-</span></span><span class="line"><span class="cl">		pmem_addr += PAGE_SIZE;
-</span></span><span class="line"><span class="cl">	}
-</span></span><span class="line"><span class="cl">	return BLK_STS_OK;
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">void</span> <span class="n">write_pmem</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">pmem_addr</span><span class="p">,</span> <span class="n">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="n">unsigned</span> <span class="ne">int</span> <span class="n">off</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span> <span class="n">len</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="ne">int</span> <span class="n">chunk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">void</span> <span class="o">*</span><span class="n">mem</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static const struct block_device_operations pmem_fops = {
-</span></span><span class="line"><span class="cl">	.owner =		THIS_MODULE,
-</span></span><span class="line"><span class="cl">	.rw_page =		pmem_rw_page,
-</span></span><span class="line"><span class="cl">	.revalidate_disk =	nvdimm_revalidate_disk,
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">mem</span> <span class="o">=</span> <span class="n">kmap_atomic</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">chunk</span> <span class="o">=</span> <span class="n">min_t</span><span class="p">(</span><span class="n">unsigned</span> <span class="ne">int</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">PAGE_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">memcpy_flushcache</span><span class="p">(</span><span class="n">pmem_addr</span><span class="p">,</span> <span class="n">mem</span> <span class="o">+</span> <span class="n">off</span><span class="p">,</span> <span class="n">chunk</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">kunmap_atomic</span><span class="p">(</span><span class="n">mem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">len</span> <span class="o">-=</span> <span class="n">chunk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">off</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">page</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">pmem_addr</span> <span class="o">+=</span> <span class="n">PAGE_SIZE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static const struct dax_operations pmem_dax_ops = {
-</span></span><span class="line"><span class="cl">	.direct_access = pmem_dax_direct_access,
-</span></span><span class="line"><span class="cl">	.copy_from_iter = pmem_copy_from_iter,
-</span></span><span class="line"><span class="cl">	.copy_to_iter = pmem_copy_to_iter,
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">blk_status_t</span> <span class="n">read_pmem</span><span class="p">(</span><span class="n">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span> <span class="n">off</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="n">void</span> <span class="o">*</span><span class="n">pmem_addr</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span> <span class="n">len</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="ne">int</span> <span class="n">chunk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="n">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">void</span> <span class="o">*</span><span class="n">mem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">mem</span> <span class="o">=</span> <span class="n">kmap_atomic</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">chunk</span> <span class="o">=</span> <span class="n">min_t</span><span class="p">(</span><span class="n">unsigned</span> <span class="ne">int</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">PAGE_SIZE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">rem</span> <span class="o">=</span> <span class="n">memcpy_mcsafe</span><span class="p">(</span><span class="n">mem</span> <span class="o">+</span> <span class="n">off</span><span class="p">,</span> <span class="n">pmem_addr</span><span class="p">,</span> <span class="n">chunk</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">kunmap_atomic</span><span class="p">(</span><span class="n">mem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">rem</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="n">BLK_STS_IOERR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">len</span> <span class="o">-=</span> <span class="n">chunk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">off</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">page</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">pmem_addr</span> <span class="o">+=</span> <span class="n">PAGE_SIZE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">BLK_STS_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="n">struct</span> <span class="n">block_device_operations</span> <span class="n">pmem_fops</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">owner</span> <span class="o">=</span>		<span class="n">THIS_MODULE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">rw_page</span> <span class="o">=</span>		<span class="n">pmem_rw_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">revalidate_disk</span> <span class="o">=</span>	<span class="n">nvdimm_revalidate_disk</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="n">struct</span> <span class="n">dax_operations</span> <span class="n">pmem_dax_ops</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">direct_access</span> <span class="o">=</span> <span class="n">pmem_dax_direct_access</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">copy_from_iter</span> <span class="o">=</span> <span class="n">pmem_copy_from_iter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">copy_to_iter</span> <span class="o">=</span> <span class="n">pmem_copy_to_iter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="ext2">ext2</h3>
@@ -469,39 +469,39 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># /fs/ext2/file.c
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># /fs/ext2/file.c</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ext2_file_read_iter()
-</span></span><span class="line"><span class="cl">    ext2_dax_read_iter()
-</span></span><span class="line"><span class="cl">        dax_iomap_rw();
-</span></span><span class="line"><span class="cl">            iomap_apply();
-</span></span><span class="line"><span class="cl">                dax_iomap_actor();
-</span></span><span class="line"><span class="cl">                    dax_direct_access();
-</span></span><span class="line"><span class="cl">                    dax_copy_from_iter();
-</span></span><span class="line"><span class="cl">                    dax_copy_to_iter();
-</span></span><span class="line"><span class="cl">                        dax_dev-&gt;ops-&gt;copy_from_iter(dax_dev, pgoff, addr, bytes, i);
+</span></span><span class="line"><span class="cl"><span class="n">ext2_file_read_iter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ext2_dax_read_iter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dax_iomap_rw</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">iomap_apply</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="n">dax_iomap_actor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">dax_direct_access</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">dax_copy_from_iter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">dax_copy_to_iter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">dax_dev</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">copy_from_iter</span><span class="p">(</span><span class="n">dax_dev</span><span class="p">,</span> <span class="n">pgoff</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">bytes</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static const struct vm_operations_struct ext2_dax_vm_ops = {
-</span></span><span class="line"><span class="cl">	.fault		= ext2_dax_fault,
-</span></span><span class="line"><span class="cl">	/*
-</span></span><span class="line"><span class="cl">	 * .huge_fault is not supported for DAX because allocation in ext2
-</span></span><span class="line"><span class="cl">	 * cannot be reliably aligned to huge page sizes and so pmd faults
-</span></span><span class="line"><span class="cl">	 * will always fail and fail back to regular faults.
-</span></span><span class="line"><span class="cl">	 */
-</span></span><span class="line"><span class="cl">	.page_mkwrite	= ext2_dax_fault,
-</span></span><span class="line"><span class="cl">	.pfn_mkwrite	= ext2_dax_fault,
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="n">struct</span> <span class="n">vm_operations_struct</span> <span class="n">ext2_dax_vm_ops</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">fault</span>		<span class="o">=</span> <span class="n">ext2_dax_fault</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">/*</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="o">.</span><span class="n">huge_fault</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">supported</span> <span class="k">for</span> <span class="n">DAX</span> <span class="n">because</span> <span class="n">allocation</span> <span class="ow">in</span> <span class="n">ext2</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">reliably</span> <span class="n">aligned</span> <span class="n">to</span> <span class="n">huge</span> <span class="n">page</span> <span class="n">sizes</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">pmd</span> <span class="n">faults</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">will</span> <span class="n">always</span> <span class="n">fail</span> <span class="ow">and</span> <span class="n">fail</span> <span class="n">back</span> <span class="n">to</span> <span class="n">regular</span> <span class="n">faults</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">page_mkwrite</span>	<span class="o">=</span> <span class="n">ext2_dax_fault</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">pfn_mkwrite</span>	<span class="o">=</span> <span class="n">ext2_dax_fault</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static int ext2_file_mmap(struct file *file, struct vm_area_struct *vma)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	if (!IS_DAX(file_inode(file)))
-</span></span><span class="line"><span class="cl">		return generic_file_mmap(file, vma);
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="ne">int</span> <span class="n">ext2_file_mmap</span><span class="p">(</span><span class="n">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="n">struct</span> <span class="n">vm_area_struct</span> <span class="o">*</span><span class="n">vma</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">IS_DAX</span><span class="p">(</span><span class="n">file_inode</span><span class="p">(</span><span class="n">file</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">generic_file_mmap</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">vma</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	file_accessed(file);
-</span></span><span class="line"><span class="cl">	vma-&gt;vm_ops = &amp;ext2_dax_vm_ops;
-</span></span><span class="line"><span class="cl">	return 0;
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">	<span class="n">file_accessed</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">vma</span><span class="o">-&gt;</span><span class="n">vm_ops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ext2_dax_vm_ops</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -532,7 +532,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

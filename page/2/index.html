@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.99.1" />
+	<meta name="generator" content="Hugo 0.120.4">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -106,83 +106,45 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/leveldb/">Delete Request in LevelDB</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-10">2021-01-10</time></span></div><div class="content">When I searched for how leveldb/rocksdb and a few other KV stores handle delete requests, the document will usually say ``we insert a special a tombstone value or a tombstone entry.&rsquo;&rsquo;. However, for KV stores which allow storing arbitrary keys and values, I am not sure which value we should use as the special tombstone value, as whatever value we pick as a tombstone value, it could be a valid value stored by the user.</div><div class="post-footer">
-        <a href="/leveldb/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/leveldb/">leveldb</a></div></div>
+        <a href="/keyvalue-workloads/">Key Value Workloads</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-05">2021-03-05</time></span></div><div class="content">YCSB Workload Description Example Operation breakdown A Update heavy workload session store recording recent actions read: 50%, update: 50% B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5% C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100% D read latest workload user status updates; people want to read the latest read: 95%, insert 5% E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5 F read-modify-write workload user database, where user records are read and modified by the user or to record user activity.</div><div class="post-footer">
+        <a href="/keyvalue-workloads/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/keyvalue/">keyvalue</a>,&nbsp;<a href="/tags/workload/">workload</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/postgres-tid-wraparound/">Postgres Handling Transaction ID Wrap Around</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-12-17">2020-12-17</time></span></div><div class="content">NOTE: OpenGauss may fix this problem.
-Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
-Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.</div><div class="post-footer">
-        <a href="/postgres-tid-wraparound/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/postgres/">postgres</a>,&nbsp;<a href="/tags/idea/">idea</a></div></div>
+        <a href="/keyvalue/">Key Value Systems</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-01">2021-03-01</time></span></div><div class="content">LSM-tree survey WiscKey: key/value separation HashKV: store cold keys separately. LSM-trie PebblesDB KVell Skip-Tree: put kv items directly to non-adjacent layers (skipping some intermediate layers) to reduce write amplification from level-to-level data compaction. TRIAD: separate hot keys from cold keys. hot keys are stored in memtable for as long as possible. Use multiple memtables and flush them at once to disk. Pipelined Compaction Procedure: A compaction contains three phases: read phase, merge-sort phase, and write phase.</div><div class="post-footer">
+        <a href="/keyvalue/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/keyvalue/">keyvalue</a>,&nbsp;<a href="/tags/paper/">paper</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/transaction/">Transaction</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-27">2020-09-27</time></span></div><div class="content">The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
-   Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.</div><div class="post-footer">
-        <a href="/transaction/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/acid/">ACID</a></div></div>
+        <a href="/idea-repository/">Idea Repository</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-22">2021-02-22</time></span></div><div class="content">List of ideas to explore.
+Interaction between a filesystem and a computational SSD that does transparent compression.
+Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space. Key prefix compression in k/v store
+Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this? In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs.</div><div class="post-footer">
+        <a href="/idea-repository/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/idea/">idea</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hit-the-road/">Hit the Road iOS App</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-23">2020-08-23</time></span></div><div class="content">Hit the Road is an iOS app for tracking ourdoor exercises. It can track walking, running, and biking. It is supposed to run on iPhones, but not iPads or iWatchs.
-User Privacy The app only stores the duration and mileage for each activity locally in the installed device. The app does not store the GPS locations. It only uses GPS locations during an activity to get the mileage. The app does not send any data over the network.</div><div class="post-footer">
-        <a href="/hit-the-road/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ios/">iOS</a>,&nbsp;<a href="/tags/support/">support</a></div></div>
+        <a href="/prefix-vs-postfix/">Use Prefix Operators (++i) vs. Postfix Operators (i++)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-05">2021-02-05</time></span></div><div class="content">The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
+The authors shared the following in their book.
+The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
+For ints and pointers, the compiler can optimize away this extra work.</div><div class="post-footer">
+        <a href="/prefix-vs-postfix/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/coding/">coding</a>,&nbsp;<a href="/tags/c/c&#43;&#43;/">C/C&#43;&#43;</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ycsb-rocksdb-options/">Use Options File for Benchmarking RocksDB using YCSB</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-08">2020-08-08</time></span></div><div class="content">In YCSB, we can also use the options file (-p rocksdb.optionsfile=/tmp/ycsb-options.ini, e.g.,) to configure the options for RocksDB. However, for a new user, it is actually not easy to figure out what needs to be configured for RocksDB for YCSB. Here is a quick way to get it start.
-Use the ycsb tool to load a rocksdb without specifying the options.
-$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data  Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.</div><div class="post-footer">
-        <a href="/ycsb-rocksdb-options/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tips/">tips</a>,&nbsp;<a href="/tags/rocksdb/">rocksdb</a></div></div>
+        <a href="/crash-recovery/">Crash Recovery</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-23">2021-01-23</time></span></div><div class="content">The following content is selected from the Database Management Systems book, chapter 18.
+ARIES Three main principles lie behind the ARIES recovery algorithm:
+Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.</div><div class="post-footer">
+        <a href="/crash-recovery/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/crash-recovery/">crash recovery</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/data-storage-research-vision-2025/">Data Storage Research Vision 2025</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-23">2020-07-23</time></span></div><div class="content">NFS sponsored a data storage visioning workshop in 2018. The workshop was hosted by IBM Research. From the workshop, they produced a report, summarizing the discussion from the workshop. The report outlines the future research challenges and opportunities that the attendees recommend to work on.
-The discussion of the workshop was organized in the four groups. Below are some interesting points I copied from the report.
- Storage for the Cloud, Edge, and IoT Systems   More desegregated, composable software architectures are highly desirable.</div><div class="post-footer">
-        <a href="/data-storage-research-vision-2025/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/research/">research</a>,&nbsp;<a href="/tags/storage/">storage</a>,&nbsp;<a href="/tags/vision/">vision</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/measure-network-latency/">Measure Network Latency</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-22">2020-07-22</time></span></div><div class="content">Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
-By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.</div><div class="post-footer">
-        <a href="/measure-network-latency/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/tip/">tip</a>,&nbsp;<a href="/tags/network-latency/">network latency</a>,&nbsp;<a href="/tags/tech/">tech</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/shrd/">SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-28">2020-06-28</time></span></div><div class="content">I really liked the paper. The idea is neat. The paper is also well written and the design and the new idea is clearly presented. A very good paper to read and learn from on how to write good papers.
-Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.</div><div class="post-footer">
-        <a href="/shrd/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/ssd/">SSD</a>,&nbsp;<a href="/tags/ftl/">FTL</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/copysets/">Copysets: Reducing the Frequency of Data Loss in Cloud Storage</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content">Summary Copysets proposed another approach/perspective for data replication, than the traditional random replication. In random replication, N nodes are selected randomly from the cluster to store a data chunk. Random replication provides a strong protection against uncorrelated failures. For each individual chunk, since it can be stored randomly at N nodes in the cluster, it is quite resilient to data loss. However, when we consider all data chunks, any N node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes.</div><div class="post-footer">
-        <a href="/copysets/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/storage/">storage</a>,&nbsp;<a href="/tags/replication/">replication</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/33rd-birthday/">On my 33rd Birthday</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content">How time flies! I am 33 years old now and have lived in US for more than 10 years. I have also graduated from University of Utah for almost 5 years now. Wahoo! Each week passed very quickly. Now is the time to pause a little bit and reflect what has been achieved and what could be done better.
-Achievements  Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them have been accepted yet.</div><div class="post-footer">
-        <a href="/33rd-birthday/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/reflection/">reflection</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ssd-evaluation-how/">How to Evaluate Research Ideas for SSDs</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-17">2020-06-17</time></span></div><div class="content">This blog lists tools/simulators/platforms people used to evaluate SSD researches.
-  MQSim
-MQSIM FAST18, ATC19-Kim
-  SSDSim SSDSim Microsoft Patch
-[ATC12][atc12]
-  FEMU
-FEMU-fast18-short
-  </div><div class="post-footer">
-        <a href="/ssd-evaluation-how/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ssd/">SSD</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/foundamentals-of-storage-system/">Foundamentals of a Storage System</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-14">2020-06-14</time></span></div><div class="content">Caching  LRU ARC  File systems  EXT filesystems btrfs  Data Reliability  RAID Erasure coding  Solid State Drive  FTL  K/V stores  LevelDB/RocksDB  Distributed Storage Systems  Ceph  Deduplication </div><div class="post-footer">
-        <a href="/foundamentals-of-storage-system/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/outline/">outline</a></div></div>
+        <a href="/secondary-index-kv-store/">Secondary Index Built on top of a Key-value Store</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-17">2021-01-17</time></span></div><div class="content">Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
+Employee table
+userid (primary key) salary age Alice 40000 30 Bob 20000 23 Charlie 30000 30 David 20000 25 To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.</div><div class="post-footer">
+        <a href="/secondary-index-kv-store/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/idea/">idea</a>,&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/key-value/">key-value</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -200,12 +162,14 @@ FEMU-fast18-short
                         <a href="/page/4/">4</a>
                     </span>
                 </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/5/">5</a>
+                        <a href="/page/9/">9</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

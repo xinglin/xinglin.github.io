@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <title>SPDK on Intel Optane and Samsung ZSSD - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="SPDK on Intel Optane and Samsung ZSSD" />
 <meta property="og:description" content="Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.8 usec   clat 6." />
+Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xinglin.github.io/spdk-optane-zssd/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2018-05-10T00:00:00+00:00" />
@@ -17,7 +17,7 @@ Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 u
 
 <meta name="twitter:title" content="SPDK on Intel Optane and Samsung ZSSD"/>
 <meta name="twitter:description" content="Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.8 usec   clat 6."/>
+Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -378,7 +378,7 @@ lat: total IO latency</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

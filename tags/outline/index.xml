@@ -10,7 +10,7 @@
     <pubDate>Sun, 14 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/foundamentals-of-storage-system/</guid>
-    <description><![CDATA[Caching  LRU ARC  File systems  EXT filesystems btrfs  Data Reliability  RAID Erasure coding  Solid State Drive  FTL  K/V stores  LevelDB/RocksDB  Distributed Storage Systems  Ceph  Deduplication ]]></description>
+    <description><![CDATA[Caching LRU ARC File systems EXT filesystems btrfs Data Reliability RAID Erasure coding Solid State Drive FTL K/V stores LevelDB/RocksDB Distributed Storage Systems Ceph Deduplication ]]></description>
 </item>
 </channel>
 </rss>

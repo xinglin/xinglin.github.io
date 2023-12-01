@@ -11,7 +11,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
     <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
-Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
+Employee table
+userid (primary key) salary age Alice 40000 30 Bob 20000 23 Charlie 30000 30 David 20000 25 To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
 </item>
 </channel>
 </rss>

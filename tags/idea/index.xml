@@ -11,9 +11,9 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/idea-repository/</guid>
     <description><![CDATA[List of ideas to explore.
-  Interaction between a filesystem and a computational SSD that does transparent compression.
- Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space.    Key prefix compression in k/v store
- Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this? In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs.]]></description>
+Interaction between a filesystem and a computational SSD that does transparent compression.
+Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space. Key prefix compression in k/v store
+Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this? In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs.]]></description>
 </item>
 <item>
     <title>Secondary Index Built on top of a Key-value Store</title>
@@ -22,7 +22,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
     <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
-Employee table    userid (primary key) salary age     Alice 40000 30   Bob 20000 23   Charlie 30000 30   David 20000 25    To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
+Employee table
+userid (primary key) salary age Alice 40000 30 Bob 20000 23 Charlie 30000 30 David 20000 25 To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
 </item>
 <item>
     <title>Postgres Handling Transaction ID Wrap Around</title>

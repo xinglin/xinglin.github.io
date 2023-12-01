@@ -12,13 +12,13 @@
     <guid>https://xinglin.github.io/kvm/</guid>
     <description><![CDATA[List storage pools
 virsh pool-list --details
-  List all volumes for a pool
+List all volumes for a pool
 vol-list --details POOLNAME
-  To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
+To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
 virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img
 virsh pool-start qcow2
-  To create a Qemu guest with bridged network
-sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.]]></description>
+To create a Qemu guest with bridged network
+sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.04.5-desktop-amd64.iso --network bridge=virbr0 --graphics vnc,listen=0.0.0.0 --noautoconsole -v]]></description>
 </item>
 <item>
     <title>Clone a Single KVM/qemu Virtual Machine</title>

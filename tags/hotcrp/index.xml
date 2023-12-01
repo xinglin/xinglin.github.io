@@ -11,11 +11,12 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/hotcrp-ubuntu14/</guid>
     <description><![CDATA[Update packages
- sudo apt-get update    Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
-  Install the software-properties-common package to get the add-apt-repository command.
- sudo apt-get install software-properties-common    Add php7 ppa and do an update
- sudo add-apt-repository ppa:ondrej/php	sudo apt-get update    Install php7
- sudo apt-get install php7.2 php7.]]></description>
+sudo apt-get update Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
+Install the software-properties-common package to get the add-apt-repository command.
+sudo apt-get install software-properties-common Add php7 ppa and do an update
+sudo add-apt-repository ppa:ondrej/php	sudo apt-get update Install php7
+sudo apt-get install php7.2 php7.2-mysql Install other required packages
+sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail Get hotCRP source code]]></description>
 </item>
 </channel>
 </rss>

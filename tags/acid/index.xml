@@ -11,8 +11,8 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/deltalake/</guid>
     <description><![CDATA[Read/write performance for cloud object store.
- Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
-  The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
+Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
+The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
 </item>
 <item>
     <title>Transaction</title>
@@ -21,7 +21,7 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/transaction/</guid>
     <description><![CDATA[The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability. The purpose of transactions is to maintain data in the face of concurrent access and system failures.
-   Property Definition Technique to achieve that property     Atomicity A transaction either succeeds or fails as a single operation. Undo log   Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.]]></description>
+Property Definition Technique to achieve that property Atomicity A transaction either succeeds or fails as a single operation. Undo log Consistency A database should start in a consistent state and end in another consistent state, after applying a transaction or transactions.]]></description>
 </item>
 </channel>
 </rss>

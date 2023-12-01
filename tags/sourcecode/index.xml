@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>sourcecode - Tag - Xing Lin</title>
+        <link>https://xinglin.github.io/tags/sourcecode/</link>
+        <description>sourcecode - Tag - Xing Lin</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
+            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/sourcecode/" rel="self" type="application/rss+xml" /><item>
+    <title>HDFS Namenode RPC Request Execution Time Breakdown</title>
+    <link>https://xinglin.github.io/namenoderpctimebreakdown/</link>
+    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/namenoderpctimebreakdown/</guid>
+    <description><![CDATA[1 2 3 ----- enqueueTime queueingTime Processing/ResponseTime/HandlerTime |50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response) ----- \-&gt; pendingConnections &lt;- Reader2 A main listener thread is accepting new connections from clients and put connections into pendingConnections queue of a Reader thread. A Reader thread detects any ready connection, reads the request and puts the call into CallQueue. This put() operation is blocking and is accounted as enqueueTime.]]></description>
+</item>
+</channel>
+</rss>

@@ -12,7 +12,7 @@
     <guid>https://xinglin.github.io/prefix-vs-postfix/</guid>
     <description><![CDATA[The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
 The authors shared the following in their book.
- The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
+The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
 For ints and pointers, the compiler can optimize away this extra work.]]></description>
 </item>
 </channel>

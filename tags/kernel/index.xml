@@ -11,10 +11,10 @@
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/kernel-dynamic-debug/</guid>
     <description><![CDATA[Compile kernel with CONFIG_DYNAMIC_DEBUG=y
-  Mount debugfs, if not mounted yet
- sudo mount -t debugfs none /sys/kernel/debug    Turn on debug for a specific module
- echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control    The flags are:
-	p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.]]></description>
+Mount debugfs, if not mounted yet
+sudo mount -t debugfs none /sys/kernel/debug Turn on debug for a specific module
+echo 'module pblk +pfl' &gt; /sys/kernel/debug/dynamic_debug/control The flags are:
+p enables the pr_debug() callsite. f Include the function name in the printed message l Include line number in the printed message m Include module name in the printed message t Include thread ID in messages not generated from interrupt context _ No flags are set.]]></description>
 </item>
 </channel>
 </rss>

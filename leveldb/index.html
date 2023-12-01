@@ -156,13 +156,13 @@ a type which indicates whether this is a PUT or a delete (this KV is deleted).</
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//db/memtable.h:
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">//</span><span class="n">db</span><span class="o">/</span><span class="n">memtable</span><span class="o">.</span><span class="n">h</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  // Add an entry into memtable that maps key to value at the
-</span></span><span class="line"><span class="cl">  // specified sequence number and with the specified type.
-</span></span><span class="line"><span class="cl">  // Typically value will be empty if type==kTypeDeletion.
-</span></span><span class="line"><span class="cl">  void Add(SequenceNumber seq, ValueType type, const Slice&amp; key,
-</span></span><span class="line"><span class="cl">           const Slice&amp; value);
+</span></span><span class="line"><span class="cl">  <span class="o">//</span> <span class="n">Add</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">into</span> <span class="n">memtable</span> <span class="n">that</span> <span class="n">maps</span> <span class="n">key</span> <span class="n">to</span> <span class="n">value</span> <span class="n">at</span> <span class="n">the</span>
+</span></span><span class="line"><span class="cl">  <span class="o">//</span> <span class="n">specified</span> <span class="n">sequence</span> <span class="n">number</span> <span class="ow">and</span> <span class="n">with</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">type</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">  <span class="o">//</span> <span class="n">Typically</span> <span class="n">value</span> <span class="n">will</span> <span class="n">be</span> <span class="n">empty</span> <span class="k">if</span> <span class="n">type</span><span class="o">==</span><span class="n">kTypeDeletion</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">  <span class="n">void</span> <span class="n">Add</span><span class="p">(</span><span class="n">SequenceNumber</span> <span class="n">seq</span><span class="p">,</span> <span class="n">ValueType</span> <span class="n">type</span><span class="p">,</span> <span class="k">const</span> <span class="n">Slice</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="k">const</span> <span class="n">Slice</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -193,7 +193,7 @@ a type which indicates whether this is a PUT or a delete (this KV is deleted).</
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

@@ -212,15 +212,15 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SYSCALL_DEFINE3(read, unsigned int, fd, char __user *, buf, size_t, count)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	return ksys_read(fd, buf, count);
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">SYSCALL_DEFINE3(write, unsigned int, fd, const char __user *, buf,
-</span></span><span class="line"><span class="cl">		size_t, count)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	return ksys_write(fd, buf, count);
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">ksys_read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">write</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="k">const</span> <span class="n">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="n">size_t</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">ksys_write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="read-syscall-call-stack">Read syscall call stack</h1>
@@ -259,37 +259,37 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ksys_read(fd, buf, count);
-</span></span><span class="line"><span class="cl">  vfs_read(f.file, buf, count, &amp;pos);
-</span></span><span class="line"><span class="cl">    __vfs_read(file, buf, count, pos);
-</span></span><span class="line"><span class="cl">    	if (file-&gt;f_op-&gt;read)
-</span></span><span class="line"><span class="cl">		return file-&gt;f_op-&gt;read(file, buf, count, pos);
-</span></span><span class="line"><span class="cl">	else if (file-&gt;f_op-&gt;read_iter)
-</span></span><span class="line"><span class="cl">		return new_sync_read(file, buf, count, pos);
-</span></span><span class="line"><span class="cl">	else
-</span></span><span class="line"><span class="cl">		return -EINVAL;
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">ksys_read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vfs_read</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pos</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__vfs_read</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    	<span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">file</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">read_iter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">new_sync_read</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* Take ext2 as an example. ext2 does not define read() but defines read_iter(). */
-</span></span><span class="line"><span class="cl">const struct file_operations ext2_file_operations = {
-</span></span><span class="line"><span class="cl">	.llseek		= generic_file_llseek,
-</span></span><span class="line"><span class="cl">	.read_iter	= ext2_file_read_iter,
-</span></span><span class="line"><span class="cl">	.write_iter	= ext2_file_write_iter,
-</span></span><span class="line"><span class="cl">	.unlocked_ioctl = ext2_ioctl,
-</span></span><span class="line"><span class="cl">#ifdef CONFIG_COMPAT
-</span></span><span class="line"><span class="cl">	.compat_ioctl	= ext2_compat_ioctl,
-</span></span><span class="line"><span class="cl">#endif
-</span></span><span class="line"><span class="cl">	.mmap		= ext2_file_mmap,
-</span></span><span class="line"><span class="cl">	.open		= dquot_file_open,
-</span></span><span class="line"><span class="cl">	.release	= ext2_release_file,
-</span></span><span class="line"><span class="cl">	.fsync		= ext2_fsync,
-</span></span><span class="line"><span class="cl">	.get_unmapped_area = thp_get_unmapped_area,
-</span></span><span class="line"><span class="cl">	.splice_read	= generic_file_splice_read,
-</span></span><span class="line"><span class="cl">	.splice_write	= iter_file_splice_write,
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="o">/*</span> <span class="n">Take</span> <span class="n">ext2</span> <span class="n">as</span> <span class="n">an</span> <span class="n">example</span><span class="o">.</span> <span class="n">ext2</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">define</span> <span class="n">read</span><span class="p">()</span> <span class="n">but</span> <span class="n">defines</span> <span class="n">read_iter</span><span class="p">()</span><span class="o">.</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">struct</span> <span class="n">file_operations</span> <span class="n">ext2_file_operations</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">llseek</span>		<span class="o">=</span> <span class="n">generic_file_llseek</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">read_iter</span>	<span class="o">=</span> <span class="n">ext2_file_read_iter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">write_iter</span>	<span class="o">=</span> <span class="n">ext2_file_write_iter</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">unlocked_ioctl</span> <span class="o">=</span> <span class="n">ext2_ioctl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#ifdef CONFIG_COMPAT</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">compat_ioctl</span>	<span class="o">=</span> <span class="n">ext2_compat_ioctl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#endif</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">mmap</span>		<span class="o">=</span> <span class="n">ext2_file_mmap</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">open</span>		<span class="o">=</span> <span class="n">dquot_file_open</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">release</span>	<span class="o">=</span> <span class="n">ext2_release_file</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">fsync</span>		<span class="o">=</span> <span class="n">ext2_fsync</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">get_unmapped_area</span> <span class="o">=</span> <span class="n">thp_get_unmapped_area</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">splice_read</span>	<span class="o">=</span> <span class="n">generic_file_splice_read</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">splice_write</span>	<span class="o">=</span> <span class="n">iter_file_splice_write</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">new_sync_read()
-</span></span><span class="line"><span class="cl">  call_read_iter(filp, &amp;kiocb, &amp;iter);
-</span></span><span class="line"><span class="cl">    file-&gt;f_op-&gt;read_iter(kio, iter);
+</span></span><span class="line"><span class="cl"><span class="n">new_sync_read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">call_read_iter</span><span class="p">(</span><span class="n">filp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">kiocb</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">read_iter</span><span class="p">(</span><span class="n">kio</span><span class="p">,</span> <span class="n">iter</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="ext2_file_read_iter">ext2_file_read_iter()</h1>
@@ -328,37 +328,37 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ext2_file_read_iter(): ext2_file_operations.read_iter
-</span></span><span class="line"><span class="cl">  generic_file_read_iter()
-</span></span><span class="line"><span class="cl">    generic_file_buffered_read()
-</span></span><span class="line"><span class="cl">      find_get_page()
-</span></span><span class="line"><span class="cl">      page_cache_sync_readahead()
-</span></span><span class="line"><span class="cl">      or page_cache_async_readahead()
-</span></span><span class="line"><span class="cl">        ondemand_readahead()
-</span></span><span class="line"><span class="cl">          __do_page_cache_readahead()
-</span></span><span class="line"><span class="cl">            read_pages()
-</span></span><span class="line"><span class="cl">              mapping-&gt;a_ops-&gt;readpages(filp, mapping, pages, nr_pages);
-</span></span><span class="line"><span class="cl">              or mapping-&gt;a_ops-&gt;readpage(filp, page);
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">ext2_file_read_iter</span><span class="p">():</span> <span class="n">ext2_file_operations</span><span class="o">.</span><span class="n">read_iter</span>
+</span></span><span class="line"><span class="cl">  <span class="n">generic_file_read_iter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">generic_file_buffered_read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="n">find_get_page</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="n">page_cache_sync_readahead</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="ow">or</span> <span class="n">page_cache_async_readahead</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ondemand_readahead</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">          <span class="n">__do_page_cache_readahead</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">read_pages</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">              <span class="n">mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span><span class="o">-&gt;</span><span class="n">readpages</span><span class="p">(</span><span class="n">filp</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">nr_pages</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">              <span class="ow">or</span> <span class="n">mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span><span class="o">-&gt;</span><span class="n">readpage</span><span class="p">(</span><span class="n">filp</span><span class="p">,</span> <span class="n">page</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* ext2 defines both readpage() and readpages(). */
-</span></span><span class="line"><span class="cl">const struct address_space_operations ext2_aops = {
-</span></span><span class="line"><span class="cl">	.readpage		= ext2_readpage,
-</span></span><span class="line"><span class="cl">	.readpages		= ext2_readpages,
-</span></span><span class="line"><span class="cl">	.writepage		= ext2_writepage,
-</span></span><span class="line"><span class="cl">	.write_begin		= ext2_write_begin,
-</span></span><span class="line"><span class="cl">	.write_end		= ext2_write_end,
-</span></span><span class="line"><span class="cl">	.bmap			= ext2_bmap,
-</span></span><span class="line"><span class="cl">	.direct_IO		= ext2_direct_IO,
-</span></span><span class="line"><span class="cl">	.writepages		= ext2_writepages,
-</span></span><span class="line"><span class="cl">	.migratepage		= buffer_migrate_page,
-</span></span><span class="line"><span class="cl">	.is_partially_uptodate	= block_is_partially_uptodate,
-</span></span><span class="line"><span class="cl">	.error_remove_page	= generic_error_remove_page,
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="o">/*</span> <span class="n">ext2</span> <span class="n">defines</span> <span class="n">both</span> <span class="n">readpage</span><span class="p">()</span> <span class="ow">and</span> <span class="n">readpages</span><span class="p">()</span><span class="o">.</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">struct</span> <span class="n">address_space_operations</span> <span class="n">ext2_aops</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">readpage</span>		<span class="o">=</span> <span class="n">ext2_readpage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">readpages</span>		<span class="o">=</span> <span class="n">ext2_readpages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">writepage</span>		<span class="o">=</span> <span class="n">ext2_writepage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">write_begin</span>		<span class="o">=</span> <span class="n">ext2_write_begin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">write_end</span>		<span class="o">=</span> <span class="n">ext2_write_end</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">bmap</span>			<span class="o">=</span> <span class="n">ext2_bmap</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">direct_IO</span>		<span class="o">=</span> <span class="n">ext2_direct_IO</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">writepages</span>		<span class="o">=</span> <span class="n">ext2_writepages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">migratepage</span>		<span class="o">=</span> <span class="n">buffer_migrate_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">is_partially_uptodate</span>	<span class="o">=</span> <span class="n">block_is_partially_uptodate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">error_remove_page</span>	<span class="o">=</span> <span class="n">generic_error_remove_page</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* The IO request is submitted to the block layer by calling mpage_bio_submit(). */
-</span></span><span class="line"><span class="cl">ext2_readpages()
-</span></span><span class="line"><span class="cl">    mpage_readpages()
-</span></span><span class="line"><span class="cl">        mpage_bio_submit()
+</span></span><span class="line"><span class="cl"><span class="o">/*</span> <span class="n">The</span> <span class="n">IO</span> <span class="n">request</span> <span class="n">is</span> <span class="n">submitted</span> <span class="n">to</span> <span class="n">the</span> <span class="n">block</span> <span class="n">layer</span> <span class="n">by</span> <span class="n">calling</span> <span class="n">mpage_bio_submit</span><span class="p">()</span><span class="o">.</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">ext2_readpages</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mpage_readpages</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mpage_bio_submit</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -452,93 +452,93 @@
 </span><span class="lnt">87
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/*
-</span></span><span class="line"><span class="cl"> * __do_page_cache_readahead() actually reads a chunk of disk.  It allocates
-</span></span><span class="line"><span class="cl"> * the pages first, then submits them for I/O. This avoids the very bad
-</span></span><span class="line"><span class="cl"> * behaviour which would occur if page allocations are causing VM writeback.
-</span></span><span class="line"><span class="cl"> * We really don&#39;t want to intermingle reads and writes like that.
-</span></span><span class="line"><span class="cl"> *
-</span></span><span class="line"><span class="cl"> * Returns the number of pages requested, or the maximum amount of I/O allowed.
-</span></span><span class="line"><span class="cl"> */
-</span></span><span class="line"><span class="cl">unsigned int __do_page_cache_readahead(struct address_space *mapping,
-</span></span><span class="line"><span class="cl">		struct file *filp, pgoff_t offset, unsigned long nr_to_read,
-</span></span><span class="line"><span class="cl">		unsigned long lookahead_size)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">    ...
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">/*</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">__do_page_cache_readahead</span><span class="p">()</span> <span class="n">actually</span> <span class="n">reads</span> <span class="n">a</span> <span class="n">chunk</span> <span class="n">of</span> <span class="n">disk</span><span class="o">.</span>  <span class="n">It</span> <span class="n">allocates</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">the</span> <span class="n">pages</span> <span class="n">first</span><span class="p">,</span> <span class="n">then</span> <span class="n">submits</span> <span class="n">them</span> <span class="k">for</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="o">.</span> <span class="n">This</span> <span class="n">avoids</span> <span class="n">the</span> <span class="n">very</span> <span class="n">bad</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">behaviour</span> <span class="n">which</span> <span class="n">would</span> <span class="n">occur</span> <span class="k">if</span> <span class="n">page</span> <span class="n">allocations</span> <span class="n">are</span> <span class="n">causing</span> <span class="n">VM</span> <span class="n">writeback</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">We</span> <span class="n">really</span> <span class="n">don</span><span class="s1">&#39;t want to intermingle reads and writes like that.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">Returns</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">pages</span> <span class="n">requested</span><span class="p">,</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">maximum</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">allowed</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">unsigned</span> <span class="ne">int</span> <span class="n">__do_page_cache_readahead</span><span class="p">(</span><span class="n">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="n">mapping</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="n">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">filp</span><span class="p">,</span> <span class="n">pgoff_t</span> <span class="n">offset</span><span class="p">,</span> <span class="n">unsigned</span> <span class="n">long</span> <span class="n">nr_to_read</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="n">unsigned</span> <span class="n">long</span> <span class="n">lookahead_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	/*
-</span></span><span class="line"><span class="cl">	 * Preallocate as many pages as we will need.
-</span></span><span class="line"><span class="cl">	 */
-</span></span><span class="line"><span class="cl">	for (page_idx = 0; page_idx &lt; nr_to_read; page_idx++) {
-</span></span><span class="line"><span class="cl">		pgoff_t page_offset = offset + page_idx;
+</span></span><span class="line"><span class="cl">	<span class="o">/*</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">Preallocate</span> <span class="n">as</span> <span class="n">many</span> <span class="n">pages</span> <span class="n">as</span> <span class="n">we</span> <span class="n">will</span> <span class="n">need</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">page_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">page_idx</span> <span class="o">&lt;</span> <span class="n">nr_to_read</span><span class="p">;</span> <span class="n">page_idx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">pgoff_t</span> <span class="n">page_offset</span> <span class="o">=</span> <span class="n">offset</span> <span class="o">+</span> <span class="n">page_idx</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		if (page_offset &gt; end_index)
-</span></span><span class="line"><span class="cl">			break;
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">page_offset</span> <span class="o">&gt;</span> <span class="n">end_index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		page = xa_load(&amp;mapping-&gt;i_pages, page_offset);
-</span></span><span class="line"><span class="cl">		if (page &amp;&amp; !xa_is_value(page)) {
-</span></span><span class="line"><span class="cl">			/*
-</span></span><span class="line"><span class="cl">			 * Page already present?  Kick off the current batch of
-</span></span><span class="line"><span class="cl">			 * contiguous pages before continuing with the next
-</span></span><span class="line"><span class="cl">			 * batch.
-</span></span><span class="line"><span class="cl">			 */
-</span></span><span class="line"><span class="cl">			if (nr_pages)
-</span></span><span class="line"><span class="cl">				read_pages(mapping, filp, &amp;page_pool, nr_pages,
-</span></span><span class="line"><span class="cl">						gfp_mask);
-</span></span><span class="line"><span class="cl">			nr_pages = 0;
-</span></span><span class="line"><span class="cl">			continue;
-</span></span><span class="line"><span class="cl">		}
+</span></span><span class="line"><span class="cl">		<span class="n">page</span> <span class="o">=</span> <span class="n">xa_load</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mapping</span><span class="o">-&gt;</span><span class="n">i_pages</span><span class="p">,</span> <span class="n">page_offset</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">page</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">xa_is_value</span><span class="p">(</span><span class="n">page</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="o">/*</span>
+</span></span><span class="line"><span class="cl">			 <span class="o">*</span> <span class="n">Page</span> <span class="n">already</span> <span class="n">present</span><span class="err">?</span>  <span class="n">Kick</span> <span class="n">off</span> <span class="n">the</span> <span class="n">current</span> <span class="n">batch</span> <span class="n">of</span>
+</span></span><span class="line"><span class="cl">			 <span class="o">*</span> <span class="n">contiguous</span> <span class="n">pages</span> <span class="n">before</span> <span class="n">continuing</span> <span class="n">with</span> <span class="n">the</span> <span class="n">next</span>
+</span></span><span class="line"><span class="cl">			 <span class="o">*</span> <span class="n">batch</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">			 <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">(</span><span class="n">nr_pages</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="n">read_pages</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">filp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">page_pool</span><span class="p">,</span> <span class="n">nr_pages</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">						<span class="n">gfp_mask</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="n">nr_pages</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		page = __page_cache_alloc(gfp_mask);
-</span></span><span class="line"><span class="cl">		if (!page)
-</span></span><span class="line"><span class="cl">			break;
-</span></span><span class="line"><span class="cl">		page-&gt;index = page_offset;
-</span></span><span class="line"><span class="cl">		list_add(&amp;page-&gt;lru, &amp;page_pool);
-</span></span><span class="line"><span class="cl">		if (page_idx == nr_to_read - lookahead_size)
-</span></span><span class="line"><span class="cl">			SetPageReadahead(page);
-</span></span><span class="line"><span class="cl">		nr_pages++;
-</span></span><span class="line"><span class="cl">	}  
+</span></span><span class="line"><span class="cl">		<span class="n">page</span> <span class="o">=</span> <span class="n">__page_cache_alloc</span><span class="p">(</span><span class="n">gfp_mask</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">page</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">page</span><span class="o">-&gt;</span><span class="n">index</span> <span class="o">=</span> <span class="n">page_offset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">list_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">page</span><span class="o">-&gt;</span><span class="n">lru</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">page_pool</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">page_idx</span> <span class="o">==</span> <span class="n">nr_to_read</span> <span class="o">-</span> <span class="n">lookahead_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="n">SetPageReadahead</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">nr_pages</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>  
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	/*
-</span></span><span class="line"><span class="cl">	 * Now start the IO.  We ignore I/O errors - if the page is not
-</span></span><span class="line"><span class="cl">	 * uptodate then the caller will launch readpage again, and
-</span></span><span class="line"><span class="cl">	 * will then handle the error.
-</span></span><span class="line"><span class="cl">	 */
-</span></span><span class="line"><span class="cl">	if (nr_pages)
-</span></span><span class="line"><span class="cl">		read_pages(mapping, filp, &amp;page_pool, nr_pages, gfp_mask);
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">	<span class="o">/*</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">Now</span> <span class="n">start</span> <span class="n">the</span> <span class="n">IO</span><span class="o">.</span>  <span class="n">We</span> <span class="n">ignore</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">errors</span> <span class="o">-</span> <span class="k">if</span> <span class="n">the</span> <span class="n">page</span> <span class="n">is</span> <span class="ow">not</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">uptodate</span> <span class="n">then</span> <span class="n">the</span> <span class="n">caller</span> <span class="n">will</span> <span class="n">launch</span> <span class="n">readpage</span> <span class="n">again</span><span class="p">,</span> <span class="ow">and</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">will</span> <span class="n">then</span> <span class="n">handle</span> <span class="n">the</span> <span class="n">error</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">nr_pages</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">read_pages</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">filp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">page_pool</span><span class="p">,</span> <span class="n">nr_pages</span><span class="p">,</span> <span class="n">gfp_mask</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">static int read_pages(struct address_space *mapping, struct file *filp,
-</span></span><span class="line"><span class="cl">		struct list_head *pages, unsigned int nr_pages, gfp_t gfp)
-</span></span><span class="line"><span class="cl">{
-</span></span><span class="line"><span class="cl">	struct blk_plug plug;
-</span></span><span class="line"><span class="cl">	unsigned page_idx;
-</span></span><span class="line"><span class="cl">	int ret;
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="ne">int</span> <span class="n">read_pages</span><span class="p">(</span><span class="n">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="n">mapping</span><span class="p">,</span> <span class="n">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">filp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="n">struct</span> <span class="n">list_head</span> <span class="o">*</span><span class="n">pages</span><span class="p">,</span> <span class="n">unsigned</span> <span class="ne">int</span> <span class="n">nr_pages</span><span class="p">,</span> <span class="n">gfp_t</span> <span class="n">gfp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">blk_plug</span> <span class="n">plug</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">page_idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="ne">int</span> <span class="n">ret</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	blk_start_plug(&amp;plug);
+</span></span><span class="line"><span class="cl">	<span class="n">blk_start_plug</span><span class="p">(</span><span class="o">&amp;</span><span class="n">plug</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	if (mapping-&gt;a_ops-&gt;readpages) {
-</span></span><span class="line"><span class="cl">		ret = mapping-&gt;a_ops-&gt;readpages(filp, mapping, pages, nr_pages);
-</span></span><span class="line"><span class="cl">		/* Clean up the remaining pages */
-</span></span><span class="line"><span class="cl">		put_pages_list(pages);
-</span></span><span class="line"><span class="cl">		goto out;
-</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span><span class="o">-&gt;</span><span class="n">readpages</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ret</span> <span class="o">=</span> <span class="n">mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span><span class="o">-&gt;</span><span class="n">readpages</span><span class="p">(</span><span class="n">filp</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">nr_pages</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="o">/*</span> <span class="n">Clean</span> <span class="n">up</span> <span class="n">the</span> <span class="n">remaining</span> <span class="n">pages</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">		<span class="n">put_pages_list</span><span class="p">(</span><span class="n">pages</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">goto</span> <span class="n">out</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	for (page_idx = 0; page_idx &lt; nr_pages; page_idx++) {
-</span></span><span class="line"><span class="cl">		struct page *page = lru_to_page(pages);
-</span></span><span class="line"><span class="cl">		list_del(&amp;page-&gt;lru);
-</span></span><span class="line"><span class="cl">		if (!add_to_page_cache_lru(page, mapping, page-&gt;index, gfp))
-</span></span><span class="line"><span class="cl">			mapping-&gt;a_ops-&gt;readpage(filp, page);
-</span></span><span class="line"><span class="cl">		put_page(page);
-</span></span><span class="line"><span class="cl">	}
-</span></span><span class="line"><span class="cl">	ret = 0;
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">page_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">page_idx</span> <span class="o">&lt;</span> <span class="n">nr_pages</span><span class="p">;</span> <span class="n">page_idx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span> <span class="o">=</span> <span class="n">lru_to_page</span><span class="p">(</span><span class="n">pages</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">list_del</span><span class="p">(</span><span class="o">&amp;</span><span class="n">page</span><span class="o">-&gt;</span><span class="n">lru</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">add_to_page_cache_lru</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">page</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">,</span> <span class="n">gfp</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">			<span class="n">mapping</span><span class="o">-&gt;</span><span class="n">a_ops</span><span class="o">-&gt;</span><span class="n">readpage</span><span class="p">(</span><span class="n">filp</span><span class="p">,</span> <span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">put_page</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">out:
-</span></span><span class="line"><span class="cl">	blk_finish_plug(&amp;plug);
+</span></span><span class="line"><span class="cl"><span class="n">out</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">blk_finish_plug</span><span class="p">(</span><span class="o">&amp;</span><span class="n">plug</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	return ret;
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="io-path-from-understanding-the-linux-kernel">IO Path from Understanding the Linux Kernel</h1>
@@ -617,74 +617,74 @@
 </span><span class="lnt">68
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">struct task_struct {
-</span></span><span class="line"><span class="cl">	...
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">struct</span> <span class="n">task_struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
 </span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	/* Open file information: */
-</span></span><span class="line"><span class="cl">	struct files_struct		*files;
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	<span class="o">/*</span> <span class="n">Open</span> <span class="n">file</span> <span class="n">information</span><span class="p">:</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">files_struct</span>		<span class="o">*</span><span class="n">files</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/*
-</span></span><span class="line"><span class="cl"> * Open file table structure
-</span></span><span class="line"><span class="cl"> */
-</span></span><span class="line"><span class="cl">struct files_struct {
-</span></span><span class="line"><span class="cl">  /*
-</span></span><span class="line"><span class="cl">   * read mostly part
-</span></span><span class="line"><span class="cl">   */
-</span></span><span class="line"><span class="cl">	atomic_t count;
-</span></span><span class="line"><span class="cl">	bool resize_in_progress;
-</span></span><span class="line"><span class="cl">	wait_queue_head_t resize_wait;
+</span></span><span class="line"><span class="cl"><span class="o">/*</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*</span> <span class="n">Open</span> <span class="n">file</span> <span class="n">table</span> <span class="n">structure</span>
+</span></span><span class="line"><span class="cl"> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">struct</span> <span class="n">files_struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="o">/*</span>
+</span></span><span class="line"><span class="cl">   <span class="o">*</span> <span class="n">read</span> <span class="n">mostly</span> <span class="n">part</span>
+</span></span><span class="line"><span class="cl">   <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="n">atomic_t</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="ne">bool</span> <span class="n">resize_in_progress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">wait_queue_head_t</span> <span class="n">resize_wait</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	struct fdtable __rcu *fdt;
-</span></span><span class="line"><span class="cl">	struct fdtable fdtab;
-</span></span><span class="line"><span class="cl">  /*
-</span></span><span class="line"><span class="cl">   * written part on a separate cache line in SMP
-</span></span><span class="line"><span class="cl">   */
-</span></span><span class="line"><span class="cl">	spinlock_t file_lock ____cacheline_aligned_in_smp;
-</span></span><span class="line"><span class="cl">	unsigned int next_fd;
-</span></span><span class="line"><span class="cl">	unsigned long close_on_exec_init[1];
-</span></span><span class="line"><span class="cl">	unsigned long open_fds_init[1];
-</span></span><span class="line"><span class="cl">	unsigned long full_fds_bits_init[1];
-</span></span><span class="line"><span class="cl">	struct file __rcu * fd_array[NR_OPEN_DEFAULT];
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">fdtable</span> <span class="n">__rcu</span> <span class="o">*</span><span class="n">fdt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">fdtable</span> <span class="n">fdtab</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">/*</span>
+</span></span><span class="line"><span class="cl">   <span class="o">*</span> <span class="n">written</span> <span class="n">part</span> <span class="n">on</span> <span class="n">a</span> <span class="n">separate</span> <span class="n">cache</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">SMP</span>
+</span></span><span class="line"><span class="cl">   <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="n">spinlock_t</span> <span class="n">file_lock</span> <span class="n">____cacheline_aligned_in_smp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="ne">int</span> <span class="n">next_fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="n">close_on_exec_init</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="n">open_fds_init</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="n">full_fds_bits_init</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">file</span> <span class="n">__rcu</span> <span class="o">*</span> <span class="n">fd_array</span><span class="p">[</span><span class="n">NR_OPEN_DEFAULT</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">struct fdtable {
-</span></span><span class="line"><span class="cl">	unsigned int max_fds;
-</span></span><span class="line"><span class="cl">	struct file __rcu **fd;      /* current fd array */
-</span></span><span class="line"><span class="cl">	unsigned long *close_on_exec;
-</span></span><span class="line"><span class="cl">	unsigned long *open_fds;
-</span></span><span class="line"><span class="cl">	unsigned long *full_fds_bits;
-</span></span><span class="line"><span class="cl">	struct rcu_head rcu;
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl"><span class="n">struct</span> <span class="n">fdtable</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="ne">int</span> <span class="n">max_fds</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">file</span> <span class="n">__rcu</span> <span class="o">**</span><span class="n">fd</span><span class="p">;</span>      <span class="o">/*</span> <span class="n">current</span> <span class="n">fd</span> <span class="n">array</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="o">*</span><span class="n">close_on_exec</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="o">*</span><span class="n">open_fds</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="n">long</span> <span class="o">*</span><span class="n">full_fds_bits</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">rcu_head</span> <span class="n">rcu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">struct file {
-</span></span><span class="line"><span class="cl">	union {
-</span></span><span class="line"><span class="cl">		struct llist_node	fu_llist;
-</span></span><span class="line"><span class="cl">		struct rcu_head 	fu_rcuhead;
-</span></span><span class="line"><span class="cl">	} f_u;
-</span></span><span class="line"><span class="cl">	struct path		f_path;
-</span></span><span class="line"><span class="cl">	struct inode		*f_inode;	/* cached value */
-</span></span><span class="line"><span class="cl">	const struct file_operations	*f_op;
+</span></span><span class="line"><span class="cl"><span class="n">struct</span> <span class="n">file</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">union</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">struct</span> <span class="n">llist_node</span>	<span class="n">fu_llist</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">struct</span> <span class="n">rcu_head</span> 	<span class="n">fu_rcuhead</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="n">f_u</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">path</span>		<span class="n">f_path</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">inode</span>		<span class="o">*</span><span class="n">f_inode</span><span class="p">;</span>	<span class="o">/*</span> <span class="n">cached</span> <span class="n">value</span> <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="n">struct</span> <span class="n">file_operations</span>	<span class="o">*</span><span class="n">f_op</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	/*
-</span></span><span class="line"><span class="cl">	 * Protects f_ep_links, f_flags.
-</span></span><span class="line"><span class="cl">	 * Must not be taken from IRQ context.
-</span></span><span class="line"><span class="cl">	 */
-</span></span><span class="line"><span class="cl">	spinlock_t		f_lock;
-</span></span><span class="line"><span class="cl">	enum rw_hint		f_write_hint;
-</span></span><span class="line"><span class="cl">	atomic_long_t		f_count;
-</span></span><span class="line"><span class="cl">	unsigned int 		f_flags;
-</span></span><span class="line"><span class="cl">	fmode_t			f_mode;
-</span></span><span class="line"><span class="cl">	struct mutex		f_pos_lock;
-</span></span><span class="line"><span class="cl">	loff_t			f_pos;
-</span></span><span class="line"><span class="cl">	struct fown_struct	f_owner;
-</span></span><span class="line"><span class="cl">	const struct cred	*f_cred;
-</span></span><span class="line"><span class="cl">	struct file_ra_state	f_ra;
+</span></span><span class="line"><span class="cl">	<span class="o">/*</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">Protects</span> <span class="n">f_ep_links</span><span class="p">,</span> <span class="n">f_flags</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*</span> <span class="n">Must</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">taken</span> <span class="n">from</span> <span class="n">IRQ</span> <span class="n">context</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	 <span class="o">*/</span>
+</span></span><span class="line"><span class="cl">	<span class="n">spinlock_t</span>		<span class="n">f_lock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">enum</span> <span class="n">rw_hint</span>		<span class="n">f_write_hint</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">atomic_long_t</span>		<span class="n">f_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">unsigned</span> <span class="ne">int</span> 		<span class="n">f_flags</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fmode_t</span>			<span class="n">f_mode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">mutex</span>		<span class="n">f_pos_lock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">loff_t</span>			<span class="n">f_pos</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">fown_struct</span>	<span class="n">f_owner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="n">struct</span> <span class="n">cred</span>	<span class="o">*</span><span class="n">f_cred</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">struct</span> <span class="n">file_ra_state</span>	<span class="n">f_ra</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	...
-</span></span><span class="line"><span class="cl">} __randomize_layout
-</span></span><span class="line"><span class="cl">  __attribute__((aligned(4)));	/* lest something weird decides that 2 is OK */
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">__randomize_layout</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__attribute__</span><span class="p">((</span><span class="n">aligned</span><span class="p">(</span><span class="mi">4</span><span class="p">)));</span>	<span class="o">/*</span> <span class="n">lest</span> <span class="n">something</span> <span class="n">weird</span> <span class="n">decides</span> <span class="n">that</span> <span class="mi">2</span> <span class="n">is</span> <span class="n">OK</span> <span class="o">*/</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -715,7 +715,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>

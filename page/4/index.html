@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.99.1" />
+	<meta name="generator" content="Hugo 0.120.4">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -106,82 +106,46 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/postgresql/">Systems and services built on top of postgreSQL</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-02">2018-12-02</time></span></div><div class="content">It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
-   Systems/services Type     AWS Redshift data warehousing   TimeScale time series database   openGauss/GaussDB distributed relational db, by Huawei      AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine.</div><div class="post-footer">
-        <a href="/postgresql/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a></div></div>
+        <a href="/data-storage-research-vision-2025/">Data Storage Research Vision 2025</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-23">2020-07-23</time></span></div><div class="content">NFS sponsored a data storage visioning workshop in 2018. The workshop was hosted by IBM Research. From the workshop, they produced a report, summarizing the discussion from the workshop. The report outlines the future research challenges and opportunities that the attendees recommend to work on.
+The discussion of the workshop was organized in the four groups. Below are some interesting points I copied from the report.
+Storage for the Cloud, Edge, and IoT Systems More desegregated, composable software architectures are highly desirable.</div><div class="post-footer">
+        <a href="/data-storage-research-vision-2025/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/research/">research</a>,&nbsp;<a href="/tags/storage/">storage</a>,&nbsp;<a href="/tags/vision/">vision</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/loc/">Lines of Code for Various Software</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-11-20">2018-11-20</time></span></div><div class="content">Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.</div><div class="post-footer">
-        <a href="/loc/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/coding/">coding</a></div></div>
+        <a href="/measure-network-latency/">Measure Network Latency</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-22">2020-07-22</time></span></div><div class="content">Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
+By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.</div><div class="post-footer">
+        <a href="/measure-network-latency/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/tip/">tip</a>,&nbsp;<a href="/tags/network-latency/">network latency</a>,&nbsp;<a href="/tags/tech/">tech</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spdk-optane-zssd/">SPDK on Intel Optane and Samsung ZSSD</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-05-10">2018-05-10</time></span></div><div class="content">Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD    Metric SPDK /dev/nvme1n1     IOPS 150 K 66.1 K   slat 0.13 usec 2.8 usec   clat 6.</div><div class="post-footer">
-        <a href="/spdk-optane-zssd/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spdk/">SPDK</a></div></div>
+        <a href="/shrd/">SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-28">2020-06-28</time></span></div><div class="content">I really liked the paper. The idea is neat. The paper is also well written and the design and the new idea is clearly presented. A very good paper to read and learn from on how to write good papers.
+Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.</div><div class="post-footer">
+        <a href="/shrd/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/ssd/">SSD</a>,&nbsp;<a href="/tags/ftl/">FTL</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hotcrp-ubuntu14/">Install hotCRP at a Ubuntu 14 Machine</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-12">2018-04-12</time></span></div><div class="content">Update packages
- sudo apt-get update    Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
-  Install the software-properties-common package to get the add-apt-repository command.
- sudo apt-get install software-properties-common    Add php7 ppa and do an update
- sudo add-apt-repository ppa:ondrej/php	sudo apt-get update    Install php7
- sudo apt-get install php7.2 php7.</div><div class="post-footer">
-        <a href="/hotcrp-ubuntu14/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hotcrp/">hotCRP</a>,&nbsp;<a href="/tags/note/">note</a></div></div>
+        <a href="/copysets/">Copysets: Reducing the Frequency of Data Loss in Cloud Storage</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content">Summary Copysets proposed another approach/perspective for data replication, than the traditional random replication. In random replication, N nodes are selected randomly from the cluster to store a data chunk. Random replication provides a strong protection against uncorrelated failures. For each individual chunk, since it can be stored randomly at N nodes in the cluster, it is quite resilient to data loss. However, when we consider all data chunks, any N node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes.</div><div class="post-footer">
+        <a href="/copysets/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/storage/">storage</a>,&nbsp;<a href="/tags/replication/">replication</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/atc18-best-practice/">Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-11">2018-04-11</time></span></div><div class="content">I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions. To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.</div><div class="post-footer">
-        <a href="/atc18-best-practice/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">conference</a></div></div>
+        <a href="/33rd-birthday/">On my 33rd Birthday</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content">How time flies! I am 33 years old now and have lived in US for more than 10 years. I have also graduated from University of Utah for almost 5 years now. Wahoo! Each week passed very quickly. Now is the time to pause a little bit and reflect what has been achieved and what could be done better.
+Achievements Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them have been accepted yet.</div><div class="post-footer">
+        <a href="/33rd-birthday/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/reflection/">reflection</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spdk-samsung-960-evo/">SPDK on Samsung 960 EVO NVMe SSD</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2017-12-01">2017-12-01</time></span></div><div class="content">Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD. I was thinking that using SPDK might lead to better performance, than through traditional block device interface. However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.
-   Metric SPDK /dev/nvme0n1     IOPS 12.8 K 11.</div><div class="post-footer">
-        <a href="/spdk-samsung-960-evo/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spdk/">SPDK</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/books-papers/">Great Books and Papers</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-12-25">2015-12-25</time></span></div><div class="content">Books  A Philosophy of Software Design, John Ousterhout, Professor at Stanford University The Innovator&rsquo;s Dilemma, Clayton Christensen UNIX - A History and a Memorior, Brian Kernighan, Professor at Princeton University HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University China&rsquo;s Economy, Arthur R. Kroeber  Papers There are some papers that are so well written that I really enjoyed reading them.</div><div class="post-footer">
-        <a href="/books-papers/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/papers/">papers</a>,&nbsp;<a href="/tags/books/">books</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/nv-tree/">NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-12-25">2015-12-25</time></span></div><div class="content">This paper introduces a new B+ tree variation that is optimized for NVM by reducing consistency cost from memory fence and cacheline flush operations.
- Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.</div><div class="post-footer">
-        <a href="/nv-tree/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/dissertation-defense/">Reflection After Dissertation Defense</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-07-22">2015-07-22</time></span></div><div class="content">After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers.</div><div class="post-footer">
-        <a href="/dissertation-defense/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">PhD life</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/sketch-data-structures/">Sketch Data Structures</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-06-09">2015-06-09</time></span></div><div class="content">Tonight, I went to attend a local meetup event. The talk was given by a faculty from my own department, Jeff Phillips, an assistant professor working in the area of big data analysis. The topic of his talk is about sketch data structure - data structures which uses a much smaller amount of memory to summarize the represented data.This is a cool technique and I am very interested to learn more.</div><div class="post-footer">
-        <a href="/sketch-data-structures/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/technique/">technique</a>,&nbsp;<a href="/tags/data-summarization/">data summarization</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/kvm/">KVM Notes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-04-08">2015-04-08</time></span></div><div class="content">List storage pools
-virsh pool-list --details
-  List all volumes for a pool
-vol-list --details POOLNAME
-  To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
-virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img
-virsh pool-start qcow2
-  To create a Qemu guest with bridged network
-sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.</div><div class="post-footer">
-        <a href="/kvm/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kvm/">KVM</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/proposal-defense/">Proposal Defense</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-12-19">2014-12-19</time></span></div><div class="content">I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.</div><div class="post-footer">
-        <a href="/proposal-defense/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">PhD life</a></div></div>
+        <a href="/ssd-evaluation-how/">How to Evaluate Research Ideas for SSDs</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-17">2020-06-17</time></span></div><div class="content">This blog lists tools/simulators/platforms people used to evaluate SSD researches.
+MQSim
+MQSIM FAST18, ATC19-Kim
+SSDSim SSDSim Microsoft Patch
+[ATC12][atc12]
+FEMU
+FEMU-fast18-short</div><div class="post-footer">
+        <a href="/ssd-evaluation-how/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ssd/">SSD</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -202,9 +166,19 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
                     <span class="page-link">
                         <a href="/page/5/">5</a>
                     </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/6/">6</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/9/">9</a>
+                    </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
