@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xinglin.github.io/namenoderpctimebreakdown/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-11-29T22:26:25-08:00" /><meta property="og:site_name" content="Xing Lin" />
+<meta property="article:modified_time" content="2023-12-02T22:22:10-08:00" /><meta property="og:site_name" content="Xing Lin" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
@@ -35,8 +35,8 @@
                             "url": "https:\/\/xinglin.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "sourcecode, HDFS, Hadoop, note","wordcount":  118 ,
-        "url": "https:\/\/xinglin.github.io\/namenoderpctimebreakdown\/","datePublished": "2023-11-29T00:00:00+00:00","dateModified": "2023-11-29T22:26:25-08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "sourcecode, HDFS, Hadoop, note","wordcount":  130 ,
+        "url": "https:\/\/xinglin.github.io\/namenoderpctimebreakdown\/","datePublished": "2023-11-29T00:00:00+00:00","dateModified": "2023-12-02T22:22:10-08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -115,7 +115,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HDFS Namenode RPC Request Execution Time Breakdown</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;118 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;130 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -143,11 +143,25 @@ enqueueTime. The time a call stays in CallQueue is queueingTime.
 When a handler is available, it will pick a call from CallQueue and process the
 call, from which we can derive the processing/response/handlerTime.</p>
 <p>Hadoop supports adding more listener threads by specifying the auxiliary listener ports <code>dfs.namenode.rpc-address.auxiliary-ports</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ipc.server.read.connection-queue.size</td>
+<td>pending connection queue size for readers. Default is 100.</td>
+</tr>
+</tbody>
+</table>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-11-29</span>
+                <span>Updated on 2023-12-02</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

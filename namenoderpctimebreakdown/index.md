@@ -16,3 +16,8 @@ When a handler is available, it will pick a call from CallQueue and process the
 call, from which we can derive the processing/response/handlerTime.
 
 Hadoop supports adding more listener threads by specifying the auxiliary listener ports `dfs.namenode.rpc-address.auxiliary-ports`.
+
+| Property                              | Description                                                |
+|---------------------------------------|------------------------------------------------------------|
+| ipc.server.read.connection-queue.size | pending connection queue size for readers. Default is 100. |
+
