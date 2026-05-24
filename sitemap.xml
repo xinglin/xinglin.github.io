@@ -2,13 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://xinglin.github.io/tags/2021/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/fdb/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/kv/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/paper/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/posts/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/tags/sigmod/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://xinglin.github.io/</loc><lastmod>2026-05-24T12:26:56-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/2021/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/fdb/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/kv/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/paper/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/posts/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/tags/sigmod/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xinglin.github.io/</loc><lastmod>2026-05-24T12:28:33-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://xinglin.github.io/tags/hadoop/</loc><lastmod>2023-12-02T22:22:10-08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/tags/hdfs/</loc><lastmod>2023-12-02T22:22:10-08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://xinglin.github.io/namenoderpctimebreakdown/</loc><lastmod>2023-12-02T22:22:10-08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

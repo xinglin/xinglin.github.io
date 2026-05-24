@@ -13,7 +13,7 @@ Transaction processing Optimistic Concurrency Control &#43; MVCC A client transa
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-05-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-05-24T12:26:56-07:00">
+    <meta property="article:modified_time" content="2026-05-24T12:28:33-07:00">
     <meta property="article:tag" content="Paper">
     <meta property="article:tag" content="KV">
     <meta property="article:tag" content="2021">
@@ -45,7 +45,7 @@ Transaction processing Optimistic Concurrency Control &#43; MVCC A client transa
                             "width":  3200 ,
                             "height":  2048 
                         }],"genre": "posts","keywords": "paper, KV, 2021, SIGMOD","wordcount":  799 ,
-        "url": "https:\/\/xinglin.github.io\/fdb\/","datePublished": "2026-05-24T00:00:00+00:00","dateModified": "2026-05-24T12:26:56-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/xinglin.github.io\/fdb\/","datePublished": "2026-05-24T00:00:00+00:00","dateModified": "2026-05-24T12:28:33-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -176,8 +176,8 @@ Transaction processing Optimistic Concurrency Control &#43; MVCC A client transa
 <h3 id="failure-handling-through-the-recovery-path">Failure Handling through the Recovery Path</h3>
 <p>In the transaction management system of FDB, we handle all failures through the recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it detects a failure. As a result, all failure handling is reduced to a single recovery operation, which becomes a common and well-tested code path. Such error handling strategy is desirable as long as the recovery is quick, and pays dividends by simplifying the normal transaction processing.</p>
 </blockquote>
-<h2 id="simulation-testing">Simulation Testing</h2>
 <blockquote>
+<h2 id="simulation-testing">Simulation Testing</h2>
 <ul>
 <li>Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation.</li>
 <li>Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp.</li>

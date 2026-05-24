@@ -31,7 +31,7 @@
 > In the transaction management system of FDB, we handle all failures through the recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it detects a failure. As a result, all failure handling is reduced to a single recovery operation, which becomes a common and well-tested code path. Such error handling strategy is desirable as long as the recovery is quick, and pays dividends by simplifying the normal transaction processing.
 
 
-## Simulation Testing
+> ## Simulation Testing
 > - Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation. 
 > - Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp.
 > - Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically.
