@@ -8,13 +8,12 @@
   <meta property="og:site_name" content="Xing Lin">
   <meta property="og:title" content="FoundationDB: A Distributed Unbundled Transactional Key Value Store">
   <meta property="og:description" content="Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB
-Transaction processing
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 Optimistic concurrency control &#43; MVCC: 2.4.1 A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again. A Proxy commits a client transaction in three steps. First, the Proxy contacts the Sequencer to obtain a commit version that is larger than any existing read versions or commit versions. The Sequencer chooses the commit version by advancing it at a rate of one million versions per second. Then, the Proxy sends the transac- tion information to range-partitioned Resolvers, which implement FDB’s optimistic concurrency control by checking for read-write conflicts. If all Resolvers return with no conflict, the transaction can proceed to the final commit stage. Otherwise, the Proxy marks the transaction as aborted. Finally, committed transactions are sent to a set of LogServers for persistence. A transaction is consid- ered committed after all designated LogServers have replied to the Proxy, which reports the committed version to the Sequencer (to ensure that later transactions’ read versions are after this commit) and then replies to the client. At the same time, StorageServers continuously pull mutation logs from LogServers and apply com- mitted updates to disks. 1 2 3 4 5 6 7 Divide the key space into ranges. key ranges are assigned/partitioned among resolvers. For each key range, resolver stores its last commit version. For a pending transaction, get key ranges for each read key. check against the last commit version for each key range. if the read version is smaller than any of the last commit version of any read key range, we have a read-write conflict (read value can be stale). mark this transaction as failed. Otherwise, this transaction can be committed. update the last commit version of that key range to the commit version of the current transaction. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 At 1 million versions per sec, using a signed int64, we can support ~300,000 years. When we have more than 1 millions transactions per sec, proxy uses batches: assign the same transaction ID for a batch of transactions. Transaction batching. To amortize the cost of committing transactions, the Proxy groups multiple transactions received from clients into one batch, asks for a single commit version from the Sequencer, and sends the batch to Resolvers for conflict detection. The resolver evaluates each transaction in the batch one at a time in strict order. If transaction B after A (both from the same batch) has a conflict with A, B will be marked as failed transaction. The Proxy then writes committed transactions in the batch to LogServers. The transaction batching reduces the number of calls to obtain a commit version from the Sequencer, allowing Proxies to commit tens of thousands of transactions per second without significantly impacting the Sequencer’s performance. Additionally, the batch- ing degree is adjusted dynamically, shrinking when the system is lightly loaded to improve commit latency, and increasing when the system is busy in order to sustain high commit throughput. 1 2 3 4 5 6 7 In the transaction management system of FDB, we handle all failures through the recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it detects a failure. As a result, all failure handling is reduced to a single recovery operation, which becomes a common and well-tested code path. Such error handling strategy is desirable as long as the recovery is quick, and pays dividends by simplifying the normal transaction processing. Simulation Testing 1 2 3 - Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation. - Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp. - Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically. 5 sec MVCC transaction window: every transaction has to complete in 5 secs. Main reason is then resolver only need to keey the most recent 5-sec updates in memory to detect conflicts among trasactions.">
+Transaction processing Optimistic Concurrency Control &#43; MVCC A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-05-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-05-24T11:33:09-07:00">
+    <meta property="article:modified_time" content="2026-05-24T12:26:56-07:00">
     <meta property="article:tag" content="Paper">
     <meta property="article:tag" content="KV">
     <meta property="article:tag" content="2021">
@@ -25,8 +24,7 @@ Transaction processing
   <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
   <meta name="twitter:title" content="FoundationDB: A Distributed Unbundled Transactional Key Value Store">
   <meta name="twitter:description" content="Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB
-Transaction processing
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 Optimistic concurrency control &#43; MVCC: 2.4.1 A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again. A Proxy commits a client transaction in three steps. First, the Proxy contacts the Sequencer to obtain a commit version that is larger than any existing read versions or commit versions. The Sequencer chooses the commit version by advancing it at a rate of one million versions per second. Then, the Proxy sends the transac- tion information to range-partitioned Resolvers, which implement FDB’s optimistic concurrency control by checking for read-write conflicts. If all Resolvers return with no conflict, the transaction can proceed to the final commit stage. Otherwise, the Proxy marks the transaction as aborted. Finally, committed transactions are sent to a set of LogServers for persistence. A transaction is consid- ered committed after all designated LogServers have replied to the Proxy, which reports the committed version to the Sequencer (to ensure that later transactions’ read versions are after this commit) and then replies to the client. At the same time, StorageServers continuously pull mutation logs from LogServers and apply com- mitted updates to disks. 1 2 3 4 5 6 7 Divide the key space into ranges. key ranges are assigned/partitioned among resolvers. For each key range, resolver stores its last commit version. For a pending transaction, get key ranges for each read key. check against the last commit version for each key range. if the read version is smaller than any of the last commit version of any read key range, we have a read-write conflict (read value can be stale). mark this transaction as failed. Otherwise, this transaction can be committed. update the last commit version of that key range to the commit version of the current transaction. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 At 1 million versions per sec, using a signed int64, we can support ~300,000 years. When we have more than 1 millions transactions per sec, proxy uses batches: assign the same transaction ID for a batch of transactions. Transaction batching. To amortize the cost of committing transactions, the Proxy groups multiple transactions received from clients into one batch, asks for a single commit version from the Sequencer, and sends the batch to Resolvers for conflict detection. The resolver evaluates each transaction in the batch one at a time in strict order. If transaction B after A (both from the same batch) has a conflict with A, B will be marked as failed transaction. The Proxy then writes committed transactions in the batch to LogServers. The transaction batching reduces the number of calls to obtain a commit version from the Sequencer, allowing Proxies to commit tens of thousands of transactions per second without significantly impacting the Sequencer’s performance. Additionally, the batch- ing degree is adjusted dynamically, shrinking when the system is lightly loaded to improve commit latency, and increasing when the system is busy in order to sustain high commit throughput. 1 2 3 4 5 6 7 In the transaction management system of FDB, we handle all failures through the recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it detects a failure. As a result, all failure handling is reduced to a single recovery operation, which becomes a common and well-tested code path. Such error handling strategy is desirable as long as the recovery is quick, and pays dividends by simplifying the normal transaction processing. Simulation Testing 1 2 3 - Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation. - Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp. - Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically. 5 sec MVCC transaction window: every transaction has to complete in 5 secs. Main reason is then resolver only need to keey the most recent 5-sec updates in memory to detect conflicts among trasactions.">
+Transaction processing Optimistic Concurrency Control &#43; MVCC A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again.">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -46,8 +44,8 @@ Transaction processing
                             "url": "https:\/\/xinglin.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "paper, KV, 2021, SIGMOD","wordcount":  854 ,
-        "url": "https:\/\/xinglin.github.io\/fdb\/","datePublished": "2026-05-24T00:00:00+00:00","dateModified": "2026-05-24T11:33:09-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "paper, KV, 2021, SIGMOD","wordcount":  799 ,
+        "url": "https:\/\/xinglin.github.io\/fdb\/","datePublished": "2026-05-24T00:00:00+00:00","dateModified": "2026-05-24T12:26:56-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -126,8 +124,8 @@ Transaction processing
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">FoundationDB: A Distributed Unbundled Transactional Key Value Store</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-24">2026-05-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;854 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-24">2026-05-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;799 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -135,166 +133,56 @@ Transaction processing
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#transaction-processing">Transaction processing</a>
+      <ul>
+        <li><a href="#optimistic-concurrency-control--mvcc">Optimistic Concurrency Control + MVCC</a></li>
+        <li><a href="#resolver-conflict-detection">Resolver Conflict Detection</a></li>
+        <li><a href="#versioning--transaction-batching">Versioning &amp; Transaction Batching</a></li>
+        <li><a href="#failure-handling-through-the-recovery-path">Failure Handling through the Recovery Path</a></li>
+      </ul>
+    </li>
     <li><a href="#simulation-testing">Simulation Testing</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
 <p>Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB</p>
 </blockquote>
-<p>Transaction processing</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Optimistic concurrency control + MVCC: 2.4.1 A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any
-</span></span><span class="line"><span class="cl">previously issued transaction commit version, and this read version
-</span></span><span class="line"><span class="cl">is sent back to the client. Then the client may issue multiple reads
-</span></span><span class="line"><span class="cl">to StorageServers and obtain values at that specific read version.
-</span></span><span class="line"><span class="cl">Client writes are buffered locally without contacting the cluster.
-</span></span><span class="line"><span class="cl">At commit time, the client sends the transaction data, including
-</span></span><span class="line"><span class="cl">the read and write sets (i.e., key ranges), to one of the Proxies
-</span></span><span class="line"><span class="cl">and waits for a commit or abort response from the Proxy. If the
-</span></span><span class="line"><span class="cl">transaction cannot commit, the client may choose to restart the
-</span></span><span class="line"><span class="cl">transaction from the beginning again.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">A Proxy commits a client transaction in three steps. First, the
-</span></span><span class="line"><span class="cl">Proxy contacts the Sequencer to obtain a commit version that is
-</span></span><span class="line"><span class="cl">larger than any existing read versions or commit versions. The
-</span></span><span class="line"><span class="cl">Sequencer chooses the commit version by advancing it at a rate of
-</span></span><span class="line"><span class="cl">one million versions per second. Then, the Proxy sends the transac-
-</span></span><span class="line"><span class="cl">tion information to range-partitioned Resolvers, which implement
-</span></span><span class="line"><span class="cl">FDB’s optimistic concurrency control by checking for read-write
-</span></span><span class="line"><span class="cl">conflicts. If all Resolvers return with no conflict, the transaction
-</span></span><span class="line"><span class="cl">can proceed to the final commit stage. Otherwise, the Proxy marks
-</span></span><span class="line"><span class="cl">the transaction as aborted. Finally, committed transactions are sent
-</span></span><span class="line"><span class="cl">to a set of LogServers for persistence. A transaction is consid-
-</span></span><span class="line"><span class="cl">ered committed after all designated LogServers have replied to the
-</span></span><span class="line"><span class="cl">Proxy, which reports the committed version to the Sequencer (to
-</span></span><span class="line"><span class="cl">ensure that later transactions’ read versions are after this commit)
-</span></span><span class="line"><span class="cl">and then replies to the client. At the same time, StorageServers
-</span></span><span class="line"><span class="cl">continuously pull mutation logs from LogServers and apply com-
-</span></span><span class="line"><span class="cl">mitted updates to disks.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Divide the key space into ranges. key ranges are assigned/partitioned among resolvers. 
-</span></span><span class="line"><span class="cl">For each key range, resolver stores its last commit version. 
-</span></span><span class="line"><span class="cl">For a pending transaction, get key ranges for each read key. 
-</span></span><span class="line"><span class="cl">check against the last commit version for each key range. 
-</span></span><span class="line"><span class="cl">if the read version is smaller than any of the last commit version of any read key range, we have a read-write conflict (read value can be stale). mark this transaction as failed. 
-</span></span><span class="line"><span class="cl">Otherwise, this transaction can be committed. 
-</span></span><span class="line"><span class="cl">update the last commit version of that key range to the commit version of the current transaction.  
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"> <span class="n">At</span> <span class="mi">1</span> <span class="n">million</span> <span class="n">versions</span> <span class="n">per</span> <span class="n">sec</span><span class="p">,</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signed</span> <span class="n">int64</span><span class="p">,</span> <span class="n">we</span> <span class="n">can</span> <span class="n">support</span> <span class="o">~</span><span class="mi">300</span><span class="p">,</span><span class="mi">000</span> <span class="n">years</span><span class="o">.</span> <span class="n">When</span> <span class="n">we</span> <span class="n">have</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">1</span> <span class="n">millions</span> <span class="n">transactions</span> <span class="n">per</span> <span class="n">sec</span><span class="p">,</span> <span class="n">proxy</span> <span class="n">uses</span> <span class="n">batches</span><span class="p">:</span> <span class="n">assign</span> <span class="n">the</span> <span class="n">same</span> <span class="n">transaction</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">batch</span> <span class="n">of</span> <span class="n">transactions</span><span class="o">.</span> 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Transaction</span> <span class="n">batching</span><span class="o">.</span> <span class="n">To</span> <span class="n">amortize</span> <span class="n">the</span> <span class="n">cost</span> <span class="n">of</span> <span class="n">committing</span> <span class="n">transactions</span><span class="p">,</span> <span class="n">the</span> <span class="n">Proxy</span> <span class="n">groups</span> <span class="n">multiple</span> <span class="n">transactions</span> <span class="n">received</span> <span class="n">from</span> <span class="n">clients</span>
-</span></span><span class="line"><span class="cl"><span class="n">into</span> <span class="n">one</span> <span class="n">batch</span><span class="p">,</span> <span class="n">asks</span> <span class="k">for</span> <span class="n">a</span> <span class="n">single</span> <span class="n">commit</span> <span class="n">version</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="ow">and</span> <span class="n">sends</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">to</span> <span class="n">Resolvers</span> <span class="k">for</span> <span class="n">conflict</span> <span class="n">detection</span><span class="o">.</span> 
-</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">resolver</span> <span class="n">evaluates</span> <span class="n">each</span> <span class="n">transaction</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">one</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">strict</span> <span class="n">order</span><span class="o">.</span> 
-</span></span><span class="line"><span class="cl"><span class="n">If</span> <span class="n">transaction</span> <span class="n">B</span> <span class="n">after</span> <span class="n">A</span> <span class="p">(</span><span class="n">both</span> <span class="n">from</span> <span class="n">the</span> <span class="n">same</span> <span class="n">batch</span><span class="p">)</span> <span class="n">has</span> <span class="n">a</span> <span class="n">conflict</span> <span class="n">with</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="n">will</span> <span class="n">be</span> <span class="n">marked</span> <span class="n">as</span> <span class="n">failed</span> <span class="n">transaction</span><span class="o">.</span>  
-</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">Proxy</span> <span class="n">then</span> <span class="n">writes</span> <span class="n">committed</span> <span class="n">transactions</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">to</span> <span class="n">LogServers</span><span class="o">.</span>
-</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">transaction</span> <span class="n">batching</span> <span class="n">reduces</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">calls</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">a</span>
-</span></span><span class="line"><span class="cl"><span class="n">commit</span> <span class="n">version</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">Proxies</span> <span class="n">to</span> <span class="n">commit</span>
-</span></span><span class="line"><span class="cl"><span class="n">tens</span> <span class="n">of</span> <span class="n">thousands</span> <span class="n">of</span> <span class="n">transactions</span> <span class="n">per</span> <span class="n">second</span> <span class="n">without</span> <span class="n">significantly</span>
-</span></span><span class="line"><span class="cl"><span class="n">impacting</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="err">’</span><span class="n">s</span> <span class="n">performance</span><span class="o">.</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">the</span> <span class="n">batch</span><span class="o">-</span>
-</span></span><span class="line"><span class="cl"><span class="n">ing</span> <span class="n">degree</span> <span class="n">is</span> <span class="n">adjusted</span> <span class="n">dynamically</span><span class="p">,</span> <span class="n">shrinking</span> <span class="n">when</span> <span class="n">the</span> <span class="n">system</span> <span class="n">is</span>
-</span></span><span class="line"><span class="cl"><span class="n">lightly</span> <span class="n">loaded</span> <span class="n">to</span> <span class="n">improve</span> <span class="n">commit</span> <span class="n">latency</span><span class="p">,</span> <span class="ow">and</span> <span class="n">increasing</span> <span class="n">when</span> <span class="n">the</span>
-</span></span><span class="line"><span class="cl"><span class="n">system</span> <span class="n">is</span> <span class="n">busy</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">sustain</span> <span class="n">high</span> <span class="n">commit</span> <span class="n">throughput</span><span class="o">.</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">In the transaction management system of FDB, we handle all failures through the
-</span></span><span class="line"><span class="cl">recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it
-</span></span><span class="line"><span class="cl">detects a failure. As a result, all failure handling is reduced
-</span></span><span class="line"><span class="cl">to a single recovery operation, which becomes a common
-</span></span><span class="line"><span class="cl">and well-tested code path. Such error handling strategy is
-</span></span><span class="line"><span class="cl">desirable as long as the recovery is quick, and pays dividends
-</span></span><span class="line"><span class="cl">by simplifying the normal transaction processing.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="simulation-testing">Simulation Testing</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation. 
-</span></span><span class="line"><span class="cl">- Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp.
-</span></span><span class="line"><span class="cl">- Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically. 
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>5 sec MVCC transaction window: every transaction has to complete in 5 secs. Main reason is then resolver only need to keey the most recent 5-sec updates in memory to detect conflicts among trasactions.</p>
+<blockquote>
+<h2 id="transaction-processing">Transaction processing</h2>
+<h3 id="optimistic-concurrency-control--mvcc">Optimistic Concurrency Control + MVCC</h3>
+<p>A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again.</p>
+<p>A Proxy commits a client transaction in three steps. First, the Proxy contacts the Sequencer to obtain a commit version that is larger than any existing read versions or commit versions. The Sequencer chooses the commit version by advancing it at a rate of one million versions per second. Then, the Proxy sends the transaction information to range-partitioned Resolvers, which implement FDB’s optimistic concurrency control by checking for read-write conflicts. If all Resolvers return with no conflict, the transaction can proceed to the final commit stage. Otherwise, the Proxy marks the transaction as aborted. Finally, committed transactions are sent to a set of LogServers for persistence. A transaction is considered committed after all designated LogServers have replied to the Proxy, which reports the committed version to the Sequencer (to ensure that later transactions’ read versions are after this commit) and then replies to the client. At the same time, StorageServers continuously pull mutation logs from LogServers and apply committed updates to disks.</p>
+<h3 id="resolver-conflict-detection">Resolver Conflict Detection</h3>
+<ul>
+<li>Divide the key space into ranges. key ranges are assigned/partitioned among resolvers.</li>
+<li>For each key range, resolver stores its last commit version.</li>
+<li>For a pending transaction, get key ranges for each read key.</li>
+<li>check against the last commit version for each key range.</li>
+<li>if the read version is smaller than any of the last commit version of any read key range, we have a read-write conflict (read value can be stale). mark this transaction as failed.</li>
+<li>Otherwise, this transaction can be committed.</li>
+<li>update the last commit version of that key range to the commit version of the current transaction.</li>
+</ul>
+<h3 id="versioning--transaction-batching">Versioning &amp; Transaction Batching</h3>
+<p>At 1 million versions per sec, using a signed int64, we can support ~300,000 years. When we have more than 1 millions transactions per sec, proxy uses batches: assign the same transaction ID for a batch of transactions.</p>
+<p><strong>Transaction batching.</strong> To amortize the cost of committing transactions, the Proxy groups multiple transactions received from clients into one batch, asks for a single commit version from the Sequencer, and sends the batch to Resolvers for conflict detection.</p>
+<ul>
+<li>The resolver evaluates each transaction in the batch one at a time in strict order.</li>
+<li>If transaction B after A (both from the same batch) has a conflict with A, B will be marked as failed transaction.</li>
+</ul>
+<p>The Proxy then writes committed transactions in the batch to LogServers. The transaction batching reduces the number of calls to obtain a commit version from the Sequencer, allowing Proxies to commit tens of thousands of transactions per second without significantly impacting the Sequencer’s performance. Additionally, the batching degree is adjusted dynamically, shrinking when the system is lightly loaded to improve commit latency, and increasing when the system is busy in order to sustain high commit throughput.
+5 sec MVCC transaction window: every transaction has to complete in 5 secs. Main reason is then resolver only need to keey the most recent 5-sec updates in memory to detect conflicts among trasactions.</p>
+</blockquote>
+<blockquote>
+<h3 id="failure-handling-through-the-recovery-path">Failure Handling through the Recovery Path</h3>
+<p>In the transaction management system of FDB, we handle all failures through the recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it detects a failure. As a result, all failure handling is reduced to a single recovery operation, which becomes a common and well-tested code path. Such error handling strategy is desirable as long as the recovery is quick, and pays dividends by simplifying the normal transaction processing.</p>
+</blockquote>
+<h2 id="simulation-testing">Simulation Testing</h2>
+<blockquote>
+<ul>
+<li>Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation.</li>
+<li>Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp.</li>
+<li>Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically.</li>
+</ul>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
