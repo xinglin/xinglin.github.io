@@ -4,18 +4,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Java ExecutorService - Xing Lin</title><meta name="Description" content="A note on Java ExecutorService"><meta property="og:title" content="Java ExecutorService" />
-<meta property="og:description" content="A note on Java ExecutorService" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/java-executorservice/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-07-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-07-05T14:33:58-07:00" /><meta property="og:site_name" content="Xing Lin" />
+        <title>Java ExecutorService - Xing Lin</title><meta name="Description" content="A note on Java ExecutorService"><meta property="og:url" content="https://xinglin.github.io/java-executorservice/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Java ExecutorService">
+  <meta property="og:description" content="A note on Java ExecutorService">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-07-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-07-05T14:33:58-07:00">
+    <meta property="article:tag" content="Tech">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Multi-Threading">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Java ExecutorService"/>
-<meta name="twitter:description" content="A note on Java ExecutorService"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Java ExecutorService">
+  <meta name="twitter:description" content="A note on Java ExecutorService">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -198,16 +204,16 @@ programmers on when the garbage collector will reclaim an object.</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.Closeable</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Date</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ThreadFactory</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ThreadPoolExecutor</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Date</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ThreadFactory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ThreadPoolExecutor</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExecutorServiceCoreThreadIdleTimeoutTest</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Closeable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExecutorServiceCoreThreadIdleTimeoutTest</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Closeable</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">ExecutorServiceCoreThreadIdleTimeoutTest</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">pool</span><span class="w"> </span><span class="o">=</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">4</span><span class="p">,</span><span class="w"> </span><span class="n">10</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">1024</span><span class="p">),</span><span class="w">
@@ -249,7 +255,7 @@ programmers on when the garbage collector will reclaim an object.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">pool</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&#34;%tc: shutdown thread pool\n&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">());</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -315,7 +321,7 @@ They don&rsquo;t show up in the output.</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tech/">tech</a>,&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/multi-threading/">Multi-threading</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tech/">Tech</a>,&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/multi-threading/">Multi-Threading</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -326,8 +332,8 @@ They don&rsquo;t show up in the output.</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

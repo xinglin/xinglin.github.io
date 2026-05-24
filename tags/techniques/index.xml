@@ -1,18 +1,20 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>techniques - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/techniques/</link>
-        <description>techniques - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 15 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/techniques/" rel="self" type="application/rss+xml" /><item>
-    <title>Enduring Ideas/Techniques that are still in use today</title>
-    <link>https://xinglin.github.io/enduring-ideas/</link>
-    <pubDate>Fri, 15 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/enduring-ideas/</guid>
-    <description><![CDATA[There are a few ideas/techniques that were invented a long time ago but they are being used/re-implemented again and again, even in today&rsquo;s sytems. Why do people look and reimplement these techniques, even after 50 years? Because, even after 50 years, we face largely the same problem when we design new systems.
-Here are a few examples.
-Ideas First-time Introduced What problem is solved? Trasactions Make it easy to develop on top of a data store.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Techniques on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/techniques/</link>
+    <description>Recent content in Techniques on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/techniques/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enduring Ideas/Techniques that are still in use today</title>
+      <link>https://xinglin.github.io/enduring-ideas/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/enduring-ideas/</guid>
+      <description>&lt;p&gt;There are a few ideas/techniques that were invented a long time ago&#xA;but they are being used/re-implemented again and again, even in today&amp;rsquo;s sytems. Why do people look and reimplement these techniques, even&#xA;after 50 years? Because, even after 50 years, we face largely the same problem when we design new systems.&lt;/p&gt;&#xA;&lt;p&gt;Here are a few examples.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Ideas&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;First-time Introduced&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;What problem is solved?&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Trasactions&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Make it easy to develop on top of a data store. Modifications are atomic and failures are handled automatically by the system.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Log-structure storage/FS&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Turn random writes into sequential ones (good for hard disk drives, original motivation for developing LFS). No in-place overwrites (required for solid-state drives.).&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Paxos&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Reach concensus across a number of programs/nodes&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
+    </item>
+  </channel>
 </rss>

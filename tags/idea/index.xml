@@ -1,39 +1,34 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>idea - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/idea/</link>
-        <description>idea - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/idea/" rel="self" type="application/rss+xml" /><item>
-    <title>Idea Repository</title>
-    <link>https://xinglin.github.io/idea-repository/</link>
-    <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/idea-repository/</guid>
-    <description><![CDATA[List of ideas to explore.
-Interaction between a filesystem and a computational SSD that does transparent compression.
-Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space. Key prefix compression in k/v store
-Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this? In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs.]]></description>
-</item>
-<item>
-    <title>Secondary Index Built on top of a Key-value Store</title>
-    <link>https://xinglin.github.io/secondary-index-kv-store/</link>
-    <pubDate>Sun, 17 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
-    <description><![CDATA[Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&rsquo;s take a look at the following example.
-Employee table
-userid (primary key) salary age Alice 40000 30 Bob 20000 23 Charlie 30000 30 David 20000 25 To store the user table, we can store each record using tableName,primary_key -&gt; salary,age as key/value pairs.]]></description>
-</item>
-<item>
-    <title>Postgres Handling Transaction ID Wrap Around</title>
-    <link>https://xinglin.github.io/postgres-tid-wraparound/</link>
-    <pubDate>Thu, 17 Dec 2020 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/postgres-tid-wraparound/</guid>
-    <description><![CDATA[NOTE: OpenGauss may fix this problem.
-Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
-Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Idea on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/idea/</link>
+    <description>Recent content in Idea on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/idea/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Idea Repository</title>
+      <link>https://xinglin.github.io/idea-repository/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/idea-repository/</guid>
+      <description>&lt;p&gt;List of ideas to explore.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Interaction between a filesystem and a computational SSD that does transparent compression.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Problem: How to manage SSD space in this case? What API should be use?&lt;/li&gt;&#xA;&lt;li&gt;Can use SSDSim to explore the design space.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Key prefix compression in k/v store&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this?&lt;/li&gt;&#xA;&lt;li&gt;In Rockset/Foundationdb, secondary indexes are stored as &amp;lt;key, null&amp;gt; key/value pairs. This creates an opportunity that significant storage saving can be achieved if we can do a better key compression.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://zonedstorage.io/introduction/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;Zoned namespace SSDs&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Secondary Index Built on top of a Key-value Store</title>
+      <link>https://xinglin.github.io/secondary-index-kv-store/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/secondary-index-kv-store/</guid>
+      <description>&lt;p&gt;Key-value stores such as RocksDB have been used as the storage engine in several databases (MySQL/Mongo/Rockset/FoundationDB). A database typically requires support of secondary indexes. To support secondary index, a common approach is to store the secondary index as yet another key-value pairs. Let&amp;rsquo;s take a look at the following example.&lt;/p&gt;&#xA;&lt;p&gt;Employee table&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;userid (primary key)&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;salary&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;age&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Alice&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;40000&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;30&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Bob&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;20000&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;23&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;Charlie&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;30000&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;30&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;David&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;20000&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;25&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;To store the user table, we can store each record using &lt;code&gt;tableName,primary_key -&amp;gt; salary,age&lt;/code&gt; as key/value pairs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Postgres Handling Transaction ID Wrap Around</title>
+      <link>https://xinglin.github.io/postgres-tid-wraparound/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/postgres-tid-wraparound/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: OpenGauss may fix this problem.&lt;/p&gt;&#xA;&lt;p&gt;Three special values are reserved as special transaction IDs,&#xA;including invalid, bootstrap and frozen transactions.&#xA;The rest values are used in a circular fashion.&lt;/p&gt;&#xA;&lt;p&gt;Once a row is older enough (controlled by &lt;em&gt;vacuum_freeze_min_age&lt;/em&gt;, an&#xA;integer value measuring the number of transactions),&#xA;the vaccum process can mark its TID as FrozenTransactionId.&#xA;FrozenTransactionId is smaller than any normal transaction ID&#xA;and thus these frozen rows are visible for all current&#xA;and future transactions.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

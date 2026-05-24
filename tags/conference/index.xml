@@ -1,32 +1,34 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>conference - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/conference/</link>
-        <description>conference - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 07 Dec 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/conference/" rel="self" type="application/rss+xml" /><item>
-    <title>AWS re:Invent 2018 tidbits</title>
-    <link>https://xinglin.github.io/reinvent2018-tidbits/</link>
-    <pubDate>Fri, 07 Dec 2018 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/reinvent2018-tidbits/</guid>
-    <description><![CDATA[Amazon RDS PostgreSQL 2 flavors. Open-source PostgreSQL on top of EBS Aurora PostgreSQL on top of Aurora Storage (better performance) Supports Postgre 9.6/10 Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails. Aurora Postgres supports fast clones. Only need to pay for the storage of changed data. Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements.]]></description>
-</item>
-<item>
-    <title>AWS re:Invent 2018</title>
-    <link>https://xinglin.github.io/reinvent2018/</link>
-    <pubDate>Mon, 03 Dec 2018 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/reinvent2018/</guid>
-    <description><![CDATA[I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks.]]></description>
-</item>
-<item>
-    <title>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</title>
-    <link>https://xinglin.github.io/atc18-best-practice/</link>
-    <pubDate>Wed, 11 Apr 2018 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/atc18-best-practice/</guid>
-    <description><![CDATA[I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions. To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Conference on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/conference/</link>
+    <description>Recent content in Conference on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS re:Invent 2018 tidbits</title>
+      <link>https://xinglin.github.io/reinvent2018-tidbits/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/reinvent2018-tidbits/</guid>
+      <description>&lt;h1 id=&#34;amazon-rds-postgresql&#34;&gt;Amazon RDS PostgreSQL&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 flavors.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Open-source PostgreSQL on top of EBS&lt;/li&gt;&#xA;&lt;li&gt;Aurora PostgreSQL on top of Aurora Storage (better performance)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Supports Postgre 9.6/10&lt;/li&gt;&#xA;&lt;li&gt;Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails.&lt;/li&gt;&#xA;&lt;li&gt;Aurora Postgres supports fast clones. Only need to pay for the storage of changed data.&lt;/li&gt;&#xA;&lt;li&gt;Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements. The logical decoding plugin can also be used as the event source for publish/subscribe.&lt;/li&gt;&#xA;&lt;li&gt;Aurora Postgres bypasses filesystem page cache and manages its memory directly (more memory as the shared buffer). Aurora Postgres supports survivable cache: the shared buffer will survive postgres process crashes. This enable faster performance recovery.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;s3-simple-storage-service&#34;&gt;S3: Simple Storage Service&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;AWS S3 team: ~1000 engineers&lt;/li&gt;&#xA;&lt;li&gt;When a bucket is created, it will be assigned one initial partition. Each partition can support up to 3,500 PUTs or 5,500 GETs. This means you either get 3,500 PUTs and 0 GET tps or 0 PUTs and 5,500 GET tps.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;50% PUT and 50% GET = (0.5 * 3,500) + (0.5 * 5,500) = 4,500 tps combined&lt;/li&gt;&#xA;&lt;li&gt;30% PUT and 70% GET = (0.3 * 3,500) + (0.7 * 5,500) = 4,900 tps combined.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;In the backend, they detect access load on a partition. When a partition becomes hot, they will split the partition based on object prefix. They do the re-partition only when the load is consistently high for at least half an hour. They do not support auto scale-down for now.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;ml-frameworks&#34;&gt;ML frameworks&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;MXnet: efficient distributed training; portability; efficient inference; inference on edge&lt;/li&gt;&#xA;&lt;li&gt;Gluon: easy coding; easy debugging; toolkits for rapid prototyping&lt;/li&gt;&#xA;&lt;li&gt;SageMaker: end-2-end platform; zero setup; distributed training; AB/testing; scalable endpoints; automatic model tuning&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;dynamodb-deep-dive&#34;&gt;DynamoDB Deep Dive&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;why choose NoSQL?&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SQL: optimized for storage&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Normalized/relational&lt;/li&gt;&#xA;&lt;li&gt;Ad hoc queries&lt;/li&gt;&#xA;&lt;li&gt;Scale vertically&lt;/li&gt;&#xA;&lt;li&gt;Good for OLAP&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;NoSQL: optimized for compute&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Denormalized/hierarchical&lt;/li&gt;&#xA;&lt;li&gt;Instantiated views&lt;/li&gt;&#xA;&lt;li&gt;Scale horizontally&lt;/li&gt;&#xA;&lt;li&gt;Built for OLTP at scale&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Partition key&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Large number of distinct values&lt;/li&gt;&#xA;&lt;li&gt;Items are uniformly requested and randomly distributed&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Sort key&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Efficient/selective patterns&lt;/li&gt;&#xA;&lt;li&gt;Leverage range queries&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;1 application service = 1 table&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Reduce round trips&lt;/li&gt;&#xA;&lt;li&gt;Simplify access patterns&lt;/li&gt;&#xA;&lt;li&gt;Inside Amazon, they have managed to support ~40 different queries with one table.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;lambdaserverless&#34;&gt;Lambda/Serverless&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;One function per one microVM&lt;/li&gt;&#xA;&lt;li&gt;No orchestration code in a Lambda function. Retry/error handling should be done using Step functions.&lt;/li&gt;&#xA;&lt;li&gt;Should avoid monorepo for functions: one repo per function. This simplifies permissions and keeps each function small (minimize dependency for each function and use less memory).&lt;/li&gt;&#xA;&lt;li&gt;Four stages in the function lifecycle&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Download your code (cold start)&lt;/li&gt;&#xA;&lt;li&gt;Start new execution environment (cold start)&lt;/li&gt;&#xA;&lt;li&gt;Bootstrap the runtime (Partial cold start)&lt;/li&gt;&#xA;&lt;li&gt;Start your code (Warm start)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Use AWS X-Ray for instrumenting Lambda functions&lt;/li&gt;&#xA;&lt;li&gt;CPU is proportional to memory size: increase the memory size will make a function run much faster and in some cases, could save the cost as well.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;lt; 1.8 GB: single core&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;1.8 GB: 2 cores&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AWS re:Invent 2018</title>
+      <link>https://xinglin.github.io/reinvent2018/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/reinvent2018/</guid>
+      <description>&lt;p&gt;I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks. Besides, we can come and pick up a swag every day. This year, more than 50,000 people attended the conference and you can see lots of people walking around. This is by far the largest conference I have ever attended and I was amazed by how well they managed to organize it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</title>
+      <link>https://xinglin.github.io/atc18-best-practice/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/atc18-best-practice/</guid>
+      <description>&lt;p&gt;I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions.&#xA;To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

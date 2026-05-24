@@ -1,88 +1,488 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Tags - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/</link>
-        <description>Tags - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>Hadoop</title>
-    <link>https://xinglin.github.io/tags/hadoop/</link>
-    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/hadoop/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>HDFS</title>
-    <link>https://xinglin.github.io/tags/hdfs/</link>
-    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/hdfs/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>note</title>
-    <link>https://xinglin.github.io/tags/note/</link>
-    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/note/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>sourcecode</title>
-    <link>https://xinglin.github.io/tags/sourcecode/</link>
-    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/sourcecode/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Java</title>
-    <link>https://xinglin.github.io/tags/java/</link>
-    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/java/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Multi-threading</title>
-    <link>https://xinglin.github.io/tags/multi-threading/</link>
-    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/multi-threading/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>tech</title>
-    <link>https://xinglin.github.io/tags/tech/</link>
-    <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/tech/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>ACID</title>
-    <link>https://xinglin.github.io/tags/acid/</link>
-    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/acid/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>big data</title>
-    <link>https://xinglin.github.io/tags/big-data/</link>
-    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/big-data/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>cloud storage</title>
-    <link>https://xinglin.github.io/tags/cloud-storage/</link>
-    <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/tags/cloud-storage/</guid>
-    <description><![CDATA[]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/</link>
+    <description>Recent content in Tags on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <atom:link href="https://xinglin.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021</title>
+      <link>https://xinglin.github.io/tags/2021/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/2021/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KV</title>
+      <link>https://xinglin.github.io/tags/kv/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/kv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Paper</title>
+      <link>https://xinglin.github.io/tags/paper/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/paper/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SIGMOD</title>
+      <link>https://xinglin.github.io/tags/sigmod/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/sigmod/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hadoop</title>
+      <link>https://xinglin.github.io/tags/hadoop/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HDFS</title>
+      <link>https://xinglin.github.io/tags/hdfs/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/hdfs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Note</title>
+      <link>https://xinglin.github.io/tags/note/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/note/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sourcecode</title>
+      <link>https://xinglin.github.io/tags/sourcecode/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/sourcecode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://xinglin.github.io/tags/java/</link>
+      <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multi-Threading</title>
+      <link>https://xinglin.github.io/tags/multi-threading/</link>
+      <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/multi-threading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tech</title>
+      <link>https://xinglin.github.io/tags/tech/</link>
+      <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/tech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Acid</title>
+      <link>https://xinglin.github.io/tags/acid/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/acid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Big Data</title>
+      <link>https://xinglin.github.io/tags/big-data/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/big-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud Storage</title>
+      <link>https://xinglin.github.io/tags/cloud-storage/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/cloud-storage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://xinglin.github.io/tags/database/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Databrick</title>
+      <link>https://xinglin.github.io/tags/databrick/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/databrick/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Delta Lake</title>
+      <link>https://xinglin.github.io/tags/delta-lake/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/delta-lake/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transaction</title>
+      <link>https://xinglin.github.io/tags/transaction/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/transaction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vldb</title>
+      <link>https://xinglin.github.io/tags/vldb/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/vldb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Caching</title>
+      <link>https://xinglin.github.io/tags/caching/</link>
+      <pubDate>Fri, 29 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/caching/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Facebook</title>
+      <link>https://xinglin.github.io/tags/facebook/</link>
+      <pubDate>Fri, 29 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/facebook/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AWS</title>
+      <link>https://xinglin.github.io/tags/aws/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NoSQL</title>
+      <link>https://xinglin.github.io/tags/nosql/</link>
+      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/nosql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Book Review</title>
+      <link>https://xinglin.github.io/tags/book-review/</link>
+      <pubDate>Sun, 13 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/book-review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Keyvalue</title>
+      <link>https://xinglin.github.io/tags/keyvalue/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/keyvalue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workload</title>
+      <link>https://xinglin.github.io/tags/workload/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/workload/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Idea</title>
+      <link>https://xinglin.github.io/tags/idea/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/idea/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C/C&#43;&#43;</title>
+      <link>https://xinglin.github.io/tags/c/c&#43;&#43;/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/c/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coding</title>
+      <link>https://xinglin.github.io/tags/coding/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/coding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Crash Recovery</title>
+      <link>https://xinglin.github.io/tags/crash-recovery/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/crash-recovery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Key-Value</title>
+      <link>https://xinglin.github.io/tags/key-value/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/key-value/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Techniques</title>
+      <link>https://xinglin.github.io/tags/techniques/</link>
+      <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/techniques/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leveldb</title>
+      <link>https://xinglin.github.io/tags/leveldb/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/leveldb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Postgres</title>
+      <link>https://xinglin.github.io/tags/postgres/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/postgres/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IOS</title>
+      <link>https://xinglin.github.io/tags/ios/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/ios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Support</title>
+      <link>https://xinglin.github.io/tags/support/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/support/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rocksdb</title>
+      <link>https://xinglin.github.io/tags/rocksdb/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/rocksdb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tips</title>
+      <link>https://xinglin.github.io/tags/tips/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/tips/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://xinglin.github.io/tags/research/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storage</title>
+      <link>https://xinglin.github.io/tags/storage/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/storage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vision</title>
+      <link>https://xinglin.github.io/tags/vision/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/vision/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Network Latency</title>
+      <link>https://xinglin.github.io/tags/network-latency/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/network-latency/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tip</title>
+      <link>https://xinglin.github.io/tags/tip/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/tip/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FTL</title>
+      <link>https://xinglin.github.io/tags/ftl/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/ftl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SSD</title>
+      <link>https://xinglin.github.io/tags/ssd/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/ssd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reflection</title>
+      <link>https://xinglin.github.io/tags/reflection/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/reflection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Replication</title>
+      <link>https://xinglin.github.io/tags/replication/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/replication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Outline</title>
+      <link>https://xinglin.github.io/tags/outline/</link>
+      <pubDate>Sun, 14 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/outline/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Engineering</title>
+      <link>https://xinglin.github.io/tags/engineering/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kernel</title>
+      <link>https://xinglin.github.io/tags/kernel/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/kernel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open Channel</title>
+      <link>https://xinglin.github.io/tags/open-channel/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/open-channel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Book</title>
+      <link>https://xinglin.github.io/tags/book/</link>
+      <pubDate>Thu, 25 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/book/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Garbage Collection</title>
+      <link>https://xinglin.github.io/tags/garbage-collection/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/garbage-collection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dax</title>
+      <link>https://xinglin.github.io/tags/dax/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/dax/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ext2</title>
+      <link>https://xinglin.github.io/tags/ext2/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/ext2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://xinglin.github.io/tags/linux/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Source Code</title>
+      <link>https://xinglin.github.io/tags/source-code/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/source-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Conference</title>
+      <link>https://xinglin.github.io/tags/conference/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/conference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SPDK</title>
+      <link>https://xinglin.github.io/tags/spdk/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/spdk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HotCRP</title>
+      <link>https://xinglin.github.io/tags/hotcrp/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/hotcrp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>https://xinglin.github.io/tags/books/</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/books/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Papers</title>
+      <link>https://xinglin.github.io/tags/papers/</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/papers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phd Life</title>
+      <link>https://xinglin.github.io/tags/phd-life/</link>
+      <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/phd-life/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Summarization</title>
+      <link>https://xinglin.github.io/tags/data-summarization/</link>
+      <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/data-summarization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technique</title>
+      <link>https://xinglin.github.io/tags/technique/</link>
+      <pubDate>Tue, 09 Jun 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/technique/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KVM</title>
+      <link>https://xinglin.github.io/tags/kvm/</link>
+      <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/kvm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Live Clone</title>
+      <link>https://xinglin.github.io/tags/live-clone/</link>
+      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/live-clone/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Methodology</title>
+      <link>https://xinglin.github.io/tags/methodology/</link>
+      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/tags/methodology/</guid>
+      <description></description>
+    </item>
+  </channel>
 </rss>

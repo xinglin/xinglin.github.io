@@ -4,18 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Key Value Workloads - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Key Value Workloads" />
-<meta property="og:description" content="YCSB Workload Description Example Operation breakdown A Update heavy workload session store recording recent actions read: 50%, update: 50% B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5% C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100% D read latest workload user status updates; people want to read the latest read: 95%, insert 5% E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5 F read-modify-write workload user database, where user records are read and modified by the user or to record user activity." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/keyvalue-workloads/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-28T11:36:16-07:00" /><meta property="og:site_name" content="Xing Lin" />
+        <title>Key Value Workloads - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/keyvalue-workloads/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Key Value Workloads">
+  <meta property="og:description" content="YCSB Workload Description Example Operation breakdown A Update heavy workload session store recording recent actions read: 50%, update: 50% B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5% C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100% D read latest workload user status updates; people want to read the latest read: 95%, insert 5% E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5 F read-modify-write workload user database, where user records are read and modified by the user or to record user activity. read: 50%, readmodifywrite: 50% RocksDB Workloads in Facebook paper link UDB Social graph data stored in MyRocks Get: 75%, Put: 20% 75&#43;% of KV-pairs are Put only once. Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs. ZippyDB Distributed KV store, mapping some metadata of an object to the object address in an object storage system 78% Get, 13% Put, 6% Delete, and 3% Iterator For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV-pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does. UP2X statistic counters of user activities for AI/ML prediction and interference merge (read-modify-write): 92.53%, 7.46% Get Merge and Get have wide distributions of access counts. Most KV pairs are Put only once. UDB Request Distribution">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-03-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-28T11:36:16-07:00">
+    <meta property="article:tag" content="Keyvalue">
+    <meta property="article:tag" content="Workload">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Key Value Workloads"/>
-<meta name="twitter:description" content="YCSB Workload Description Example Operation breakdown A Update heavy workload session store recording recent actions read: 50%, update: 50% B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5% C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100% D read latest workload user status updates; people want to read the latest read: 95%, insert 5% E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5 F read-modify-write workload user database, where user records are read and modified by the user or to record user activity."/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Key Value Workloads">
+  <meta name="twitter:description" content="YCSB Workload Description Example Operation breakdown A Update heavy workload session store recording recent actions read: 50%, update: 50% B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5% C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100% D read latest workload user status updates; people want to read the latest read: 95%, insert 5% E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5 F read-modify-write workload user database, where user records are read and modified by the user or to record user activity. read: 50%, readmodifywrite: 50% RocksDB Workloads in Facebook paper link UDB Social graph data stored in MyRocks Get: 75%, Put: 20% 75&#43;% of KV-pairs are Put only once. Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs. ZippyDB Distributed KV store, mapping some metadata of an object to the object address in an object storage system 78% Get, 13% Put, 6% Delete, and 3% Iterator For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV-pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does. UP2X statistic counters of user activities for AI/ML prediction and interference merge (read-modify-write): 92.53%, 7.46% Get Merge and Get have wide distributions of access counts. Most KV pairs are Put only once. UDB Request Distribution">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -136,54 +141,54 @@
 </nav></div>
             </div><div class="content" id="content"><h1 id="ycsb">YCSB</h1>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Workload</th>
-<th style="text-align:center">Description</th>
-<th style="text-align:center">Example</th>
-<th style="text-align:center">Operation breakdown</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">Update heavy workload</td>
-<td style="text-align:center">session store recording recent actions</td>
-<td style="text-align:center">read: 50%, update: 50%</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">read mostly workload</td>
-<td style="text-align:center">photo tagging;  add a tag is an update, but most operations are to read tags</td>
-<td style="text-align:center">read: 95%, update: 5%</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">read only</td>
-<td style="text-align:center">user profile cache, where profiles are constructed elsewhere )e.g., Hadoop)</td>
-<td style="text-align:center">read: 100%</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">read latest workload</td>
-<td style="text-align:center">user status updates; people want to read the latest</td>
-<td style="text-align:center">read: 95%, insert  5%</td>
-</tr>
-<tr>
-<td style="text-align:center">E</td>
-<td style="text-align:center">short ranges</td>
-<td style="text-align:center">threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id)</td>
-<td style="text-align:center">scan: 95% (maxscanlength=100), insert: 5</td>
-</tr>
-<tr>
-<td style="text-align:center">F</td>
-<td style="text-align:center">read-modify-write workload</td>
-<td style="text-align:center">user database, where user records are read and modified by the user or to record user activity.</td>
-<td style="text-align:center">read: 50%, readmodifywrite: 50%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Workload</th>
+          <th style="text-align: center">Description</th>
+          <th style="text-align: center">Example</th>
+          <th style="text-align: center">Operation breakdown</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">Update heavy workload</td>
+          <td style="text-align: center">session store recording recent actions</td>
+          <td style="text-align: center">read: 50%, update: 50%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">read mostly workload</td>
+          <td style="text-align: center">photo tagging;  add a tag is an update, but most operations are to read tags</td>
+          <td style="text-align: center">read: 95%, update: 5%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">C</td>
+          <td style="text-align: center">read only</td>
+          <td style="text-align: center">user profile cache, where profiles are constructed elsewhere )e.g., Hadoop)</td>
+          <td style="text-align: center">read: 100%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">D</td>
+          <td style="text-align: center">read latest workload</td>
+          <td style="text-align: center">user status updates; people want to read the latest</td>
+          <td style="text-align: center">read: 95%, insert  5%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">E</td>
+          <td style="text-align: center">short ranges</td>
+          <td style="text-align: center">threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id)</td>
+          <td style="text-align: center">scan: 95% (maxscanlength=100), insert: 5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">F</td>
+          <td style="text-align: center">read-modify-write workload</td>
+          <td style="text-align: center">user database, where user records are read and modified by the user or to record user activity.</td>
+          <td style="text-align: center">read: 50%, readmodifywrite: 50%</td>
+      </tr>
+  </tbody>
 </table>
-<h1 id="rocksdb-workloads-in-facebook-paper-linkrocksdbfb">RocksDB Workloads in Facebook <a href="https://www.usenix.org/conference/fast20/presentation/cao-zhichao" target="_blank" rel="noopener noreffer">paper link</a></h1>
+<h1 id="rocksdb-workloads-in-facebook-paper-link">RocksDB Workloads in Facebook <a href="https://www.usenix.org/conference/fast20/presentation/cao-zhichao" target="_blank" rel="noopener noreffer">paper link</a></h1>
 <h2 id="udb">UDB</h2>
 <blockquote>
 <ul>
@@ -235,7 +240,7 @@
         data-sizes="auto"
         alt="../kvsize-distribution.png"
         title="../kvsize-distribution.png" /></p>
-<h1 id="memcached-workloads-at-twitter-linkmemcachedtwitter">Memcached workloads at Twitter <a href="https://www.usenix.org/system/files/osdi20-yang.pdf" target="_blank" rel="noopener noreffer">link</a></h1>
+<h1 id="memcached-workloads-at-twitter-link">Memcached workloads at Twitter <a href="https://www.usenix.org/system/files/osdi20-yang.pdf" target="_blank" rel="noopener noreffer">link</a></h1>
 <blockquote>
 <p>Average get ratio is close to 90% indicating most of the caches are serving read-heavy workloads.<br>
 More than 35% of all Twemcache clusters are write-heavy, and more than 20% have a write ratio higher than 50%.<br>
@@ -276,7 +281,7 @@ KV sizes are small.</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/keyvalue/">keyvalue</a>,&nbsp;<a href="/tags/workload/">workload</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/keyvalue/">Keyvalue</a>,&nbsp;<a href="/tags/workload/">Workload</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -287,8 +292,8 @@ KV sizes are small.</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

@@ -4,20 +4,27 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Measure Network Latency - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Measure Network Latency" />
-<meta property="og:description" content="Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
-By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/measure-network-latency/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-07-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-28T11:36:16-07:00" /><meta property="og:site_name" content="Xing Lin" />
+        <title>Measure Network Latency - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/measure-network-latency/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Measure Network Latency">
+  <meta property="og:description" content="Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
+By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency. We can use the -i option, to set the interval. Below are the RTT values I collected between two servers connected directly with a cable.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-07-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-28T11:36:16-07:00">
+    <meta property="article:tag" content="Note">
+    <meta property="article:tag" content="Tip">
+    <meta property="article:tag" content="Network Latency">
+    <meta property="article:tag" content="Tech">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Measure Network Latency"/>
-<meta name="twitter:description" content="Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
-By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency."/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Measure Network Latency">
+  <meta name="twitter:description" content="Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
+By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency. We can use the -i option, to set the interval. Below are the RTT values I collected between two servers connected directly with a cable.">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -133,34 +140,34 @@ on the measured network latency. We can use the -i option, to set the interval.
 Below are the RTT values I collected between two servers connected directly with
 a cable.</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Interval</th>
-<th style="text-align:center">Latency (us)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">default (1s)</td>
-<td style="text-align:center">161</td>
-</tr>
-<tr>
-<td style="text-align:center">200 ms</td>
-<td style="text-align:center">132</td>
-</tr>
-<tr>
-<td style="text-align:center">20 ms</td>
-<td style="text-align:center">130</td>
-</tr>
-<tr>
-<td style="text-align:center">2 ms</td>
-<td style="text-align:center">73</td>
-</tr>
-<tr>
-<td style="text-align:center">flood (-f)</td>
-<td style="text-align:center">22</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Interval</th>
+          <th style="text-align: center">Latency (us)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">default (1s)</td>
+          <td style="text-align: center">161</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">200 ms</td>
+          <td style="text-align: center">132</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">20 ms</td>
+          <td style="text-align: center">130</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2 ms</td>
+          <td style="text-align: center">73</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">flood (-f)</td>
+          <td style="text-align: center">22</td>
+      </tr>
+  </tbody>
 </table>
 <p>As we can see, one can get very different RTTs when using different intervals.
 For the common cases, I guess we should use the flooding mode where
@@ -197,7 +204,7 @@ We may also need to install texinfo package, to get the makeinfo tool.</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/tip/">tip</a>,&nbsp;<a href="/tags/network-latency/">network latency</a>,&nbsp;<a href="/tags/tech/">tech</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">Note</a>,&nbsp;<a href="/tags/tip/">Tip</a>,&nbsp;<a href="/tags/network-latency/">Network Latency</a>,&nbsp;<a href="/tags/tech/">Tech</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -208,8 +215,8 @@ We may also need to install texinfo package, to get the makeinfo tool.</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

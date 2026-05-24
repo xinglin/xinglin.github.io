@@ -3,14 +3,195 @@
         <title>All Posts - Xing Lin</title>
         <link>https://xinglin.github.io/posts/</link>
         <description>All Posts | Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 24 May 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>FoundationDB: A Distributed Unbundled Transactional Key Value Store</title>
+    <link>https://xinglin.github.io/fdb/</link>
+    <pubDate>Sun, 24 May 2026 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/fdb/</guid>
+    <description><![CDATA[<blockquote>
+<p>Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB</p>
+</blockquote>
+<p>Transaction processing</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Optimistic concurrency control + MVCC: 2.4.1 A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any
+</span></span><span class="line"><span class="cl">previously issued transaction commit version, and this read version
+</span></span><span class="line"><span class="cl">is sent back to the client. Then the client may issue multiple reads
+</span></span><span class="line"><span class="cl">to StorageServers and obtain values at that specific read version.
+</span></span><span class="line"><span class="cl">Client writes are buffered locally without contacting the cluster.
+</span></span><span class="line"><span class="cl">At commit time, the client sends the transaction data, including
+</span></span><span class="line"><span class="cl">the read and write sets (i.e., key ranges), to one of the Proxies
+</span></span><span class="line"><span class="cl">and waits for a commit or abort response from the Proxy. If the
+</span></span><span class="line"><span class="cl">transaction cannot commit, the client may choose to restart the
+</span></span><span class="line"><span class="cl">transaction from the beginning again.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">A Proxy commits a client transaction in three steps. First, the
+</span></span><span class="line"><span class="cl">Proxy contacts the Sequencer to obtain a commit version that is
+</span></span><span class="line"><span class="cl">larger than any existing read versions or commit versions. The
+</span></span><span class="line"><span class="cl">Sequencer chooses the commit version by advancing it at a rate of
+</span></span><span class="line"><span class="cl">one million versions per second. Then, the Proxy sends the transac-
+</span></span><span class="line"><span class="cl">tion information to range-partitioned Resolvers, which implement
+</span></span><span class="line"><span class="cl">FDB’s optimistic concurrency control by checking for read-write
+</span></span><span class="line"><span class="cl">conflicts. If all Resolvers return with no conflict, the transaction
+</span></span><span class="line"><span class="cl">can proceed to the final commit stage. Otherwise, the Proxy marks
+</span></span><span class="line"><span class="cl">the transaction as aborted. Finally, committed transactions are sent
+</span></span><span class="line"><span class="cl">to a set of LogServers for persistence. A transaction is consid-
+</span></span><span class="line"><span class="cl">ered committed after all designated LogServers have replied to the
+</span></span><span class="line"><span class="cl">Proxy, which reports the committed version to the Sequencer (to
+</span></span><span class="line"><span class="cl">ensure that later transactions’ read versions are after this commit)
+</span></span><span class="line"><span class="cl">and then replies to the client. At the same time, StorageServers
+</span></span><span class="line"><span class="cl">continuously pull mutation logs from LogServers and apply com-
+</span></span><span class="line"><span class="cl">mitted updates to disks.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Divide the key space into ranges. key ranges are assigned/partitioned among resolvers. 
+</span></span><span class="line"><span class="cl">For each key range, resolver stores its last commit version. 
+</span></span><span class="line"><span class="cl">For a pending transaction, get key ranges for each read key. 
+</span></span><span class="line"><span class="cl">check against the last commit version for each key range. 
+</span></span><span class="line"><span class="cl">if the read version is smaller than any of the last commit version of any read key range, we have a read-write conflict (read value can be stale). mark this transaction as failed. 
+</span></span><span class="line"><span class="cl">Otherwise, this transaction can be committed. 
+</span></span><span class="line"><span class="cl">update the last commit version of that key range to the commit version of the current transaction.  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"> <span class="n">At</span> <span class="mi">1</span> <span class="n">million</span> <span class="n">versions</span> <span class="n">per</span> <span class="n">sec</span><span class="p">,</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signed</span> <span class="n">int64</span><span class="p">,</span> <span class="n">we</span> <span class="n">can</span> <span class="n">support</span> <span class="o">~</span><span class="mi">300</span><span class="p">,</span><span class="mi">000</span> <span class="n">years</span><span class="o">.</span> <span class="n">When</span> <span class="n">we</span> <span class="n">have</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">1</span> <span class="n">millions</span> <span class="n">transactions</span> <span class="n">per</span> <span class="n">sec</span><span class="p">,</span> <span class="n">proxy</span> <span class="n">uses</span> <span class="n">batches</span><span class="p">:</span> <span class="n">assign</span> <span class="n">the</span> <span class="n">same</span> <span class="n">transaction</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">batch</span> <span class="n">of</span> <span class="n">transactions</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Transaction</span> <span class="n">batching</span><span class="o">.</span> <span class="n">To</span> <span class="n">amortize</span> <span class="n">the</span> <span class="n">cost</span> <span class="n">of</span> <span class="n">committing</span> <span class="n">transactions</span><span class="p">,</span> <span class="n">the</span> <span class="n">Proxy</span> <span class="n">groups</span> <span class="n">multiple</span> <span class="n">transactions</span> <span class="n">received</span> <span class="n">from</span> <span class="n">clients</span>
+</span></span><span class="line"><span class="cl"><span class="n">into</span> <span class="n">one</span> <span class="n">batch</span><span class="p">,</span> <span class="n">asks</span> <span class="k">for</span> <span class="n">a</span> <span class="n">single</span> <span class="n">commit</span> <span class="n">version</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="ow">and</span> <span class="n">sends</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">to</span> <span class="n">Resolvers</span> <span class="k">for</span> <span class="n">conflict</span> <span class="n">detection</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">resolver</span> <span class="n">evaluates</span> <span class="n">each</span> <span class="n">transaction</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">one</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">strict</span> <span class="n">order</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl"><span class="n">If</span> <span class="n">transaction</span> <span class="n">B</span> <span class="n">after</span> <span class="n">A</span> <span class="p">(</span><span class="n">both</span> <span class="n">from</span> <span class="n">the</span> <span class="n">same</span> <span class="n">batch</span><span class="p">)</span> <span class="n">has</span> <span class="n">a</span> <span class="n">conflict</span> <span class="n">with</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="n">will</span> <span class="n">be</span> <span class="n">marked</span> <span class="n">as</span> <span class="n">failed</span> <span class="n">transaction</span><span class="o">.</span>  
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">Proxy</span> <span class="n">then</span> <span class="n">writes</span> <span class="n">committed</span> <span class="n">transactions</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">to</span> <span class="n">LogServers</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">transaction</span> <span class="n">batching</span> <span class="n">reduces</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">calls</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">a</span>
+</span></span><span class="line"><span class="cl"><span class="n">commit</span> <span class="n">version</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">Proxies</span> <span class="n">to</span> <span class="n">commit</span>
+</span></span><span class="line"><span class="cl"><span class="n">tens</span> <span class="n">of</span> <span class="n">thousands</span> <span class="n">of</span> <span class="n">transactions</span> <span class="n">per</span> <span class="n">second</span> <span class="n">without</span> <span class="n">significantly</span>
+</span></span><span class="line"><span class="cl"><span class="n">impacting</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="err">’</span><span class="n">s</span> <span class="n">performance</span><span class="o">.</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">the</span> <span class="n">batch</span><span class="o">-</span>
+</span></span><span class="line"><span class="cl"><span class="n">ing</span> <span class="n">degree</span> <span class="n">is</span> <span class="n">adjusted</span> <span class="n">dynamically</span><span class="p">,</span> <span class="n">shrinking</span> <span class="n">when</span> <span class="n">the</span> <span class="n">system</span> <span class="n">is</span>
+</span></span><span class="line"><span class="cl"><span class="n">lightly</span> <span class="n">loaded</span> <span class="n">to</span> <span class="n">improve</span> <span class="n">commit</span> <span class="n">latency</span><span class="p">,</span> <span class="ow">and</span> <span class="n">increasing</span> <span class="n">when</span> <span class="n">the</span>
+</span></span><span class="line"><span class="cl"><span class="n">system</span> <span class="n">is</span> <span class="n">busy</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">sustain</span> <span class="n">high</span> <span class="n">commit</span> <span class="n">throughput</span><span class="o">.</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">In the transaction management system of FDB, we handle all failures through the
+</span></span><span class="line"><span class="cl">recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it
+</span></span><span class="line"><span class="cl">detects a failure. As a result, all failure handling is reduced
+</span></span><span class="line"><span class="cl">to a single recovery operation, which becomes a common
+</span></span><span class="line"><span class="cl">and well-tested code path. Such error handling strategy is
+</span></span><span class="line"><span class="cl">desirable as long as the recovery is quick, and pays dividends
+</span></span><span class="line"><span class="cl">by simplifying the normal transaction processing.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="simulation-testing">Simulation Testing</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation. 
+</span></span><span class="line"><span class="cl">- Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp.
+</span></span><span class="line"><span class="cl">- Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically. 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>5 sec MVCC transaction window: every transaction has to complete in 5 secs. Main reason is then resolver only need to keey the most recent 5-sec updates in memory to detect conflicts among trasactions.</p>]]></description>
+</item>
+<item>
     <title>HDFS Namenode RPC Request Execution Time Breakdown</title>
     <link>https://xinglin.github.io/namenoderpctimebreakdown/</link>
     <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/namenoderpctimebreakdown/</guid>
-    <description><![CDATA[1 2 3 ----- enqueueTime queueingTime Processing/ResponseTime/HandlerTime |50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response) ----- \-&gt; pendingConnections &lt;- Reader2 A main listener thread is accepting new connections from clients and put connections into pendingConnections queue of a Reader thread. A Reader thread detects any ready connection, reads the request and puts the call into CallQueue. This put() operation is blocking and is accounted as enqueueTime.]]></description>
+    <description><![CDATA[<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> -----                                                enqueueTime  queueingTime      Processing/ResponseTime/HandlerTime 
+</span></span><span class="line"><span class="cl">|50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response)
+</span></span><span class="line"><span class="cl"> -----              \-&gt; pendingConnections &lt;- Reader2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>A main listener thread is accepting new connections from clients and
+put connections into pendingConnections queue of a Reader thread.
+A Reader thread detects any ready connection, reads the request and puts
+the call into CallQueue. This put() operation is blocking and is accounted as
+enqueueTime. The time a call stays in CallQueue is queueingTime.
+When a handler is available, it will pick a call from CallQueue and process the
+call, from which we can derive the processing/response/handlerTime.</p>]]></description>
 </item>
 <item>
     <title>Java ExecutorService</title>
@@ -18,8 +199,22 @@
     <pubDate>Mon, 03 Jul 2023 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/java-executorservice/</guid>
-    <description><![CDATA[Recently, I was working on HDFS-17030 and used ExecutorService for multi-threading execution. We hit a non-intuitive `bug` of how JVM/garbage collector works. The issue is as following.
-We created an executorService with 1 core thread in a class. We did not set allowCoreThreadTimeOut to true (default is false). So, that core thread will be kept running, even when the main thread exits! Then, the JVM process won&rsquo;t exit, because there is still one thread running!]]></description>
+    <description><![CDATA[<p>Recently, I was working on HDFS-17030 and used ExecutorService for multi-threading
+execution. We hit a non-intuitive `bug` of how JVM/garbage collector
+works. The issue is as following.</p>
+<p>We created an executorService with 1 core thread in a class. We did not
+set <em>allowCoreThreadTimeOut</em> to true (default is false). So,
+that core thread will be kept running, even when the main thread exits!
+Then, the JVM process won&rsquo;t exit, because there is still one thread running!
+Even when we shut down the executorService in <em>.close()</em> method of that class,
+the same issue persists. The issue is <em>.close()</em> method of a Closable
+object is called by Java garbage collector <em>only</em> when it is reclaiming
+that object. This does not happen immediately when there is
+no reference to an object. After an object becomes orphan (no
+more reference to it), it will be added to a queue. The garbage collector
+will look into the queue and determine which objects to reclaim
+based on its own algorithm. It is undeterministic/out of control from
+programmers on when the garbage collector will reclaim an object.</p>]]></description>
 </item>
 <item>
     <title>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</title>
@@ -27,9 +222,12 @@ We created an executorService with 1 core thread in a class. We did not set allo
     <pubDate>Fri, 12 Aug 2022 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/deltalake/</guid>
-    <description><![CDATA[Read/write performance for cloud object store.
-Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
-The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.]]></description>
+    <description><![CDATA[<p>Read/write performance for cloud object store.</p>
+<blockquote>
+<p>Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.</p>
+</blockquote>
+<blockquote>
+<p>The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.</p>]]></description>
 </item>
 <item>
     <title>The CacheLib Caching Engine: Design and Experiences at Scale</title>
@@ -37,9 +235,14 @@ The VM types most frequently used for analytics on AWS have at least 10 Gbps net
     <pubDate>Fri, 29 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/cachelib/</guid>
-    <description><![CDATA[CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.
-CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.
-All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.]]></description>
+    <description><![CDATA[<blockquote>
+<p>CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.</p>
+</blockquote>
+<blockquote>
+<p>CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.</p>
+</blockquote>
+<blockquote>
+<p>All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.</p>]]></description>
 </item>
 <item>
     <title>Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</title>
@@ -47,9 +250,14 @@ All of these systems process millions of queries per second, cache working sets 
     <pubDate>Sat, 16 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/dynamodb/</guid>
-    <description><![CDATA[Hundreds of thousands of customers rely on DynamoDB for its fundamental properties
-In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.
-For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.]]></description>
+    <description><![CDATA[<blockquote>
+<p>Hundreds of thousands of customers rely on DynamoDB for its fundamental properties</p>
+</blockquote>
+<blockquote>
+<p>In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.</p>
+</blockquote>
+<blockquote>
+<p>For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.</p>]]></description>
 </item>
 <item>
     <title>Book Review: High Output Management</title>
@@ -57,7 +265,13 @@ For DynamoDB customers, consistent performance at any scale is often more import
     <pubDate>Sun, 13 Jun 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/high-output-management/</guid>
-    <description><![CDATA[I finished reading Andrew Grove&rsquo;s book on ``High Output Management&rsquo;&rsquo; and really liked it, especially when reading the second half. It explains a few concepts, such as how a person&rsquo;s needs may change and what is controlling a person&rsquo;s behavior. It also contains quite a few practical advices on how to handle issues that could happen in a workplace. I highly recommend everyone to take a look at this book.]]></description>
+    <description><![CDATA[<p>I finished reading Andrew Grove&rsquo;s book on ``High Output Management&rsquo;&rsquo; and
+really liked it, especially when reading the second half.
+It explains a few concepts, such as how a person&rsquo;s needs may change
+and what is controlling a person&rsquo;s behavior.
+It also contains quite a few practical advices on how to handle issues
+that could happen in a workplace.
+I highly recommend everyone to take a look at this book.</p>]]></description>
 </item>
 <item>
     <title>Key Value Workloads</title>
@@ -65,7 +279,83 @@ For DynamoDB customers, consistent performance at any scale is often more import
     <pubDate>Fri, 05 Mar 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/keyvalue-workloads/</guid>
-    <description><![CDATA[YCSB Workload Description Example Operation breakdown A Update heavy workload session store recording recent actions read: 50%, update: 50% B read mostly workload photo tagging; add a tag is an update, but most operations are to read tags read: 95%, update: 5% C read only user profile cache, where profiles are constructed elsewhere )e.g., Hadoop) read: 100% D read latest workload user status updates; people want to read the latest read: 95%, insert 5% E short ranges threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id) scan: 95% (maxscanlength=100), insert: 5 F read-modify-write workload user database, where user records are read and modified by the user or to record user activity.]]></description>
+    <description><![CDATA[<h1 id="ycsb">YCSB</h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Workload</th>
+          <th style="text-align: center">Description</th>
+          <th style="text-align: center">Example</th>
+          <th style="text-align: center">Operation breakdown</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">A</td>
+          <td style="text-align: center">Update heavy workload</td>
+          <td style="text-align: center">session store recording recent actions</td>
+          <td style="text-align: center">read: 50%, update: 50%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">B</td>
+          <td style="text-align: center">read mostly workload</td>
+          <td style="text-align: center">photo tagging;  add a tag is an update, but most operations are to read tags</td>
+          <td style="text-align: center">read: 95%, update: 5%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">C</td>
+          <td style="text-align: center">read only</td>
+          <td style="text-align: center">user profile cache, where profiles are constructed elsewhere )e.g., Hadoop)</td>
+          <td style="text-align: center">read: 100%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">D</td>
+          <td style="text-align: center">read latest workload</td>
+          <td style="text-align: center">user status updates; people want to read the latest</td>
+          <td style="text-align: center">read: 95%, insert  5%</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">E</td>
+          <td style="text-align: center">short ranges</td>
+          <td style="text-align: center">threaded conversations, where each scan is for the posts in a given thread (assumed to be clustered by thread id)</td>
+          <td style="text-align: center">scan: 95% (maxscanlength=100), insert: 5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">F</td>
+          <td style="text-align: center">read-modify-write workload</td>
+          <td style="text-align: center">user database, where user records are read and modified by the user or to record user activity.</td>
+          <td style="text-align: center">read: 50%, readmodifywrite: 50%</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rocksdb-workloads-in-facebook-paper-link">RocksDB Workloads in Facebook <a href="https://www.usenix.org/conference/fast20/presentation/cao-zhichao" target="_blank" rel="noopener noreffer">paper link</a></h1>
+<h2 id="udb">UDB</h2>
+<blockquote>
+<ul>
+<li>Social graph data stored in MyRocks</li>
+<li>Get: 75%, Put: 20%</li>
+<li>75+% of KV-pairs are Put only once.</li>
+<li>Most of the start-keys of Iterators are used only once. The scan length of more than 60% of the Iterators is only 1 across all CFs.</li>
+</ul>
+</blockquote>
+<h2 id="zippydb">ZippyDB</h2>
+<blockquote>
+<ul>
+<li>Distributed KV store, mapping some metadata of an object to the object address in an object storage system</li>
+<li>78% Get, 13% Put, 6% Delete, and 3% Iterator</li>
+<li>For about 80% of the KV-pairs, Get requests only occur once. A very small portion of KV-pairs have very large read counts over the 24-hour period. 1% of the KV-pairs show more than 100 Get requests, and the Gets to these KV-pairs are about 50% of the total Gets that show strong localities. About 73% of the KV-pairs are Put only once, and fewer than 0.001% of the KV-pairs are Put more than 10 times. Put does not have as clear a locality as Get does.</li>
+</ul>
+</blockquote>
+<h2 id="up2x">UP2X</h2>
+<blockquote>
+<ul>
+<li>statistic counters of user activities for AI/ML prediction and interference</li>
+<li>merge (read-modify-write): 92.53%, 7.46% Get</li>
+<li>Merge and Get have wide distributions of access counts. Most KV pairs are Put only once.</li>
+</ul>
+</blockquote>
+<h3 id="udb-request-distribution">UDB Request Distribution</h3>
+<p></p>]]></description>
 </item>
 <item>
     <title>Key Value Systems</title>
@@ -73,7 +363,22 @@ For DynamoDB customers, consistent performance at any scale is often more import
     <pubDate>Mon, 01 Mar 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/keyvalue/</guid>
-    <description><![CDATA[LSM-tree survey WiscKey: key/value separation HashKV: store cold keys separately. LSM-trie PebblesDB KVell Skip-Tree: put kv items directly to non-adjacent layers (skipping some intermediate layers) to reduce write amplification from level-to-level data compaction. TRIAD: separate hot keys from cold keys. hot keys are stored in memtable for as long as possible. Use multiple memtables and flush them at once to disk. Pipelined Compaction Procedure: A compaction contains three phases: read phase, merge-sort phase, and write phase.]]></description>
+    <description><![CDATA[<ul>
+<li><a href="https://arxiv.org/pdf/1812.07527.pdf" target="_blank" rel="noopener noreffer">LSM-tree survey</a></li>
+<li>WiscKey: key/value separation</li>
+<li>HashKV: store cold keys separately.</li>
+<li>LSM-trie</li>
+<li>PebblesDB</li>
+<li>KVell</li>
+<li><a href="https://ieeexplore.ieee.org/document/7569086" target="_blank" rel="noopener noreffer">Skip-Tree</a>: put kv items directly to non-adjacent layers (skipping some intermediate layers) to reduce write amplification from level-to-level data compaction.</li>
+<li>TRIAD: separate hot keys from cold keys. hot keys are stored in memtable for as long as possible. Use multiple memtables and flush them at once to disk.</li>
+<li><a href="https://www.computer.org/csdl/proceedings-article/ipdps/2014/06877309/12OmNvBIRP6" target="_blank" rel="noopener noreffer">Pipelined Compaction Procedure</a>: A compaction contains three phases: read phase, merge-sort phase, and write phase. Pipeline these three phases, to overlap CPU and disk IO.</li>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/2741948.2741973" target="_blank" rel="noopener noreffer">cLSM</a>: LSM-tree for multi-core processors. It exploits multiprocessor-friendly data structures and non-blocking synchronization. cLSM supports a rich API, including consistent snapshot scans and general non-blocking read-modify-write operations.</li>
+<li><a href="https://www.usenix.org/system/files/conference/fast16/fast16-papers-lim.pdf" target="_blank" rel="noopener noreffer">Towards Accurate and Fast Evaluation of Multi-Stage Log-Structured Designs</a></li>
+<li><a href="https://nivdayan.github.io/dostoevsky.pdf" target="_blank" rel="noopener noreffer">Dostoevsky</a>: evaluated against well-tuned LSM-trees. Extends the design space of LSM-trees with a new merge policy by combining leveling and tiering. very useful for certain workloads that require efficient writes, point lookups, and long range queries with less emphasis on short range queries.</li>
+<li><a href="https://ymsir.com/papers/mutant-socc.pdf" target="_blank" rel="noopener noreffer">Mutant</a>: decide which type of cloud disks to place SStables, based on access pattern.</li>
+<li><a href="https://openproceedings.org/2014/conf/edbt/TanTTF14.pdf" target="_blank" rel="noopener noreffer">diff-index</a>: use LSM-tree as secondary indexes.</li>
+</ul>]]></description>
 </item>
 <item>
     <title>Idea Repository</title>
@@ -81,21 +386,24 @@ For DynamoDB customers, consistent performance at any scale is often more import
     <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>Xing Lin</author>
     <guid>https://xinglin.github.io/idea-repository/</guid>
-    <description><![CDATA[List of ideas to explore.
-Interaction between a filesystem and a computational SSD that does transparent compression.
-Problem: How to manage SSD space in this case? What API should be use? Can use SSDSim to explore the design space. Key prefix compression in k/v store
-Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this? In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs.]]></description>
-</item>
-<item>
-    <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
-    <link>https://xinglin.github.io/prefix-vs-postfix/</link>
-    <pubDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/prefix-vs-postfix/</guid>
-    <description><![CDATA[The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
-The authors shared the following in their book.
-The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
-For ints and pointers, the compiler can optimize away this extra work.]]></description>
+    <description><![CDATA[<p>List of ideas to explore.</p>
+<ul>
+<li>
+<p>Interaction between a filesystem and a computational SSD that does transparent compression.</p>
+<ul>
+<li>Problem: How to manage SSD space in this case? What API should be use?</li>
+<li>Can use SSDSim to explore the design space.</li>
+</ul>
+</li>
+<li>
+<p>Key prefix compression in k/v store</p>
+<ul>
+<li>Problem: in levelDB, it uses fixed-size key prefix compression. Can we do better than this?</li>
+<li>In Rockset/Foundationdb, secondary indexes are stored as &lt;key, null&gt; key/value pairs. This creates an opportunity that significant storage saving can be achieved if we can do a better key compression.</li>
+</ul>
+</li>
+<li>
+<p><a href="http://zonedstorage.io/introduction/" target="_blank" rel="noopener noreffer">Zoned namespace SSDs</a></p>]]></description>
 </item>
 </channel>
 </rss>

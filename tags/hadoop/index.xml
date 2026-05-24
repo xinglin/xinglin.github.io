@@ -1,16 +1,20 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Hadoop - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/hadoop/</link>
-        <description>Hadoop - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/hadoop/" rel="self" type="application/rss+xml" /><item>
-    <title>HDFS Namenode RPC Request Execution Time Breakdown</title>
-    <link>https://xinglin.github.io/namenoderpctimebreakdown/</link>
-    <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/namenoderpctimebreakdown/</guid>
-    <description><![CDATA[1 2 3 ----- enqueueTime queueingTime Processing/ResponseTime/HandlerTime |50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response) ----- \-&gt; pendingConnections &lt;- Reader2 A main listener thread is accepting new connections from clients and put connections into pendingConnections queue of a Reader thread. A Reader thread detects any ready connection, reads the request and puts the call into CallQueue. This put() operation is blocking and is accounted as enqueueTime.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadoop on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/hadoop/</link>
+    <description>Recent content in Hadoop on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 02 Dec 2023 22:22:10 -0800</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HDFS Namenode RPC Request Execution Time Breakdown</title>
+      <link>https://xinglin.github.io/namenoderpctimebreakdown/</link>
+      <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/namenoderpctimebreakdown/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -----                                                enqueueTime  queueingTime      Processing/ResponseTime/HandlerTime &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;|50090| &amp;lt;- Listener --&amp;gt; pendingConnections &amp;lt;- Reader1 -----------&amp;gt; CallQueue &amp;lt;----- handler (processes and sends response)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; -----              \-&amp;gt; pendingConnections &amp;lt;- Reader2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;A main listener thread is accepting new connections from clients and&#xA;put connections into pendingConnections queue of a Reader thread.&#xA;A Reader thread detects any ready connection, reads the request and puts&#xA;the call into CallQueue. This put() operation is blocking and is accounted as&#xA;enqueueTime. The time a call stays in CallQueue is queueingTime.&#xA;When a handler is available, it will pick a call from CallQueue and process the&#xA;call, from which we can derive the processing/response/handlerTime.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

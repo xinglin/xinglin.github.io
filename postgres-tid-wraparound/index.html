@@ -4,22 +4,27 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Postgres Handling Transaction ID Wrap Around - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Postgres Handling Transaction ID Wrap Around" />
-<meta property="og:description" content="NOTE: OpenGauss may fix this problem.
+        <title>Postgres Handling Transaction ID Wrap Around - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/postgres-tid-wraparound/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Postgres Handling Transaction ID Wrap Around">
+  <meta property="og:description" content="NOTE: OpenGauss may fix this problem.
 Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
-Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/postgres-tid-wraparound/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-28T11:36:16-07:00" /><meta property="og:site_name" content="Xing Lin" />
+Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-12-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-28T11:36:16-07:00">
+    <meta property="article:tag" content="Postgres">
+    <meta property="article:tag" content="Idea">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Postgres Handling Transaction ID Wrap Around"/>
-<meta name="twitter:description" content="NOTE: OpenGauss may fix this problem.
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Postgres Handling Transaction ID Wrap Around">
+  <meta name="twitter:description" content="NOTE: OpenGauss may fix this problem.
 Three special values are reserved as special transaction IDs, including invalid, bootstrap and frozen transactions. The rest values are used in a circular fashion.
-Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions."/>
+Once a row is older enough (controlled by vacuum_freeze_min_age, an integer value measuring the number of transactions), the vaccum process can mark its TID as FrozenTransactionId. FrozenTransactionId is smaller than any normal transaction ID and thus these frozen rows are visible for all current and future transactions.">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -232,7 +237,7 @@ problem does not seem optimal/elegant. Is there any better way to handle it?</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/postgres/">postgres</a>,&nbsp;<a href="/tags/idea/">idea</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/postgres/">Postgres</a>,&nbsp;<a href="/tags/idea/">Idea</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -243,8 +248,8 @@ problem does not seem optimal/elegant. Is there any better way to handle it?</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

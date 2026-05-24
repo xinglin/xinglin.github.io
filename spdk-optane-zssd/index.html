@@ -4,20 +4,28 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>SPDK on Intel Optane and Samsung ZSSD - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="SPDK on Intel Optane and Samsung ZSSD" />
-<meta property="og:description" content="Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/spdk-optane-zssd/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-05-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-28T11:36:16-07:00" /><meta property="og:site_name" content="Xing Lin" />
+        <title>SPDK on Intel Optane and Samsung ZSSD - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/spdk-optane-zssd/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="SPDK on Intel Optane and Samsung ZSSD">
+  <meta property="og:description" content="Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
+Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14.32 usec Samsung ZSSD Metric SPDK /dev/nvme0n1 IOPS 73.9 K 46.2 K slat 0.14 usec 3.2 usec clat 13.0 usec 17.4 usec lat 13.12 usec 20.73 usec slat: average submission latency
+clat: the time between submission to the kernel and when the IO is complete
+lat: total IO latency">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-28T11:36:16-07:00">
+    <meta property="article:tag" content="SPDK">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="SPDK on Intel Optane and Samsung ZSSD"/>
-<meta name="twitter:description" content="Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14."/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="SPDK on Intel Optane and Samsung ZSSD">
+  <meta name="twitter:description" content="Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
+Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14.32 usec Samsung ZSSD Metric SPDK /dev/nvme0n1 IOPS 73.9 K 46.2 K slat 0.14 usec 3.2 usec clat 13.0 usec 17.4 usec lat 13.12 usec 20.73 usec slat: average submission latency
+clat: the time between submission to the kernel and when the IO is complete
+lat: total IO latency">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -128,67 +136,67 @@ Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 u
             </div><div class="content" id="content"><p>Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.</p>
 <h1 id="intel-optane-ssd">Intel Optane SSD</h1>
 <table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>SPDK</th>
-<th>/dev/nvme1n1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IOPS</td>
-<td>150 K</td>
-<td>66.1 K</td>
-</tr>
-<tr>
-<td>slat</td>
-<td>0.13 usec</td>
-<td>2.8 usec</td>
-</tr>
-<tr>
-<td>clat</td>
-<td>6.2 usec</td>
-<td>11.4 usec</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>6.35 usec</td>
-<td>14.32 usec</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>SPDK</th>
+          <th>/dev/nvme1n1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IOPS</td>
+          <td>150 K</td>
+          <td>66.1 K</td>
+      </tr>
+      <tr>
+          <td>slat</td>
+          <td>0.13 usec</td>
+          <td>2.8 usec</td>
+      </tr>
+      <tr>
+          <td>clat</td>
+          <td>6.2 usec</td>
+          <td>11.4 usec</td>
+      </tr>
+      <tr>
+          <td>lat</td>
+          <td>6.35 usec</td>
+          <td>14.32 usec</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="samsung-zssd">Samsung ZSSD</h1>
 <table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>SPDK</th>
-<th>/dev/nvme0n1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IOPS</td>
-<td>73.9 K</td>
-<td>46.2 K</td>
-</tr>
-<tr>
-<td>slat</td>
-<td>0.14 usec</td>
-<td>3.2 usec</td>
-</tr>
-<tr>
-<td>clat</td>
-<td>13.0 usec</td>
-<td>17.4 usec</td>
-</tr>
-<tr>
-<td>lat</td>
-<td>13.12 usec</td>
-<td>20.73 usec</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>SPDK</th>
+          <th>/dev/nvme0n1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IOPS</td>
+          <td>73.9 K</td>
+          <td>46.2 K</td>
+      </tr>
+      <tr>
+          <td>slat</td>
+          <td>0.14 usec</td>
+          <td>3.2 usec</td>
+      </tr>
+      <tr>
+          <td>clat</td>
+          <td>13.0 usec</td>
+          <td>17.4 usec</td>
+      </tr>
+      <tr>
+          <td>lat</td>
+          <td>13.12 usec</td>
+          <td>20.73 usec</td>
+      </tr>
+  </tbody>
 </table>
 <p>slat: average submission latency<br>
 clat: the time between submission to the kernel and when the IO is complete<br>
@@ -347,7 +355,8 @@ lat: total IO latency</p>
       READ: bw=180MiB/s (189MB/s), 180MiB/s-180MiB/s (189MB/s-189MB/s), io=21.1GiB (22.7GB), run=120001-120001msec
 
   Disk stats (read/write):
-      nvme0n1: ios=5532325/0, merge=0/0, ticks=74680/0, in_queue=74680, util=62.34%</code></pre>
+      nvme0n1: ios=5532325/0, merge=0/0, ticks=74680/0, in_queue=74680, util=62.34%
+</code></pre>
 </li>
 </ul>
 </div><div class="post-footer" id="post-footer">
@@ -378,8 +387,8 @@ lat: total IO latency</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.120.4">
+	<meta name="generator" content="Hugo 0.161.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Xing Lin" />
-<meta property="og:description" content="Hugo theme - LoveIt" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xinglin.github.io/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="og:site_name" content="Xing Lin" />
+        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Xing Lin">
+  <meta property="og:description" content="Hugo theme - LoveIt">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Xing Lin"/>
-<meta name="twitter:description" content="Hugo theme - LoveIt"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Xing Lin">
+  <meta name="twitter:description" content="Hugo theme - LoveIt">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -106,46 +108,102 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/atc18-best-practice/">Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-11">2018-04-11</time></span></div><div class="content"><p>I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions.
+To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.</p></div><div class="post-footer">
+        <a href="/atc18-best-practice/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">Conference</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/spdk-samsung-960-evo/">SPDK on Samsung 960 EVO NVMe SSD</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2017-12-01">2017-12-01</time></span></div><div class="content">Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD. I was thinking that using SPDK might lead to better performance, than through traditional block device interface. However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.
-Metric SPDK /dev/nvme0n1 IOPS 12.8 K 11.6 K slat 0.18 usec &ndash; clat 77.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2017-12-01">2017-12-01</time></span></div><div class="content"><p>Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD.
+I was thinking that using SPDK might lead to better performance, than through traditional block device interface.
+However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>SPDK</th>
+          <th>/dev/nvme0n1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IOPS</td>
+          <td>12.8 K</td>
+          <td>11.6 K</td>
+      </tr>
+      <tr>
+          <td>slat</td>
+          <td>0.18 usec</td>
+          <td>&ndash;</td>
+      </tr>
+      <tr>
+          <td>clat</td>
+          <td>77.73 usec</td>
+          <td>84.19 usec</td>
+      </tr>
+      <tr>
+          <td>lat</td>
+          <td>77.91 usec</td>
+          <td>84.32 usec</td>
+      </tr>
+  </tbody>
+</table>
+<p>slat, clat and lat are average submission latency, submission to IO completion latency and total IO latency. As we can see, this device still have a quite high read latency. The latest Intel Optane DC P4800X SSDs can achieve 10 us read latency, with 550 K IOPS. For this Samsung device, software overhead seems still fine. It would be really interesting to test out for the Intel Optane PC4800X SSDs though.</p></div><div class="post-footer">
         <a href="/spdk-samsung-960-evo/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spdk/">SPDK</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/books-papers/">Great Books and Papers</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-12-25">2015-12-25</time></span></div><div class="content">Books A Philosophy of Software Design, John Ousterhout, Professor at Stanford University The Innovator&rsquo;s Dilemma, Clayton Christensen UNIX - A History and a Memorior, Brian Kernighan, Professor at Princeton University HOW NOT TO BE WRONG, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison THINKING, FAST AND SLOW, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University China&rsquo;s Economy, Arthur R. Kroeber Papers There are some papers that are so well written that I really enjoyed reading them.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-12-25">2015-12-25</time></span></div><div class="content"><h2 id="books">Books</h2>
+<ul>
+<li><em>A Philosophy of Software Design</em>, John Ousterhout, Professor at Stanford University</li>
+<li><em>The Innovator&rsquo;s Dilemma</em>, Clayton Christensen</li>
+<li><em>UNIX - A History and a Memorior</em>, Brian Kernighan, Professor at Princeton University</li>
+<li><em>HOW NOT TO BE WRONG</em>, Jordan Ellenberg, Professor of Mathematics at the University of Wisconsin-Madison</li>
+<li><em>THINKING, FAST AND SLOW</em>, Daniel Kahneman, Professor of Psychology Emeritus at Princeton University</li>
+<li><em>China&rsquo;s Economy</em>, Arthur R. Kroeber</li>
+</ul>
+<h2 id="papers">Papers</h2>
+<p>There are some papers that are so well written that I really enjoyed reading
+them. Here is a list of them.</p></div><div class="post-footer">
         <a href="/books-papers/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/papers/">papers</a>,&nbsp;<a href="/tags/books/">books</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/papers/">Papers</a>,&nbsp;<a href="/tags/books/">Books</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/nv-tree/">NV-Tree: Reducing Consistency Cost for NVM-based Single Level Systems</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-12-25">2015-12-25</time></span></div><div class="content">This paper introduces a new B+ tree variation that is optimized for NVM by reducing consistency cost from memory fence and cacheline flush operations.
-Consistency is guaranteed only for leaf nodes. Internal nodes are re-built from leaf nodes. Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added to a leaf node. This also increases concurrency.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-12-25">2015-12-25</time></span></div><div class="content"><p>This paper introduces a new B+ tree variation that is optimized for NVM
+by reducing consistency cost from memory fence and cacheline flush operations.</p>
+<ol>
+<li>Consistency is guaranteed only for leaf nodes. Internal nodes are re-built
+from leaf nodes.</li>
+<li>Elements in leaf nodes are not sorted. A log-structure is used for leaf nodes to remove the need for frequent synchronization. Only appends are added
+to a leaf node. This also increases concurrency. When a leaf node becomes full, a GC is triggered for cleaning and consolidation.</li>
+<li>Internal nodes are managed using arrays, rather than pointed based data
+structures.</li>
+</ol></div><div class="post-footer">
         <a href="/nv-tree/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/dissertation-defense/">Reflection After Dissertation Defense</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-07-22">2015-07-22</time></span></div><div class="content">After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-07-22">2015-07-22</time></span></div><div class="content"><p>After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers. The journey would be much challenging if I did it alone. Thank you all!</p></div><div class="post-footer">
         <a href="/dissertation-defense/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">PhD life</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">Phd Life</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/sketch-data-structures/">Sketch Data Structures</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-06-09">2015-06-09</time></span></div><div class="content">Tonight, I went to attend a local meetup event. The talk was given by a faculty from my own department, Jeff Phillips, an assistant professor working in the area of big data analysis. The topic of his talk is about sketch data structure - data structures which uses a much smaller amount of memory to summarize the represented data.This is a cool technique and I am very interested to learn more.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-06-09">2015-06-09</time></span></div><div class="content"><p>Tonight, I went to attend a local meetup event. The talk was given by a
+faculty from my own department, Jeff Phillips, an assistant professor
+working in the area of big data analysis. The topic of his talk is about
+sketch data structure - data structures which uses a much smaller
+amount of memory to summarize the represented data.This is a cool
+technique and I am very interested to learn more.</p></div><div class="post-footer">
         <a href="/sketch-data-structures/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/technique/">technique</a>,&nbsp;<a href="/tags/data-summarization/">data summarization</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/kvm/">KVM Notes</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-04-08">2015-04-08</time></span></div><div class="content">List storage pools
-virsh pool-list --details
-List all volumes for a pool
-vol-list --details POOLNAME
-To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.
-virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img
-virsh pool-start qcow2
-To create a Qemu guest with bridged network
-sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.04.5-desktop-amd64.iso --network bridge=virbr0 --graphics vnc,listen=0.0.0.0 --noautoconsole -v</div><div class="post-footer">
-        <a href="/kvm/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kvm/">KVM</a></div></div>
-</article><ul class="pagination"><li class="page-item ">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/technique/">Technique</a>,&nbsp;<a href="/tags/data-summarization/">Data Summarization</a></div></div>
+</article>
+<ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
@@ -169,8 +227,8 @@ sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

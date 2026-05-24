@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.120.4">
+	<meta name="generator" content="Hugo 0.161.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Xing Lin" />
-<meta property="og:description" content="Hugo theme - LoveIt" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xinglin.github.io/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="og:site_name" content="Xing Lin" />
+        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Xing Lin">
+  <meta property="og:description" content="Hugo theme - LoveIt">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Xing Lin"/>
-<meta name="twitter:description" content="Hugo theme - LoveIt"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Xing Lin">
+  <meta name="twitter:description" content="Hugo theme - LoveIt">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -106,21 +108,78 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/kvm/">KVM Notes</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-04-08">2015-04-08</time></span></div><div class="content"><ul>
+<li>
+<p>List storage pools<br>
+<code>virsh pool-list --details</code></p>
+</li>
+<li>
+<p>List all volumes for a pool<br>
+<code>vol-list --details POOLNAME</code></p>
+</li>
+<li>
+<p>To create a Qemu guest with a image in qcow2 format, we need to first create a storage pool first.<br>
+<code>virsh pool-define-as --name qcow2 --type dir --target /mnt/qemu-img</code><br>
+<code>virsh pool-start qcow2</code></p>
+</li>
+<li>
+<p>To create a Qemu guest with bridged network<br>
+<code>sudo virt-install -n vm1 -r 1024 --disk path=/mnt/qemu-imgs/vm1.qcow2,bus=virtio,size=5,format=qcow2 -c /mnt/sda4/ubuntu-12.04.5-desktop-amd64.iso --network bridge=virbr0 --graphics vnc,listen=0.0.0.0 --noautoconsole -v</code></p></div><div class="post-footer">
+        <a href="/kvm/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kvm/">KVM</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/proposal-defense/">Proposal Defense</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-12-19">2014-12-19</time></span></div><div class="content">I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-12-19">2014-12-19</time></span></div><div class="content"><p>I did my PhD proposal denfense yesterday and now I am one more step closer to finish it.
+It took a week to just prepare the talk.
+The talk was long and have 45 slides. However, there are only about 8 slides for each project,
+since there are 4 projects. The talk lasts about 45 minutes.
+Because it is so long, everytime I practiced it, I almost lost my voice after I finished.
+We used a new system that can connect skype and regular phone and we can hear everyone clearly.
+However, background noise came from time to time and this interrupted my talk several times (quite
+annoying).
+During the talk, members in my committees asked many questions.
+This is probably the best opportunity for them to ask whatever questions they have.
+And I am glad they did that. For some questions, I did not think I answered them well.
+The good thing is that most of work was done in collaboration with one of the committee
+members and they joined in, in helping me to answer when my answer was not satisfying or convincing.I should improve in this aspect.</p></div><div class="post-footer">
         <a href="/proposal-defense/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">PhD life</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">Phd Life</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/clone-kvm/">Clone a Single KVM/qemu Virtual Machine</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-11-26">2014-11-26</time></span></div><div class="content">I am working on virtual machine cloning for security testing for the TCloud project. We are looking for an efficient and transparent virtual machine cloning technique that has minimal impact on the virtual machine to be cloned. After some investigation, we found that KVM supports live snapshot for both memory and disk state while Xen4.4 currently does not support this feature yet but could be patched to do live snapshot for memory state easily.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-11-26">2014-11-26</time></span></div><div class="content"><p>I am working on virtual machine cloning for security testing for the TCloud project.
+We are looking for an efficient and transparent virtual machine cloning technique
+that has minimal impact on the virtual machine to be cloned. After some investigation,
+we found that KVM supports <em>live</em> snapshot for both memory and disk state while
+Xen4.4 currently does not support this feature yet but could be patched to do live snapshot
+for memory state easily. btrfs has very impressive performance in taking snapshots:
+its performance is the best when compared with qemu-img and lvm
+(finished in about 50 ms for a 4GB disk file). So, we could possibly use both Xen or KVM
+for our project. The other requirement from the project is we want to provide this security testing
+as a cloud service. So, we want to use OpenStack as our cloud platform. We had a really hard
+time in setting up a Xen+libvirt OpenStack cluster and we finally gave up on this approach
+since it is not supported well yet (in the group C support). As far as I know,
+there is no online documentation on this topic, until I wrote <a href="http://wiki.xenproject.org/wiki/Xen_via_libvirt_for_OpenStack_juno" target="_blank" rel="noopener noreffer">this one</a>.</p></div><div class="post-footer">
         <a href="/clone-kvm/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kvm/">KVM</a>,&nbsp;<a href="/tags/live-clone/">live clone</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/kvm/">KVM</a>,&nbsp;<a href="/tags/live-clone/">Live Clone</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/accurate-approximate-tradeoff/">Trade-off Between Accuracy and Runtime Overhead</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-11-26">2014-11-26</time></span></div><div class="content">During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2014-11-26">2014-11-26</time></span></div><div class="content"><p>During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for
+OSDI &lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper
+is about how to estimate the working set of a workload, using less memory and runs much faster.
+The only related work that dealt with the same problem was proposed more than 10 years ago and in that
+work, the authors tried to get the exact working set size, with a very high demand for memory
+and runtime. So, in their work, they tried to estimate it, with a goal to reduce memory demand and runtime.
+They got very impressive results. Together with other papers, I suddenly realized that it is actually
+quite common in compute science community, to take this approach: <strong>when it is too expensive to
+get the accurate result, it is usually a good time to think about how to approximate it with much lower overhead.</strong></p></div><div class="post-footer">
         <a href="/accurate-approximate-tradeoff/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/methodology/">methodology</a></div></div>
-</article><ul class="pagination"><li class="page-item ">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/methodology/">Methodology</a></div></div>
+</article>
+<ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
@@ -140,8 +199,8 @@
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.120.4">
+	<meta name="generator" content="Hugo 0.161.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Xing Lin" />
-<meta property="og:description" content="Hugo theme - LoveIt" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xinglin.github.io/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="og:site_name" content="Xing Lin" />
+        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Xing Lin">
+  <meta property="og:description" content="Hugo theme - LoveIt">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Xing Lin"/>
-<meta name="twitter:description" content="Hugo theme - LoveIt"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Xing Lin">
+  <meta name="twitter:description" content="Hugo theme - LoveIt">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -106,47 +108,147 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/ycsb-rocksdb-options/">Use Options File for Benchmarking RocksDB using YCSB</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-08">2020-08-08</time></span></div><div class="content"><p>In YCSB, we can also use the options file (<code>-p rocksdb.optionsfile=/tmp/ycsb-options.ini</code>, e.g.,) to configure the options for RocksDB.
+However, for a new user, it is actually not easy to figure out what needs to be configured
+for RocksDB for YCSB. Here is a quick way to get it start.</p>
+<p>Use the ycsb tool to load a rocksdb without specifying the options.</p>
+<pre><code>$ ./bin/ycsb load rocksdb -s -P workloads/workloada -p rocksdb.dir=/tmp/ycsb-rocksdb-data
+</code></pre>
+<p>Then, when we look into the rocksdb datadir, we can actually be able to find the option file that is generated automatically: OPTIONS-00008 or with a different number.
+We can copy out this options file to somewhere else, and delete all files in the rocksdb dir.
+Next, we can modify the options file.
+Specifically, we should modify the CFOptions and TableOptions/BlockBasedTable
+for the <code>usertable</code> sections, as YCSB will use this as the database (or column family) for loading data and running tests.</p></div><div class="post-footer">
+        <a href="/ycsb-rocksdb-options/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tips/">Tips</a>,&nbsp;<a href="/tags/rocksdb/">Rocksdb</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/data-storage-research-vision-2025/">Data Storage Research Vision 2025</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-23">2020-07-23</time></span></div><div class="content">NFS sponsored a data storage visioning workshop in 2018. The workshop was hosted by IBM Research. From the workshop, they produced a report, summarizing the discussion from the workshop. The report outlines the future research challenges and opportunities that the attendees recommend to work on.
-The discussion of the workshop was organized in the four groups. Below are some interesting points I copied from the report.
-Storage for the Cloud, Edge, and IoT Systems More desegregated, composable software architectures are highly desirable.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-23">2020-07-23</time></span></div><div class="content"><p>NFS sponsored a data storage visioning workshop in 2018.
+The workshop was hosted by IBM Research. From the workshop,
+they produced a report, summarizing the discussion from the workshop.
+<a href="https://www.fsl.cs.stonybrook.edu/docs/nsf/a1-amvrosiadis.pdf" target="_blank" rel="noopener noreffer">The report</a> outlines the future research challenges and opportunities that the attendees recommend to work on.</p>
+<p>The discussion of the workshop was organized in the four groups.
+Below are some interesting points I copied from the report.</p>
+<ol>
+<li>Storage for the Cloud, Edge, and IoT Systems</li>
+</ol>
+<ul>
+<li>More desegregated, composable software architectures are highly desirable.</li>
+<li>One common feature of all IoT devices is that they have limited hardware resources. To address this constraint, we should explore how to identify and discard unimportant data in a timely fashion, and how to balance among storage, preprocessing, and communication between IoT devices and cloud.</li>
+</ul>
+<ol start="2">
+<li>AI and Storage</li>
+</ol>
+<ul>
+<li>The increasing richness of data (e.g., multiple correlated mixed type streams, images, sound, video) requires more complex ML and Deep Learning (DL) approaches.</li>
+<li>AI stage awareness. Storage that is aware of the distinct stages or phases of AI processing can optimize AI pipelines via techniques such as caching of intermediate results, tracking of lineage, provenance, and checkpointing [46, 62, 72, 84].</li>
+<li>Compute architecture and data optimization. AI platforms follow distinct distributed computation architecture patterns (e.g., data parallel and model parallel [57, 95]). Memory hierarchy and data layout design for such computation patterns should also be a focus for future storage research. APIs that express the data access intent of an AI algorithm can also be a powerful tool to integrate memory hierarchy and data layout optimizations with AI computation.</li>
+<li>Unique characteristics. AI algorithms have unique characteristics that can be exploited to create efficient storage designs. Example characteristics include a tolerance to small amounts of data loss, very structured access patterns, and the ability to use and extrapolate from lossy compression</li>
+<li>Access and distribution characteristics. Emerging access methods and characteristics associated with AI workloads, such as stream processing [9] or edge storage [12], also create unique challenges that should be focused on in future storage research.</li>
+<li>Security and compliance. The use of AI brings a new dimension to data security. As industries and users demand that decisions made by AI algorithms be reproducible, transparent, and explainable, pressure builds on enterprises to put in place data-management mechanisms to govern what data is and how it should be used to generate AI models and consequent insights [8, 10, 11, 35, 48].</li>
+<li>Performance and placement optimizations. ML algorithms can be applied to predict popular data and application patterns, which help improve various storage techniques, including tiered caching, prefetching, and resource provisioning. Adapting caching policy using online learning can have significant benefits: recent work [93] shows that using ML techniques to select between LRU and LFU replacement policies resulted in a significantly improved total cache hit rate under even smaller memory constraints. The key takeaway is that ML techniques are valuable for solving online optimization problems such as caching with the caveat that the primary knobs of control have to be orthogonal. We believe that ML can be applied with great success for other problems such as non-datapath server-side caches [36, 54, 58, 60, 70, 80, 83], distributed storage caches such as in hyper-converged systems, dynamic multitiered and hybrid storage systems [50, 64, 86, 94], and hybrid systems comprising DRAM and persistent memory.</li>
+<li>Intelligent storage devices within storage systems. Computing-enabled storage devices refer to storage devices with ample internal computing capability, typically also including some AI capabilities. On one hand, computing storage devices assume part of the storage-related computing functionality so that the running storage system is alleviated from excessive overheads. Therefore, the storage system can deliver improved performance. On the other hand, with more intelligent devices, researchers need to determine what level of intelligence is appropriate to offload to the device and propose techniques at the storage system level to achieve the best synergy.</li>
+</ul>
+<ol start="3">
+<li>Evolution of Storage Systems with Emerging New Hardware<br>
+Below are research challanges and opportunities related with byte-addressable NVM.</li>
+</ol>
+<ul>
+<li>Operating System and Application Development Support
+<ul>
+<li>Security and integrity: How to efficiently support encryption and low-latency access control at the granularity of memory accesses? How to avoid corruption of persistent data from malicious or buggy applications using lightweight mechanisms? Are language-level mechanisms appropriate or sufficient?</li>
+<li>Abstractions for persistent data: B-NVM can provide a single-level memory with a single namespace for both volatile and persistent data. What are the appropriate naming abstractions and required OS support? Are relative pointers the appropriate addressing mechanism? How should garbage collection be organized in this environment?</li>
+<li>Consistency and transaction support: Research is needed to transition the most efficient techniques into actual systems, and to build tools for building/migrating applications for direct memory access.</li>
+</ul>
+</li>
+<li>Distributed Shared NVM-Based Storage
+<ul>
+<li>Software support. A strong research effort is needed in identifying the mechanisms and abstractions necessary to support future distributed, shared B-NVM. The problems are challenging and solutions are necessary to meet the scalability, reliability, usability, correctness, and latency requirements of applications. Many of these issues (listed below) have been previously examined in the context of single-server B-NVM systems, while distributed versions of these problems have been studied in the context of traditional block storage and TCP/IP networks. However, the distributed version of these problems deals with a far larger design space than server-attached B-NVM, and the micro-second-level latencies of B-NVM and direct-access RDMA-like protocols changes the nature of the problem qualitatively, requiring vigorous new research to explore the design space effectively. Some of the issues needing new research and lightweight solutions in the distributed B-NVM context are as follows:
+<ul>
+<li>Transparent global naming: How should shared data be named, distributed, and accessed? What are the overheads for metadata management?</li>
+<li>Transaction management: How should transactions spread across multiple B-NVM hosts be orchestrated? How can RDMA-like protocols or atomics be exploited? What is the appropriate form of distributed logging?</li>
+<li>Reliability and availability: Whether replication or erasure coding be employed? How to support wearleveling across nodes?</li>
+<li>Consistency and coherence: What are the appropriate consistency models for balancing application requirements and performance?</li>
+<li>Crash resilience and durability: How does one handle failures of nodes holding TBs of B-NVM data?</li>
+<li>Metadata management: How does one handle the size and overheads of metadata management?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="post-footer">
         <a href="/data-storage-research-vision-2025/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/research/">research</a>,&nbsp;<a href="/tags/storage/">storage</a>,&nbsp;<a href="/tags/vision/">vision</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/research/">Research</a>,&nbsp;<a href="/tags/storage/">Storage</a>,&nbsp;<a href="/tags/vision/">Vision</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/measure-network-latency/">Measure Network Latency</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-22">2020-07-22</time></span></div><div class="content">Quite often, we need to know the network round-trip time (RTT) between two nodes and a fairly well known tool is ping. However, I found out the proper way to use the ping tool only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.
-By default, ping sends out a packet every second. The interval which ping uses to send out a packet can have a huge impact on the measured network latency.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-22">2020-07-22</time></span></div><div class="content"><p>Quite often, we need to know the network round-trip time (RTT) between two nodes
+and a fairly well known tool is ping. However, I found out the proper way to use the ping tool  only until today. Actually, I guess I should just use the netperf tool instead, to measure the network latency in the future.</p>
+<p>By default, ping sends out a packet every second.
+The interval which ping uses to send out a packet can have a huge impact
+on the measured network latency. We can use the -i option, to set the interval.
+Below are the RTT values I collected between two servers connected directly with
+a cable.</p></div><div class="post-footer">
         <a href="/measure-network-latency/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/tip/">tip</a>,&nbsp;<a href="/tags/network-latency/">network latency</a>,&nbsp;<a href="/tags/tech/">tech</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">Note</a>,&nbsp;<a href="/tags/tip/">Tip</a>,&nbsp;<a href="/tags/network-latency/">Network Latency</a>,&nbsp;<a href="/tags/tech/">Tech</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/shrd/">SHRD: Improving Spatial Locality in Flash Storage Accesses by Sequentializing in Host and Randomizing in Device</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-28">2020-06-28</time></span></div><div class="content">I really liked the paper. The idea is neat. The paper is also well written and the design and the new idea is clearly presented. A very good paper to read and learn from on how to write good papers.
-Summary The key idea is to convert random small writes into large sequential writes at the device driver. This reduces data fragmentation and also reduces request handling overhead for the SSD, as it can combine multiple small write requests into fewer large write requests.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-28">2020-06-28</time></span></div><div class="content"><p>I really liked the paper. The idea is neat. The paper is also well written and
+the design and the new idea is clearly presented. A very good paper to read and learn from
+on how to write good papers.</p>
+<h1 id="summary">Summary</h1>
+<p>The key idea is to convert random small writes into large sequential writes at the device driver.
+This reduces data fragmentation and also reduces request handling overhead for the SSD, as
+it can combine multiple small write requests into fewer large write requests.</p></div><div class="post-footer">
         <a href="/shrd/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/ssd/">SSD</a>,&nbsp;<a href="/tags/ftl/">FTL</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/ssd/">SSD</a>,&nbsp;<a href="/tags/ftl/">FTL</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/copysets/">Copysets: Reducing the Frequency of Data Loss in Cloud Storage</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content">Summary Copysets proposed another approach/perspective for data replication, than the traditional random replication. In random replication, N nodes are selected randomly from the cluster to store a data chunk. Random replication provides a strong protection against uncorrelated failures. For each individual chunk, since it can be stored randomly at N nodes in the cluster, it is quite resilient to data loss. However, when we consider all data chunks, any N node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content"><h1 id="summary">Summary</h1>
+<p>Copysets proposed another approach/perspective for data replication, than the traditional random replication.
+In random replication, <em>N</em> nodes are selected randomly from the cluster to store a data chunk.
+Random replication provides a strong protection against uncorrelated failures.
+For each individual chunk, since it can be stored randomly at N nodes in the cluster,
+it is quite resilient to data loss. However, when we consider all data chunks,
+any <em>N</em> node failure will almost lead to loss of some chunks, as long as these chunks happen to be replicated at these exact N nodes. For certain large scale
+deployments, they prefer to have much less frequent data loss and are willing
+to achieve that, even at the expense of larger amount of data loss during each data loss.</p></div><div class="post-footer">
         <a href="/copysets/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/storage/">storage</a>,&nbsp;<a href="/tags/replication/">replication</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/storage/">Storage</a>,&nbsp;<a href="/tags/replication/">Replication</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/33rd-birthday/">On my 33rd Birthday</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content">How time flies! I am 33 years old now and have lived in US for more than 10 years. I have also graduated from University of Utah for almost 5 years now. Wahoo! Each week passed very quickly. Now is the time to pause a little bit and reflect what has been achieved and what could be done better.
-Achievements Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them have been accepted yet.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-18">2020-06-18</time></span></div><div class="content"><p>How time flies! I am 33 years old now and have lived in US for more than 10 years.
+I have also graduated from University of Utah
+for almost 5 years now. Wahoo! Each week passed very quickly.
+Now is the time to pause a little bit and reflect what has been
+achieved and what could be done better.</p>
+<h1 id="achievements">Achievements</h1>
+<ul>
+<li>Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them
+have been accepted yet. The D3 paper gets very close to be accepted by ATC18.</li>
+<li>Mentored four interns. Really enjoyed working with some of them.</li>
+<li>Learned a few new things: AWS S3/Azure, Golang, AWS serverless, and Spark.</li>
+<li>Successful collaboration with a few faculties, include Haryadi Gunawi and Feng Yan.</li>
+<li>Submitted the greencard application, though still waiting for VISA for approval.</li>
+<li>Bought a house at Fremont, CA and moved in in February this year.</li>
+</ul>
+<h1 id="areas-to-improve">Areas to improve</h1>
+<ul>
+<li>Make a career plan and see where you want to go in the next ~5 years
+and work diligently toward the goal.</li>
+<li>Systematically build your knowledge about storage systems.
+Read more documents/source code of existing storage techniques and systems.
+Do more hand-on experiments, trying/implementing these techniques/algorithms.
+Learning on the way.</li>
+</ul></div><div class="post-footer">
         <a href="/33rd-birthday/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/reflection/">reflection</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ssd-evaluation-how/">How to Evaluate Research Ideas for SSDs</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-17">2020-06-17</time></span></div><div class="content">This blog lists tools/simulators/platforms people used to evaluate SSD researches.
-MQSim
-MQSIM FAST18, ATC19-Kim
-SSDSim SSDSim Microsoft Patch
-[ATC12][atc12]
-FEMU
-FEMU-fast18-short</div><div class="post-footer">
-        <a href="/ssd-evaluation-how/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ssd/">SSD</a></div></div>
-</article><ul class="pagination"><li class="page-item ">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/reflection/">Reflection</a></div></div>
+</article>
+<ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
@@ -178,8 +280,8 @@ FEMU-fast18-short</div><div class="post-footer">
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

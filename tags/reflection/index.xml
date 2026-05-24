@@ -1,17 +1,20 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>reflection - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/reflection/</link>
-        <description>reflection - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/reflection/" rel="self" type="application/rss+xml" /><item>
-    <title>On my 33rd Birthday</title>
-    <link>https://xinglin.github.io/33rd-birthday/</link>
-    <pubDate>Thu, 18 Jun 2020 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/33rd-birthday/</guid>
-    <description><![CDATA[How time flies! I am 33 years old now and have lived in US for more than 10 years. I have also graduated from University of Utah for almost 5 years now. Wahoo! Each week passed very quickly. Now is the time to pause a little bit and reflect what has been achieved and what could be done better.
-Achievements Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them have been accepted yet.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reflection on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/reflection/</link>
+    <description>Recent content in Reflection on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/reflection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On my 33rd Birthday</title>
+      <link>https://xinglin.github.io/33rd-birthday/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/33rd-birthday/</guid>
+      <description>&lt;p&gt;How time flies! I am 33 years old now and have lived in US for more than 10 years.&#xA;I have also graduated from University of Utah&#xA;for almost 5 years now. Wahoo! Each week passed very quickly.&#xA;Now is the time to pause a little bit and reflect what has been&#xA;achieved and what could be done better.&lt;/p&gt;&#xA;&lt;h1 id=&#34;achievements&#34;&gt;Achievements&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Worked on a few projects/papers and made a few submissions to FAST/ATC/HotStorage, though none of them&#xA;have been accepted yet. The D3 paper gets very close to be accepted by ATC18.&lt;/li&gt;&#xA;&lt;li&gt;Mentored four interns. Really enjoyed working with some of them.&lt;/li&gt;&#xA;&lt;li&gt;Learned a few new things: AWS S3/Azure, Golang, AWS serverless, and Spark.&lt;/li&gt;&#xA;&lt;li&gt;Successful collaboration with a few faculties, include Haryadi Gunawi and Feng Yan.&lt;/li&gt;&#xA;&lt;li&gt;Submitted the greencard application, though still waiting for VISA for approval.&lt;/li&gt;&#xA;&lt;li&gt;Bought a house at Fremont, CA and moved in in February this year.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;areas-to-improve&#34;&gt;Areas to improve&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Make a career plan and see where you want to go in the next ~5 years&#xA;and work diligently toward the goal.&lt;/li&gt;&#xA;&lt;li&gt;Systematically build your knowledge about storage systems.&#xA;Read more documents/source code of existing storage techniques and systems.&#xA;Do more hand-on experiments, trying/implementing these techniques/algorithms.&#xA;Learning on the way.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
 </rss>

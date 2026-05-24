@@ -1,18 +1,20 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>crash recovery - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/crash-recovery/</link>
-        <description>crash recovery - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/crash-recovery/" rel="self" type="application/rss+xml" /><item>
-    <title>Crash Recovery</title>
-    <link>https://xinglin.github.io/crash-recovery/</link>
-    <pubDate>Sat, 23 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/crash-recovery/</guid>
-    <description><![CDATA[The following content is selected from the Database Management Systems book, chapter 18.
-ARIES Three main principles lie behind the ARIES recovery algorithm:
-Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk. Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crash Recovery on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/crash-recovery/</link>
+    <description>Recent content in Crash Recovery on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/crash-recovery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crash Recovery</title>
+      <link>https://xinglin.github.io/crash-recovery/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/crash-recovery/</guid>
+      <description>&lt;p&gt;The following content is selected from the Database Management Systems book, chapter 18.&lt;/p&gt;&#xA;&lt;h1 id=&#34;aries&#34;&gt;ARIES&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Three main principles lie behind the ARIES recovery algorithm:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Write-Ahead Logging: Any change to a database object is first recorded in the log; the record in the log must be written to stable storage before the change to the database object is written to disk.&lt;/li&gt;&#xA;&lt;li&gt;Repeating History During Redo: On restart following a crash, ARIES retraces all actions of the DBMS before the crash and brings the system back to the exact state that it was in at the time of the crash. Then, it undoes the actions of transactions still active at the time of the crash. (effectively aborting them).&lt;/li&gt;&#xA;&lt;li&gt;Logging Changes During Undo: Changes mada to the database while undoing a transaction are logged to ensure such an action is not repeated in the event of repeated (failures causing) restarts.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Every log record is given a unique id called the log sequence number (LSN).&#xA;For recovery purposes, every page in the database contains the LSN of the most recent log record that describes a change to this page. This LSN is called the pageLSN.&#xA;Every log record has certain fields: prevLSN, transID, and type. The set of all log records for a given transaction is maintained as a linked list going back in time, using the prevLSN field; this list must be updated whenever a log record is added. The transID field is the id of the transaction generating the log record, and the type field obviously indicates the type of the log record.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

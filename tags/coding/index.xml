@@ -1,27 +1,27 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>coding - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/coding/</link>
-        <description>coding - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/coding/" rel="self" type="application/rss+xml" /><item>
-    <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
-    <link>https://xinglin.github.io/prefix-vs-postfix/</link>
-    <pubDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/prefix-vs-postfix/</guid>
-    <description><![CDATA[The ``C++ Primer&rsquo;&rsquo; book has a very interesting recommendation to use postfix operators, only when necessary (on page 148 for the 5th version).
-The authors shared the following in their book.
-The prefix version avoids unnecessary work. It increments the value and returns the incremented version. The postfix operator must store the original value so that it can return the unincremented value as its result.&quot;
-For ints and pointers, the compiler can optimize away this extra work.]]></description>
-</item>
-<item>
-    <title>Lines of Code for Various Software</title>
-    <link>https://xinglin.github.io/loc/</link>
-    <pubDate>Tue, 20 Nov 2018 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/loc/</guid>
-    <description><![CDATA[Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/coding/</link>
+    <description>Recent content in Coding on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Prefix Operators (&#43;&#43;i) vs. Postfix Operators (i&#43;&#43;)</title>
+      <link>https://xinglin.github.io/prefix-vs-postfix/</link>
+      <pubDate>Fri, 05 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/prefix-vs-postfix/</guid>
+      <description>&lt;p&gt;The ``&lt;strong&gt;C++ Primer&lt;/strong&gt;&amp;rsquo;&amp;rsquo; book has a very interesting recommendation&#xA;to use postfix operators, only when necessary (on page 148 for the 5th version).&lt;/p&gt;&#xA;&lt;p&gt;The authors shared the following in their book.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The prefix version avoids unnecessary work.&#xA;It increments the value and returns the incremented version.&#xA;The postfix operator must store the original value so that it&#xA;can return the unincremented value as its result.&amp;quot;&lt;/p&gt;&#xA;&lt;p&gt;For ints and pointers, the compiler can optimize away this extra work.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lines of Code for Various Software</title>
+      <link>https://xinglin.github.io/loc/</link>
+      <pubDate>Tue, 20 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/loc/</guid>
+      <description>&lt;p&gt;Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory. Both of them are in the order of 30,000 lines of code. I also looked at leveldb and rocksdb, which are key-value stores. rocksdb is derived from leveldb and has gained great popularity in recent years. While rocksdb focked from leveldb, as we can see, the number of lines of code in rocksdb is &amp;gt;10 times more than leveldb. Maybe, we should really consider rocksdb as a different key-value store. While key value stores are supposed to be more performant and provide simple APIs, it is interesting to see that rocksdb has grown to be even more complex (4 times more in lines of code) than an actual relational database: postgreSQL.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

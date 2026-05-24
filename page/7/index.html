@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.120.4">
+	<meta name="generator" content="Hugo 0.161.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Xing Lin" />
-<meta property="og:description" content="Hugo theme - LoveIt" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xinglin.github.io/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="og:site_name" content="Xing Lin" />
+        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Xing Lin">
+  <meta property="og:description" content="Hugo theme - LoveIt">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Xing Lin"/>
-<meta name="twitter:description" content="Hugo theme - LoveIt"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Xing Lin">
+  <meta name="twitter:description" content="Hugo theme - LoveIt">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -106,44 +108,259 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/reinvent2018-tidbits/">AWS re:Invent 2018 tidbits</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-07">2018-12-07</time></span></div><div class="content"><h1 id="amazon-rds-postgresql">Amazon RDS PostgreSQL</h1>
+<ul>
+<li>2 flavors.
+<ul>
+<li>Open-source PostgreSQL on top of EBS</li>
+<li>Aurora PostgreSQL on top of Aurora Storage (better performance)</li>
+</ul>
+</li>
+<li>Supports Postgre 9.6/10</li>
+<li>Aurora Postgres supports one RW master node and many read replicas. A read replica will be promoted to the master node when the original master node fails.</li>
+<li>Aurora Postgres supports fast clones. Only need to pay for the storage of changed data.</li>
+<li>Will support logical replication by introducing the logical decoding plugin which converts physical changes to SQL statements. The logical decoding plugin can also be used as the event source for publish/subscribe.</li>
+<li>Aurora Postgres bypasses filesystem page cache and manages its memory directly (more memory as the shared buffer). Aurora Postgres supports survivable cache: the shared buffer will survive postgres process crashes. This enable faster performance recovery.</li>
+</ul>
+<h1 id="s3-simple-storage-service">S3: Simple Storage Service</h1>
+<ul>
+<li>AWS S3 team: ~1000 engineers</li>
+<li>When a bucket is created, it will be assigned one initial partition. Each partition can support up to 3,500 PUTs or 5,500 GETs. This means you either get 3,500 PUTs and 0 GET tps or 0 PUTs and 5,500 GET tps.
+<ul>
+<li>50% PUT and 50% GET = (0.5 * 3,500) + (0.5 * 5,500) = 4,500 tps combined</li>
+<li>30% PUT and 70% GET = (0.3 * 3,500) + (0.7 * 5,500) = 4,900 tps combined.</li>
+</ul>
+</li>
+<li>In the backend, they detect access load on a partition. When a partition becomes hot, they will split the partition based on object prefix. They do the re-partition only when the load is consistently high for at least half an hour. They do not support auto scale-down for now.</li>
+</ul>
+<h1 id="ml-frameworks">ML frameworks</h1>
+<ul>
+<li>MXnet: efficient distributed training; portability; efficient inference; inference on edge</li>
+<li>Gluon: easy coding; easy debugging; toolkits for rapid prototyping</li>
+<li>SageMaker: end-2-end platform; zero setup; distributed training; AB/testing; scalable endpoints; automatic model tuning</li>
+</ul>
+<h1 id="dynamodb-deep-dive">DynamoDB Deep Dive</h1>
+<ul>
+<li>why choose NoSQL?
+<ul>
+<li>SQL: optimized for storage
+<ul>
+<li>Normalized/relational</li>
+<li>Ad hoc queries</li>
+<li>Scale vertically</li>
+<li>Good for OLAP</li>
+</ul>
+</li>
+<li>NoSQL: optimized for compute
+<ul>
+<li>Denormalized/hierarchical</li>
+<li>Instantiated views</li>
+<li>Scale horizontally</li>
+<li>Built for OLTP at scale</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Partition key
+<ul>
+<li>Large number of distinct values</li>
+<li>Items are uniformly requested and randomly distributed</li>
+</ul>
+</li>
+<li>Sort key
+<ul>
+<li>Efficient/selective patterns</li>
+<li>Leverage range queries</li>
+</ul>
+</li>
+<li>1 application service = 1 table
+<ul>
+<li>Reduce round trips</li>
+<li>Simplify access patterns</li>
+<li>Inside Amazon, they have managed to support ~40 different queries with one table.</li>
+</ul>
+</li>
+</ul>
+<h1 id="lambdaserverless">Lambda/Serverless</h1>
+<ul>
+<li>One function per one microVM</li>
+<li>No orchestration code in a Lambda function. Retry/error handling should be done using Step functions.</li>
+<li>Should avoid monorepo for functions: one repo per function. This simplifies permissions and keeps each function small (minimize dependency for each function and use less memory).</li>
+<li>Four stages in the function lifecycle
+<ol>
+<li>Download your code (cold start)</li>
+<li>Start new execution environment (cold start)</li>
+<li>Bootstrap the runtime (Partial cold start)</li>
+<li>Start your code (Warm start)</li>
+</ol>
+</li>
+<li>Use AWS X-Ray for instrumenting Lambda functions</li>
+<li>CPU is proportional to memory size: increase the memory size will make a function run much faster and in some cases, could save the cost as well.
+<ul>
+<li>&lt; 1.8 GB: single core</li>
+<li>
+<blockquote>
+<p>1.8 GB: 2 cores</p></div><div class="post-footer">
+        <a href="/reinvent2018-tidbits/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">Conference</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/reinvent2018/">AWS re:Invent 2018</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-03">2018-12-03</time></span></div><div class="content">I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-03">2018-12-03</time></span></div><div class="content"><p>I attended the AWS re:Invent at Las Vegas the week after Thanksgiving. It was a great week there, learning AWS technologies while also having fun. The keynotes given by Andy Jassy and Werner Vogels were always exciting: they covered important new services that were launched during this event. Other sessions shared best practices in using AWS services and infrastructure. They also had music bands playing live music at the site and provided great lunches and snacks during the morning and afternoon breaks. Besides, we can come and pick up a swag every day. This year, more than 50,000 people attended the conference and you can see lots of people walking around. This is by far the largest conference I have ever attended and I was amazed by how well they managed to organize it.</p></div><div class="post-footer">
         <a href="/reinvent2018/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">conference</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">Conference</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/postgresql/">Systems and services built on top of postgreSQL</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-02">2018-12-02</time></span></div><div class="content">It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.
-Systems/services Type AWS Redshift data warehousing TimeScale time series database openGauss/GaussDB distributed relational db, by Huawei AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-12-02">2018-12-02</time></span></div><div class="content"><p>It is surprised to come across several systems/services that happen to built on top of postgreSQL. Here is a quick summary of these.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Systems/services</th>
+          <th style="text-align: center">Type</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">AWS Redshift</td>
+          <td style="text-align: center">data warehousing</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">TimeScale</td>
+          <td style="text-align: center">time series database</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">openGauss/GaussDB</td>
+          <td style="text-align: center">distributed relational db, by Huawei</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>
+<p>AWS Redshift: Redshift is a data warehousing service offered by AWS. It is built on postgreSQL, with a new columnar storage engine. The use of columnar storage is expected to provide better query performance and better compression.</p></div><div class="post-footer">
         <a href="/postgresql/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">engineering</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/engineering/">Engineering</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/loc/">Lines of Code for Various Software</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-11-20">2018-11-20</time></span></div><div class="content">Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-11-20">2018-11-20</time></span></div><div class="content"><p>Just out of curiosity, I wanted to know how many lines of code for various software that I am interested in (mostly, file systems and key-value stores). ext4 is the newer version for ext2, mainly added with the journaling mechanism to provide data consistency for crashes. The number of codes for ext4 is 5 times more than ext2. f2fs is a new file system that is optimized for flash devices while nova is a new file system that is optimized for persistent memory. Both of them are in the order of 30,000 lines of code. I also looked at leveldb and rocksdb, which are key-value stores. rocksdb is derived from leveldb and has gained great popularity in recent years. While rocksdb focked from leveldb, as we can see, the number of lines of code in rocksdb is &gt;10 times more than leveldb. Maybe, we should really consider rocksdb as a different key-value store. While key value stores are supposed to be more performant and provide simple APIs, it is interesting to see that rocksdb has grown to be even more complex (4 times more in lines of code) than an actual relational database: postgreSQL.</p></div><div class="post-footer">
         <a href="/loc/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/coding/">coding</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/coding/">Coding</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/spdk-optane-zssd/">SPDK on Intel Optane and Samsung ZSSD</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-05-10">2018-05-10</time></span></div><div class="content">Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-05-10">2018-05-10</time></span></div><div class="content"><p>Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.</p>
+<h1 id="intel-optane-ssd">Intel Optane SSD</h1>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>SPDK</th>
+          <th>/dev/nvme1n1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IOPS</td>
+          <td>150 K</td>
+          <td>66.1 K</td>
+      </tr>
+      <tr>
+          <td>slat</td>
+          <td>0.13 usec</td>
+          <td>2.8 usec</td>
+      </tr>
+      <tr>
+          <td>clat</td>
+          <td>6.2 usec</td>
+          <td>11.4 usec</td>
+      </tr>
+      <tr>
+          <td>lat</td>
+          <td>6.35 usec</td>
+          <td>14.32 usec</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="samsung-zssd">Samsung ZSSD</h1>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>SPDK</th>
+          <th>/dev/nvme0n1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IOPS</td>
+          <td>73.9 K</td>
+          <td>46.2 K</td>
+      </tr>
+      <tr>
+          <td>slat</td>
+          <td>0.14 usec</td>
+          <td>3.2 usec</td>
+      </tr>
+      <tr>
+          <td>clat</td>
+          <td>13.0 usec</td>
+          <td>17.4 usec</td>
+      </tr>
+      <tr>
+          <td>lat</td>
+          <td>13.12 usec</td>
+          <td>20.73 usec</td>
+      </tr>
+  </tbody>
+</table>
+<p>slat: average submission latency<br>
+clat: the time between submission to the kernel and when the IO is complete<br>
+lat: total IO latency</p></div><div class="post-footer">
         <a href="/spdk-optane-zssd/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/spdk/">SPDK</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/hotcrp-ubuntu14/">Install hotCRP at a Ubuntu 14 Machine</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-12">2018-04-12</time></span></div><div class="content">Update packages
-sudo apt-get update Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.
-Install the software-properties-common package to get the add-apt-repository command.
-sudo apt-get install software-properties-common Add php7 ppa and do an update
-sudo add-apt-repository ppa:ondrej/php	sudo apt-get update Install php7
-sudo apt-get install php7.2 php7.2-mysql Install other required packages
-sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail Get hotCRP source code</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-12">2018-04-12</time></span></div><div class="content"><ol start="0">
+<li>
+<p>Update packages</p>
+<pre><code> sudo apt-get update
+</code></pre>
+</li>
+<li>
+<p>Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.</p>
+<ol>
+<li>
+<p>Install the <code>software-properties-common</code> package to get the <code>add-apt-repository</code> command.</p>
+<pre><code> sudo apt-get install software-properties-common
+</code></pre>
+</li>
+<li>
+<p>Add php7 ppa and do an update</p>
+<pre><code> sudo add-apt-repository ppa:ondrej/php	
+ sudo apt-get update
+</code></pre>
+</li>
+<li>
+<p>Install php7</p>
+<pre><code> sudo apt-get install php7.2 php7.2-mysql
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Install other required packages</p>
+<pre><code> sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail
+</code></pre>
+</li>
+<li>
+<p>Get hotCRP source code</p></div><div class="post-footer">
         <a href="/hotcrp-ubuntu14/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hotcrp/">hotCRP</a>,&nbsp;<a href="/tags/note/">note</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/atc18-best-practice/">Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-11">2018-04-11</time></span></div><div class="content">I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions. To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.</div><div class="post-footer">
-        <a href="/atc18-best-practice/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/conference/">conference</a></div></div>
-</article><ul class="pagination"><li class="page-item ">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hotcrp/">HotCRP</a>,&nbsp;<a href="/tags/note/">Note</a></div></div>
+</article>
+<ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
@@ -171,8 +388,8 @@ sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail Get hot
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

@@ -4,18 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Trade-off Between Accuracy and Runtime Overhead - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Trade-off Between Accuracy and Runtime Overhead" />
-<meta property="og:description" content="During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://xinglin.github.io/accurate-approximate-tradeoff/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2014-11-26T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-28T11:36:16-07:00" /><meta property="og:site_name" content="Xing Lin" />
+        <title>Trade-off Between Accuracy and Runtime Overhead - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/accurate-approximate-tradeoff/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Trade-off Between Accuracy and Runtime Overhead">
+  <meta property="og:description" content="During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI ‘14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime. So, in their work, they tried to estimate it, with a goal to reduce memory demand and runtime. They got very impressive results. Together with other papers, I suddenly realized that it is actually quite common in compute science community, to take this approach: when it is too expensive to get the accurate result, it is usually a good time to think about how to approximate it with much lower overhead.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2014-11-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-28T11:36:16-07:00">
+    <meta property="article:tag" content="Methodology">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Trade-off Between Accuracy and Runtime Overhead"/>
-<meta name="twitter:description" content="During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI &lsquo;14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime."/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Trade-off Between Accuracy and Runtime Overhead">
+  <meta name="twitter:description" content="During the weekly technical forum within the NetApp ATG group, a team member presented the trip report for OSDI ‘14 this year. In his talk, he mentioned a paper that pushed me to think more in this line. The paper is about how to estimate the working set of a workload, using less memory and runs much faster. The only related work that dealt with the same problem was proposed more than 10 years ago and in that work, the authors tried to get the exact working set size, with a very high demand for memory and runtime. So, in their work, they tried to estimate it, with a goal to reduce memory demand and runtime. They got very impressive results. Together with other papers, I suddenly realized that it is actually quite common in compute science community, to take this approach: when it is too expensive to get the accurate result, it is usually a good time to think about how to approximate it with much lower overhead.">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -162,7 +166,7 @@ for an application.</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/methodology/">methodology</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/methodology/">Methodology</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -173,8 +177,8 @@ for an application.</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

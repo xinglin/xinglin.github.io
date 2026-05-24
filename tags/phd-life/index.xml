@@ -1,24 +1,27 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>PhD life - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/phd-life/</link>
-        <description>PhD life - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 22 Jul 2015 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/phd-life/" rel="self" type="application/rss+xml" /><item>
-    <title>Reflection After Dissertation Defense</title>
-    <link>https://xinglin.github.io/dissertation-defense/</link>
-    <pubDate>Wed, 22 Jul 2015 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/dissertation-defense/</guid>
-    <description><![CDATA[After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers.]]></description>
-</item>
-<item>
-    <title>Proposal Defense</title>
-    <link>https://xinglin.github.io/proposal-defense/</link>
-    <pubDate>Fri, 19 Dec 2014 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/proposal-defense/</guid>
-    <description><![CDATA[I did my PhD proposal denfense yesterday and now I am one more step closer to finish it. It took a week to just prepare the talk. The talk was long and have 45 slides. However, there are only about 8 slides for each project, since there are 4 projects. The talk lasts about 45 minutes. Because it is so long, everytime I practiced it, I almost lost my voice after I finished.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phd Life on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/phd-life/</link>
+    <description>Recent content in Phd Life on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/phd-life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflection After Dissertation Defense</title>
+      <link>https://xinglin.github.io/dissertation-defense/</link>
+      <pubDate>Wed, 22 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/dissertation-defense/</guid>
+      <description>&lt;p&gt;After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers. The journey would be much challenging if I did it alone. Thank you all!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Proposal Defense</title>
+      <link>https://xinglin.github.io/proposal-defense/</link>
+      <pubDate>Fri, 19 Dec 2014 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/proposal-defense/</guid>
+      <description>&lt;p&gt;I did my PhD proposal denfense yesterday and now I am one more step closer to finish it.&#xA;It took a week to just prepare the talk.&#xA;The talk was long and have 45 slides. However, there are only about 8 slides for each project,&#xA;since there are 4 projects. The talk lasts about 45 minutes.&#xA;Because it is so long, everytime I practiced it, I almost lost my voice after I finished.&#xA;We used a new system that can connect skype and regular phone and we can hear everyone clearly.&#xA;However, background noise came from time to time and this interrupted my talk several times (quite&#xA;annoying).&#xA;During the talk, members in my committees asked many questions.&#xA;This is probably the best opportunity for them to ask whatever questions they have.&#xA;And I am glad they did that. For some questions, I did not think I answered them well.&#xA;The good thing is that most of work was done in collaboration with one of the committee&#xA;members and they joined in, in helping me to answer when my answer was not satisfying or convincing.I should improve in this aspect.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.120.4">
+	<meta name="generator" content="Hugo 0.161.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Xing Lin" />
-<meta property="og:description" content="Hugo theme - LoveIt" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xinglin.github.io/" /><meta property="og:image" content="https://xinglin.github.io/logo.png"/><meta property="og:site_name" content="Xing Lin" />
+        <title>Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/">
+  <meta property="og:site_name" content="Xing Lin">
+  <meta property="og:title" content="Xing Lin">
+  <meta property="og:description" content="Hugo theme - LoveIt">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://xinglin.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Xing Lin"/>
-<meta name="twitter:description" content="Hugo theme - LoveIt"/>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
+  <meta name="twitter:title" content="Xing Lin">
+  <meta name="twitter:description" content="Hugo theme - LoveIt">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -106,43 +108,250 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/fdb/">FoundationDB: A Distributed Unbundled Transactional Key Value Store</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2026-05-24">2026-05-24</time></span></div><div class="content"><blockquote>
+<p>Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB</p>
+</blockquote>
+<p>Transaction processing</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Optimistic concurrency control + MVCC: 2.4.1 A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any
+</span></span><span class="line"><span class="cl">previously issued transaction commit version, and this read version
+</span></span><span class="line"><span class="cl">is sent back to the client. Then the client may issue multiple reads
+</span></span><span class="line"><span class="cl">to StorageServers and obtain values at that specific read version.
+</span></span><span class="line"><span class="cl">Client writes are buffered locally without contacting the cluster.
+</span></span><span class="line"><span class="cl">At commit time, the client sends the transaction data, including
+</span></span><span class="line"><span class="cl">the read and write sets (i.e., key ranges), to one of the Proxies
+</span></span><span class="line"><span class="cl">and waits for a commit or abort response from the Proxy. If the
+</span></span><span class="line"><span class="cl">transaction cannot commit, the client may choose to restart the
+</span></span><span class="line"><span class="cl">transaction from the beginning again.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">A Proxy commits a client transaction in three steps. First, the
+</span></span><span class="line"><span class="cl">Proxy contacts the Sequencer to obtain a commit version that is
+</span></span><span class="line"><span class="cl">larger than any existing read versions or commit versions. The
+</span></span><span class="line"><span class="cl">Sequencer chooses the commit version by advancing it at a rate of
+</span></span><span class="line"><span class="cl">one million versions per second. Then, the Proxy sends the transac-
+</span></span><span class="line"><span class="cl">tion information to range-partitioned Resolvers, which implement
+</span></span><span class="line"><span class="cl">FDB’s optimistic concurrency control by checking for read-write
+</span></span><span class="line"><span class="cl">conflicts. If all Resolvers return with no conflict, the transaction
+</span></span><span class="line"><span class="cl">can proceed to the final commit stage. Otherwise, the Proxy marks
+</span></span><span class="line"><span class="cl">the transaction as aborted. Finally, committed transactions are sent
+</span></span><span class="line"><span class="cl">to a set of LogServers for persistence. A transaction is consid-
+</span></span><span class="line"><span class="cl">ered committed after all designated LogServers have replied to the
+</span></span><span class="line"><span class="cl">Proxy, which reports the committed version to the Sequencer (to
+</span></span><span class="line"><span class="cl">ensure that later transactions’ read versions are after this commit)
+</span></span><span class="line"><span class="cl">and then replies to the client. At the same time, StorageServers
+</span></span><span class="line"><span class="cl">continuously pull mutation logs from LogServers and apply com-
+</span></span><span class="line"><span class="cl">mitted updates to disks.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Divide the key space into ranges. key ranges are assigned/partitioned among resolvers. 
+</span></span><span class="line"><span class="cl">For each key range, resolver stores its last commit version. 
+</span></span><span class="line"><span class="cl">For a pending transaction, get key ranges for each read key. 
+</span></span><span class="line"><span class="cl">check against the last commit version for each key range. 
+</span></span><span class="line"><span class="cl">if the read version is smaller than any of the last commit version of any read key range, we have a read-write conflict (read value can be stale). mark this transaction as failed. 
+</span></span><span class="line"><span class="cl">Otherwise, this transaction can be committed. 
+</span></span><span class="line"><span class="cl">update the last commit version of that key range to the commit version of the current transaction.  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"> <span class="n">At</span> <span class="mi">1</span> <span class="n">million</span> <span class="n">versions</span> <span class="n">per</span> <span class="n">sec</span><span class="p">,</span> <span class="n">using</span> <span class="n">a</span> <span class="n">signed</span> <span class="n">int64</span><span class="p">,</span> <span class="n">we</span> <span class="n">can</span> <span class="n">support</span> <span class="o">~</span><span class="mi">300</span><span class="p">,</span><span class="mi">000</span> <span class="n">years</span><span class="o">.</span> <span class="n">When</span> <span class="n">we</span> <span class="n">have</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">1</span> <span class="n">millions</span> <span class="n">transactions</span> <span class="n">per</span> <span class="n">sec</span><span class="p">,</span> <span class="n">proxy</span> <span class="n">uses</span> <span class="n">batches</span><span class="p">:</span> <span class="n">assign</span> <span class="n">the</span> <span class="n">same</span> <span class="n">transaction</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">a</span> <span class="n">batch</span> <span class="n">of</span> <span class="n">transactions</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Transaction</span> <span class="n">batching</span><span class="o">.</span> <span class="n">To</span> <span class="n">amortize</span> <span class="n">the</span> <span class="n">cost</span> <span class="n">of</span> <span class="n">committing</span> <span class="n">transactions</span><span class="p">,</span> <span class="n">the</span> <span class="n">Proxy</span> <span class="n">groups</span> <span class="n">multiple</span> <span class="n">transactions</span> <span class="n">received</span> <span class="n">from</span> <span class="n">clients</span>
+</span></span><span class="line"><span class="cl"><span class="n">into</span> <span class="n">one</span> <span class="n">batch</span><span class="p">,</span> <span class="n">asks</span> <span class="k">for</span> <span class="n">a</span> <span class="n">single</span> <span class="n">commit</span> <span class="n">version</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="ow">and</span> <span class="n">sends</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">to</span> <span class="n">Resolvers</span> <span class="k">for</span> <span class="n">conflict</span> <span class="n">detection</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">resolver</span> <span class="n">evaluates</span> <span class="n">each</span> <span class="n">transaction</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">one</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">strict</span> <span class="n">order</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl"><span class="n">If</span> <span class="n">transaction</span> <span class="n">B</span> <span class="n">after</span> <span class="n">A</span> <span class="p">(</span><span class="n">both</span> <span class="n">from</span> <span class="n">the</span> <span class="n">same</span> <span class="n">batch</span><span class="p">)</span> <span class="n">has</span> <span class="n">a</span> <span class="n">conflict</span> <span class="n">with</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="n">will</span> <span class="n">be</span> <span class="n">marked</span> <span class="n">as</span> <span class="n">failed</span> <span class="n">transaction</span><span class="o">.</span>  
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">Proxy</span> <span class="n">then</span> <span class="n">writes</span> <span class="n">committed</span> <span class="n">transactions</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">batch</span> <span class="n">to</span> <span class="n">LogServers</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">The</span> <span class="n">transaction</span> <span class="n">batching</span> <span class="n">reduces</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">calls</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">a</span>
+</span></span><span class="line"><span class="cl"><span class="n">commit</span> <span class="n">version</span> <span class="n">from</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">Proxies</span> <span class="n">to</span> <span class="n">commit</span>
+</span></span><span class="line"><span class="cl"><span class="n">tens</span> <span class="n">of</span> <span class="n">thousands</span> <span class="n">of</span> <span class="n">transactions</span> <span class="n">per</span> <span class="n">second</span> <span class="n">without</span> <span class="n">significantly</span>
+</span></span><span class="line"><span class="cl"><span class="n">impacting</span> <span class="n">the</span> <span class="n">Sequencer</span><span class="err">’</span><span class="n">s</span> <span class="n">performance</span><span class="o">.</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">the</span> <span class="n">batch</span><span class="o">-</span>
+</span></span><span class="line"><span class="cl"><span class="n">ing</span> <span class="n">degree</span> <span class="n">is</span> <span class="n">adjusted</span> <span class="n">dynamically</span><span class="p">,</span> <span class="n">shrinking</span> <span class="n">when</span> <span class="n">the</span> <span class="n">system</span> <span class="n">is</span>
+</span></span><span class="line"><span class="cl"><span class="n">lightly</span> <span class="n">loaded</span> <span class="n">to</span> <span class="n">improve</span> <span class="n">commit</span> <span class="n">latency</span><span class="p">,</span> <span class="ow">and</span> <span class="n">increasing</span> <span class="n">when</span> <span class="n">the</span>
+</span></span><span class="line"><span class="cl"><span class="n">system</span> <span class="n">is</span> <span class="n">busy</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">sustain</span> <span class="n">high</span> <span class="n">commit</span> <span class="n">throughput</span><span class="o">.</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">In the transaction management system of FDB, we handle all failures through the
+</span></span><span class="line"><span class="cl">recovery path: instead of fixing all possible failure scenarios, the transaction system proactively shuts down when it
+</span></span><span class="line"><span class="cl">detects a failure. As a result, all failure handling is reduced
+</span></span><span class="line"><span class="cl">to a single recovery operation, which becomes a common
+</span></span><span class="line"><span class="cl">and well-tested code path. Such error handling strategy is
+</span></span><span class="line"><span class="cl">desirable as long as the recovery is quick, and pays dividends
+</span></span><span class="line"><span class="cl">by simplifying the normal transaction processing.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="simulation-testing">Simulation Testing</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- Flow: the underlying runtime engine can be swapped with a simulated implementation from a real implementation. 
+</span></span><span class="line"><span class="cl">- Everything runs in a single thread, with the seed determines the code path. With different seed values, different executions (disk IO/packets delays, etc) will happen. Virtual time. can jump directly to next timestamp.
+</span></span><span class="line"><span class="cl">- Buggify MACRO: developers can add buggy cases into source code and it will be triggered probabilistically. 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>5 sec MVCC transaction window: every transaction has to complete in 5 secs. Main reason is then resolver only need to keey the most recent 5-sec updates in memory to detect conflicts among trasactions.</p></div><div class="post-footer">
+        <a href="/fdb/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/kv/">KV</a>,&nbsp;<a href="/tags/2021/">2021</a>,&nbsp;<a href="/tags/sigmod/">SIGMOD</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/namenoderpctimebreakdown/">HDFS Namenode RPC Request Execution Time Breakdown</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-11-29">2023-11-29</time></span></div><div class="content">1 2 3 ----- enqueueTime queueingTime Processing/ResponseTime/HandlerTime |50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response) ----- \-&gt; pendingConnections &lt;- Reader2 A main listener thread is accepting new connections from clients and put connections into pendingConnections queue of a Reader thread. A Reader thread detects any ready connection, reads the request and puts the call into CallQueue. This put() operation is blocking and is accounted as enqueueTime.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-11-29">2023-11-29</time></span></div><div class="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> -----                                                enqueueTime  queueingTime      Processing/ResponseTime/HandlerTime 
+</span></span><span class="line"><span class="cl">|50090| &lt;- Listener --&gt; pendingConnections &lt;- Reader1 -----------&gt; CallQueue &lt;----- handler (processes and sends response)
+</span></span><span class="line"><span class="cl"> -----              \-&gt; pendingConnections &lt;- Reader2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>A main listener thread is accepting new connections from clients and
+put connections into pendingConnections queue of a Reader thread.
+A Reader thread detects any ready connection, reads the request and puts
+the call into CallQueue. This put() operation is blocking and is accounted as
+enqueueTime. The time a call stays in CallQueue is queueingTime.
+When a handler is available, it will pick a call from CallQueue and process the
+call, from which we can derive the processing/response/handlerTime.</p></div><div class="post-footer">
         <a href="/namenoderpctimebreakdown/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/sourcecode/">sourcecode</a>,&nbsp;<a href="/tags/hdfs/">HDFS</a>,&nbsp;<a href="/tags/hadoop/">Hadoop</a>,&nbsp;<a href="/tags/note/">note</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/sourcecode/">Sourcecode</a>,&nbsp;<a href="/tags/hdfs/">HDFS</a>,&nbsp;<a href="/tags/hadoop/">Hadoop</a>,&nbsp;<a href="/tags/note/">Note</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/java-executorservice/">Java ExecutorService</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-03">2023-07-03</time></span></div><div class="content">Recently, I was working on HDFS-17030 and used ExecutorService for multi-threading execution. We hit a non-intuitive `bug` of how JVM/garbage collector works. The issue is as following.
-We created an executorService with 1 core thread in a class. We did not set allowCoreThreadTimeOut to true (default is false). So, that core thread will be kept running, even when the main thread exits! Then, the JVM process won&rsquo;t exit, because there is still one thread running!</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-03">2023-07-03</time></span></div><div class="content"><p>Recently, I was working on HDFS-17030 and used ExecutorService for multi-threading
+execution. We hit a non-intuitive `bug` of how JVM/garbage collector
+works. The issue is as following.</p>
+<p>We created an executorService with 1 core thread in a class. We did not
+set <em>allowCoreThreadTimeOut</em> to true (default is false). So,
+that core thread will be kept running, even when the main thread exits!
+Then, the JVM process won&rsquo;t exit, because there is still one thread running!
+Even when we shut down the executorService in <em>.close()</em> method of that class,
+the same issue persists. The issue is <em>.close()</em> method of a Closable
+object is called by Java garbage collector <em>only</em> when it is reclaiming
+that object. This does not happen immediately when there is
+no reference to an object. After an object becomes orphan (no
+more reference to it), it will be added to a queue. The garbage collector
+will look into the queue and determine which objects to reclaim
+based on its own algorithm. It is undeterministic/out of control from
+programmers on when the garbage collector will reclaim an object.</p></div><div class="post-footer">
         <a href="/java-executorservice/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tech/">tech</a>,&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/multi-threading/">Multi-threading</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tech/">Tech</a>,&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/multi-threading/">Multi-Threading</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/deltalake/">Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-08-12">2022-08-12</time></span></div><div class="content">Read/write performance for cloud object store.
-Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.
-The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-08-12">2022-08-12</time></span></div><div class="content"><p>Read/write performance for cloud object store.</p>
+<blockquote>
+<p>Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.</p>
+</blockquote>
+<blockquote>
+<p>The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.</p></div><div class="post-footer">
         <a href="/deltalake/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/cloud-storage/">cloud storage</a>,&nbsp;<a href="/tags/delta-lake/">delta lake</a>,&nbsp;<a href="/tags/acid/">ACID</a>,&nbsp;<a href="/tags/transaction/">transaction</a>,&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/big-data/">big data</a>,&nbsp;<a href="/tags/databrick/">databrick</a>,&nbsp;<a href="/tags/vldb/">vldb</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/cloud-storage/">Cloud Storage</a>,&nbsp;<a href="/tags/delta-lake/">Delta Lake</a>,&nbsp;<a href="/tags/acid/">Acid</a>,&nbsp;<a href="/tags/transaction/">Transaction</a>,&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/big-data/">Big Data</a>,&nbsp;<a href="/tags/databrick/">Databrick</a>,&nbsp;<a href="/tags/vldb/">Vldb</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/cachelib/">The CacheLib Caching Engine: Design and Experiences at Scale</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-07-29">2022-07-29</time></span></div><div class="content">CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.
-CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.
-All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-07-29">2022-07-29</time></span></div><div class="content"><blockquote>
+<p>CacheLib is a general-purpose caching engine, designed based on experiences with a range of caching use cases at Facebook, that facilitates the easy development and maintenance of caches.</p>
+</blockquote>
+<blockquote>
+<p>CacheLib was first deployed at Facebook in 2017 and today powers over 70 services including CDN, storage, and application-data caches.</p>
+</blockquote>
+<blockquote>
+<p>All of these systems process millions of queries per second, cache working sets large enough to require using both flash and DRAM for caching, and must tolerate frequent restarts due to application updates, which are common in the Facebook production environment.</p></div><div class="post-footer">
         <a href="/cachelib/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/facebook/">Facebook</a>,&nbsp;<a href="/tags/caching/">caching</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/facebook/">Facebook</a>,&nbsp;<a href="/tags/caching/">Caching</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/dynamodb/">Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-07-16">2022-07-16</time></span></div><div class="content">Hundreds of thousands of customers rely on DynamoDB for its fundamental properties
-In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.
-For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-07-16">2022-07-16</time></span></div><div class="content"><blockquote>
+<p>Hundreds of thousands of customers rely on DynamoDB for its fundamental properties</p>
+</blockquote>
+<blockquote>
+<p>In 2021, during the 66-hour Amazon Prime Day shopping event, Amazon systems - including Alexa, the Amazon.com sites, and Amazon fulfillment centers, made trillions of API calls to DynamoDB, peaking at 89.2 million requests per second, while experiencing high availability with single-digit millisecond performance.</p>
+</blockquote>
+<blockquote>
+<p>For DynamoDB customers, consistent performance at any scale is often more important than median request service times because unexpectedly high latency requests can amplify through higher layers of applications that depend on DynamoDB and lead to a bad customer experience.</p></div><div class="post-footer">
         <a href="/dynamodb/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">paper</a>,&nbsp;<a href="/tags/nosql/">NoSQL</a>,&nbsp;<a href="/tags/aws/">AWS</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/high-output-management/">Book Review: High Output Management</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-13">2021-06-13</time></span></div><div class="content">I finished reading Andrew Grove&rsquo;s book on ``High Output Management&rsquo;&rsquo; and really liked it, especially when reading the second half. It explains a few concepts, such as how a person&rsquo;s needs may change and what is controlling a person&rsquo;s behavior. It also contains quite a few practical advices on how to handle issues that could happen in a workplace. I highly recommend everyone to take a look at this book.</div><div class="post-footer">
-        <a href="/high-output-management/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/book-review/">book review</a></div></div>
-</article><ul class="pagination"><li class="page-item active">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/nosql/">NoSQL</a>,&nbsp;<a href="/tags/aws/">AWS</a></div></div>
+</article>
+<ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
@@ -162,8 +371,8 @@ For DynamoDB customers, consistent performance at any scale is often more import
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.161.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Xing Lin</a></span></div>
         </div>
     </footer></div>
 

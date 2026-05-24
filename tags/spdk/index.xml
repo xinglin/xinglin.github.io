@@ -1,26 +1,27 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>SPDK - Tag - Xing Lin</title>
-        <link>https://xinglin.github.io/tags/spdk/</link>
-        <description>SPDK - Tag - Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>linxingnku@gmail.com (Xing Lin)</managingEditor>
-            <webMaster>linxingnku@gmail.com (Xing Lin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 10 May 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/tags/spdk/" rel="self" type="application/rss+xml" /><item>
-    <title>SPDK on Intel Optane and Samsung ZSSD</title>
-    <link>https://xinglin.github.io/spdk-optane-zssd/</link>
-    <pubDate>Thu, 10 May 2018 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/spdk-optane-zssd/</guid>
-    <description><![CDATA[Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.
-Intel Optane SSD Metric SPDK /dev/nvme1n1 IOPS 150 K 66.1 K slat 0.13 usec 2.8 usec clat 6.2 usec 11.4 usec lat 6.35 usec 14.]]></description>
-</item>
-<item>
-    <title>SPDK on Samsung 960 EVO NVMe SSD</title>
-    <link>https://xinglin.github.io/spdk-samsung-960-evo/</link>
-    <pubDate>Fri, 01 Dec 2017 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/spdk-samsung-960-evo/</guid>
-    <description><![CDATA[Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD. I was thinking that using SPDK might lead to better performance, than through traditional block device interface. However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.
-Metric SPDK /dev/nvme0n1 IOPS 12.8 K 11.6 K slat 0.18 usec &ndash; clat 77.]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPDK on Xing Lin</title>
+    <link>https://xinglin.github.io/tags/spdk/</link>
+    <description>Recent content in SPDK on Xing Lin</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 28 May 2022 11:36:16 -0700</lastBuildDate>
+    <atom:link href="https://xinglin.github.io/tags/spdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SPDK on Intel Optane and Samsung ZSSD</title>
+      <link>https://xinglin.github.io/spdk-optane-zssd/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/spdk-optane-zssd/</guid>
+      <description>&lt;p&gt;Finally got some time to test out Intel Optane SSD and Samsung ZSSD with SPDK. Once again, I compared performance numbers from SPDK with Linux block device. Here are some numbers. The experiments were run in a Ubuntu14.04 server and we tested 4KiB random read performance.&lt;/p&gt;&#xA;&lt;h1 id=&#34;intel-optane-ssd&#34;&gt;Intel Optane SSD&lt;/h1&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Metric&lt;/th&gt;&#xA;          &lt;th&gt;SPDK&lt;/th&gt;&#xA;          &lt;th&gt;/dev/nvme1n1&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;IOPS&lt;/td&gt;&#xA;          &lt;td&gt;150 K&lt;/td&gt;&#xA;          &lt;td&gt;66.1 K&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;slat&lt;/td&gt;&#xA;          &lt;td&gt;0.13 usec&lt;/td&gt;&#xA;          &lt;td&gt;2.8 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;clat&lt;/td&gt;&#xA;          &lt;td&gt;6.2 usec&lt;/td&gt;&#xA;          &lt;td&gt;11.4 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;lat&lt;/td&gt;&#xA;          &lt;td&gt;6.35 usec&lt;/td&gt;&#xA;          &lt;td&gt;14.32 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;samsung-zssd&#34;&gt;Samsung ZSSD&lt;/h1&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Metric&lt;/th&gt;&#xA;          &lt;th&gt;SPDK&lt;/th&gt;&#xA;          &lt;th&gt;/dev/nvme0n1&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;IOPS&lt;/td&gt;&#xA;          &lt;td&gt;73.9 K&lt;/td&gt;&#xA;          &lt;td&gt;46.2 K&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;slat&lt;/td&gt;&#xA;          &lt;td&gt;0.14 usec&lt;/td&gt;&#xA;          &lt;td&gt;3.2 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;clat&lt;/td&gt;&#xA;          &lt;td&gt;13.0 usec&lt;/td&gt;&#xA;          &lt;td&gt;17.4 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;lat&lt;/td&gt;&#xA;          &lt;td&gt;13.12 usec&lt;/td&gt;&#xA;          &lt;td&gt;20.73 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;slat: average submission latency&lt;br&gt;&#xA;clat: the time between submission to the kernel and when the IO is complete&lt;br&gt;&#xA;lat: total IO latency&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SPDK on Samsung 960 EVO NVMe SSD</title>
+      <link>https://xinglin.github.io/spdk-samsung-960-evo/</link>
+      <pubDate>Fri, 01 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://xinglin.github.io/spdk-samsung-960-evo/</guid>
+      <description>&lt;p&gt;Today, I started to play with Intel SPDK with a 250GB Samsung 960 EVO NVMe SSD.&#xA;I was thinking that using SPDK might lead to better performance, than through traditional block device interface.&#xA;However, using fio with 4KiB random read requests at the queue depth equal to 1, as it turned out, the difference is rather small.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Metric&lt;/th&gt;&#xA;          &lt;th&gt;SPDK&lt;/th&gt;&#xA;          &lt;th&gt;/dev/nvme0n1&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;IOPS&lt;/td&gt;&#xA;          &lt;td&gt;12.8 K&lt;/td&gt;&#xA;          &lt;td&gt;11.6 K&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;slat&lt;/td&gt;&#xA;          &lt;td&gt;0.18 usec&lt;/td&gt;&#xA;          &lt;td&gt;&amp;ndash;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;clat&lt;/td&gt;&#xA;          &lt;td&gt;77.73 usec&lt;/td&gt;&#xA;          &lt;td&gt;84.19 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;lat&lt;/td&gt;&#xA;          &lt;td&gt;77.91 usec&lt;/td&gt;&#xA;          &lt;td&gt;84.32 usec&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;slat, clat and lat are average submission latency, submission to IO completion latency and total IO latency. As we can see, this device still have a quite high read latency. The latest Intel Optane DC P4800X SSDs can achieve 10 us read latency, with 550 K IOPS. For this Samsung device, software overhead seems still fine. It would be really interesting to test out for the Intel Optane PC4800X SSDs though.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>
