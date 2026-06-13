@@ -108,6 +108,45 @@
         alt="/images/head.jpg"
         title="/images/head.jpg" width="2495" height="2358" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/hotcrp-ubuntu14/">Install hotCRP at a Ubuntu 14 Machine</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-12">2018-04-12</time></span></div><div class="content"><ol start="0">
+<li>
+<p>Update packages</p>
+<pre><code> sudo apt-get update
+</code></pre>
+</li>
+<li>
+<p>Install php7. The default php coming with Ubuntu 14 is 5.5.9 while hotCRP prefers 5.6 and later.</p>
+<ol>
+<li>
+<p>Install the <code>software-properties-common</code> package to get the <code>add-apt-repository</code> command.</p>
+<pre><code> sudo apt-get install software-properties-common
+</code></pre>
+</li>
+<li>
+<p>Add php7 ppa and do an update</p>
+<pre><code> sudo add-apt-repository ppa:ondrej/php	
+ sudo apt-get update
+</code></pre>
+</li>
+<li>
+<p>Install php7</p>
+<pre><code> sudo apt-get install php7.2 php7.2-mysql
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Install other required packages</p>
+<pre><code> sudo apt-get install git apache2 mysql-server zip poppler-utils sendmail
+</code></pre>
+</li>
+<li>
+<p>Get hotCRP source code</p></div><div class="post-footer">
+        <a href="/hotcrp-ubuntu14/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hotcrp/">HotCRP</a>,&nbsp;<a href="/tags/note/">Note</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/atc18-best-practice/">Best Practices for Running the Conference Review Process Based on USENIX ATC 2018</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-04-11">2018-04-11</time></span></div><div class="content"><p>I got the opportunity to participate in the review process as a program committee member for USENIX ATC 2018. USENIX ATC is a big conference in term of submissions: this year, it received more than 400 complete submissions.
 To handle such a huge load on reviewing, the chairs had purposedly doubled the number of program committee members to be 70 this year. Still, it requires a careful planning to run the paper reviewing process smoothly.</p></div><div class="post-footer">
@@ -190,18 +229,7 @@ structures.</li>
         <a href="/dissertation-defense/">Reflection After Dissertation Defense</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-07-22">2015-07-22</time></span></div><div class="content"><p>After six years in the PhD program, since August 2009, I finally defended my dissertation today. I feel grateful that I finally make it. I do think I am one of the luck ones: I have a really nice adviser and he gives me strong support to do research in areas which I am interested in. I feel grateful for all the help I have received from my advisor, committee members, office mates and co-workers. The journey would be much challenging if I did it alone. Thank you all!</p></div><div class="post-footer">
         <a href="/dissertation-defense/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">Phd Life</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/sketch-data-structures/">Sketch Data Structures</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2015-06-09">2015-06-09</time></span></div><div class="content"><p>Tonight, I went to attend a local meetup event. The talk was given by a
-faculty from my own department, Jeff Phillips, an assistant professor
-working in the area of big data analysis. The topic of his talk is about
-sketch data structure - data structures which uses a much smaller
-amount of memory to summarize the represented data.This is a cool
-technique and I am very interested to learn more.</p></div><div class="post-footer">
-        <a href="/sketch-data-structures/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/technique/">Technique</a>,&nbsp;<a href="/tags/data-summarization/">Data Summarization</a></div></div>
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/phd-life/">PhD Life</a></div></div>
 </article>
 <ul class="pagination"><li class="page-item ">
                     <span class="page-link">

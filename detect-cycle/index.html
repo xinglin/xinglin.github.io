@@ -4,48 +4,48 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores - Xing Lin</title><meta name="Description" content="VLDB 2020"><meta property="og:url" content="https://xinglin.github.io/deltalake/">
+        <title>Detect cycle in a singly linked list - Xing Lin</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:url" content="https://xinglin.github.io/detect-cycle/">
   <meta property="og:site_name" content="Xing Lin">
-  <meta property="og:title" content="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores">
-  <meta property="og:description" content="VLDB 2020">
+  <meta property="og:title" content="Detect cycle in a singly linked list">
+  <meta property="og:description" content="Question: given a singly linked list, detect whether it contains a cycle.
+Solution: use two pointers: one slow and one fast pointer.
+since fast pointer is moving faster, both pointers can’t meet before they enter the cycle. Their meeting point must be part of the cycle. In order for them to meet, it must be fast pointer catching up with the slow pointer. They are guarantteed to meet because at every tick, fast pointer is 1 step closer to the slower pointer. So, eventually they will meet. By the point they meet the first time, fast pointer travels exactly k more loops than the slow pointer. When they meet, fast pointer travels 2T nodes. slow pointer travels T nodes. Their difference is kL, length of loop. So, 2T = T &#43; kL, which means T = kL. So, by the time they meet, slow pointer travels exactly kL nodes. $A$: The distance from the start of the list to the start of the cycle. $B$: The distance from the start of the cycle to the meeting point. 1 2 A &#43; B = k*L. A = (k-1)*L &#43; L - B. And the difference from the meeting point to the start of the cycle is also L - B. So, both pointers will meet at the start of the cycle at the same time.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-08-12T00:00:00+00:00">
-    <meta property="article:modified_time" content="2022-08-12T20:34:46-07:00">
-    <meta property="article:tag" content="Paper">
-    <meta property="article:tag" content="Cloud Storage">
-    <meta property="article:tag" content="Delta Lake">
-    <meta property="article:tag" content="ACID">
-    <meta property="article:tag" content="Transaction">
-    <meta property="article:tag" content="Database">
+    <meta property="article:published_time" content="2020-12-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-06-12T23:21:00-07:00">
+    <meta property="article:tag" content="Programming">
+    <meta property="article:tag" content="Algorithm">
     <meta property="og:image" content="https://xinglin.github.io/logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://xinglin.github.io/logo.png">
-  <meta name="twitter:title" content="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores">
-  <meta name="twitter:description" content="VLDB 2020">
+  <meta name="twitter:title" content="Detect cycle in a singly linked list">
+  <meta name="twitter:description" content="Question: given a singly linked list, detect whether it contains a cycle.
+Solution: use two pointers: one slow and one fast pointer.
+since fast pointer is moving faster, both pointers can’t meet before they enter the cycle. Their meeting point must be part of the cycle. In order for them to meet, it must be fast pointer catching up with the slow pointer. They are guarantteed to meet because at every tick, fast pointer is 1 step closer to the slower pointer. So, eventually they will meet. By the point they meet the first time, fast pointer travels exactly k more loops than the slow pointer. When they meet, fast pointer travels 2T nodes. slow pointer travels T nodes. Their difference is kL, length of loop. So, 2T = T &#43; kL, which means T = kL. So, by the time they meet, slow pointer travels exactly kL nodes. $A$: The distance from the start of the list to the start of the cycle. $B$: The distance from the start of the cycle to the meeting point. 1 2 A &#43; B = k*L. A = (k-1)*L &#43; L - B. And the difference from the meeting point to the start of the cycle is also L - B. So, both pointers will meet at the start of the cycle at the same time.">
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xinglin.github.io/deltalake/" /><link rel="prev" href="https://xinglin.github.io/cachelib/" /><link rel="next" href="https://xinglin.github.io/java-executorservice/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xinglin.github.io/detect-cycle/" /><link rel="prev" href="https://xinglin.github.io/transaction/" /><link rel="next" href="https://xinglin.github.io/postgres-tid-wraparound/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores",
+        "headline": "Detect cycle in a singly linked list",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/xinglin.github.io\/deltalake\/"
+            "@id": "https:\/\/xinglin.github.io\/detect-cycle\/"
         },"image": [{
                             "@type": "ImageObject",
                             "url": "https:\/\/xinglin.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "paper, cloud storage, delta lake, ACID, transaction, Database, big data, databrick, vldb","wordcount":  445 ,
-        "url": "https:\/\/xinglin.github.io\/deltalake\/","datePublished": "2022-08-12T00:00:00+00:00","dateModified": "2022-08-12T20:34:46-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "programming, algorithm","wordcount":  224 ,
+        "url": "https:\/\/xinglin.github.io\/detect-cycle\/","datePublished": "2020-12-10T00:00:00+00:00","dateModified": "2026-06-12T23:21:00-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -55,7 +55,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "Xing Lin"
-            },"description": "VLDB 2020"
+            },"description": ""
     }
     </script></head>
     <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -122,81 +122,68 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Detect cycle in a singly linked list</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-12">2022-08-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;445 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-12-10">2020-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;224 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>Read/write performance for cloud object store.</p>
-<blockquote>
-<p>Each read operation usually incurs at least 5–10 ms of base latency, and can then read data at roughly 50–100 MB/s, so an operation needs to read at least several hundred kilobytes to achieve at least half the peak throughput for sequential reads, and multiple megabytes to approach the peak throughput.</p>
-</blockquote>
-<blockquote>
-<p>The VM types most frequently used for analytics on AWS have at least 10 Gbps network bandwidth, so they need to run 8–10 reads in parallel to fully utilize this bandwidth.</p>
-</blockquote>
-<blockquote>
-<p>Google Cloud Storage and Azure Blob Store support atomic put-if-absent operations, so we use those.</p>
-</blockquote>
-<blockquote>
-<p>Delta Lake is deployed at thousands of Databricks customers that process exabytes of data per day, with the largest instances managing exabyte-scale datasets and billions of objects.</p>
-</blockquote>
-<blockquote>
-<p>although many systems support reading and writing to cloud object stores, achieving performant and mutable table storage over these systems is challenging, making it difficult to implement data warehousing capabilities over them. Unlike distributed filesystems such as HDFS [5], or custom storage engines in a DBMS, most cloud object stores are merely key-value stores, with no cross-key consistency guarantees. Their performance characteristics also differ greatly from distributed filesystems and require special care.</p>
-</blockquote>
-<blockquote>
-<p>Parquet files include footers with min/max statistics that can be used to skip reading them in selective queries. Reading such a footer on HDFS might take a few milliseconds, but the latency of cloud object stores is so much higher that these data skipping checks can take longer than the actual query.</p>
-</blockquote>
-<blockquote>
-<p>in the first few years of Databricks’ cloud service (2014–2016), around half the support escalations we received were due to data corruption, consistency or performance issues due to cloud storage strategies (e.g., undoing the effect of a crashed update job, or improving the performance of a query that reads tens of thousands of objects).</p>
-</blockquote>
-<blockquote>
-<p>The core idea of Delta Lake is simple: we maintain information about which objects are part of a Delta table in an ACID manner, using a write-ahead log that is itself stored in the cloud object store.</p>
-</blockquote>
-<blockquote>
-<p>enable a “lakehouse” paradigm that combines the key features of data warehouses and data lakes: standard DBMS management functions usable directly against low-cost object stores.</p>
-</blockquote>
-<blockquote>
-<p>cloud object stores do not provide cheap renames of objects or of “directories”.</p>
-</blockquote>
-<blockquote>
-<p>S3’s LIST only returns up to 1000 keys per call, and each call takes tens to hundreds of milliseconds, so it can take minutes to list a dataset with millions of objects using a sequential implementation.</p>
-</blockquote>
-<blockquote>
-<p>Updating objects usually requires rewriting the whole object at once.</p>
-</blockquote>
-<blockquote>
-<p>Other cloud object stores offer stronger guarantees [31], but still lack atomic operations across multiple keys.</p>
-</blockquote>
+            </div><div class="content" id="content"><p>Question: given a singly linked list, detect whether it contains a cycle.</p>
+<p>Solution: use two pointers: one slow and one fast pointer.</p>
+<ul>
+<li>since fast pointer is moving faster, both pointers can&rsquo;t meet before they enter the cycle. Their meeting point must be part of
+the cycle.</li>
+<li>In order for them to meet, it must be fast pointer catching up with the slow pointer.</li>
+<li>They are guarantteed to meet because at every tick, fast pointer is 1 step closer to the slower pointer.
+So, eventually they will meet. By the point they meet the first time, fast pointer travels exactly k more loops than the slow pointer.</li>
+<li>When they meet, fast pointer travels 2T nodes. slow pointer travels T nodes. Their difference is k<em>L, length of loop.
+So, 2T = T + k</em>L, which means T = k<em>L. So, by the time they meet, slow pointer travels exactly k</em>L nodes.</li>
+<li>$A$: The distance from the start of the list to the start of the cycle.</li>
+<li>$B$: The distance from the start of the cycle to the meeting point.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A + B = k*L. 
+</span></span><span class="line"><span class="cl">A = (k-1)*L + L - B. 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>And the difference from the meeting point to the start of the cycle is also L - B.
+So, both pointers will meet at the start of the cycle at the same time.</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-08-12</span>
+                <span>Updated on 2026-06-12</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/deltalake/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/detect-cycle/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores" data-hashtags="paper,cloud storage,delta lake,ACID,transaction,Database,big data,databrick,vldb"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xinglin.github.io/deltalake/" data-hashtag="paper"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xinglin.github.io/deltalake/" data-title="Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xinglin.github.io/detect-cycle/" data-title="Detect cycle in a singly linked list" data-hashtags="programming,algorithm"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xinglin.github.io/detect-cycle/" data-hashtag="programming"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xinglin.github.io/detect-cycle/" data-title="Detect cycle in a singly linked list"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xinglin.github.io/detect-cycle/" data-title="Detect cycle in a singly linked list"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xinglin.github.io/detect-cycle/" data-title="Detect cycle in a singly linked list"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/paper/">Paper</a>,&nbsp;<a href="/tags/cloud-storage/">Cloud Storage</a>,&nbsp;<a href="/tags/delta-lake/">Delta Lake</a>,&nbsp;<a href="/tags/acid/">ACID</a>,&nbsp;<a href="/tags/transaction/">Transaction</a>,&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/big-data/">Big Data</a>,&nbsp;<a href="/tags/databrick/">Databrick</a>,&nbsp;<a href="/tags/vldb/">Vldb</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/programming/">Programming</a>,&nbsp;<a href="/tags/algorithm/">Algorithm</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/cachelib/" class="prev" rel="prev" title="The CacheLib Caching Engine: Design and Experiences at Scale"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>The CacheLib Caching Engine: Design and Experiences at Scale</a>
-            <a href="/java-executorservice/" class="next" rel="next" title="Java ExecutorService">Java ExecutorService<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/transaction/" class="prev" rel="prev" title="Transaction"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Transaction</a>
+            <a href="/postgres-tid-wraparound/" class="next" rel="next" title="Postgres Handling Transaction ID Wrap Around">Postgres Handling Transaction ID Wrap Around<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -208,6 +208,38 @@ and future transactions.</p></div><div class="post-footer">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/postgres/">Postgres</a>,&nbsp;<a href="/tags/idea/">Idea</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/detect-cycle/">Detect cycle in a singly linked list</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-12-10">2020-12-10</time></span></div><div class="content"><p>Question: given a singly linked list, detect whether it contains a cycle.</p>
+<p>Solution: use two pointers: one slow and one fast pointer.</p>
+<ul>
+<li>since fast pointer is moving faster, both pointers can&rsquo;t meet before they enter the cycle. Their meeting point must be part of
+the cycle.</li>
+<li>In order for them to meet, it must be fast pointer catching up with the slow pointer.</li>
+<li>They are guarantteed to meet because at every tick, fast pointer is 1 step closer to the slower pointer.
+So, eventually they will meet. By the point they meet the first time, fast pointer travels exactly k more loops than the slow pointer.</li>
+<li>When they meet, fast pointer travels 2T nodes. slow pointer travels T nodes. Their difference is k<em>L, length of loop.
+So, 2T = T + k</em>L, which means T = k<em>L. So, by the time they meet, slow pointer travels exactly k</em>L nodes.</li>
+<li>$A$: The distance from the start of the list to the start of the cycle.</li>
+<li>$B$: The distance from the start of the cycle to the meeting point.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A + B = k*L. 
+</span></span><span class="line"><span class="cl">A = (k-1)*L + L - B. 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>And the difference from the meeting point to the start of the cycle is also L - B.
+So, both pointers will meet at the start of the cycle at the same time.</li>
+</ul></div><div class="post-footer">
+        <a href="/detect-cycle/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/programming/">Programming</a>,&nbsp;<a href="/tags/algorithm/">Algorithm</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/transaction/">Transaction</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-27">2020-09-27</time></span></div><div class="content"><p>The four properties that a transaction in the database world has are ACID: A stands for atomicity, C for consistency, I for isolation and D for durability.
 The purpose of transactions is to maintain data in the face of concurrent access and system failures.</p>
@@ -245,20 +277,7 @@ The purpose of transactions is to maintain data in the face of concurrent access
 <h1 id="database-management-systems">Database Management Systems</h1>
 <p>The following content was selected from chapter 17, Transactions.</p></div><div class="post-footer">
         <a href="/transaction/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">Note</a>,&nbsp;<a href="/tags/transaction/">Transaction</a>,&nbsp;<a href="/tags/acid/">Acid</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hit-the-road/">Hit the Road iOS App</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Xing Lin</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-23">2020-08-23</time></span></div><div class="content"><p>Hit the Road is an iOS app for tracking ourdoor exercises.
-It can track walking, running, and biking.
-It is supposed to run on iPhones, but not iPads or iWatchs.</p>
-<h1 id="user-privacy">User Privacy</h1>
-<p>The app only stores the duration and mileage for each activity locally
-in the installed device. The app does not store the GPS locations.
-It only uses GPS locations during an activity to get the mileage.
-The app does not send any data over the network.</p></div><div class="post-footer">
-        <a href="/hit-the-road/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ios/">IOS</a>,&nbsp;<a href="/tags/support/">Support</a></div></div>
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">Note</a>,&nbsp;<a href="/tags/transaction/">Transaction</a>,&nbsp;<a href="/tags/acid/">ACID</a></div></div>
 </article>
 <ul class="pagination"><li class="page-item ">
                     <span class="page-link">

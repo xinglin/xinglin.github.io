@@ -3,7 +3,21 @@
         <title>All Posts - Xing Lin</title>
         <link>https://xinglin.github.io/posts/</link>
         <description>All Posts | Xing Lin</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 24 May 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://xinglin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>FoundationDB: A Distributed Unbundled Transactional Key Value Store</title>
+    <link>https://xinglin.github.io/fdb/</link>
+    <pubDate>Sun, 24 May 2026 00:00:00 &#43;0000</pubDate>
+    <author>Xing Lin</author>
+    <guid>https://xinglin.github.io/fdb/</guid>
+    <description><![CDATA[<blockquote>
+<p>Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB</p>
+</blockquote>
+<blockquote>
+<h2 id="transaction-processing">Transaction processing</h2>
+<h3 id="optimistic-concurrency-control--mvcc">Optimistic Concurrency Control + MVCC</h3>
+<p>A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again.</p>]]></description>
+</item>
+<item>
     <title>HDFS Namenode RPC Request Execution Time Breakdown</title>
     <link>https://xinglin.github.io/namenoderpctimebreakdown/</link>
     <pubDate>Wed, 29 Nov 2023 00:00:00 &#43;0000</pubDate>
@@ -51,20 +65,6 @@ more reference to it), it will be added to a queue. The garbage collector
 will look into the queue and determine which objects to reclaim
 based on its own algorithm. It is undeterministic/out of control from
 programmers on when the garbage collector will reclaim an object.</p>]]></description>
-</item>
-<item>
-    <title>FoundationDB: A Distributed Unbundled Transactional Key Value Store</title>
-    <link>https://xinglin.github.io/fdb/</link>
-    <pubDate>Wed, 24 May 2023 00:00:00 &#43;0000</pubDate>
-    <author>Xing Lin</author>
-    <guid>https://xinglin.github.io/fdb/</guid>
-    <description><![CDATA[<blockquote>
-<p>Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB</p>
-</blockquote>
-<blockquote>
-<h2 id="transaction-processing">Transaction processing</h2>
-<h3 id="optimistic-concurrency-control--mvcc">Optimistic Concurrency Control + MVCC</h3>
-<p>A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again.</p>]]></description>
 </item>
 <item>
     <title>Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores</title>

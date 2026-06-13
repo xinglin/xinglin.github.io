@@ -7,12 +7,12 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 12 Jun 2026 22:17:19 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 23:21:00 -0700</lastBuildDate>
     <atom:link href="https://xinglin.github.io/tags/sigmod/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FoundationDB: A Distributed Unbundled Transactional Key Value Store</title>
       <link>https://xinglin.github.io/fdb/</link>
-      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
       <guid>https://xinglin.github.io/fdb/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Key and value sizes are limited to 10 KB and 100 KB respectively for better performance. Transaction size is limited to 10 MB&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;h2 id=&#34;transaction-processing&#34;&gt;Transaction processing&lt;/h2&gt;&#xA;&lt;h3 id=&#34;optimistic-concurrency-control--mvcc&#34;&gt;Optimistic Concurrency Control + MVCC&lt;/h3&gt;&#xA;&lt;p&gt;A client transaction starts by contacting one of the Proxies to obtain a read version (i.e., a timestamp). The Proxy then asks the Sequencer for a read version that is guaranteed to be no less than any previously issued transaction commit version, and this read version is sent back to the client. Then the client may issue multiple reads to StorageServers and obtain values at that specific read version. Client writes are buffered locally without contacting the cluster. At commit time, the client sends the transaction data, including the read and write sets (i.e., key ranges), to one of the Proxies and waits for a commit or abort response from the Proxy. If the transaction cannot commit, the client may choose to restart the transaction from the beginning again.&lt;/p&gt;</description>
     </item>
