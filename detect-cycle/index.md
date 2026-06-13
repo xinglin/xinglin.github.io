@@ -12,8 +12,8 @@ the cycle.
 So, eventually they will meet. By the point they meet the first time, fast pointer travels exactly k more loops than the slow pointer.
 - When they meet, fast pointer travels 2T nodes. slow pointer travels T nodes. Their difference is k*L, length of loop. 
 So, 2T = T + k*L, which means T = k*L. So, by the time they meet, slow pointer travels exactly k*L nodes. 
-- $A$: The distance from the start of the list to the start of the cycle. 
-- $B$: The distance from the start of the cycle to the meeting point.
+- A: The distance from the start of the list to the start of the cycle. 
+- B: The distance from the start of the cycle to the meeting point.
 ```
 A + B = k*L. 
 A = (k-1)*L + L - B. 
